@@ -1,0 +1,660 @@
+{
+ "provenance": {
+  "description": "EPC \"+\" and \"++\" scheme vectors (for M3b): full binaries, method fragments, and DL Compression 1.0.0 eh/ex examples.",
+  "sources": [
+   "docs/specifications/epc-tag-data-standard-v2.3.pdf",
+   "docs/specifications/epc-tag-data-translation-v2.2.pdf",
+   "docs/specifications/gs1-digital-link-compression-v1.0.0.pdf",
+   "gs1/TDT a655cc3"
+  ],
+  "notes": "Research notes: docs/superpowers/research/2026-10-09-m3-epc-plus.md (section 3 lists corrected TDS errata)",
+  "extracted": "2026-10-09"
+ },
+ "vectors": {
+  "binaries": [
+   {
+    "scheme": "SGTIN+",
+    "source": "TDS 2.3 Appendix E.3 (p.356-365) line 507",
+    "elementString": "(01)79521141123453(21)32a/b",
+    "digitalLink": "https://id.gs1.org/01/79521141123453/21/32a%2Fb",
+    "filter": 3,
+    "toggle": 0,
+    "epcBits": 111,
+    "hex": "F73795211411234538566CB0AFC4",
+    "hexWordPadded": "F73795211411234538566CB0AFC4",
+    "pureIdentityUri": null,
+    "tagUri": null
+   },
+   {
+    "scheme": "DSGTIN+",
+    "source": "TDS 2.3 Appendix E.3 (p.356-365) line 508",
+    "elementString": "(01)79521141123453(21)32a/b(17)220630",
+    "digitalLink": "https://id.gs1.org/01/79521141123453/21/32a%2Fb?17=220630",
+    "filter": 3,
+    "toggle": 0,
+    "prioritisedDate": {
+     "ai": "17",
+     "value": "220630"
+    },
+    "epcBits": 131,
+    "hex": "FB342CDE795211411234538566CB0AFC4",
+    "hexWordPadded": "FB342CDE795211411234538566CB0AFC4000",
+    "pureIdentityUri": null,
+    "tagUri": null
+   },
+   {
+    "scheme": "SGTIN++",
+    "source": "TDS 2.3 Appendix E.3 (p.356-365) line 509",
+    "elementString": "(01)79521141123453(21)32a/b",
+    "digitalLink": "https://id.example.com/01/79521141123453/21/32a%2Fb",
+    "filter": 3,
+    "toggle": 0,
+    "hostname": "id.example.com",
+    "epcBits": 181,
+    "hex": "FD3795211411234538566CB0AFC525065F1876F0D996D800",
+    "hexWordPadded": "FD3795211411234538566CB0AFC525065F1876F0D996D800",
+    "pureIdentityUri": null,
+    "tagUri": null,
+    "note": "E.3 prints DL host \"example.com\" but the hex encodes \"id.example.com\" (erratum in DL column)"
+   },
+   {
+    "scheme": "DSGTIN++",
+    "source": "TDS 2.3 Appendix E.3 (p.356-365) line 510",
+    "elementString": "(01)79521141123453(21)32a/b(17)220630",
+    "digitalLink": "https://id.example.com/01/79521141123453/21/32a%2Fb?17=220630",
+    "filter": 3,
+    "toggle": 0,
+    "hostname": "id.example.com",
+    "prioritisedDate": {
+     "ai": "17",
+     "value": "220630"
+    },
+    "epcBits": 201,
+    "hex": "FC342CDE795211411234538566CB0AFC525065F1876F0D996D80",
+    "hexWordPadded": "FC342CDE795211411234538566CB0AFC525065F1876F0D996D80",
+    "pureIdentityUri": null,
+    "tagUri": null,
+    "note": "E.3 prints DL host \"example.com\" but the hex encodes \"id.example.com\" (erratum in DL column)"
+   },
+   {
+    "scheme": "SSCC+",
+    "source": "TDS 2.3 Appendix E.3 (p.356-365) line 512",
+    "elementString": "(00)095201234567891235",
+    "digitalLink": "https://id.gs1.org/00/095201234567891235",
+    "filter": 0,
+    "toggle": 0,
+    "epcBits": 84,
+    "hex": "F90095201234567891235",
+    "hexWordPadded": "F90095201234567891235000",
+    "pureIdentityUri": null,
+    "tagUri": null
+   },
+   {
+    "scheme": "SSCC++",
+    "source": "TDS 2.3 Appendix E.3 (p.356-365) line 513",
+    "elementString": "(00)095201234567891235",
+    "digitalLink": "https://id.example.com/00/095201234567891235",
+    "filter": 0,
+    "toggle": 0,
+    "hostname": "id.example.com",
+    "epcBits": 154,
+    "hex": "EF009520123456789123592832F8C3B786CCB6C0",
+    "hexWordPadded": "EF009520123456789123592832F8C3B786CCB6C0",
+    "pureIdentityUri": null,
+    "tagUri": null,
+    "note": "E.3 prints hex starting F9 (SSCC+ header): F9009520123456789123592832F8C3B786CCB6C0. Corrected to header EF per Table 14-1 and TDT 2.3."
+   },
+   {
+    "scheme": "SGLN+",
+    "source": "TDS 2.3 Appendix E.3 (p.356-365) line 516",
+    "elementString": "(414)9521141123454(254)32a/b",
+    "digitalLink": "https://id.gs1.org/414/9521141123454/254/32a%2Fb",
+    "filter": 3,
+    "toggle": 0,
+    "epcBits": 107,
+    "hex": "F2395211411234548566CB0AFC4",
+    "hexWordPadded": "F2395211411234548566CB0AFC40",
+    "pureIdentityUri": null,
+    "tagUri": null
+   },
+   {
+    "scheme": "SGLN++",
+    "source": "TDS 2.3 Appendix E.3 (p.356-365) line 517",
+    "elementString": "(414)9521141123454(254)32a/b",
+    "digitalLink": "https://id.example.com/414/9521141123454/254/32a%2Fb",
+    "filter": 3,
+    "toggle": 0,
+    "hostname": "id.example.com",
+    "epcBits": 177,
+    "hex": "E9395211411234548566CB0AFC525065F1876F0D996D8000",
+    "hexWordPadded": "E9395211411234548566CB0AFC525065F1876F0D996D8000",
+    "pureIdentityUri": null,
+    "tagUri": null
+   },
+   {
+    "scheme": "GRAI+",
+    "source": "TDS 2.3 Appendix E.3 (p.356-365) line 520",
+    "elementString": "(8003)0952114112345432a/b",
+    "digitalLink": "https://id.gs1.org/8003/0952114112345432a%2Fb",
+    "filter": 3,
+    "toggle": 0,
+    "epcBits": 111,
+    "hex": "F13095211411234548566CB0AFC4",
+    "hexWordPadded": "F13095211411234548566CB0AFC4",
+    "pureIdentityUri": null,
+    "tagUri": null
+   },
+   {
+    "scheme": "GRAI++",
+    "source": "TDS 2.3 Appendix E.3 (p.356-365) line 521",
+    "elementString": "(8003)0952114112345432a/b",
+    "digitalLink": "https://id.example.com/8003/0952114112345432a%2Fb",
+    "filter": 3,
+    "toggle": 0,
+    "hostname": "id.example.com",
+    "epcBits": 181,
+    "hex": "EB3095211411234548566CB0AFC525065F1876F0D996D800",
+    "hexWordPadded": "EB3095211411234548566CB0AFC525065F1876F0D996D800",
+    "pureIdentityUri": null,
+    "tagUri": null
+   },
+   {
+    "scheme": "GIAI+",
+    "source": "TDS 2.3 Appendix E.3 (p.356-365) line 524",
+    "elementString": "(8004)952114132a/b",
+    "digitalLink": "https://id.gs1.org/8004/952114132a%2Fb",
+    "filter": 3,
+    "toggle": 0,
+    "epcBits": 81,
+    "hex": "FA3952114132E83C2BF10",
+    "hexWordPadded": "FA3952114132E83C2BF10000",
+    "pureIdentityUri": null,
+    "tagUri": null
+   },
+   {
+    "scheme": "GIAI++",
+    "source": "TDS 2.3 Appendix E.3 (p.356-365) line 525",
+    "elementString": "(8004)952114132a/b",
+    "digitalLink": "https://id.example.com/8004/952114132a%2Fb",
+    "filter": 3,
+    "toggle": 0,
+    "hostname": "id.example.com",
+    "epcBits": 151,
+    "hex": "EE3952114132E83C2BF1494197C61DBC3665B600",
+    "hexWordPadded": "EE3952114132E83C2BF1494197C61DBC3665B600",
+    "pureIdentityUri": null,
+    "tagUri": null
+   },
+   {
+    "scheme": "GSRN+",
+    "source": "TDS 2.3 Appendix E.3 (p.356-365) line 527",
+    "elementString": "(8018)952114112345678906",
+    "digitalLink": "https://id.gs1.org/8018/952114112345678906",
+    "filter": 3,
+    "toggle": 0,
+    "epcBits": 84,
+    "hex": "F43952114112345678906",
+    "hexWordPadded": "F43952114112345678906000",
+    "pureIdentityUri": null,
+    "tagUri": null
+   },
+   {
+    "scheme": "GSRN++",
+    "source": "TDS 2.3 Appendix E.3 (p.356-365) line 528",
+    "elementString": "(8018)952114112345678906",
+    "digitalLink": "https://id.example.com/8018/952114112345678906",
+    "filter": 3,
+    "toggle": 0,
+    "hostname": "id.example.com",
+    "epcBits": 154,
+    "hex": "E7395211411234567890692832F8C3B786CCB6C0",
+    "hexWordPadded": "E7395211411234567890692832F8C3B786CCB6C0",
+    "pureIdentityUri": null,
+    "tagUri": null
+   },
+   {
+    "scheme": "GSRNP+",
+    "source": "TDS 2.3 Appendix E.3 (p.356-365) line 530",
+    "elementString": "(8017)952114112345678906",
+    "digitalLink": "https://id.gs1.org/8017/952114112345678906",
+    "filter": 3,
+    "toggle": 0,
+    "epcBits": 84,
+    "hex": "F53952114112345678906",
+    "hexWordPadded": "F53952114112345678906000",
+    "pureIdentityUri": null,
+    "tagUri": null
+   },
+   {
+    "scheme": "GSRNP++",
+    "source": "TDS 2.3 Appendix E.3 (p.356-365) line 531",
+    "elementString": "(8017)952114112345678906",
+    "digitalLink": "https://id.example.com/8017/952114112345678906",
+    "filter": 3,
+    "toggle": 0,
+    "hostname": "id.example.com",
+    "epcBits": 154,
+    "hex": "E8395211411234567890692832F8C3B786CCB6C0",
+    "hexWordPadded": "E8395211411234567890692832F8C3B786CCB6C0",
+    "pureIdentityUri": null,
+    "tagUri": null
+   },
+   {
+    "scheme": "GDTI+",
+    "source": "TDS 2.3 Appendix E.3 (p.356-365) line 534",
+    "elementString": "(253)95211411234545678",
+    "digitalLink": "https://id.gs1.org/253/95211411234545678",
+    "filter": 3,
+    "toggle": 0,
+    "epcBits": 86,
+    "hex": "F6395211411234540458B8",
+    "hexWordPadded": "F6395211411234540458B800",
+    "pureIdentityUri": null,
+    "tagUri": null
+   },
+   {
+    "scheme": "GDTI++",
+    "source": "TDS 2.3 Appendix E.3 (p.356-365) line 535",
+    "elementString": "(253)95211411234545678",
+    "digitalLink": "https://id.example.com/253/95211411234545678",
+    "filter": 3,
+    "toggle": 0,
+    "hostname": "id.example.com",
+    "epcBits": 156,
+    "hex": "EA395211411234540458BA4A0CBE30EDE1B32DB0",
+    "hexWordPadded": "EA395211411234540458BA4A0CBE30EDE1B32DB0",
+    "pureIdentityUri": null,
+    "tagUri": null
+   },
+   {
+    "scheme": "CPI+",
+    "source": "TDS 2.3 Appendix E.3 (p.356-365) line 538",
+    "elementString": "(8010)95211415PQ7/Z43(8011)12345",
+    "digitalLink": "https://id.gs1.org/8010/95211415PQ7%2FZ43/8011/12345",
+    "filter": 3,
+    "toggle": 0,
+    "epcBits": 126,
+    "hex": "F0395211415E87A145BAFB4D19A8C0E4",
+    "hexWordPadded": "F0395211415E87A145BAFB4D19A8C0E4",
+    "pureIdentityUri": null,
+    "tagUri": null
+   },
+   {
+    "scheme": "CPI++",
+    "source": "TDS 2.3 Appendix E.3 (p.356-365) line 539",
+    "elementString": "(8010)95211415PQ7/Z43(8011)12345",
+    "digitalLink": "https://id.example.com/8010/95211415PQ7%2FZ43/8011/12345",
+    "filter": 3,
+    "toggle": 0,
+    "hostname": "id.example.com",
+    "epcBits": 196,
+    "hex": "E6395211415E87A145BAFB4D19A8C0E64A0CBE30EDE1B32DB000",
+    "hexWordPadded": "E6395211415E87A145BAFB4D19A8C0E64A0CBE30EDE1B32DB000",
+    "pureIdentityUri": null,
+    "tagUri": null
+   },
+   {
+    "scheme": "SGCN+",
+    "source": "TDS 2.3 Appendix E.3 (p.356-365) line 541",
+    "elementString": "(255)952114167890904711",
+    "digitalLink": "https://id.gs1.org/255/952114167890904711",
+    "filter": 3,
+    "toggle": 0,
+    "epcBits": 85,
+    "hex": "F839521141678909509338",
+    "hexWordPadded": "F83952114167890950933800",
+    "pureIdentityUri": null,
+    "tagUri": null
+   },
+   {
+    "scheme": "SGCN++",
+    "source": "TDS 2.3 Appendix E.3 (p.356-365) line 542",
+    "elementString": "(255)952114167890904711",
+    "digitalLink": "https://id.example.com/255/952114167890904711",
+    "filter": 3,
+    "toggle": 0,
+    "hostname": "id.example.com",
+    "epcBits": 155,
+    "hex": "EC3952114167890950933C94197C61DBC3665B60",
+    "hexWordPadded": "EC3952114167890950933C94197C61DBC3665B60",
+    "pureIdentityUri": null,
+    "tagUri": null
+   },
+   {
+    "scheme": "ITIP+",
+    "source": "TDS 2.3 Appendix E.3 (p.356-365) line 548",
+    "elementString": "(8006)095211411234540102(21)rif981",
+    "digitalLink": "https://id.gs1.org/8006/095211411234540102/21/rif981",
+    "filter": 3,
+    "toggle": 0,
+    "epcBits": 128,
+    "hex": "F3309521141123454010266AE27FDF35",
+    "hexWordPadded": "F3309521141123454010266AE27FDF35",
+    "pureIdentityUri": null,
+    "tagUri": null
+   },
+   {
+    "scheme": "ITIP++",
+    "source": "TDS 2.3 Appendix E.3 (p.356-365) line 549",
+    "elementString": "(8006)095211411234540102(21)rif981",
+    "digitalLink": "https://id.example.com/8006/095211411234540102/21/rif981",
+    "filter": 3,
+    "toggle": 0,
+    "hostname": "id.example.com",
+    "epcBits": 198,
+    "hex": "ED309521141123454010266AE27FDF3592832F8C3B786CCB6C00",
+    "hexWordPadded": "ED309521141123454010266AE27FDF3592832F8C3B786CCB6C00",
+    "pureIdentityUri": null,
+    "tagUri": null,
+    "note": "E.3 prints hex starting F3 (ITIP+ header): F3309521141123454010266AE27FDF3592832F8C3B786CCB6C00. Corrected to header ED per Table 14-1 and TDT 2.3."
+   },
+   {
+    "scheme": "SGTIN++",
+    "source": "gs1-tdt TDT_2_3_demo/test.html case 3 + minimal_version_for_resolvers/test_minimal.html case 3 (binary given as 164-bit string; expectedBinaryLength 164)",
+    "elementString": "(01)01234567890128(21)987XYZ",
+    "digitalLink": "https://id.abcde.com/01/01234567890128/21/987XYZ",
+    "filter": 0,
+    "toggle": 0,
+    "hostname": "id.abcde.com",
+    "epcBits": 164,
+    "hex": "FD001234567890128A6F9D69A038E830E2C7932DB",
+    "hexWordPadded": "FD001234567890128A6F9D69A038E830E2C7932DB000",
+    "pureIdentityUri": null,
+    "tagUri": null
+   },
+   {
+    "scheme": "SGTIN++",
+    "source": "gs1-tdt TDT_2_3_demo/developer_guide.html batch output item-02 (input https://id.gs1.org/01/09521234123453/21/32a%2Fb, filter 0)",
+    "elementString": "(01)09521234123453(21)32a/b",
+    "digitalLink": "https://id.gs1.org/01/09521234123453/21/32a%2Fb",
+    "filter": 0,
+    "toggle": 0,
+    "hostname": "id.gs1.org",
+    "epcBits": 153,
+    "hex": "FD0095212341234538566CB0AFC515067E6C6E0",
+    "hexWordPadded": "FD0095212341234538566CB0AFC515067E6C6E00",
+    "pureIdentityUri": null,
+    "tagUri": null
+   },
+   {
+    "scheme": "SSCC++",
+    "source": "gs1-tdt TDT_2_3_demo/developer_guide.html batch output item-05 (input https://id.gs1.org/00/106141412345678908, filter 0)",
+    "elementString": "(00)106141412345678908",
+    "digitalLink": "https://id.gs1.org/00/106141412345678908",
+    "filter": 0,
+    "toggle": 0,
+    "hostname": "id.gs1.org",
+    "epcBits": 126,
+    "hex": "EF01061414123456789088A833F36370",
+    "hexWordPadded": "EF01061414123456789088A833F36370",
+    "pureIdentityUri": null,
+    "tagUri": null
+   },
+   {
+    "scheme": "SGTIN+",
+    "source": "gs1-tdt TDT_2_3_demo/createApp.js DEMO_VALUES.hex, developer_guide.html playground preset \"Hex\"",
+    "elementString": "(01)09521234123453(21)32a/b",
+    "digitalLink": "https://id.gs1.org/01/09521234123453/21/32a%2Fb",
+    "filter": 3,
+    "toggle": 0,
+    "epcBits": 111,
+    "hex": "F73095212341234538566CB0AFC4",
+    "hexWordPadded": "F73095212341234538566CB0AFC4",
+    "pureIdentityUri": null,
+    "tagUri": null
+   },
+   {
+    "scheme": "SGTIN+",
+    "source": "TDS 2.3 Fig 14-1 (p.173) top / Fig 15-1 (p.296) top; bit diagram, hex derived here",
+    "elementString": "(01)95214328517364(21)12345",
+    "filter": 1,
+    "toggle": 0,
+    "epcBits": 93,
+    "bits": "111101110001100101010010000101000011001010000101000101110011011001000000010100011000000111001",
+    "hex": "F719521432851736405181C8",
+    "hexWordPadded": "F719521432851736405181C8",
+    "derived": true
+   },
+   {
+    "scheme": "SGTIN+",
+    "source": "TDS 2.3 Fig 14-1 (p.173) bottom / Fig 15-1 (p.296) bottom; bit diagram, hex derived here",
+    "elementString": "(01)95214328517364(21)12345(17)220531",
+    "filter": 1,
+    "toggle": 1,
+    "aidc": [
+     {
+      "ai": "17",
+      "value": "220531"
+     }
+    ],
+    "epcBits": 93,
+    "totalBits": 117,
+    "bits": "111101111001100101010010000101000011001010000101000101110011011001000000010100011000000111001000101110010110010111111",
+    "hex": "F799521432851736405181C8B965F8",
+    "hexWordPadded": "F799521432851736405181C8B965F800",
+    "derived": true
+   },
+   {
+    "scheme": "SGTIN+",
+    "source": "gs1-tdt TDT_2_3_demo/createApp.js DEMO_VALUES.binary (117-bit string; = Fig 14-1 bottom with filter 0)",
+    "elementString": "(01)95214328517364(21)12345(17)220531",
+    "filter": 0,
+    "toggle": 1,
+    "aidc": [
+     {
+      "ai": "17",
+      "value": "220531"
+     }
+    ],
+    "epcBits": 93,
+    "totalBits": 117,
+    "bits": "111101111000100101010010000101000011001010000101000101110011011001000000010100011000000111001000101110010110010111111",
+    "hex": "F789521432851736405181C8B965F8",
+    "hexWordPadded": "F789521432851736405181C8B965F800"
+   }
+  ],
+  "methods": [
+   {
+    "source": "TDS 2.3 Fig 14-4 (p.183)",
+    "method": "14.5.6.1 numeric (bLI=5)",
+    "input": "12345",
+    "bits": "0000010100011000000111001"
+   },
+   {
+    "source": "TDS 2.3 Fig 14-4 (p.183)",
+    "method": "14.5.6.2 upper hex (bLI=5)",
+    "input": "29C38A",
+    "bits": "00100110001010011100001110001010"
+   },
+   {
+    "source": "TDS 2.3 Fig 14-4 / Fig 14-6 (p.183, p.191)",
+    "method": "14.5.6.4 base64url (bLI=5)",
+    "input": "TdS2_1",
+    "bits": "01100110010011011101010010110110111111110101"
+   },
+   {
+    "source": "TDS 2.3 Fig 14-4 / Fig 14-8 (p.183, p.200)",
+    "method": "14.5.6.6 7-bit ASCII (bLI=5)",
+    "input": "TdS2.1",
+    "bits": "10000110101010011001001010011011001001011100110001"
+   },
+   {
+    "source": "TDS 2.3 Fig 14-4 / Fig 14-7 (p.183, p.195)",
+    "method": "14.5.6.5 URN Code 40 (bLI=5)",
+    "input": "TDS2.1",
+    "bits": "1010011001111101101101001100110010000000"
+   },
+   {
+    "source": "TDS 2.3 Fig 14-3a (p.180)",
+    "method": "14.5.5 delimited/terminated (all numeric)",
+    "input": "9521432851776",
+    "bits": "10010101001000010100001100101000010100010111011101101111"
+   },
+   {
+    "source": "TDS 2.3 Fig 14-3b (p.180)",
+    "method": "14.5.5 delimited + base64url remainder (bLI=5; length counts remainder only)",
+    "input": "95214328517TdS",
+    "bits": "10010101001000010100001100101000010100010111111001100011010011011101010010"
+   },
+   {
+    "source": "TDS 2.3 Fig 14-2 (p.175)",
+    "method": "14.5.3 prioritised date",
+    "input": "(17)220531",
+    "bits": "01000010110010111111"
+   },
+   {
+    "source": "TDS 2.3 Fig 14-9 (p.203)",
+    "method": "14.5.8 YYMMDD",
+    "input": "220531",
+    "bits": "0010110010111111"
+   },
+   {
+    "source": "TDS 2.3 Fig 14-10 (p.205)",
+    "method": "14.5.9 YYMMDDhhmm",
+    "input": "2205311953",
+    "bits": "001011001011111110011110101"
+   },
+   {
+    "source": "TDS 2.3 Fig 14-11 (p.208)",
+    "method": "14.5.10 date",
+    "input": "220531",
+    "bits": "00010110010111111"
+   },
+   {
+    "source": "TDS 2.3 Fig 14-11 (p.208)",
+    "method": "14.5.10 date range",
+    "input": "220531220601",
+    "bits": "100101100101111110010110011000001"
+   },
+   {
+    "source": "TDS 2.3 Fig 14-12 (p.211)",
+    "method": "14.5.11 YYMMDDhh",
+    "input": "22053119",
+    "bits": "00001011001011111110011"
+   },
+   {
+    "source": "TDS 2.3 Fig 14-12 (p.211)",
+    "method": "14.5.11 YYMMDDhhmm",
+    "input": "2205311953",
+    "bits": "01001011001011111110011110101"
+   },
+   {
+    "source": "TDS 2.3 Fig 14-12 (p.211)",
+    "method": "14.5.11 YYMMDDhhmmss",
+    "input": "220531195317",
+    "bits": "10001011001011111110011110101010001"
+   },
+   {
+    "source": "TDS 2.3 Fig 14-12 (p.211)",
+    "method": "14.5.11 YYMMDD",
+    "input": "220531",
+    "bits": "110010110010111111"
+   },
+   {
+    "source": "TDS 2.3 Fig 14-13 (p.215)",
+    "method": "14.5.12 country code",
+    "input": "DE",
+    "bits": "000011000100"
+   },
+   {
+    "source": "TDS 2.3 Fig 14-13 (p.215)",
+    "method": "14.5.12 country code",
+    "input": "AU",
+    "bits": "000000010100"
+   },
+   {
+    "source": "TDS 2.3 Fig 14-14 (p.222); gs1-tdt TDT_2_3_hostname_codec.html demoBitstreams[1]",
+    "method": "14.5.16 hostname URN Code 40",
+    "input": "ID.EXAMPLE.COM",
+    "bits": "000111000111000111111010010001100000010010100111100110100100011101001000101111111001001",
+    "totalBits": 87
+   },
+   {
+    "source": "TDS 2.3 Fig 14-15 (p.222)",
+    "method": "14.5.16 hostname 7-bit, no optimisation (valid alternative; the reference encoder emits Fig 14-16 instead)",
+    "input": "id.example.com",
+    "bits": "100111011010011100100010111011001011111000110000111011011110000110110011001010101110110001111011111101101",
+    "totalBits": 105
+   },
+   {
+    "source": "TDS 2.3 Fig 14-16 (p.223); gs1-tdt TDT_2_3_hostname_codec.html demoBitstreams[2]",
+    "method": "14.5.16 hostname 7-bit optimised",
+    "input": "id.example.com",
+    "bits": "1001001010000011001011111000110000111011011110000110110011001011011011",
+    "totalBits": 70
+   },
+   {
+    "source": "gs1-tdt TDT_2_3_hostname_codec.html demoBitstreams[0]",
+    "method": "14.5.16 hostname 7-bit optimised",
+    "input": "id.abcde.com",
+    "bits": "10001110100000110000111000101100011110010011001011011011",
+    "totalBits": 56
+   },
+   {
+    "source": "gs1-tdt TDT_2_3_hostname_codec.html demoBitstreams[3] (DEFECTIVE: first unit 0100011 decodes to '#')",
+    "method": "14.5.16 hostname 7-bit optimised",
+    "input": "www.host.co.uk",
+    "bits": "10001110100011110100011011111110011111010000000100011001",
+    "correctBits": "10001110011111110100011011111110011111010000000100011001",
+    "decodesAs": "#host.co.uk"
+   },
+   {
+    "source": "TDS 2.3 Fig 15-3 (p.319) and p.300",
+    "method": "+AIDC (10) numeric",
+    "input": "(10)987654321",
+    "bits": "0001000000001001111010110111100110100010110001"
+   },
+   {
+    "source": "TDS 2.3 Fig 15-3 (p.319) and p.300",
+    "method": "+AIDC (10) base64url",
+    "input": "(10)X73nA",
+    "bits": "0001000001100101010111111011110111100111000000"
+   },
+   {
+    "source": "TDS 2.3 Fig 15-4 (p.320)",
+    "method": "+AIDC (17) then (10)",
+    "input": "(17)220531(10)987654321",
+    "bits": "0001011100101100101111110001000000001001111010110111100110100010110001"
+   },
+   {
+    "source": "TDS 2.3 p.300 (Fig 15-2 overflow)",
+    "method": "+AIDC (410) 3-digit key, FLN",
+    "input": "(410)9521432851738",
+    "bits": "0100000100001001010100100001010000110010100001010001011100111000"
+   },
+   {
+    "source": "TDS 2.3 p.300 (Fig 15-2 overflow, figure cut off at page end)",
+    "method": "+AIDC (3103) 4-digit key, Fixed-Bit-Length",
+    "input": "(3103)000350",
+    "bits": "001100010000001100000000000101011110"
+   },
+   {
+    "source": "TDT 2.2 section 3.17 worked example (p.53-57)",
+    "method": "SGTIN+ body after filter: (01) FLN + (21) lower hex",
+    "input": "(01)09506000134352(21)abc123",
+    "bits": "0000100101010000011000000000000000010011010000110101001001000110101010111100000100100011",
+    "note": "filter not given; with filter 0 and toggle 0 the full EPC is F700950600013435246ABC123 (derived)"
+   }
+  ],
+  "compressedLinks": [
+   {
+    "source": "DL-C 1.0.0 4.2.1 worked example; gs1-tdt TDT_2_3_demo/test.html case 1",
+    "compressedLink": "https://example.com/eh30164596f40c0e5cbe991a83",
+    "scheme": "SGTIN-96",
+    "hex": "30164596F40C0E5CBE991A83",
+    "pureIdentityUri": "urn:epc:id:sgtin:9528765.012345.123456789123",
+    "elementString": "(01)09528765123457(21)123456789123",
+    "digitalLink": "https://example.com/01/09528765123457/21/123456789123"
+   },
+   {
+    "source": "DL-C 1.0.0 4.2.2 worked example; gs1-tdt TDT_2_3_demo/test.html case 2",
+    "compressedLink": "https://example.com/exMBZFlvQMDly-mRqD",
+    "scheme": "SGTIN-96",
+    "hex": "30164596F40C0E5CBE991A83",
+    "pureIdentityUri": "urn:epc:id:sgtin:9528765.012345.123456789123",
+    "elementString": "(01)09528765123457(21)123456789123",
+    "digitalLink": "https://example.com/01/09528765123457/21/123456789123"
+   }
+  ]
+ }
+}

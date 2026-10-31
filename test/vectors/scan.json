@@ -1,0 +1,1280 @@
+{
+ "provenance": {
+  "description": "Scan data (AIM symbology identifier) vectors: gs1-syntax-engine scandata.c unit tests, gs1encoder 1.4.1 oracle runs and GenSpecs 26.0 examples.",
+  "sources": [
+   "gs1-syntax-engine 1.4.1 (ec595ff) src/c-lib/scandata.c",
+   "gs1encoder 1.4.1",
+   "docs/specifications/gs1-general-specifications-v26.0.pdf"
+  ],
+  "format": "dir in: input scan string, expect {sym, dataStr} in engine ^-form or {err}; dir out: sym + dataStr|aiDataStr, expect scan string (ok false = engine returns null or throws). Research notes: docs/superpowers/research/2026-10-09-m2-scan.md",
+  "extracted": "2026-10-09"
+ },
+ "vectors": [
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "",
+   "expect": {
+    "err": "Missing symbology identifier"
+   },
+   "ok": false
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "ABC",
+   "expect": {
+    "err": "Missing symbology identifier"
+   },
+   "ok": false
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]",
+   "expect": {
+    "err": "Missing symbology identifier"
+   },
+   "ok": false
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]X",
+   "expect": {
+    "err": "Missing symbology identifier"
+   },
+   "ok": false
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]XX",
+   "expect": {
+    "err": "Unsupported symbology identifier"
+   },
+   "ok": false
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]e0",
+   "expect": {
+    "err": "The AI data is empty"
+   },
+   "ok": false
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]Q1",
+   "expect": {
+    "sym": "QR",
+    "dataStr": ""
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]Q1TESTING",
+   "expect": {
+    "sym": "QR",
+    "dataStr": "TESTING"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]Q1^TESTING",
+   "expect": {
+    "sym": "QR",
+    "dataStr": "\\^TESTING"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]Q1\\^TESTING",
+   "expect": {
+    "sym": "QR",
+    "dataStr": "\\\\^TESTING"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]Q3",
+   "expect": {
+    "err": "empty GS1 data"
+   },
+   "ok": false
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]Q3011231231231233310ABC123\u001d99TESTING",
+   "expect": {
+    "sym": "QR",
+    "dataStr": "^011231231231233310ABC123^99TESTING",
+    "ai": "(01)12312312312333(10)ABC123(99)TESTING"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]Q1https://example.com/01/12312312312333?99=TEST",
+   "expect": {
+    "sym": "QR",
+    "dataStr": "https://example.com/01/12312312312333?99=TEST",
+    "dlAIbuffer": "^011231231231233399TEST"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]Q1HTTPS://example.com/01/12312312312333?99=TEST",
+   "expect": {
+    "sym": "QR",
+    "dataStr": "HTTPS://example.com/01/12312312312333?99=TEST",
+    "dlAIbuffer": "^011231231231233399TEST"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]Q1HtTps://example.com/01/12312312312333?99=TEST",
+   "expect": {
+    "sym": "QR",
+    "dataStr": "HtTps://example.com/01/12312312312333?99=TEST",
+    "dlAIbuffer": ""
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]d1",
+   "expect": {
+    "sym": "DM",
+    "dataStr": ""
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]d1TESTING",
+   "expect": {
+    "sym": "DM",
+    "dataStr": "TESTING"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]d1^TESTING",
+   "expect": {
+    "sym": "DM",
+    "dataStr": "\\^TESTING"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]d1\\^TESTING",
+   "expect": {
+    "sym": "DM",
+    "dataStr": "\\\\^TESTING"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]d2",
+   "expect": {
+    "err": "empty GS1 data"
+   },
+   "ok": false
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]d2011231231231233310ABC123\u001d99TESTING",
+   "expect": {
+    "sym": "DM",
+    "dataStr": "^011231231231233310ABC123^99TESTING"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]d1https://example.com/01/12312312312333?99=TEST",
+   "expect": {
+    "sym": "DM",
+    "dataStr": "https://example.com/01/12312312312333?99=TEST",
+    "dlAIbuffer": "^011231231231233399TEST"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]J0",
+   "expect": {
+    "sym": "DotCode",
+    "dataStr": ""
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]J0TESTING",
+   "expect": {
+    "sym": "DotCode",
+    "dataStr": "TESTING"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]J0^TESTING",
+   "expect": {
+    "sym": "DotCode",
+    "dataStr": "\\^TESTING"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]J0\\^TESTING",
+   "expect": {
+    "sym": "DotCode",
+    "dataStr": "\\\\^TESTING"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]J1",
+   "expect": {
+    "err": "empty GS1 data"
+   },
+   "ok": false
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]J1011231231231233310ABC123\u001d99TESTING",
+   "expect": {
+    "sym": "DotCode",
+    "dataStr": "^011231231231233310ABC123^99TESTING"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]J0https://example.com/01/12312312312333?99=TEST",
+   "expect": {
+    "sym": "DotCode",
+    "dataStr": "https://example.com/01/12312312312333?99=TEST",
+    "dlAIbuffer": "^011231231231233399TEST"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]e0011231231231233310ABC123\u001d99TESTING",
+   "expect": {
+    "sym": "DataBarExpanded",
+    "dataStr": "^011231231231233310ABC123^99TESTING"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]e0011231231231233310ABC123\u001d99TESTING\u001d98XYZ",
+   "expect": {
+    "sym": "DataBarExpanded",
+    "dataStr": "^011231231231233310ABC123^99TESTING^98XYZ"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]e0011231231231233310ABC123\u001d1199122598TESTING\u001d97XYZ",
+   "expect": {
+    "sym": "DataBarExpanded",
+    "dataStr": "^011231231231233310ABC123^1199122598TESTING^97XYZ"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]e00112312312312333235XYZ\u001d10ABC",
+   "expect": {
+    "sym": "DataBarExpanded",
+    "dataStr": "^0112312312312333235XYZ^10ABC"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]C1",
+   "expect": {
+    "err": "empty GS1 data"
+   },
+   "ok": false
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]C1011231231231233310ABC123\u001d99TESTING",
+   "expect": {
+    "sym": "GS1_128_CCA",
+    "dataStr": "^011231231231233310ABC123^99TESTING"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]C10112312312312333235XYZ",
+   "expect": {
+    "sym": "GS1_128_CCA",
+    "dataStr": "^0112312312312333235XYZ"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]C10112312312312333235XYZ\u001d10ABC",
+   "expect": {
+    "sym": "GS1_128_CCA",
+    "dataStr": "^0112312312312333235XYZ^10ABC"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]C101123123123133^10ABC",
+   "expect": {
+    "err": "Scan data contains illegal ^ character"
+   },
+   "ok": false
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]E0",
+   "expect": {
+    "err": "Primary scan data is too short"
+   },
+   "ok": false
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]E0123456789012",
+   "expect": {
+    "err": "Primary scan data is too short"
+   },
+   "ok": false
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]E012345678901234",
+   "expect": {
+    "err": "Primary message is too long"
+   },
+   "ok": false
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]E01234ABC890123",
+   "expect": {
+    "err": "Primary message may only contain digits"
+   },
+   "ok": false
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]E02112345678901",
+   "expect": {
+    "err": "Primary message check digit is incorrect"
+   },
+   "ok": false
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]E02112345678900",
+   "expect": {
+    "sym": "EAN13",
+    "dataStr": "2112345678900"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]E02112345678900|]e099COMPOSITE\u001d98XYZ",
+   "expect": {
+    "sym": "EAN13",
+    "dataStr": "2112345678900|^99COMPOSITE^98XYZ"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]E4",
+   "expect": {
+    "err": "Primary scan data is too short"
+   },
+   "ok": false
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]E41234567",
+   "expect": {
+    "err": "Primary scan data is too short"
+   },
+   "ok": false
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]E4123456789",
+   "expect": {
+    "err": "Primary message is too long"
+   },
+   "ok": false
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]E412ABC678",
+   "expect": {
+    "err": "Primary message may only contain digits"
+   },
+   "ok": false
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]E402345674",
+   "expect": {
+    "err": "Primary message check digit is incorrect"
+   },
+   "ok": false
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]E402345673",
+   "expect": {
+    "sym": "EAN8",
+    "dataStr": "02345673"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]E402345673|]e099COMPOSITE\u001d98XYZ",
+   "expect": {
+    "sym": "EAN8",
+    "dataStr": "02345673|^99COMPOSITE^98XYZ"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]Q1https://a/NOPRIMARYAI",
+   "expect": {
+    "err": "No GS1 DL keys found in path info"
+   },
+   "ok": false
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]Q1 + (MAX_DATA-1) x 'a'",
+   "expect": {
+    "sym": "QR"
+   },
+   "ok": true
+  },
+  {
+   "source": "scandata.c:proc",
+   "dir": "in",
+   "input": "]Q1 + MAX_DATA x 'a'",
+   "expect": {
+    "err": "Data too long"
+   },
+   "ok": false
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "QR",
+   "dataStr": "TESTING",
+   "expect": "]Q1TESTING",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "QR",
+   "dataStr": "\\^TESTING",
+   "expect": "]Q1^TESTING",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "QR",
+   "dataStr": "\\\\^TESTING",
+   "expect": "]Q1\\^TESTING",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "QR",
+   "dataStr": "^011231231231233310ABC123^99TESTING",
+   "expect": "]Q3011231231231233310ABC123\u001d99TESTING",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "QR",
+   "dataStr": "^011231231231233310ABC123^99TESTING^",
+   "expect": "]Q3011231231231233310ABC123\u001d99TESTING\u001d",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "QR",
+   "dataStr": "TESTING|^99XYZ",
+   "expect": "]Q1TESTING|^99XYZ",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "DM",
+   "dataStr": "TESTING",
+   "expect": "]d1TESTING",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "DM",
+   "dataStr": "\\^TESTING",
+   "expect": "]d1^TESTING",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "DM",
+   "dataStr": "\\\\^TESTING",
+   "expect": "]d1\\^TESTING",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "DM",
+   "dataStr": "^011231231231233310ABC123^99TESTING",
+   "expect": "]d2011231231231233310ABC123\u001d99TESTING",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "DM",
+   "dataStr": "^011231231231233310ABC123^99TESTING^",
+   "expect": "]d2011231231231233310ABC123\u001d99TESTING\u001d",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "DotCode",
+   "dataStr": "TESTING",
+   "expect": "]J0TESTING",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "DotCode",
+   "dataStr": "\\^TESTING",
+   "expect": "]J0^TESTING",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "DotCode",
+   "dataStr": "\\\\^TESTING",
+   "expect": "]J0\\^TESTING",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "DotCode",
+   "dataStr": "^011231231231233310ABC123^99TESTING",
+   "expect": "]J1011231231231233310ABC123\u001d99TESTING",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "DotCode",
+   "dataStr": "^011231231231233310ABC123^99TESTING^",
+   "expect": "]J1011231231231233310ABC123\u001d99TESTING\u001d",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "DataBarExpanded",
+   "dataStr": "^011231231231233310ABC123^99TESTING",
+   "expect": "]e0011231231231233310ABC123\u001d99TESTING",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "DataBarExpanded",
+   "dataStr": "^011231231231233310ABC123^99TESTING|^98COMPOSITE^97XYZ",
+   "expect": "]e0011231231231233310ABC123\u001d99TESTING\u001d98COMPOSITE\u001d97XYZ",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "DataBarExpanded",
+   "dataStr": "^011231231231233310ABC123^11991225|^98COMPOSITE^97XYZ",
+   "expect": "]e0011231231231233310ABC123\u001d1199122598COMPOSITE\u001d97XYZ",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "GS1_128_CCA",
+   "dataStr": "^011231231231233310ABC123^99TESTING",
+   "expect": "]C1011231231231233310ABC123\u001d99TESTING",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "GS1_128_CCA",
+   "dataStr": "^011231231231233310ABC123^99TESTING|^98COMPOSITE^97XYZ",
+   "expect": "]e0011231231231233310ABC123\u001d99TESTING\u001d98COMPOSITE\u001d97XYZ",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "GS1_128_CCC",
+   "dataStr": "^011231231231233310ABC123^99TESTING|^98COMPOSITE^97XYZ",
+   "expect": "]e0011231231231233310ABC123\u001d99TESTING\u001d98COMPOSITE\u001d97XYZ",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "GS1_128_CCA",
+   "dataStr": "PLAINDATA",
+   "expect": null,
+   "ok": false
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "DataBarExpanded",
+   "dataStr": "PLAINDATA",
+   "expect": null,
+   "ok": false
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "DataBarOmni",
+   "dataStr": "^0124012345678905|^99COMPOSITE^98XYZ",
+   "expect": "]e0012401234567890599COMPOSITE\u001d98XYZ",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "DataBarOmni",
+   "dataStr": "24012345678905|^99COMPOSITE^98XYZ",
+   "expect": "]e0012401234567890599COMPOSITE\u001d98XYZ",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "DataBarLimited",
+   "dataStr": "^0115012345678907|^99COMPOSITE^98XYZ",
+   "expect": "]e0011501234567890799COMPOSITE\u001d98XYZ",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "DataBarLimited",
+   "dataStr": "15012345678907|^99COMPOSITE^98XYZ",
+   "expect": "]e0011501234567890799COMPOSITE\u001d98XYZ",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "DataBarLimited",
+   "dataStr": "20000000000004",
+   "expect": null,
+   "ok": false
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "UPCA",
+   "dataStr": "^0100416000336108|^99COMPOSITE^98XYZ",
+   "expect": "]E00416000336108|]e099COMPOSITE\u001d98XYZ",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "UPCA",
+   "dataStr": "416000336108|^99COMPOSITE^98XYZ",
+   "expect": "]E00416000336108|]e099COMPOSITE\u001d98XYZ",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "UPCE",
+   "dataStr": "^0100001234000057|^99COMPOSITE^98XYZ",
+   "expect": "]E00001234000057|]e099COMPOSITE\u001d98XYZ",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "UPCE",
+   "dataStr": "001234000057|^99COMPOSITE^98XYZ",
+   "expect": "]E00001234000057|]e099COMPOSITE\u001d98XYZ",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "EAN13",
+   "dataStr": "^0102112345678900|^99COMPOSITE^98XYZ",
+   "expect": "]E02112345678900|]e099COMPOSITE\u001d98XYZ",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "EAN13",
+   "dataStr": "2112345678900|^99COMPOSITE^98XYZ",
+   "expect": "]E02112345678900|]e099COMPOSITE\u001d98XYZ",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "EAN8",
+   "dataStr": "^0100000002345673|^99COMPOSITE^98XYZ",
+   "expect": "]E402345673|]e099COMPOSITE\u001d98XYZ",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "EAN8",
+   "dataStr": "02345673|^99COMPOSITE^98XYZ",
+   "expect": "]E402345673|]e099COMPOSITE\u001d98XYZ",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "EAN13",
+   "dataStr": "2112345678",
+   "expect": null,
+   "ok": false
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "EAN13",
+   "dataStr": "ABCDEFGHIJKLM",
+   "expect": null,
+   "ok": false
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "EAN13",
+   "dataStr": "2112345678901",
+   "expect": null,
+   "ok": false
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "EAN13",
+   "addCheckDigit": true,
+   "dataStr": "211234567890",
+   "expect": "]E02112345678900",
+   "ok": true
+  },
+  {
+   "source": "scandata.c:gen",
+   "dir": "out",
+   "sym": "NONE",
+   "dataStr": "TESTING",
+   "expect": null,
+   "ok": false
+  },
+  {
+   "source": "oracle",
+   "dir": "in",
+   "input": "]C1010950600013435217201225\u001d10ABC123",
+   "expect": {
+    "sym": "GS1_128_CCA",
+    "ai": "(01)09506000134352(17)201225(10)ABC123"
+   },
+   "ok": true
+  },
+  {
+   "source": "oracle",
+   "dir": "in",
+   "input": "]C1010950600013435217201225\u001d",
+   "expect": {
+    "sym": "GS1_128_CCA",
+    "dataStr": "^010950600013435217201225^",
+    "ai": "(01)09506000134352(17)201225"
+   },
+   "ok": true
+  },
+  {
+   "source": "oracle",
+   "dir": "in",
+   "input": "]C1\u001d010950600013435210A",
+   "expect": {
+    "err": "No known AI is a prefix of: ^010..."
+   },
+   "ok": false
+  },
+  {
+   "source": "oracle",
+   "dir": "in",
+   "input": "]C1(01)09506000134352",
+   "expect": {
+    "err": "No known AI is a prefix of: (01)..."
+   },
+   "ok": false
+  },
+  {
+   "source": "oracle",
+   "dir": "in",
+   "input": "]c1010950600013435210A",
+   "expect": {
+    "err": "Unsupported symbology identifier"
+   },
+   "ok": false
+  },
+  {
+   "source": "oracle",
+   "dir": "in",
+   "input": "]C0",
+   "expect": {
+    "err": "Unsupported symbology identifier"
+   },
+   "ok": false
+  },
+  {
+   "source": "oracle",
+   "dir": "in",
+   "input": "]C1010950600013435217201225",
+   "expect": {
+    "sym": "GS1_128_CCA",
+    "ai": "(01)09506000134352(17)201225"
+   },
+   "ok": true
+  },
+  {
+   "source": "oracle",
+   "dir": "in",
+   "input": "]e00109506000134353",
+   "expect": {
+    "err": "AI (01): The numeric check digit is incorrect."
+   },
+   "ok": false
+  },
+  {
+   "source": "oracle",
+   "dir": "in",
+   "input": "]e00109506000134352|]e010ABC",
+   "expect": {
+    "err": "No known AI is a prefix of: |]e0..."
+   },
+   "ok": false
+  },
+  {
+   "source": "oracle",
+   "dir": "in",
+   "input": "]E09506000134352",
+   "expect": {
+    "sym": "EAN13",
+    "dataStr": "9506000134352",
+    "ai": null
+   },
+   "ok": true
+  },
+  {
+   "source": "oracle",
+   "dir": "in",
+   "input": "]E00416000336108",
+   "expect": {
+    "sym": "EAN13",
+    "dataStr": "0416000336108",
+    "ai": null
+   },
+   "ok": true
+  },
+  {
+   "source": "oracle",
+   "dir": "in",
+   "input": "]E00000000000000",
+   "expect": {
+    "sym": "EAN13",
+    "dataStr": "0000000000000"
+   },
+   "ok": true
+  },
+  {
+   "source": "oracle",
+   "dir": "in",
+   "input": "]E0950600013435212",
+   "expect": {
+    "err": "Primary message is too long"
+   },
+   "ok": false
+  },
+  {
+   "source": "oracle",
+   "dir": "in",
+   "input": "]E3211234567890012",
+   "expect": {
+    "err": "Unsupported symbology identifier"
+   },
+   "ok": false
+  },
+  {
+   "source": "oracle",
+   "dir": "in",
+   "input": "]E09506000134352|]e010ABC",
+   "expect": {
+    "err": "Required AIs for AI (10) are not satisfied: 01,02,03,8006,8026"
+   },
+   "ok": false
+  },
+  {
+   "source": "oracle",
+   "dir": "in",
+   "input": "]E09506000134352|]e0",
+   "expect": {
+    "err": "The AI data is empty"
+   },
+   "ok": false
+  },
+  {
+   "source": "oracle",
+   "dir": "in",
+   "input": "]E09506000134352|]C110ABC",
+   "expect": {
+    "err": "Primary message is too long"
+   },
+   "ok": false
+  },
+  {
+   "source": "oracle",
+   "dir": "in",
+   "input": "]E09506000134353",
+   "expect": {
+    "err": "Primary message check digit is incorrect"
+   },
+   "ok": false
+  },
+  {
+   "source": "oracle",
+   "dir": "in",
+   "input": "]E1",
+   "expect": {
+    "err": "Unsupported symbology identifier"
+   },
+   "ok": false
+  },
+  {
+   "source": "oracle",
+   "dir": "in",
+   "input": "]I1",
+   "expect": {
+    "err": "Unsupported symbology identifier"
+   },
+   "ok": false
+  },
+  {
+   "source": "oracle",
+   "dir": "in",
+   "input": "]e1",
+   "expect": {
+    "err": "Unsupported symbology identifier"
+   },
+   "ok": false
+  },
+  {
+   "source": "oracle",
+   "dir": "in",
+   "input": "]Q1https://example.com/01/09506000134352/10/ABC",
+   "expect": {
+    "sym": "QR",
+    "ai": "(01)09506000134352(10)ABC"
+   },
+   "ok": true
+  },
+  {
+   "source": "oracle",
+   "dir": "in",
+   "input": "]Q1https://example.com/01/09506000134352?10=ABC",
+   "expect": {
+    "err": "AI (10) from query params should be in the path info"
+   },
+   "ok": false
+  },
+  {
+   "source": "oracle",
+   "dir": "in",
+   "input": "]d1HTTPS://Example.com/01/09506000134352",
+   "expect": {
+    "sym": "DM",
+    "ai": "(01)09506000134352"
+   },
+   "ok": true
+  },
+  {
+   "source": "oracle",
+   "dir": "in",
+   "input": "]Q1plain",
+   "expect": {
+    "sym": "QR",
+    "dataStr": "plain",
+    "ai": null
+   },
+   "ok": true
+  },
+  {
+   "source": "oracle",
+   "dir": "in",
+   "input": "]Q3010950600013435210A\u001d",
+   "expect": {
+    "sym": "QR",
+    "dataStr": "^010950600013435210A^",
+    "ai": "(01)09506000134352(10)A"
+   },
+   "ok": true
+  },
+  {
+   "source": "oracle",
+   "dir": "out",
+   "sym": "UPCA",
+   "aiDataStr": "(01)00416000336108",
+   "expect": "]E00416000336108",
+   "ok": true
+  },
+  {
+   "source": "oracle",
+   "dir": "out",
+   "sym": "UPCA",
+   "aiDataStr": "(01)09506000134352",
+   "expect": null,
+   "ok": true,
+   "note": "getter returns null, not a throw"
+  },
+  {
+   "source": "oracle",
+   "dir": "out",
+   "sym": "EAN8",
+   "aiDataStr": "(01)00000002345673",
+   "expect": "]E402345673",
+   "ok": true
+  },
+  {
+   "source": "oracle",
+   "dir": "out",
+   "sym": "EAN13",
+   "aiDataStr": "(01)09506000134352",
+   "expect": "]E09506000134352",
+   "ok": true
+  },
+  {
+   "source": "oracle",
+   "dir": "out",
+   "sym": "EAN13",
+   "aiDataStr": "(01)09506000134352|(10)ABC",
+   "expect": "]E09506000134352|]e010ABC",
+   "ok": true
+  },
+  {
+   "source": "oracle",
+   "dir": "out",
+   "sym": "DM",
+   "aiDataStr": "(01)09506000134352(10)ABC(21)X",
+   "expect": "]d2010950600013435210ABC\u001d21X",
+   "ok": true
+  },
+  {
+   "source": "oracle",
+   "dir": "out",
+   "sym": "GS1_128_CCA",
+   "aiDataStr": "(01)09506000134352(10)ABC(21)X",
+   "expect": "]C1010950600013435210ABC\u001d21X",
+   "ok": true
+  },
+  {
+   "source": "oracle",
+   "dir": "out",
+   "sym": "GS1_128_CCA",
+   "aiDataStr": "(01)09506000134352|(10)ABC",
+   "expect": "]e00109506000134352\u001d10ABC",
+   "ok": true
+  },
+  {
+   "source": "oracle",
+   "dir": "out",
+   "sym": "GS1_128_CCA",
+   "aiDataStr": "(01)09506000134352(21)X|(10)ABC",
+   "expect": "]e0010950600013435221X\u001d10ABC",
+   "ok": true
+  },
+  {
+   "source": "oracle",
+   "dir": "out",
+   "sym": "DataBarExpanded",
+   "aiDataStr": "(01)09506000134352(17)201225|(10)ABC",
+   "expect": "]e0010950600013435217201225\u001d10ABC",
+   "ok": true
+  },
+  {
+   "source": "oracle",
+   "dir": "out",
+   "sym": "DataBarTruncated",
+   "aiDataStr": "(01)09506000134352",
+   "expect": "]e00109506000134352",
+   "ok": true
+  },
+  {
+   "source": "oracle",
+   "dir": "out",
+   "sym": "DataBarOmni",
+   "aiDataStr": "(01)09506000134352(10)ABC",
+   "expect": null,
+   "ok": true
+  },
+  {
+   "source": "oracle",
+   "dir": "out",
+   "sym": "UPCE",
+   "dataStr": "001234000057",
+   "expect": "]E00001234000057",
+   "ok": true
+  },
+  {
+   "source": "oracle",
+   "dir": "out",
+   "sym": "QR",
+   "dataStr": "^010950600013435210AB^",
+   "expect": "]Q3010950600013435210AB\u001d",
+   "ok": true
+  },
+  {
+   "source": "spec 5.5.4.1",
+   "dir": "in",
+   "input": "]e00110012345678902",
+   "expect": "DataBar GTIN (01)10012345678902",
+   "ok": true
+  },
+  {
+   "source": "spec 5.6.3.3",
+   "dir": "in",
+   "input": "]d20110012345678902",
+   "expect": "(01)10012345678902",
+   "ok": true
+  },
+  {
+   "source": "spec 5.7.4.3",
+   "dir": "in",
+   "input": "]Q30110012345678902",
+   "expect": "(01)10012345678902",
+   "ok": true
+  },
+  {
+   "source": "spec 5.8.2.1",
+   "dir": "in",
+   "input": "]J10110012345678902",
+   "expect": "(01)10012345678902",
+   "ok": true
+  },
+  {
+   "source": "spec 5.11.4.1",
+   "dir": "in",
+   "input": "]e0011001234567890210ABC123",
+   "expect": "(01)10012345678902(10)ABC123",
+   "ok": true
+  }
+ ]
+}

@@ -1,0 +1,74 @@
+{
+  "provenance": "hand-derived from the M4 plan Task 2 output rules",
+  "vectors": [
+    {
+      "id": "three-modules-defaults",
+      "pattern": {
+        "kind": "linear",
+        "width": 3,
+        "height": 1,
+        "rows": [{ "role": "symbol", "x": 0, "y": 0, "height": 1, "widths": [1, 1, 1] }],
+        "hri": [],
+        "quietZone": { "left": 0, "right": 0, "top": 0, "bottom": 0 }
+      },
+      "options": {},
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"6\" height=\"2\" viewBox=\"0 0 3 1\" shape-rendering=\"crispEdges\"><rect width=\"100%\" height=\"100%\" fill=\"#fff\"/><path fill=\"#000\" d=\"M0 0h1v1h-1zM2 0h1v1h-1z\"/></svg>"
+    },
+    {
+      "id": "two-rows-merge",
+      "pattern": {
+        "kind": "linear",
+        "width": 5,
+        "height": 3,
+        "rows": [
+          { "role": "symbol", "x": 0, "y": 0, "height": 2, "widths": [1, 1, 1, 1, 1] },
+          { "role": "guard-extension", "x": 0, "y": 2, "height": 1, "widths": [1, 1, 1, 2] }
+        ],
+        "hri": [],
+        "quietZone": { "left": 1, "right": 1, "top": 0, "bottom": 0 }
+      },
+      "options": { "moduleSize": 1 },
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"7\" height=\"3\" viewBox=\"0 0 7 3\" shape-rendering=\"crispEdges\"><rect width=\"100%\" height=\"100%\" fill=\"#fff\"/><path fill=\"#000\" d=\"M1 0h1v3h-1zM3 0h1v3h-1zM5 0h1v2h-1z\"/></svg>"
+    },
+    {
+      "id": "frame-bearer-hri-mm",
+      "pattern": {
+        "kind": "linear",
+        "width": 3,
+        "height": 4,
+        "rows": [{ "role": "symbol", "x": 0, "y": 0, "height": 4, "widths": [1, 1, 1] }],
+        "hri": [{ "text": "1", "x": 1.5, "y": 5, "size": 2, "anchor": "middle", "role": "hri" }],
+        "quietZone": { "left": 1, "right": 1, "top": 1, "bottom": 1 },
+        "bearer": { "sides": "frame", "width": 2.5 }
+      },
+      "options": { "moduleSize": 0.33, "unit": "mm" },
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"3.3mm\" height=\"4.092mm\" viewBox=\"0 0 10 12.4\" shape-rendering=\"crispEdges\"><rect width=\"100%\" height=\"100%\" fill=\"#fff\"/><path fill=\"#000\" d=\"M0 0h10v2.5h-10zM0 2.5h2.5v6h-2.5zM0 8.5h10v2.5h-10zM3.5 3.5h1v4h-1zM5.5 3.5h1v4h-1zM7.5 2.5h2.5v6h-2.5z\"/><text x=\"5\" y=\"12\" font-family=\"OCR-B,OCRB,monospace\" font-size=\"2\" text-anchor=\"middle\" fill=\"#000\">1</text></svg>"
+    },
+    {
+      "id": "matrix-two-by-two",
+      "pattern": {
+        "kind": "matrix",
+        "width": 2,
+        "height": 2,
+        "rows": ["11", "01"],
+        "hri": [],
+        "quietZone": { "left": 0, "right": 0, "top": 0, "bottom": 0 }
+      },
+      "options": {},
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"4\" height=\"4\" viewBox=\"0 0 2 2\" shape-rendering=\"crispEdges\"><rect width=\"100%\" height=\"100%\" fill=\"#fff\"/><path fill=\"#000\" d=\"M0 0h2v1h-2zM1 1h1v1h-1z\"/></svg>"
+    },
+    {
+      "id": "matrix-quiet-zone-vertical-merge",
+      "pattern": {
+        "kind": "matrix",
+        "width": 3,
+        "height": 2,
+        "rows": ["101", "101"],
+        "hri": [],
+        "quietZone": { "left": 1, "right": 1, "top": 1, "bottom": 1 }
+      },
+      "options": { "moduleSize": 1 },
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"5\" height=\"4\" viewBox=\"0 0 5 4\" shape-rendering=\"crispEdges\"><rect width=\"100%\" height=\"100%\" fill=\"#fff\"/><path fill=\"#000\" d=\"M1 1h1v2h-1zM3 1h1v2h-1z\"/></svg>"
+    }
+  ]
+}

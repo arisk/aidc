@@ -1,0 +1,375 @@
+{
+ "provenance": {
+  "description": "Compressed GS1 Digital Link vectors: worked examples of DL Compression 1.0.0 and DL Standard 1.1.4 chapter 2, plus encoder outputs of the GS1 compression prototype verified by an independent codec.",
+  "sources": [
+   "docs/specifications/gs1-digital-link-compression-v1.0.0.pdf",
+   "docs/specifications/gs1-digital-link-standard-legacy-v1.1.4.pdf",
+   "gs1/GS1DigitalLinkCompressionPrototype 07b85c2 (Apache-2.0), encoder output only",
+   "docs/superpowers/research/m2-dl-compression-ref/ref.mjs"
+  ],
+  "extracted": "2026-10-09"
+ },
+ "vectors": [
+  {
+   "source": "DL-C 1.0.0 s4.2.1 worked example (Option A, eh)",
+   "es": "(01)09528765123457(21)123456789123",
+   "uncompressed": "https://example.com/01/09528765123457/21/123456789123",
+   "compressed": "https://example.com/eh30164596f40c0e5cbe991a83"
+  },
+  {
+   "source": "DL-C 1.0.0 s4.2.2 worked example (Option B, ex)",
+   "es": "(01)09528765123457(21)123456789123",
+   "uncompressed": "https://example.com/01/09528765123457/21/123456789123",
+   "compressed": "https://example.com/exMBZFlvQMDly-mRqD"
+  },
+  {
+   "source": "DL 1.1.4 s2.7.4.1 (optimised, code 0E)",
+   "es": "(01)10614141123459(7003)1903111228",
+   "uncompressed": "http://example.org/01/10614141123459?7003=1903111228",
+   "compressed": "http://example.org/DhNOmDj3Bji3lh4"
+  },
+  {
+   "source": "DL 1.1.4 s2.7.4.1 (without optimisation)",
+   "es": "(01)10614141123459(7003)1903111228",
+   "uncompressed": "http://example.org/01/10614141123459?7003=1903111228",
+   "compressed": "http://example.org/ARNOmDj3BuAGOLeWHg"
+  },
+  {
+   "source": "DL 1.1.4 s2.8.1 partially compressed",
+   "es": "(01)05412345000013(10)ABC&+123(7003)1903061658",
+   "uncompressed": "http://example.org/01/05412345000013/10/ABC%26%2B123?7003=1903061658",
+   "compressed": "http://example.org/gtin/05412345000013/EIiDChplbFkzcAMcW5qmg"
+  },
+  {
+   "source": "DL 1.1.4 s2.8.2 fully compressed",
+   "es": "(01)05412345000013(10)ABC&+123(7003)1903061658",
+   "uncompressed": "http://example.org/01/05412345000013/10/ABC%26%2B123?7003=1903061658",
+   "compressed": "http://example.org/DgnYUc1gmji3NU0IREGFDTK2LJm"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352",
+   "uncompressed": "https://example.com/01/09506000134352",
+   "compressed": "https://example.com/ARFKk4XBoA"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(21)12345",
+   "uncompressed": "https://example.com/01/09506000134352/21/12345",
+   "compressed": "https://example.com/DBFKk4XBoAowOQ"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(21)0012345",
+   "uncompressed": "https://example.com/01/09506000134352/21/0012345",
+   "compressed": "https://example.com/DBFKk4XBoA4AYHI",
+   "note": "prototype decompress drops leading zeros (gives 21=12345); compressed string verified by independent impl"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(21)abc123def",
+   "uncompressed": "https://example.com/01/09506000134352/21/abc123def",
+   "compressed": "https://example.com/DBFKk4XBoFNXgke94"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(21)ABC123DEF",
+   "uncompressed": "https://example.com/01/09506000134352/21/ABC123DEF",
+   "compressed": "https://example.com/DBFKk4XBoJNXgke94"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(21)Abc-123_x",
+   "uncompressed": "https://example.com/01/09506000134352/21/Abc-123_x",
+   "compressed": "https://example.com/DBFKk4XBoNIDbn2u2_-I"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(21)ABC*123/x",
+   "uncompressed": "https://example.com/01/09506000134352/21/ABC%2A123%2Fx",
+   "compressed": "https://example.com/DBFKk4XBoRMGFDVMWTNf4"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(21)12345678901234567890",
+   "uncompressed": "https://example.com/01/09506000134352/21/12345678901234567890",
+   "compressed": "https://example.com/DBFKk4XBoCgq1SpjOsfCtI"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(10)ABC123",
+   "uncompressed": "https://example.com/01/09506000134352/10/ABC123",
+   "compressed": "https://example.com/CxFKk4XBoI1XgkY"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(10)ABC123(21)XYZ789",
+   "uncompressed": "https://example.com/01/09506000134352/10/ABC123/21/XYZ789",
+   "compressed": "https://example.com/CxFKk4XBoI1XgkZCzLsM9-eg"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(10)LOT1(21)SER1(17)261231",
+   "uncompressed": "https://example.com/01/09506000134352/10/LOT1/21/SER1?17=261231",
+   "compressed": "https://example.com/GhFKk4XBoMhZyerIkIjqf43g"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(10)LOT1(15)261231",
+   "uncompressed": "https://example.com/01/09506000134352/10/LOT1?15=261231",
+   "compressed": "https://example.com/HxFKk4XBoMhZyep_je"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(10)LOT1(15)261231(21)S1(17)270101",
+   "uncompressed": "https://example.com/01/09506000134352/10/LOT1/21/S1?15=261231&17=270101",
+   "compressed": "https://example.com/GhFKk4XBoMhZyerElqg-Kip_je"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(22)2A",
+   "uncompressed": "https://example.com/01/09506000134352/22/2A",
+   "compressed": "https://example.com/ChFKk4XBoIRU"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(17)261231",
+   "uncompressed": "https://example.com/01/09506000134352?17=261231",
+   "compressed": "https://example.com/DRFKk4XBoH-N4"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(17)261231(3103)001250",
+   "uncompressed": "https://example.com/01/09506000134352?17=261231&3103=001250",
+   "compressed": "https://example.com/LRFKk4XBoACcQuf43g"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(3103)001250",
+   "uncompressed": "https://example.com/01/09506000134352?3103=001250",
+   "compressed": "https://example.com/LRFKk4XBoACcQ"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(3202)012345",
+   "uncompressed": "https://example.com/01/09506000134352?3202=012345",
+   "compressed": "https://example.com/PBFKk4XBoAYHI"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(7003)2612311230",
+   "uncompressed": "https://example.com/01/09506000134352?7003=2612311230",
+   "compressed": "https://example.com/DhFKk4XBoE3aWl8"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(30)5000",
+   "uncompressed": "https://example.com/01/09506000134352?30=5000",
+   "compressed": "https://example.com/DxFKk4XBoInEA"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(30)00000050",
+   "uncompressed": "https://example.com/01/09506000134352?30=00000050",
+   "compressed": "https://example.com/DxFKk4XBoQAAAMg",
+   "note": "prototype decompress drops leading zeros (gives 30=50); compressed string verified"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(3922)1234",
+   "uncompressed": "https://example.com/01/09506000134352?3922=1234",
+   "compressed": "https://example.com/ohFKk4XBoIJpA"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(91)internal-info",
+   "uncompressed": "https://example.com/01/09506000134352?91=internal-info",
+   "compressed": "https://example.com/HhFKk4XBoMbFPa9XO1L9FO_Q"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)05412345000013(10)ABC&+123(3103)000189(3923)2172",
+   "uncompressed": "https://example.com/01/05412345000013/10/ABC%26%2B123?3103=000189&3923=2172",
+   "compressed": "https://example.com/LQnYUc1gmgAXohEQYUNMrYsmZyRoQ-A"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(00)106141412345678908",
+   "uncompressed": "https://example.com/00/106141412345678908",
+   "compressed": "https://example.com/ABeRcNWtKMPA"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(00)106141412345678908(02)09506000134352(37)24",
+   "uncompressed": "https://example.com/00/106141412345678908?37=24&02=09506000134352",
+   "compressed": "https://example.com/ABeRcNWtKMPAIRSpOFwaBuRg"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(414)9521321000001",
+   "uncompressed": "https://example.com/414/9521321000001",
+   "compressed": "https://example.com/QUio2vS8QQ"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(414)9521321000001(254)A1-b2",
+   "uncompressed": "https://example.com/414/9521321000001/254/A1-b2",
+   "compressed": "https://example.com/nYqNr0vEFlA1-b2"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(8018)950600001234567897(8019)1234567890",
+   "uncompressed": "https://example.com/8018/950600001234567897/8019/1234567890",
+   "compressed": "https://example.com/nNMTWqJRKC2aEmWAtI"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(8017)950600001234567897(8019)42",
+   "uncompressed": "https://example.com/8017/950600001234567897/8019/42",
+   "compressed": "https://example.com/m9MTWqJRKC2SVA"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(8004)9506000012346ASSET-1",
+   "uncompressed": "https://example.com/8004/9506000012346ASSET-1",
+   "compressed": "https://example.com/gAR09506000012346ASSET-1"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(8003)09506000123455ABC",
+   "uncompressed": "https://example.com/8003/09506000123455ABC",
+   "compressed": "https://example.com/gAMRSpOFbH6HV4"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(253)9521321000001XYZ123",
+   "uncompressed": "https://example.com/253/9521321000001XYZ123",
+   "compressed": "https://example.com/JTio2vS8QWZdhnXbc"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(255)9506000123455",
+   "uncompressed": "https://example.com/255/9506000123455",
+   "compressed": "https://example.com/JVilScK2PwA"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(255)950600012345512345(3902)1999",
+   "uncompressed": "https://example.com/255/950600012345512345?3902=1999",
+   "compressed": "https://example.com/wopUnCtj9RgcoPng"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(8010)CPID-123(8011)123456789012",
+   "uncompressed": "https://example.com/8010/CPID-123/8011/123456789012",
+   "compressed": "https://example.com/mmgI8gP7XbfBy-mRoU"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(11)250101(13)250102(16)250201",
+   "uncompressed": "https://example.com/01/09506000134352?11=250101&13=250102&16=250201",
+   "compressed": "https://example.com/HBFKk4XBoHoeomeh7Cx6Ky"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(8008)25010112",
+   "uncompressed": "https://example.com/01/09506000134352?8008=25010112",
+   "compressed": "https://example.com/ARFKk4XBoQAQX2fwA"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(7007)250101",
+   "uncompressed": "https://example.com/01/09506000134352?7007=250101",
+   "compressed": "https://example.com/ARFKk4XBoOAOeh6g"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(7007)250101250131",
+   "uncompressed": "https://example.com/01/09506000134352?7007=250101250131",
+   "compressed": "https://example.com/ARFKk4XBoOAOeh649ET"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)10614141123459(7003)1903111228",
+   "uncompressed": "https://example.com/01/10614141123459?7003=1903111228",
+   "compressed": "https://example.com/DhNOmDj3Bji3lh4"
+  },
+  {
+   "source": "prototype, useOptimisations=false",
+   "es": "(01)09506000134352(10)ABC123(21)XYZ789",
+   "uncompressed": "https://example.com/01/09506000134352/10/ABC123/21/XYZ789",
+   "compressed": "https://example.com/ARFKk4XBoCCNV4JGQsy7DPfno"
+  },
+  {
+   "source": "prototype, useOptimisations=false",
+   "es": "(01)09506000134352(17)261231(3103)001250",
+   "uncompressed": "https://example.com/01/09506000134352?17=261231&3103=001250",
+   "compressed": "https://example.com/ARFKk4XBoC5_jeYgYAnE"
+  },
+  {
+   "source": "prototype, uncompressedPrimary=true (partially compressed)",
+   "es": "(01)09506000134352(10)ABC123(21)XYZ789(17)261231",
+   "uncompressed": "https://example.com/01/09506000134352/10/ABC123/21/XYZ789?17=261231",
+   "compressed": "https://example.com/01/09506000134352/EEarwSMXP8byFmXYZ789"
+  },
+  {
+   "source": "prototype, uncompressedPrimary=true (partially compressed)",
+   "es": "(414)9521321000001(254)A1-b2",
+   "uncompressed": "https://example.com/414/9521321000001/254/A1-b2",
+   "compressed": "https://example.com/414/9521321000001/JUZQNfm9g"
+  },
+  {
+   "source": "prototype, uncompressedPrimary=true (partially compressed)",
+   "es": "(00)106141412345678908(02)09506000134352(37)24",
+   "uncompressed": "https://example.com/00/106141412345678908?37=24&02=09506000134352",
+   "compressed": "https://example.com/00/106141412345678908/AhFKk4XBoG5GA"
+  },
+  {
+   "source": "prototype compressGS1DigitalLink(uri,false,stem,false,true,compressOther=true)",
+   "uncompressed": "https://example.com/01/09506000134352/21/ABC?foo=bar",
+   "compressed": "https://example.com/DBFKk4XBoIdXng36KGDbar",
+   "note": "prototype decompress prefixes non-GS1 values with \"undefined\" (bug); compressed string verified by independent impl"
+  },
+  {
+   "source": "prototype compressGS1DigitalLink(uri,false,stem,false,true,compressOther=false)",
+   "uncompressed": "https://example.com/01/09506000134352/21/ABC?foo=bar",
+   "compressed": "https://example.com/DBFKk4XBoIdXg?foo=bar"
+  },
+  {
+   "source": "prototype compressGS1DigitalLink(uri,false,stem,false,true,compressOther=true)",
+   "uncompressed": "https://example.com/01/09506000134352?17=261231&linkType=gs1:pip&x_y-z=Hello%20World",
+   "compressed": "https://example.com/DRFKk4XBoH-N_iJYp5E8qXoHz82Lrhp4eFx_y-zguRl2bN6Cvv5bMg",
+   "note": "prototype decompress prefixes non-GS1 values with \"undefined\" (bug); compressed string verified by independent impl"
+  },
+  {
+   "source": "prototype compressGS1DigitalLink(uri,false,stem,false,true,compressOther=false)",
+   "uncompressed": "https://example.com/01/09506000134352?17=261231&linkType=gs1:pip&x_y-z=Hello%20World",
+   "compressed": "https://example.com/DRFKk4XBoH-N4?linkType=gs1:pip&x_y-z=Hello World",
+   "note": "prototype re-emits uncompressed query param percent-decoded (bug: space unescaped)"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(91)11111111111111111111111111111111111111111111111111111111111",
+   "uncompressed": "https://example.com/01/09506000134352?91=11111111111111111111111111111111111111111111111111111111111",
+   "compressed": "https://example.com/HhFKk4XBoB2HFJWmq7c0uRyGumlXUI0MIGcccccccccc"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(91)9999999999999999999999999999999999999999999999999999999999",
+   "uncompressed": "https://example.com/01/09506000134352?91=9999999999999999999999999999999999999999999999999999999999",
+   "compressed": "https://example.com/HhFKk4XBoB1l9TfGdYFdnM36fFNPuyJIOP_________"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(3910)978123",
+   "uncompressed": "https://example.com/01/09506000134352?3910=978123",
+   "compressed": "https://example.com/ARFKk4XBoHIh6Rj2"
+  },
+  {
+   "source": "prototype gs1ElementStringsToCompressedGS1DigitalLink(es,false,stem,false,true)",
+   "es": "(01)09506000134352(21)a",
+   "uncompressed": "https://example.com/01/09506000134352/21/a",
+   "compressed": "https://example.com/DBFKk4XBoENA"
+  }
+ ]
+}

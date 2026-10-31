@@ -1,0 +1,2136 @@
+{
+ "provenance": {
+  "description": "GS1 Digital Link URI parse/generate vectors: every gs1-syntax-engine dl.c unit test case plus the worked examples of GS1 Digital Link URI Syntax 1.7.0.",
+  "sources": [
+   "gs1-syntax-engine 1.4.1 (ec595ff) src/c-lib/dl.c",
+   "docs/specifications/gs1-digital-link-uri-syntax-v1.7.0.pdf"
+  ],
+  "format": "kind parse: input URI, expect = engine ^-form data (ok) , bracketed = our bracketed form; kind gen: input {ai, stem}, expect URI; kind escape/unescape/validPathSeq: dl.c helper tests. flags name engine options. Research notes: docs/superpowers/research/2026-10-09-m2-digital-link.md",
+  "extracted": "2026-10-09"
+ },
+ "vectors": [
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "",
+   "expect": "",
+   "ok": false,
+   "note": "GS1encoder.dataStr only routes exact-case http(s)://|HTTP(S):// to the DL parser; this input is accepted there as plain non-AI data. gs1_parseDLuri itself rejects it (dl.c)."
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "ftp://",
+   "expect": "",
+   "ok": false,
+   "note": "GS1encoder.dataStr only routes exact-case http(s)://|HTTP(S):// to the DL parser; this input is accepted there as plain non-AI data. gs1_parseDLuri itself rejects it (dl.c)."
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "http://",
+   "expect": "",
+   "ok": false,
+   "error": "URI must contain a domain and path info"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "http:///",
+   "expect": "",
+   "ok": false,
+   "error": "URI must contain a domain and path info"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "http://a",
+   "expect": "",
+   "ok": false,
+   "error": "URI must contain a domain and path info"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "http://a/",
+   "expect": "",
+   "ok": false,
+   "error": "No GS1 DL keys found in path info"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "http://a/b",
+   "expect": "",
+   "ok": false,
+   "error": "No GS1 DL keys found in path info"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "http://a/b/",
+   "expect": "",
+   "ok": false,
+   "error": "No GS1 DL keys found in path info"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "http://a/00/006141411234567890",
+   "expect": "^00006141411234567890",
+   "ok": true,
+   "bracketed": "(00)006141411234567890"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "HTTP://a/00/006141411234567890",
+   "expect": "^00006141411234567890",
+   "ok": true,
+   "bracketed": "(00)006141411234567890"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/00/006141411234567890",
+   "expect": "^00006141411234567890",
+   "ok": true,
+   "bracketed": "(00)006141411234567890"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "HTTPS://a/00/006141411234567890",
+   "expect": "^00006141411234567890",
+   "ok": true,
+   "bracketed": "(00)006141411234567890"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "HtTp://a/b/00/006141411234567890",
+   "expect": "",
+   "ok": false,
+   "note": "GS1encoder.dataStr only routes exact-case http(s)://|HTTP(S):// to the DL parser; this input is accepted there as plain non-AI data. gs1_parseDLuri itself rejects it (dl.c)."
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://00/006141411234567890",
+   "expect": "",
+   "ok": false,
+   "error": "No GS1 DL keys found in path info"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333",
+   "expect": "^0112312312312333",
+   "ok": true,
+   "bracketed": "(01)12312312312333"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://xn--fsq.xn--0zwm56d/01/12312312312333",
+   "expect": "^0112312312312333",
+   "ok": true,
+   "bracketed": "(01)12312312312333"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a./01/12312312312333",
+   "expect": "^0112312312312333",
+   "ok": true,
+   "bracketed": "(01)12312312312333"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a:65535/01/12312312312333",
+   "expect": "^0112312312312333",
+   "ok": true,
+   "bracketed": "(01)12312312312333"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://192.0.2.1/01/12312312312333",
+   "expect": "^0112312312312333",
+   "ok": true,
+   "bracketed": "(01)12312312312333"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://3232235777/01/12312312312333",
+   "expect": "^0112312312312333",
+   "ok": true,
+   "bracketed": "(01)12312312312333"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://0300.0250.01.01/01/12312312312333",
+   "expect": "^0112312312312333",
+   "ok": true,
+   "bracketed": "(01)12312312312333"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://0xC0.0xA8.0x01.0x01/01/12312312312333",
+   "expect": "^0112312312312333",
+   "ok": true,
+   "bracketed": "(01)12312312312333"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://[2001:db8::1]/01/12312312312333",
+   "expect": "^0112312312312333",
+   "ok": true,
+   "bracketed": "(01)12312312312333"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://[fe80::1%25lo]/01/12312312312333",
+   "expect": "",
+   "ok": false,
+   "error": "Domain contains illegal characters"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://$a/006141411234567890",
+   "expect": "",
+   "ok": false,
+   "error": "Domain contains illegal characters"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a$/006141411234567890",
+   "expect": "",
+   "ok": false,
+   "error": "Domain contains illegal characters"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333<bad",
+   "expect": "",
+   "ok": false,
+   "error": "URI contains illegal characters"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333>bad",
+   "expect": "",
+   "ok": false,
+   "error": "URI contains illegal characters"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333{bad",
+   "expect": "",
+   "ok": false,
+   "error": "URI contains illegal characters"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333}bad",
+   "expect": "",
+   "ok": false,
+   "error": "URI contains illegal characters"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333\\bad",
+   "expect": "",
+   "ok": false,
+   "error": "URI contains illegal characters"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333^bad",
+   "expect": "",
+   "ok": false,
+   "error": "URI contains illegal characters"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333`bad",
+   "expect": "",
+   "ok": false,
+   "error": "URI contains illegal characters"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/stem/00/006141411234567890",
+   "expect": "^00006141411234567890",
+   "ok": true,
+   "bracketed": "(00)006141411234567890"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/more/stem/00/006141411234567890",
+   "expect": "^00006141411234567890",
+   "ok": true,
+   "bracketed": "(00)006141411234567890"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/00/faux/00/006141411234567890",
+   "expect": "^00006141411234567890",
+   "ok": true,
+   "bracketed": "(00)006141411234567890"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/gtin/12312312312333",
+   "expect": "",
+   "ok": false,
+   "error": "No GS1 DL keys found in path info"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/gtin/12312312312333",
+   "expect": "^0112312312312333",
+   "ok": true,
+   "flags": {
+    "permitConvenienceAlphas": true
+   }
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/gtin/12312312312333/ser/ABC123",
+   "expect": "^011231231231233321ABC123",
+   "ok": true,
+   "flags": {
+    "permitConvenienceAlphas": true
+   }
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/sscc/006141411234567890",
+   "expect": "^00006141411234567890",
+   "ok": true,
+   "flags": {
+    "permitConvenienceAlphas": true
+   }
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/zzz/12312312312333",
+   "expect": "",
+   "ok": false,
+   "flags": {
+    "permitConvenienceAlphas": true
+   }
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/cps/12312312312333",
+   "expect": "",
+   "ok": false,
+   "flags": {
+    "permitConvenienceAlphas": true
+   }
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/2112345678900",
+   "expect": "^0102112345678900",
+   "ok": true,
+   "flags": {
+    "permitZeroSuppressedGTIN": true
+   },
+   "bracketed": "(01)02112345678900"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/2112345678900",
+   "expect": "",
+   "ok": false,
+   "error": "AI (01) value is too short"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/416000336108",
+   "expect": "^0100416000336108",
+   "ok": true,
+   "flags": {
+    "permitZeroSuppressedGTIN": true
+   },
+   "bracketed": "(01)00416000336108"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/416000336108",
+   "expect": "",
+   "ok": false,
+   "error": "AI (01) value is too short"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/02345673",
+   "expect": "^0100000002345673",
+   "ok": true,
+   "flags": {
+    "permitZeroSuppressedGTIN": true
+   },
+   "bracketed": "(01)00000002345673"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/02345673",
+   "expect": "",
+   "ok": false,
+   "error": "AI (01) value is too short"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333/22/TEST/10/ABC/21/XYZ",
+   "expect": "^011231231231233322TEST^10ABC^21XYZ",
+   "ok": true,
+   "bracketed": "(01)12312312312333(22)TEST(10)ABC(21)XYZ"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333/235/TEST",
+   "expect": "^0112312312312333235TEST",
+   "ok": true,
+   "bracketed": "(01)12312312312333(235)TEST"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/253/1231231231232",
+   "expect": "^2531231231231232",
+   "ok": true,
+   "bracketed": "(253)1231231231232"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/253/1231231231232TEST5678901234567",
+   "expect": "^2531231231231232TEST5678901234567",
+   "ok": true,
+   "bracketed": "(253)1231231231232TEST5678901234567"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/253/1231231231232TEST56789012345678",
+   "expect": "",
+   "ok": false,
+   "error": "AI (253) value is too long"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/8018/123456789012345675/8019/123",
+   "expect": "^8018123456789012345675^8019123",
+   "ok": true,
+   "bracketed": "(8018)123456789012345675(8019)123"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/stem/00/006141411234567890/",
+   "expect": "",
+   "ok": false,
+   "error": "No GS1 DL keys found in path info"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/stem/00/006141411234567890?",
+   "expect": "^00006141411234567890",
+   "ok": true,
+   "bracketed": "(00)006141411234567890"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/stem/00/006141411234567890?99=ABC",
+   "expect": "^0000614141123456789099ABC",
+   "ok": true,
+   "bracketed": "(00)006141411234567890(99)ABC"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/stem/401/12345678?99=ABC",
+   "expect": "^40112345678^99ABC",
+   "ok": true,
+   "bracketed": "(401)12345678(99)ABC"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333?99=ABC&98=XYZ",
+   "expect": "^011231231231233399ABC^98XYZ",
+   "ok": true,
+   "bracketed": "(01)12312312312333(99)ABC(98)XYZ"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333?99=",
+   "expect": "",
+   "ok": false,
+   "error": "AI (99) value query element is empty"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333?99=ABC&999=faux",
+   "expect": "",
+   "ok": false,
+   "error": "Unknown AI (999) in query parameters"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333?&&&99=ABC&&&&&&98=XYZ&&&",
+   "expect": "^011231231231233399ABC^98XYZ",
+   "ok": true,
+   "bracketed": "(01)12312312312333(99)ABC(98)XYZ",
+   "ignored": [
+    ""
+   ]
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333?99=ABC&unknown=666&98=XYZ",
+   "expect": "^011231231231233399ABC^98XYZ",
+   "ok": true,
+   "bracketed": "(01)12312312312333(99)ABC(98)XYZ",
+   "ignored": [
+    "unknown=666"
+   ]
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333?unknown=666&99=ABC&98=XYZ",
+   "expect": "^011231231231233399ABC^98XYZ",
+   "ok": true,
+   "bracketed": "(01)12312312312333(99)ABC(98)XYZ",
+   "ignored": [
+    "unknown=666"
+   ]
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333?99=ABC&98=XYZ&unknown=666",
+   "expect": "^011231231231233399ABC^98XYZ",
+   "ok": true,
+   "bracketed": "(01)12312312312333(99)ABC(98)XYZ",
+   "ignored": [
+    "unknown=666"
+   ]
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333?unknown1=555&99=ABC&unknown2=666&98=XYZ&unknown3=777",
+   "expect": "^011231231231233399ABC^98XYZ",
+   "ok": true,
+   "bracketed": "(01)12312312312333(99)ABC(98)XYZ",
+   "ignored": [
+    "unknown1=555",
+    "unknown2=666",
+    "unknown3=777"
+   ]
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333?99=ABC&singleton&98=XYZ",
+   "expect": "^011231231231233399ABC^98XYZ",
+   "ok": true,
+   "bracketed": "(01)12312312312333(99)ABC(98)XYZ",
+   "ignored": [
+    "singleton"
+   ]
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333?singleton&99=ABC&98=XYZ",
+   "expect": "^011231231231233399ABC^98XYZ",
+   "ok": true,
+   "bracketed": "(01)12312312312333(99)ABC(98)XYZ",
+   "ignored": [
+    "singleton"
+   ]
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333?99=ABC&98=XYZ&singleton",
+   "expect": "^011231231231233399ABC^98XYZ",
+   "ok": true,
+   "bracketed": "(01)12312312312333(99)ABC(98)XYZ",
+   "ignored": [
+    "singleton"
+   ]
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333?singleton1&99=ABC&singleton2&98=XYZ&singleton3",
+   "expect": "^011231231231233399ABC^98XYZ",
+   "ok": true,
+   "bracketed": "(01)12312312312333(99)ABC(98)XYZ",
+   "ignored": [
+    "singleton1",
+    "singleton2",
+    "singleton3"
+   ]
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333?singleton1&unknown1=555&99=ABC&singleton2&unknown2=6666&98=XYZ&unknown3=777&singleton3",
+   "expect": "^011231231231233399ABC^98XYZ",
+   "ok": true,
+   "bracketed": "(01)12312312312333(99)ABC(98)XYZ",
+   "ignored": [
+    "singleton1",
+    "unknown1=555",
+    "singleton2",
+    "unknown2=6666",
+    "unknown3=777",
+    "singleton3"
+   ]
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333/22/ABC%2d123?99=ABC&98=XYZ%2f987",
+   "expect": "^011231231231233322ABC-123^99ABC^98XYZ/987",
+   "ok": true,
+   "bracketed": "(01)12312312312333(22)ABC-123(99)ABC(98)XYZ/987"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333/22/ABC+123?99=ABC&98=XYZ%2f987",
+   "expect": "^011231231231233322ABC+123^99ABC^98XYZ/987",
+   "ok": true,
+   "bracketed": "(01)12312312312333(22)ABC+123(99)ABC(98)XYZ/987"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333/22/ABC%2d123?99=ABC&98=XYZ+987",
+   "expect": "",
+   "ok": false,
+   "error": "AI (98): A non-CSET 82 character was found where a CSET 82 character is expected."
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333/22/test/10/abc/21/xyz#",
+   "expect": "^011231231231233322test^10abc^21xyz",
+   "ok": true,
+   "bracketed": "(01)12312312312333(22)test(10)abc(21)xyz"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333/22/test/10/abc/21/xyz#fragment",
+   "expect": "^011231231231233322test^10abc^21xyz",
+   "ok": true,
+   "bracketed": "(01)12312312312333(22)test(10)abc(21)xyz"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/stem/00/006141411234567890?99=ABC#",
+   "expect": "^0000614141123456789099ABC",
+   "ok": true,
+   "bracketed": "(00)006141411234567890(99)ABC"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/stem/00/006141411234567890?99=ABC#fragment",
+   "expect": "^0000614141123456789099ABC",
+   "ok": true,
+   "bracketed": "(00)006141411234567890(99)ABC"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/09520123456788",
+   "expect": "^0109520123456788",
+   "ok": true,
+   "bracketed": "(01)09520123456788"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://brand.example.com/01/9520123456788",
+   "expect": "^0109520123456788",
+   "ok": true,
+   "flags": {
+    "permitZeroSuppressedGTIN": true
+   },
+   "bracketed": "(01)09520123456788"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://brand.example.com/some-extra/pathinfo/01/9520123456788",
+   "expect": "^0109520123456788",
+   "ok": true,
+   "flags": {
+    "permitZeroSuppressedGTIN": true
+   },
+   "bracketed": "(01)09520123456788"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/09520123456788/22/2A",
+   "expect": "^0109520123456788222A",
+   "ok": true,
+   "bracketed": "(01)09520123456788(22)2A"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/09520123456788/10/ABC123",
+   "expect": "^010952012345678810ABC123",
+   "ok": true,
+   "bracketed": "(01)09520123456788(10)ABC123"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/09520123456788/21/12345",
+   "expect": "^01095201234567882112345",
+   "ok": true,
+   "bracketed": "(01)09520123456788(21)12345"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/09520123456788/10/ABC1/21/12345?17=180426",
+   "expect": "^010952012345678810ABC1^2112345^17180426",
+   "ok": true,
+   "bracketed": "(01)09520123456788(10)ABC1(21)12345(17)180426"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/09520123456788?3103=000195",
+   "expect": "^01095201234567883103000195",
+   "ok": true,
+   "bracketed": "(01)09520123456788(3103)000195"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://example.com/01/9520123456788?3103=000195&3922=0299&17=201225",
+   "expect": "^0109520123456788310300019539220299^17201225",
+   "ok": true,
+   "flags": {
+    "permitZeroSuppressedGTIN": true
+   },
+   "bracketed": "(01)09520123456788(3103)000195(3922)0299(17)201225"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://example.com/01/09520123456788?3103=000195&3922=0299&17=201225",
+   "expect": "^0109520123456788310300019539220299^17201225",
+   "ok": true,
+   "bracketed": "(01)09520123456788(3103)000195(3922)0299(17)201225"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/9520123456788?3103=000195&3922=0299&17=201225",
+   "expect": "^0109520123456788310300019539220299^17201225",
+   "ok": true,
+   "flags": {
+    "permitZeroSuppressedGTIN": true
+   },
+   "bracketed": "(01)09520123456788(3103)000195(3922)0299(17)201225"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/09520123456788?3103=000195&3922=0299&17=201225",
+   "expect": "^0109520123456788310300019539220299^17201225",
+   "ok": true,
+   "bracketed": "(01)09520123456788(3103)000195(3922)0299(17)201225"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/9520123456788?17=201225&3103=000195&3922=0299",
+   "expect": "^010952012345678817201225310300019539220299",
+   "ok": true,
+   "flags": {
+    "permitZeroSuppressedGTIN": true
+   },
+   "bracketed": "(01)09520123456788(17)201225(3103)000195(3922)0299"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/09520123456788?17=201225&3103=000195&3922=0299",
+   "expect": "^010952012345678817201225310300019539220299",
+   "ok": true,
+   "bracketed": "(01)09520123456788(17)201225(3103)000195(3922)0299"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://id.gs1.org/00/952012345678912345",
+   "expect": "^00952012345678912345",
+   "ok": true,
+   "bracketed": "(00)952012345678912345"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://id.gs1.org/00/952012345678912345?02=09520123456788&37=25&10=ABC123",
+   "expect": "^0095201234567891234502095201234567883725^10ABC123",
+   "ok": true,
+   "bracketed": "(00)952012345678912345(02)09520123456788(37)25(10)ABC123"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://id.gs1.org/414/9520123456788",
+   "expect": "^4149520123456788",
+   "ok": true,
+   "bracketed": "(414)9520123456788"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://id.gs1.org/414/9520123456788/254/32a%2Fb",
+   "expect": "^414952012345678825432a/b",
+   "ok": true,
+   "bracketed": "(414)9520123456788(254)32a/b"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://example.com/8004/9520614141234567?01=9520123456788",
+   "expect": "^80049520614141234567^0109520123456788",
+   "ok": true,
+   "bracketed": "(8004)9520614141234567(01)09520123456788"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://example.com/01/09520123456788?10=ABC123",
+   "expect": "",
+   "ok": false,
+   "error": "AI (10) from query params should be in the path info"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/09520123456788/235/XYZ?10=ABC123",
+   "expect": "^0109520123456788235XYZ^10ABC123",
+   "ok": true,
+   "bracketed": "(01)09520123456788(235)XYZ(10)ABC123"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/09520123456788/10/ABC123?99=XYZ789&01=09520123456788",
+   "expect": "",
+   "ok": false,
+   "error": "AI (01) is duplicated"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/09520123456788/10/ABC123?99=XYZ789&10=ABC123",
+   "expect": "",
+   "ok": false,
+   "error": "AI (10) is duplicated"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/09520123456788/10/ABC123?99=XYZ789&99=XYZ789",
+   "expect": "",
+   "ok": false,
+   "error": "AI (99) is duplicated"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://example.com/01/09520123456788/89/ABC123?99=XYZ",
+   "expect": "",
+   "ok": false,
+   "error": "No GS1 DL keys found in path info"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://example.com/01/09520123456788?99=XYZ&89=ABC123",
+   "expect": "",
+   "ok": false,
+   "error": "Unknown AI (89) in query parameters"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://example.com/01/09520123456788?99=XYZ&89=ABC123",
+   "expect": "",
+   "ok": false,
+   "flags": {
+    "permitUnknownAIs": true
+   },
+   "error": "AI (89) is not a valid DL URI data attribute"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://example.com/01/09520123456788?99=XYZ&89=ABC123",
+   "expect": "^010952012345678899XYZ^89ABC123",
+   "ok": true,
+   "flags": {
+    "permitUnknownAIs": true,
+    "unknownAInotDLattr": false
+   },
+   "bracketed": "(01)09520123456788(99)XYZ(89)ABC123"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01//12312312312333",
+   "expect": "",
+   "ok": false,
+   "error": "No GS1 DL keys found in path info"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/1231231231233%003",
+   "expect": "",
+   "ok": false,
+   "error": "Decoded AI (01) from DL path info contains illegal null character"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333?99=ABC%00DEF",
+   "expect": "",
+   "ok": false,
+   "error": "Decoded AI (99) value from DL query params contains illegal null character"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333?99=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+   "expect": "^011231231231233399AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+   "ok": true,
+   "bracketed": "(01)12312312312333(99)AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333?99=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+   "expect": "",
+   "ok": false,
+   "error": "AI (99) value is too long"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333/10/",
+   "expect": "",
+   "ok": false,
+   "error": "AI (10) value path element is empty"
+  },
+  {
+   "source": "dl.c",
+   "kind": "parse",
+   "input": "https://a/01/12312312312333/99/ABC",
+   "expect": "",
+   "ok": false,
+   "error": "The AIs in the path are not a valid key-qualifier sequence for the key"
+  },
+  {
+   "source": "dl.c",
+   "kind": "gen",
+   "input": {
+    "ai": "(01)12312312312326(21)abc123",
+    "stem": null
+   },
+   "expect": "https://id.gs1.org/01/12312312312326/21/abc123",
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "gen",
+   "input": {
+    "ai": "(01)12312312312326(21)abc123",
+    "stem": "https://example.com"
+   },
+   "expect": "https://example.com/01/12312312312326/21/abc123",
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "gen",
+   "input": {
+    "ai": "(01)12312312312326(22)ABC(10)DEF(21)GHI",
+    "stem": "https://example.com"
+   },
+   "expect": "https://example.com/01/12312312312326/22/ABC/10/DEF/21/GHI",
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "gen",
+   "input": {
+    "ai": "(01)12312312312326(22)ABC(10)DEF(21)GHI(95)INT",
+    "stem": "https://example.com"
+   },
+   "expect": "https://example.com/01/12312312312326/22/ABC/10/DEF/21/GHI?95=INT",
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "gen",
+   "input": {
+    "ai": "(21)XYZ(01)12312312312333(10)ABC123(99)XYZ",
+    "stem": "https://example.com"
+   },
+   "expect": "https://example.com/01/12312312312333/10/ABC123/21/XYZ?99=XYZ",
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "gen",
+   "input": {
+    "ai": "(99)XYZ789",
+    "stem": "https://example.com"
+   },
+   "expect": "",
+   "ok": false,
+   "error": "Cannot create a DL URI without a primary key AI"
+  },
+  {
+   "source": "dl.c",
+   "kind": "gen",
+   "input": {
+    "ai": "(01)12312312312333(10)ABC+123(99)XYZ+QWERTY",
+    "stem": "https://example.com"
+   },
+   "expect": "https://example.com/01/12312312312333/10/ABC%2B123?99=XYZ%2BQWERTY",
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "gen",
+   "input": {
+    "ai": "(8017)795260646688514634(99)000001(253)9526064000028000001",
+    "stem": "https://example.com"
+   },
+   "expect": "https://example.com/8017/795260646688514634?99=000001&253=9526064000028000001",
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "gen",
+   "input": {
+    "ai": "(253)9526064000028000001(99)000001(8017)795260646688514634",
+    "stem": "https://example.com"
+   },
+   "expect": "https://example.com/253/9526064000028000001?99=000001&8017=795260646688514634",
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "gen",
+   "input": {
+    "ai": "(98)ABC(253)9526064000028000001(99)000001(8017)795260646688514634",
+    "stem": "https://example.com"
+   },
+   "expect": "https://example.com/253/9526064000028000001?98=ABC&99=000001&8017=795260646688514634",
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "gen",
+   "input": {
+    "ai": "(253)9526064000028000001(99)000001(01)12312312312326(10)DEF(95)INT",
+    "stem": "https://example.com"
+   },
+   "expect": "https://example.com/253/9526064000028000001?01=12312312312326&99=000001&10=DEF&95=INT",
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "gen",
+   "input": {
+    "ai": "(01)12312312312326(01)12312312312326(10)ABC123(99)XYZ789",
+    "stem": "https://example.com"
+   },
+   "expect": "https://example.com/01/12312312312326/10/ABC123?99=XYZ789",
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "gen",
+   "input": {
+    "ai": "(01)12312312312326(10)ABC123(10)ABC123(99)XYZ789",
+    "stem": "https://example.com"
+   },
+   "expect": "https://example.com/01/12312312312326/10/ABC123?99=XYZ789",
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "gen",
+   "input": {
+    "ai": "(01)12312312312326(10)ABC123(99)XYZ789(99)XYZ789",
+    "stem": "https://example.com"
+   },
+   "expect": "https://example.com/01/12312312312326/10/ABC123?99=XYZ789",
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "gen",
+   "input": {
+    "ai": "(8010)0200(3133)333333(3300)000000(99)57(3133)333333(3300)000000(01)04065093955756(10)0(3133)333333(3300)000000(01)04065093955756",
+    "stem": "https://example.com"
+   },
+   "expect": "https://example.com/8010/0200?3133=333333&3300=000000&01=04065093955756&99=57&10=0",
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "gen",
+   "input": {
+    "ai": "(01)12312312312326(99)000001(8200)http://example.com(95)INT",
+    "stem": "https://example.com"
+   },
+   "expect": "",
+   "ok": false,
+   "error": "AI (8200) is not a valid DL URI data attribute"
+  },
+  {
+   "source": "dl.c",
+   "kind": "gen",
+   "input": {
+    "ai": "(01)12312312312326(235)TPX9526064(99)000001(22)ABC(95)INT",
+    "stem": "https://example.com"
+   },
+   "expect": "",
+   "ok": false,
+   "error": "AI (235) is not a valid DL URI data attribute"
+  },
+  {
+   "source": "dl.c",
+   "kind": "gen",
+   "input": {
+    "ai": "(01)12312312312326(22)ABC(10)DEF(99)000001(235)TPX9526064(95)INT",
+    "stem": "https://example.com"
+   },
+   "expect": "",
+   "ok": false,
+   "error": "AI (235) is not a valid DL URI data attribute"
+  },
+  {
+   "source": "dl.c",
+   "kind": "gen",
+   "input": {
+    "ai": "(01)12312312312326(99)000001(89)XXX(95)INT",
+    "stem": "https://example.com"
+   },
+   "expect": "",
+   "ok": false,
+   "flags": {
+    "permitUnknownAIs": true
+   },
+   "error": "AI (89) is not a valid DL URI data attribute"
+  },
+  {
+   "source": "dl.c",
+   "kind": "gen",
+   "input": {
+    "ai": "(01)12312312312326(99)000001(89)XXX(95)INT",
+    "stem": "https://example.com"
+   },
+   "expect": "https://example.com/01/12312312312326?99=000001&89=XXX&95=INT",
+   "ok": true,
+   "flags": {
+    "permitUnknownAIs": true,
+    "unknownAInotDLattr": false
+   }
+  },
+  {
+   "source": "dl.c",
+   "kind": "gen",
+   "input": {
+    "ai": "(01)12312312312326(235)ABC(10)DEF",
+    "stem": "https://example.com"
+   },
+   "expect": "",
+   "ok": false,
+   "error": "AI (235) is not a valid DL URI data attribute"
+  },
+  {
+   "source": "dl.c",
+   "kind": "roundtrip",
+   "input": {
+    "uri": "https://example.com/01/12312312312326/235/ABC?10=DEF",
+    "stem": "https://example.com"
+   },
+   "expect": "https://example.com/01/12312312312326/235/ABC?10=DEF",
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "gen",
+   "input": {
+    "ai": "(01)12312312312326",
+    "stem": "https://example.com/"
+   },
+   "expect": "https://example.com/01/12312312312326",
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "gen-datastr",
+   "input": {
+    "dataStr": "^99ABC|^0112312312312333^10DEF",
+    "stem": "https://example.com"
+   },
+   "expect": "https://example.com/01/12312312312333/10/DEF?99=ABC",
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "gen",
+   "input": {
+    "ai": "(01)12312312312326",
+    "stem": ""
+   },
+   "expect": "/01/12312312312326",
+   "ok": true
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.1",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/09520123456788",
+   "expect": "(01)09520123456788",
+   "ok": true,
+   "bracketed": "(01)09520123456788"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.1",
+   "kind": "parse",
+   "input": "https://brand.example.com/01/09520123456788",
+   "expect": "(01)09520123456788",
+   "ok": true,
+   "bracketed": "(01)09520123456788"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.1",
+   "kind": "parse",
+   "input": "https://brand.example.com/some-extra/pathinfo/01/09520123456788",
+   "expect": "(01)09520123456788",
+   "ok": true,
+   "bracketed": "(01)09520123456788"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.2",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/09520123456788/22/2A",
+   "expect": "(01)09520123456788(22)2A",
+   "ok": true,
+   "bracketed": "(01)09520123456788(22)2A"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.2",
+   "kind": "parse",
+   "input": "https://brand.example.com/01/09520123456788/22/2A",
+   "expect": "(01)09520123456788(22)2A",
+   "ok": true,
+   "bracketed": "(01)09520123456788(22)2A"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.2",
+   "kind": "parse",
+   "input": "https://retailer.example.com/01/09520123456788/22/2A",
+   "expect": "(01)09520123456788(22)2A",
+   "ok": true,
+   "bracketed": "(01)09520123456788(22)2A"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.3",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/09520123456788/10/ABC123",
+   "expect": "(01)09520123456788(10)ABC123",
+   "ok": true,
+   "bracketed": "(01)09520123456788(10)ABC123"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.3",
+   "kind": "parse",
+   "input": "https://brand.example.com/01/09520123456788/10/ABC123",
+   "expect": "(01)09520123456788(10)ABC123",
+   "ok": true,
+   "bracketed": "(01)09520123456788(10)ABC123"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.3",
+   "kind": "parse",
+   "input": "https://retailer.example.com/01/09520123456788/10/ABC123",
+   "expect": "(01)09520123456788(10)ABC123",
+   "ok": true,
+   "bracketed": "(01)09520123456788(10)ABC123"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.4",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/09520123456788/21/12345",
+   "expect": "(01)09520123456788(21)12345",
+   "ok": true,
+   "bracketed": "(01)09520123456788(21)12345"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.4",
+   "kind": "parse",
+   "input": "https://brand.example.com/01/09520123456788/21/12345",
+   "expect": "(01)09520123456788(21)12345",
+   "ok": true,
+   "bracketed": "(01)09520123456788(21)12345"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.4",
+   "kind": "parse",
+   "input": "https://retailer.example.com/01/09520123456788/21/12345",
+   "expect": "(01)09520123456788(21)12345",
+   "ok": true,
+   "bracketed": "(01)09520123456788(21)12345"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.5",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/09520123456788/10/ABC1/21/12345?17=180426",
+   "expect": "(01)09520123456788(17)180426(10)ABC1(21)12345",
+   "ok": true,
+   "bracketed": "(01)09520123456788(10)ABC1(21)12345(17)180426"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.5",
+   "kind": "parse",
+   "input": "https://example.com/01/09520123456788/10/ABC1/21/12345?17=180426",
+   "expect": "(01)09520123456788(17)180426(10)ABC1(21)12345",
+   "ok": true,
+   "bracketed": "(01)09520123456788(10)ABC1(21)12345(17)180426"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.6",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/09520123456788?3103=000195",
+   "expect": "(01)09520123456788(3103)000195",
+   "ok": true,
+   "bracketed": "(01)09520123456788(3103)000195"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.6",
+   "kind": "parse",
+   "input": "https://example.com/01/09520123456788?3103=000195",
+   "expect": "(01)09520123456788(3103)000195",
+   "ok": true,
+   "bracketed": "(01)09520123456788(3103)000195"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.7",
+   "kind": "parse",
+   "input": "https://example.com/01/09520123456788?3103=000195&3922=0299&17=201225",
+   "expect": "(01)09520123456788(3103)000195(3922)0299(17)201225",
+   "ok": true,
+   "bracketed": "(01)09520123456788(3103)000195(3922)0299(17)201225"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.7",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/09520123456788?3103=000195&3922=0299&17=201225",
+   "expect": "(01)09520123456788(3103)000195(3922)0299(17)201225",
+   "ok": true,
+   "bracketed": "(01)09520123456788(3103)000195(3922)0299(17)201225"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.7 (canonical)",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/09520123456788?17=201225&3103=000195&3922=0299",
+   "expect": "(01)09520123456788(3103)000195(3922)0299(17)201225",
+   "ok": true,
+   "bracketed": "(01)09520123456788(17)201225(3103)000195(3922)0299"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.8",
+   "kind": "parse",
+   "input": "https://id.gs1.org/00/195201234567891232",
+   "expect": "(00)195201234567891232",
+   "ok": true,
+   "bracketed": "(00)195201234567891232"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.8",
+   "kind": "parse",
+   "input": "https://example.com/00/195201234567891232",
+   "expect": "(00)195201234567891232",
+   "ok": true,
+   "bracketed": "(00)195201234567891232"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.9",
+   "kind": "parse",
+   "input": "https://id.gs1.org/00/195201234567891232?02=09520123456788&37=25&10=ABC123",
+   "expect": "(00)195201234567891232(02)09520123456788(37)25(10)ABC123",
+   "ok": true,
+   "bracketed": "(00)195201234567891232(02)09520123456788(37)25(10)ABC123"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.9",
+   "kind": "parse",
+   "input": "https://example.com/00/195201234567891232?02=09520123456788&37=25&10=ABC123",
+   "expect": "(00)195201234567891232(02)09520123456788(37)25(10)ABC123",
+   "ok": true,
+   "bracketed": "(00)195201234567891232(02)09520123456788(37)25(10)ABC123"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.10",
+   "kind": "parse",
+   "input": "https://id.gs1.org/414/9520123456788",
+   "expect": "(414)9520123456788",
+   "ok": true,
+   "bracketed": "(414)9520123456788"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.10",
+   "kind": "parse",
+   "input": "https://id.gs1.org/414/9520123456788/254/32a%2Fb",
+   "expect": "(414)9520123456788(254)32a/b",
+   "ok": true,
+   "bracketed": "(414)9520123456788(254)32a/b"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.10",
+   "kind": "parse",
+   "input": "https://example.com/414/9520123456788",
+   "expect": "(414)9520123456788",
+   "ok": true,
+   "bracketed": "(414)9520123456788"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.10",
+   "kind": "parse",
+   "input": "https://example.com/414/9520123456788/254/32a%2Fb",
+   "expect": "(414)9520123456788(254)32a/b",
+   "ok": true,
+   "bracketed": "(414)9520123456788(254)32a/b"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.11",
+   "kind": "parse",
+   "input": "https://example.com/8004/9520614141234567?01=09520123456788",
+   "expect": "(01)09520123456788(8004)9520614141234567",
+   "ok": true,
+   "bracketed": "(8004)9520614141234567(01)09520123456788"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s5.11",
+   "kind": "parse",
+   "input": "https://example.com/01/09520123456788?8004=9520614141234567",
+   "expect": "(01)09520123456788(8004)9520614141234567",
+   "ok": true,
+   "bracketed": "(01)09520123456788(8004)9520614141234567"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s4.12 (canonicalisation input)",
+   "kind": "parse",
+   "input": "http://example.com/01/09520123456788/22/2A?linkType=gs1:traceability",
+   "expect": "(01)09520123456788(22)2A",
+   "ok": true,
+   "bracketed": "(01)09520123456788(22)2A",
+   "ignored": [
+    "linkType=gs1:traceability"
+   ]
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s4.12 (canonical output)",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/09520123456788/22/2A",
+   "expect": "(01)09520123456788(22)2A",
+   "ok": true,
+   "bracketed": "(01)09520123456788(22)2A"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s4.9 (permitted path)",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/09520123456788/22/2A/10/ABC123/21/12345XYZ",
+   "expect": "(01)09520123456788(22)2A(10)ABC123(21)12345XYZ",
+   "ok": true,
+   "bracketed": "(01)09520123456788(22)2A(10)ABC123(21)12345XYZ"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s4.9 (permitted path, trailing slash as printed)",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/09520123456788/10/ABC123/",
+   "expect": "(01)09520123456788(10)ABC123",
+   "ok": true,
+   "error": "No GS1 DL keys found in path info"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s4.9 (permitted path)",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/09520123456788/10/ABC123/21/12345XYZ",
+   "expect": "(01)09520123456788(10)ABC123(21)12345XYZ",
+   "ok": true,
+   "bracketed": "(01)09520123456788(10)ABC123(21)12345XYZ"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s4.9 (permitted path)",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/09520123456788/21/12345XYZ",
+   "expect": "(01)09520123456788(21)12345XYZ",
+   "ok": true,
+   "bracketed": "(01)09520123456788(21)12345XYZ"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s4.9 (NOT permitted: order)",
+   "kind": "parse",
+   "input": "https://id.gs1.org/01/09520123456788/21/12345XYZ/10/ABC123",
+   "expect": null,
+   "ok": false,
+   "error": "The AIs in the path are not a valid key-qualifier sequence for the key"
+  },
+  {
+   "source": "DL URI Syntax 1.7.0 s4.12 (trailing slash: tolerated by resolvers, not ABNF)",
+   "kind": "parse",
+   "input": "https://example.com/8003/0{grai}/",
+   "expect": null,
+   "ok": false,
+   "error": "URI contains illegal characters"
+  },
+  {
+   "source": "dl.c",
+   "kind": "unescape",
+   "input": "",
+   "expect": {
+    "path": "",
+    "query": ""
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "unescape",
+   "input": "test",
+   "expect": {
+    "path": "test",
+    "query": "test"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "unescape",
+   "input": "+",
+   "expect": {
+    "path": "+",
+    "query": " "
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "unescape",
+   "input": "%20",
+   "expect": {
+    "path": " ",
+    "query": " "
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "unescape",
+   "input": "%20AB",
+   "expect": {
+    "path": " AB",
+    "query": " AB"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "unescape",
+   "input": "A%20B",
+   "expect": {
+    "path": "A B",
+    "query": "A B"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "unescape",
+   "input": "AB%20",
+   "expect": {
+    "path": "AB ",
+    "query": "AB "
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "unescape",
+   "input": "ABC%2",
+   "expect": {
+    "path": "ABC%2",
+    "query": "ABC%2"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "unescape",
+   "input": "ABCD%",
+   "expect": {
+    "path": "ABCD%",
+    "query": "ABCD%"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "unescape",
+   "input": "A%20%20B",
+   "expect": {
+    "path": "A  B",
+    "query": "A  B"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "unescape",
+   "input": "A%01B",
+   "expect": {
+    "path": "A\u0001B",
+    "query": "A\u0001B"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "unescape",
+   "input": "A%ffB",
+   "expect": {
+    "path": "AÿB",
+    "query": "AÿB"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "unescape",
+   "input": "A%FfB",
+   "expect": {
+    "path": "AÿB",
+    "query": "AÿB"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "unescape",
+   "input": "A%fFB",
+   "expect": {
+    "path": "AÿB",
+    "query": "AÿB"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "unescape",
+   "input": "A%FFB",
+   "expect": {
+    "path": "AÿB",
+    "query": "AÿB"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "unescape",
+   "input": "A%4FB",
+   "expect": {
+    "path": "AOB",
+    "query": "AOB"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "unescape",
+   "input": "A%4fB",
+   "expect": {
+    "path": "AOB",
+    "query": "AOB"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "unescape",
+   "input": "A%4gB",
+   "expect": {
+    "path": "A%4gB",
+    "query": "A%4gB"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "unescape",
+   "input": "A%4GB",
+   "expect": {
+    "path": "A%4GB",
+    "query": "A%4GB"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "unescape",
+   "input": "A%g4B",
+   "expect": {
+    "path": "A%g4B",
+    "query": "A%g4B"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "unescape",
+   "input": "A%G4B",
+   "expect": {
+    "path": "A%G4B",
+    "query": "A%G4B"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "unescape",
+   "input": "A%00B",
+   "expect": null,
+   "ok": false,
+   "note": "decoded NUL is rejected"
+  },
+  {
+   "source": "dl.c",
+   "kind": "escape",
+   "input": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+   "expect": {
+    "path": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    "query": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "escape",
+   "input": "abcdefghijklmnopqrstuvwxyz",
+   "expect": {
+    "path": "abcdefghijklmnopqrstuvwxyz",
+    "query": "abcdefghijklmnopqrstuvwxyz"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "escape",
+   "input": "0123456789-._~",
+   "expect": {
+    "path": "0123456789-._~",
+    "query": "0123456789-._~"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "escape",
+   "input": "!\"#%&'()*+,/:;<=>?",
+   "expect": {
+    "path": "%21%22%23%25%26%27%28%29%2A%2B%2C%2F%3A%3B%3C%3D%3E%3F",
+    "query": "%21%22%23%25%26%27%28%29%2A%2B%2C%2F%3A%3B%3C%3D%3E%3F"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "escape",
+   "input": "test",
+   "expect": {
+    "path": "test",
+    "query": "test"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "escape",
+   "input": " ",
+   "expect": {
+    "path": "%20",
+    "query": "+"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "escape",
+   "input": " AB",
+   "expect": {
+    "path": "%20AB",
+    "query": "+AB"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "escape",
+   "input": "A B",
+   "expect": {
+    "path": "A%20B",
+    "query": "A+B"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "escape",
+   "input": "AB ",
+   "expect": {
+    "path": "AB%20",
+    "query": "AB+"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "escape",
+   "input": "A  B",
+   "expect": {
+    "path": "A%20%20B",
+    "query": "A++B"
+   },
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "00",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "01",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "01 21",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "01 10",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "01 10 21",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "01 22",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "01 22 21",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "01 22 10",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "01 22 10 21",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "01 235",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "253",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "255",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "401",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "402",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "414",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "414 254",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "414 7040",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "417",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "417 7040",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "8003",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "8004",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "8004 7040",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "8006",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "8006 21",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "8006 10",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "8006 10 21",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "8006 22",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "8006 22 21",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "8006 22 10",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "8006 22 10 21",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "8010",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "8010 8011",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "8013",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "8017",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "8017 8019",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "8018",
+   "expect": true,
+   "ok": true
+  },
+  {
+   "source": "dl.c",
+   "kind": "validPathSeq",
+   "input": "8018 8019",
+   "expect": true,
+   "ok": true
+  }
+ ]
+}

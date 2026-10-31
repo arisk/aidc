@@ -1,0 +1,21 @@
+node_modules/
+dist/
+coverage/
+*.log
+.DS_Store
+.idea/
+.ref/
+.superpowers/
+.vitest/
+
+# Working notes (plans, research, specs) stay local.
+docs/superpowers/
+
+# GS1 standards documents are copyrighted and not redistributed; see docs/specifications/README.md
+# for their sources. Only the machine-readable data that the tests and generators read is tracked.
+docs/specifications/*
+!docs/specifications/README.md
+!docs/specifications/data/
+docs/specifications/data/*
+!docs/specifications/data/gs1-syntax-dictionary-2026-01-27.txt
+!docs/specifications/data/tdt-2.3-draft-2026-09-15a/

@@ -1,0 +1,748 @@
+{
+ "provenance": {
+  "description": "EPC legacy binary scheme vectors: TDS 2.3 worked examples (Appendix E, sections 6, 7, 12) plus vectors derived by the research reference codec (source starts \"derived:\"; verify these against the oracles before trusting them).",
+  "sources": [
+   "docs/specifications/epc-tag-data-standard-v2.3.pdf",
+   "docs/superpowers/research/m3-epc-legacy-ref/legacy.py"
+  ],
+  "notes": "hex is the EPC bit string padded to 16-bit words as in TDS Appendix E (ADI-var E.3 is nibble padded); compare modulo trailing zero padding. Research notes: docs/superpowers/research/2026-10-09-m3-epc-legacy.md",
+  "extracted": "2026-10-09"
+ },
+ "vectors": [
+  {
+   "scheme": "sgtin-96",
+   "source": "TDS 2.3 E.1/E.2 (hex converted from printed binary)",
+   "elementString": "(01)09506000134352(21)6789",
+   "pureIdentityUri": "urn:epc:id:sgtin:95060001343.05.6789",
+   "tagUri": "urn:epc:tag:sgtin-96:3.95060001343.05.6789",
+   "hex": "3066C4409047E14000001A85",
+   "filter": 3,
+   "companyPrefixLength": 11
+  },
+  {
+   "scheme": "sgtin-96",
+   "source": "TDS 2.3 E.3 (printed EPC URI typo '...05.1234567896789', corrected)",
+   "elementString": "(01)09506000134352(21)123456789",
+   "pureIdentityUri": "urn:epc:id:sgtin:95060001343.05.123456789",
+   "tagUri": "urn:epc:tag:sgtin-96:3.95060001343.05.123456789",
+   "hex": "3066C4409047E140075BCD15",
+   "filter": 3,
+   "companyPrefixLength": 11
+  },
+  {
+   "scheme": "sgtin-198",
+   "source": "TDS 2.3 E.3",
+   "elementString": "(01)09506000134352(21)32a/b",
+   "pureIdentityUri": "urn:epc:id:sgtin:95060001343.05.32a%2Fb",
+   "tagUri": "urn:epc:tag:sgtin-198:3.95060001343.05.32a%2Fb",
+   "hex": "3666C4409047E159B2C2BF100000000000000000000000000000",
+   "filter": 3,
+   "companyPrefixLength": 11
+  },
+  {
+   "scheme": "sscc-96",
+   "source": "TDS 2.3 E.3",
+   "elementString": "(00)095201234567891235",
+   "pureIdentityUri": "urn:epc:id:sscc:952012.03456789123",
+   "tagUri": "urn:epc:tag:sscc-96:0.952012.03456789123",
+   "hex": "311BA1B300CE0A6A83000000",
+   "filter": 0,
+   "companyPrefixLength": 6
+  },
+  {
+   "scheme": "sgln-96",
+   "source": "TDS 2.3 E.3",
+   "elementString": "(414)9521141123454(254)5678",
+   "pureIdentityUri": "urn:epc:id:sgln:9521141.12345.5678",
+   "tagUri": "urn:epc:tag:sgln-96:3.9521141.12345.5678",
+   "hex": "3276451FD46072000000162E",
+   "filter": 3,
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "sgln-195",
+   "source": "TDS 2.3 E.3",
+   "elementString": "(414)9521141123454(254)32a/b",
+   "pureIdentityUri": "urn:epc:id:sgln:9521141.12345.32a%2Fb",
+   "tagUri": "urn:epc:tag:sgln-195:3.9521141.12345.32a%2Fb",
+   "hex": "3976451FD46072CD9615F8800000000000000000000000000000",
+   "filter": 3,
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "grai-96",
+   "source": "TDS 2.3 E.3",
+   "elementString": "(8003)095211411234545678",
+   "pureIdentityUri": "urn:epc:id:grai:9521141.12345.5678",
+   "tagUri": "urn:epc:tag:grai-96:3.9521141.12345.5678",
+   "hex": "3376451FD40C0E400000162E",
+   "filter": 3,
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "grai-170",
+   "source": "TDS 2.3 E.3",
+   "elementString": "(8003)0952114112345432a/b",
+   "pureIdentityUri": "urn:epc:id:grai:9521141.12345.32a%2Fb",
+   "tagUri": "urn:epc:tag:grai-170:3.9521141.12345.32a%2Fb",
+   "hex": "3776451FD40C0E59B2C2BF1000000000000000000000",
+   "filter": 3,
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "giai-96",
+   "source": "TDS 2.3 E.3",
+   "elementString": "(8004)95211415678",
+   "pureIdentityUri": "urn:epc:id:giai:9521141.5678",
+   "tagUri": "urn:epc:tag:giai-96:3.9521141.5678",
+   "hex": "3476451FD40000000000162E",
+   "filter": 3,
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "giai-202",
+   "source": "TDS 2.3 E.3",
+   "elementString": "(8004)952114132a/b",
+   "pureIdentityUri": "urn:epc:id:giai:9521141.32a%2Fb",
+   "tagUri": "urn:epc:tag:giai-202:3.9521141.32a%2Fb",
+   "hex": "3876451FD59B2C2BF10000000000000000000000000000000000",
+   "filter": 3,
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "gsrn-96",
+   "source": "TDS 2.3 E.3",
+   "elementString": "(8018)952114112345678906",
+   "pureIdentityUri": "urn:epc:id:gsrn:9521141.1234567890",
+   "tagUri": "urn:epc:tag:gsrn-96:3.9521141.1234567890",
+   "hex": "2D76451FD4499602D2000000",
+   "filter": 3,
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "gsrnp-96",
+   "source": "TDS 2.3 E.3",
+   "elementString": "(8017)952114112345678906",
+   "pureIdentityUri": "urn:epc:id:gsrnp:9521141.1234567890",
+   "tagUri": "urn:epc:tag:gsrnp-96:3.9521141.1234567890",
+   "hex": "2E76451FD4499602D2000000",
+   "filter": 3,
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "gdti-96",
+   "source": "TDS 2.3 E.3",
+   "elementString": "(253)95211411234545678",
+   "pureIdentityUri": "urn:epc:id:gdti:9521141.12345.5678",
+   "tagUri": "urn:epc:tag:gdti-96:3.9521141.12345.5678",
+   "hex": "2C76451FD46072000000162E",
+   "filter": 3,
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "gdti-174",
+   "source": "TDS 2.3 E.3",
+   "elementString": "(253)9521141987650ABCDefgh012345678",
+   "pureIdentityUri": "urn:epc:id:gdti:9521141.98765.ABCDefgh012345678",
+   "tagUri": "urn:epc:tag:gdti-174:3.9521141.98765.ABCDefgh012345678",
+   "hex": "3E76451FD7039B061438997367D0C18B266D1AB66EE0",
+   "filter": 3,
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "cpi-96",
+   "source": "TDS 2.3 E.3",
+   "elementString": "(8010)952114198765(8011)12345",
+   "pureIdentityUri": "urn:epc:id:cpi:9521141.98765.12345",
+   "tagUri": "urn:epc:tag:cpi-96:3.9521141.98765.12345",
+   "hex": "3C76451FD400C0E680003039",
+   "filter": 3,
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "cpi-var",
+   "source": "TDS 2.3 E.3 (132 bits, 16-bit padded)",
+   "elementString": "(8010)95211415PQ7/Z43(8011)12345",
+   "pureIdentityUri": "urn:epc:id:cpi:9521141.5PQ7%2FZ43.12345",
+   "tagUri": "urn:epc:tag:cpi-var:3.9521141.5PQ7%2FZ43.12345",
+   "hex": "3D76451FD75411DEF6B4CC00000003039000",
+   "filter": 3,
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "sgcn-96",
+   "source": "TDS 2.3 E.3",
+   "elementString": "(255)952114167890904711",
+   "pureIdentityUri": "urn:epc:id:sgcn:9521141.67890.04711",
+   "tagUri": "urn:epc:tag:sgcn-96:3.9521141.67890.04711",
+   "hex": "3F76451FD612640000019907",
+   "filter": 3,
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "gid-96",
+   "source": "TDS 2.3 E.3",
+   "pureIdentityUri": "urn:epc:id:gid:952056.2718.1414",
+   "tagUri": "urn:epc:tag:gid-96:952056.2718.1414",
+   "hex": "3500E86F8000A9E000000586",
+   "filter": null,
+   "companyPrefixLength": null
+  },
+  {
+   "scheme": "usdod-96",
+   "source": "TDS 2.3 E.3",
+   "pureIdentityUri": "urn:epc:id:usdod:CAGEY.5678",
+   "tagUri": "urn:epc:tag:usdod-96:3.CAGEY.5678",
+   "hex": "2F320434147455900000162E",
+   "filter": 3,
+   "companyPrefixLength": null
+  },
+  {
+   "scheme": "adi-var",
+   "source": "TDS 2.3 E.3 (146 bits, printed nibble-padded; 16-bit padded = 3B0E0CF5E76C9047759AD00373DC7602E7200000)",
+   "pureIdentityUri": "urn:epc:id:adi:35962.PQ7VZ4.M37GXB92",
+   "tagUri": "urn:epc:tag:adi-var:3.35962.PQ7VZ4.M37GXB92",
+   "hex": "3B0E0CF5E76C9047759AD00373DC7602E7200",
+   "filter": 3,
+   "companyPrefixLength": null
+  },
+  {
+   "scheme": "itip-110",
+   "source": "TDS 2.3 E.3",
+   "elementString": "(8006)095211411234540102(21)981",
+   "pureIdentityUri": "urn:epc:id:itip:9521141.012345.01.02.981",
+   "tagUri": "urn:epc:tag:itip-110:3.9521141.012345.01.02.981",
+   "hex": "4076451FD40C0E40820000000F54",
+   "filter": 3,
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "itip-212",
+   "source": "TDS 2.3 E.3",
+   "elementString": "(8006)095211411234540102(21)mw133",
+   "pureIdentityUri": "urn:epc:id:itip:9521141.012345.01.02.mw133",
+   "tagUri": "urn:epc:tag:itip-212:3.9521141.012345.01.02.mw133",
+   "hex": "4176451FD40C0E4082DBDD8B36600000000000000000000000000000",
+   "filter": 3,
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "sgtin",
+   "source": "TDS 2.3 7.2.1 (individually assigned GTIN)",
+   "elementString": "(01)09526567890126(21)4711",
+   "pureIdentityUri": "urn:epc:id:sgtin:952656789012.0.4711",
+   "companyPrefixLength": 12
+  },
+  {
+   "scheme": "sgln",
+   "source": "TDS 2.3 7.2.2 (no extension)",
+   "elementString": "(414)9526567890126",
+   "pureIdentityUri": "urn:epc:id:sgln:952656789012..0",
+   "companyPrefixLength": 12
+  },
+  {
+   "scheme": "sgln",
+   "source": "TDS 2.3 7.2.2 (with extension)",
+   "elementString": "(414)9526567890126(254)4711",
+   "pureIdentityUri": "urn:epc:id:sgln:952656789012..4711",
+   "companyPrefixLength": 12
+  },
+  {
+   "scheme": "sscc",
+   "source": "TDS 2.3 7.2.3",
+   "elementString": "(00)095265678901234568",
+   "pureIdentityUri": "urn:epc:id:sscc:952656789012.03456",
+   "companyPrefixLength": 12
+  },
+  {
+   "scheme": "giai",
+   "source": "TDS 2.3 7.2.3",
+   "elementString": "(8004)952656789012345678901234567890",
+   "pureIdentityUri": "urn:epc:id:giai:952656789012.345678901234567890",
+   "companyPrefixLength": 12
+  },
+  {
+   "scheme": "sgtin",
+   "source": "TDS 2.3 7.3",
+   "elementString": "(01)09521141123454(21)32a/b",
+   "pureIdentityUri": "urn:epc:id:sgtin:9521141.012345.32a%2Fb",
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "sgtin",
+   "source": "TDS 2.3 7.3.1 GTIN-12 614141123452 (serial placeholder '1')",
+   "elementString": "(01)00614141123452(21)1",
+   "pureIdentityUri": "urn:epc:id:sgtin:0614141.012345.1",
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "sgtin",
+   "source": "TDS 2.3 7.3.1 GTIN-13 9521141890127 (serial placeholder '1')",
+   "elementString": "(01)09521141890127(21)1",
+   "pureIdentityUri": "urn:epc:id:sgtin:9521141.089012.1",
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "sgtin",
+   "source": "TDS 2.3 7.3.2 GTIN-8 95010939 (serial placeholder '1')",
+   "elementString": "(01)00000095010939(21)1",
+   "pureIdentityUri": "urn:epc:id:sgtin:00000950.01093.1",
+   "companyPrefixLength": 8
+  },
+  {
+   "scheme": "sgtin",
+   "source": "TDS 2.3 7.3.8.1 ISBN 978-81-7525-766-5 (serial placeholder '1')",
+   "elementString": "(01)09788175257665(21)1",
+   "pureIdentityUri": "urn:epc:id:sgtin:978817525.0766.1",
+   "companyPrefixLength": 9
+  },
+  {
+   "scheme": "sscc",
+   "source": "TDS 2.3 7.4",
+   "elementString": "(00)195211412345678900",
+   "pureIdentityUri": "urn:epc:id:sscc:9521141.1234567890",
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "sgln",
+   "source": "TDS 2.3 7.5 (no extension)",
+   "elementString": "(414)9521141123454",
+   "pureIdentityUri": "urn:epc:id:sgln:9521141.12345.0",
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "sgln",
+   "source": "TDS 2.3 7.5 (with extension)",
+   "elementString": "(414)9521141123454(254)32a/b",
+   "pureIdentityUri": "urn:epc:id:sgln:9521141.12345.32a%2Fb",
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "grai",
+   "source": "TDS 2.3 7.6",
+   "elementString": "(8003)0952114112345432a/b",
+   "pureIdentityUri": "urn:epc:id:grai:9521141.12345.32a%2Fb",
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "giai",
+   "source": "TDS 2.3 7.7",
+   "elementString": "(8004)952114132a/b",
+   "pureIdentityUri": "urn:epc:id:giai:9521141.32a%2Fb",
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "gsrn",
+   "source": "TDS 2.3 7.8",
+   "elementString": "(8018)952114112345678906",
+   "pureIdentityUri": "urn:epc:id:gsrn:9521141.1234567890",
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "gsrnp",
+   "source": "TDS 2.3 7.9",
+   "elementString": "(8017)952114112345678906",
+   "pureIdentityUri": "urn:epc:id:gsrnp:9521141.1234567890",
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "gdti",
+   "source": "TDS 2.3 7.10 (leading-zero serial: not encodable in gdti-96)",
+   "elementString": "(253)9521141123454006847",
+   "pureIdentityUri": "urn:epc:id:gdti:9521141.12345.006847",
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "cpi",
+   "source": "TDS 2.3 7.11",
+   "elementString": "(8010)95211415PQ7/Z43(8011)12345",
+   "pureIdentityUri": "urn:epc:id:cpi:9521141.5PQ7%2FZ43.12345",
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "sgcn",
+   "source": "TDS 2.3 7.12",
+   "elementString": "(255)952114167890904711",
+   "pureIdentityUri": "urn:epc:id:sgcn:9521141.67890.04711",
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "itip",
+   "source": "TDS 2.3 7.15",
+   "elementString": "(8006)095211411234540404(21)32a/b",
+   "pureIdentityUri": "urn:epc:id:itip:9521141.012345.04.04.32a%2Fb",
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "sgtin",
+   "source": "TDS 2.3 6.3.1 example (pure URI only)",
+   "pureIdentityUri": "urn:epc:id:sgtin:9521141.012345.4711",
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "sscc",
+   "source": "TDS 2.3 6.3.2",
+   "pureIdentityUri": "urn:epc:id:sscc:9521141.1234567890",
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "sgln",
+   "source": "TDS 2.3 6.3.3",
+   "pureIdentityUri": "urn:epc:id:sgln:9521141.12345.400",
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "grai",
+   "source": "TDS 2.3 6.3.4",
+   "pureIdentityUri": "urn:epc:id:grai:9521141.12345.400",
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "giai",
+   "source": "TDS 2.3 6.3.5",
+   "pureIdentityUri": "urn:epc:id:giai:9521141.12345400",
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "gsrn",
+   "source": "TDS 2.3 6.3.6",
+   "pureIdentityUri": "urn:epc:id:gsrn:9521141.1234567890",
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "gsrnp",
+   "source": "TDS 2.3 6.3.7",
+   "pureIdentityUri": "urn:epc:id:gsrnp:9521141.1234567890",
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "gdti",
+   "source": "TDS 2.3 6.3.8",
+   "pureIdentityUri": "urn:epc:id:gdti:9521141.12345.400",
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "cpi",
+   "source": "TDS 2.3 6.3.9 (cpi-var only)",
+   "pureIdentityUri": "urn:epc:id:cpi:9521141.123ABC.123456789",
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "cpi",
+   "source": "TDS 2.3 6.3.9 (cpi-96 or cpi-var)",
+   "pureIdentityUri": "urn:epc:id:cpi:9521141.123456.123456789",
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "sgcn",
+   "source": "TDS 2.3 6.3.10",
+   "pureIdentityUri": "urn:epc:id:sgcn:4012345.67890.04711",
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "itip",
+   "source": "TDS 2.3 6.3.13",
+   "pureIdentityUri": "urn:epc:id:itip:9521141.012345.01.02.987",
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "gid",
+   "source": "TDS 2.3 6.3.16",
+   "pureIdentityUri": "urn:epc:id:gid:95100000.12345.400",
+   "companyPrefixLength": null
+  },
+  {
+   "scheme": "usdod",
+   "source": "TDS 2.3 6.3.17",
+   "pureIdentityUri": "urn:epc:id:usdod:2S194.12345678901",
+   "companyPrefixLength": null
+  },
+  {
+   "scheme": "adi",
+   "source": "TDS 2.3 6.3.18 (CAGE, empty part number)",
+   "pureIdentityUri": "urn:epc:id:adi:2S194..12345678901",
+   "companyPrefixLength": null
+  },
+  {
+   "scheme": "adi",
+   "source": "TDS 2.3 6.3.18 (DoDAAC with part number)",
+   "pureIdentityUri": "urn:epc:id:adi:W81X9C.3KL984PX1.2WMA52",
+   "companyPrefixLength": null
+  },
+  {
+   "scheme": "sgtin-96",
+   "source": "TDS 2.3 12.1 / 12.2.1 tag URI (control fields [att=x01][xpc=x0004] in 12.1 variant)",
+   "pureIdentityUri": "urn:epc:id:sgtin:9521141.012345.4711",
+   "tagUri": "urn:epc:tag:sgtin-96:3.9521141.012345.4711",
+   "filter": 3,
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "sgtin-96",
+   "source": "TDS 2.3 12.2.2 tag URI",
+   "pureIdentityUri": "urn:epc:id:sgtin:9521141.112345.400",
+   "tagUri": "urn:epc:tag:sgtin-96:3.9521141.112345.400",
+   "filter": 3,
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "sgtin-96",
+   "source": "derived: design-spec example, classic TDS 1.x",
+   "elementString": "(01)80614141123458(21)6789",
+   "pureIdentityUri": "urn:epc:id:sgtin:0614141.812345.6789",
+   "tagUri": "urn:epc:tag:sgtin-96:3.0614141.812345.6789",
+   "hex": "3074257BF7194E4000001A85",
+   "filter": 3,
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "sgtin-96",
+   "source": "derived: TDS 6.3.1 / 12.2.1 URI",
+   "elementString": "(01)09521141123454(21)4711",
+   "pureIdentityUri": "urn:epc:id:sgtin:9521141.012345.4711",
+   "tagUri": "urn:epc:tag:sgtin-96:3.9521141.012345.4711",
+   "hex": "3076451FD40C0E4000001267",
+   "filter": 3,
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "sgtin-96",
+   "source": "derived: TDS 12.2.2 URI",
+   "elementString": "(01)19521141123451(21)400",
+   "pureIdentityUri": "urn:epc:id:sgtin:9521141.112345.400",
+   "tagUri": "urn:epc:tag:sgtin-96:3.9521141.112345.400",
+   "hex": "3076451FD46DB64000000190",
+   "filter": 3,
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "sgtin-96",
+   "source": "derived: GTIN-8 rule 7.3.2",
+   "elementString": "(01)00000095010939(21)12345",
+   "pureIdentityUri": "urn:epc:id:sgtin:00000950.01093.12345",
+   "tagUri": "urn:epc:tag:sgtin-96:1.00000950.01093.12345",
+   "hex": "30300001DB01114000003039",
+   "filter": 1,
+   "companyPrefixLength": 8
+  },
+  {
+   "scheme": "sgtin-96",
+   "source": "derived: TDS 7.2.1 URI, partition 0",
+   "elementString": "(01)09526567890126(21)4711",
+   "pureIdentityUri": "urn:epc:id:sgtin:952656789012.0.4711",
+   "tagUri": "urn:epc:tag:sgtin-96:0.952656789012.0.4711",
+   "hex": "3003773B13F8500000001267",
+   "filter": 0,
+   "companyPrefixLength": 12
+  },
+  {
+   "scheme": "sgln-96",
+   "source": "derived: TDS 7.2.2, empty location ref",
+   "elementString": "(414)9526567890126",
+   "pureIdentityUri": "urn:epc:id:sgln:952656789012..0",
+   "tagUri": "urn:epc:tag:sgln-96:0.952656789012..0",
+   "hex": "3203773B13F8500000000000",
+   "filter": 0,
+   "companyPrefixLength": 12
+  },
+  {
+   "scheme": "sgln-195",
+   "source": "derived: TDS 7.2.2",
+   "elementString": "(414)9526567890126(254)4711",
+   "pureIdentityUri": "urn:epc:id:sgln:952656789012..4711",
+   "tagUri": "urn:epc:tag:sgln-195:0.952656789012..4711",
+   "hex": "3903773B13F850D1BB1620000000000000000000000000000000",
+   "filter": 0,
+   "companyPrefixLength": 12
+  },
+  {
+   "scheme": "sscc-96",
+   "source": "derived: TDS 7.2.3",
+   "elementString": "(00)095265678901234568",
+   "pureIdentityUri": "urn:epc:id:sscc:952656789012.03456",
+   "tagUri": "urn:epc:tag:sscc-96:2.952656789012.03456",
+   "hex": "3143773B13F8500D80000000",
+   "filter": 2,
+   "companyPrefixLength": 12
+  },
+  {
+   "scheme": "giai-202",
+   "source": "derived: TDS 7.2.3, 18 chars at L=12",
+   "elementString": "(8004)952656789012345678901234567890",
+   "pureIdentityUri": "urn:epc:id:giai:952656789012.345678901234567890",
+   "tagUri": "urn:epc:tag:giai-202:1.952656789012.345678901234567890",
+   "hex": "3823773B13F8519B46AD9BB872C18B266D1AB66EE1CB00000000",
+   "filter": 1,
+   "companyPrefixLength": 12
+  },
+  {
+   "scheme": "grai-96",
+   "source": "derived: empty asset type",
+   "elementString": "(8003)095265678901261",
+   "pureIdentityUri": "urn:epc:id:grai:952656789012..1",
+   "tagUri": "urn:epc:tag:grai-96:0.952656789012..1",
+   "hex": "3303773B13F8500000000001",
+   "filter": 0,
+   "companyPrefixLength": 12
+  },
+  {
+   "scheme": "gdti-113",
+   "source": "derived: TDS 7.10 serial with leading zeros (TDS numeric-string; TDT 2.2 decodes this differently)",
+   "elementString": "(253)9521141123454006847",
+   "pureIdentityUri": "urn:epc:id:gdti:9521141.12345.006847",
+   "tagUri": "urn:epc:tag:gdti-113:1.9521141.12345.006847",
+   "hex": "3A36451FD460720000000007AE7F8000",
+   "filter": 1,
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "gdti-174",
+   "source": "derived: TDS 7.10",
+   "elementString": "(253)9521141123454006847",
+   "pureIdentityUri": "urn:epc:id:gdti:9521141.12345.006847",
+   "tagUri": "urn:epc:tag:gdti-174:1.9521141.12345.006847",
+   "hex": "3E36451FD46072C183670D1B80000000000000000000",
+   "filter": 1,
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "sgcn-96",
+   "source": "derived: all-zero 12-digit serial",
+   "elementString": "(255)9526567890126000000000000",
+   "pureIdentityUri": "urn:epc:id:sgcn:952656789012..000000000000",
+   "tagUri": "urn:epc:tag:sgcn-96:0.952656789012..000000000000",
+   "hex": "3F03773B13F850E8D4A51000",
+   "filter": 0,
+   "companyPrefixLength": 12
+  },
+  {
+   "scheme": "sgcn-96",
+   "source": "derived: TDS 6.3.10 URI",
+   "elementString": "(255)401234567890104711",
+   "pureIdentityUri": "urn:epc:id:sgcn:4012345.67890.04711",
+   "tagUri": "urn:epc:tag:sgcn-96:1.4012345.67890.04711",
+   "hex": "3F34F4E4E612640000019907",
+   "filter": 1,
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "cpi-96",
+   "source": "derived: TDS 6.3.9 URI",
+   "elementString": "(8010)9521141123456(8011)123456789",
+   "pureIdentityUri": "urn:epc:id:cpi:9521141.123456.123456789",
+   "tagUri": "urn:epc:tag:cpi-96:1.9521141.123456.123456789",
+   "hex": "3C36451FD400F120075BCD15",
+   "filter": 1,
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "cpi-var",
+   "source": "derived: TDS 6.3.9 URI (120 bits)",
+   "pureIdentityUri": "urn:epc:id:cpi:9521141.123ABC.123456789",
+   "tagUri": "urn:epc:tag:cpi-var:1.9521141.123ABC.123456789",
+   "hex": "3D36451FD71CB30420C000075BCD1500",
+   "filter": 1,
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "cpi-var",
+   "source": "derived: %23 and %2F escapes, serial 0 (110 bits)",
+   "pureIdentityUri": "urn:epc:id:cpi:952114.%23AB-%2F.0",
+   "tagUri": "urn:epc:tag:cpi-var:0.952114.%23AB-%2F.0",
+   "hex": "3D1BA1CCA3042B6F000000000000",
+   "filter": 0,
+   "companyPrefixLength": 6
+  },
+  {
+   "scheme": "giai-96",
+   "source": "derived: max value at P=6 (2^62-1)",
+   "pureIdentityUri": "urn:epc:id:giai:952114.4611686018427387903",
+   "tagUri": "urn:epc:tag:giai-96:0.952114.4611686018427387903",
+   "hex": "341BA1CCBFFFFFFFFFFFFFFF",
+   "filter": 0,
+   "companyPrefixLength": 6
+  },
+  {
+   "scheme": "itip-110",
+   "source": "derived: TDS 6.3.13 URI",
+   "elementString": "(8006)095211411234540102(21)987",
+   "pureIdentityUri": "urn:epc:id:itip:9521141.012345.01.02.987",
+   "tagUri": "urn:epc:tag:itip-110:1.9521141.012345.01.02.987",
+   "hex": "4036451FD40C0E40820000000F6C",
+   "filter": 1,
+   "companyPrefixLength": 7
+  },
+  {
+   "scheme": "itip-110",
+   "source": "derived: piece/total 99",
+   "pureIdentityUri": "urn:epc:id:itip:00000950.01093.99.99.0",
+   "tagUri": "urn:epc:tag:itip-110:0.00000950.01093.99.99.0",
+   "hex": "40100001DB011171E30000000000",
+   "filter": 0,
+   "companyPrefixLength": 8
+  },
+  {
+   "scheme": "gid-96",
+   "source": "derived: TDS 6.3.16 URI",
+   "pureIdentityUri": "urn:epc:id:gid:95100000.12345.400",
+   "tagUri": "urn:epc:tag:gid-96:95100000.12345.400",
+   "hex": "355AB1C60003039000000190",
+   "filter": null,
+   "companyPrefixLength": null
+  },
+  {
+   "scheme": "gid-96",
+   "source": "derived: all maxima",
+   "pureIdentityUri": "urn:epc:id:gid:268435455.16777215.68719476735",
+   "tagUri": "urn:epc:tag:gid-96:268435455.16777215.68719476735",
+   "hex": "35FFFFFFFFFFFFFFFFFFFFFF",
+   "filter": null,
+   "companyPrefixLength": null
+  },
+  {
+   "scheme": "usdod-96",
+   "source": "derived: TDS 6.3.17 URI",
+   "pureIdentityUri": "urn:epc:id:usdod:2S194.12345678901",
+   "tagUri": "urn:epc:tag:usdod-96:1.2S194.12345678901",
+   "hex": "2F12032533139342DFDC1C35",
+   "filter": 1,
+   "companyPrefixLength": null
+  },
+  {
+   "scheme": "usdod-96",
+   "source": "derived: DoDAAC, filter 15, max serial",
+   "pureIdentityUri": "urn:epc:id:usdod:W81X9C.68719476735",
+   "tagUri": "urn:epc:tag:usdod-96:15.W81X9C.68719476735",
+   "hex": "2FF573831583943FFFFFFFFF",
+   "filter": 15,
+   "companyPrefixLength": null
+  },
+  {
+   "scheme": "adi-var",
+   "source": "derived: TDS 6.3.18 URI (CAGE, empty part, 128 bits)",
+   "pureIdentityUri": "urn:epc:id:adi:2S194..12345678901",
+   "tagUri": "urn:epc:tag:adi-var:1.2S194..12345678901",
+   "hex": "3B060C93C79D00C72CF4D76DF8E70C40",
+   "filter": 1,
+   "companyPrefixLength": null
+  },
+  {
+   "scheme": "adi-var",
+   "source": "derived: TDS 6.3.18 URI (DoDAAC, part, 152 bits)",
+   "pureIdentityUri": "urn:epc:id:adi:W81X9C.3KL984PX1.2WMA52",
+   "tagUri": "urn:epc:tag:adi-var:1.W81X9C.3KL984PX1.2WMA52",
+   "hex": "3B057E316390F32CCE78D106310325CD075C8000",
+   "filter": 1,
+   "companyPrefixLength": null
+  },
+  {
+   "scheme": "adi-var",
+   "source": "derived: '#' serial, filter 63 (80 bits)",
+   "pureIdentityUri": "urn:epc:id:adi:W81X9C..%23A1",
+   "tagUri": "urn:epc:tag:adi-var:63.W81X9C..%23A1",
+   "hex": "3BFD7E316390C08C1C40",
+   "filter": 63,
+   "companyPrefixLength": null
+  }
+ ]
+}

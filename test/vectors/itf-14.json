@@ -1,0 +1,199 @@
+{
+ "provenance": {
+  "description": "ITF-14 vectors: GenSpecs 26.0 worked examples and derived cases. gs1-barcode-engine 289c899 has no ITF-14 encoder (no itf14.c; no ITF code in src/c-lib), so no engine vectors exist.",
+  "sources": [
+   "docs/specifications/gs1-general-specifications-v26.0.pdf section 5.3 (Table 5-23 page 344-345, Table 5-24 page 345, Figure 5-32 page 348, 5.3.2.2 page 346-347)"
+  ],
+  "format": "widths bar first, no quiet zones; ratio3 in modules (narrow 1, wide 3); ratio2_5 in half-module units (narrow 2, wide 5), comma separated. Element count 77 = start 4 + 7 pairs x 10 + stop 3.",
+  "research": "docs/superpowers/research/2026-10-11-m4-itf14-gs1-128.md",
+  "extracted": "2026-10-11"
+ },
+ "table": {
+  "binary": [
+   "00110",
+   "10001",
+   "01001",
+   "11000",
+   "00101",
+   "10100",
+   "01100",
+   "00011",
+   "10010",
+   "01010"
+  ],
+  "weights": [
+   1,
+   2,
+   4,
+   7,
+   "parity"
+  ],
+  "start": "nnnn (bar space bar space)",
+  "stop": "wnn (bar space bar)"
+ },
+ "vectors": [
+  {
+   "id": "genspecs:figure-5-32",
+   "kind": "pattern",
+   "source": "GenSpecs 26.0 5.3.2.4 Figure 5-32 (page 348): ITF symbol with bearer bars, HRI \"1 54 00141 28876 3\"",
+   "gtin": "15400141288763",
+   "transmitted": "]I115400141288763",
+   "elementString": "(01)15400141288763",
+   "hri": "15400141288763",
+   "ratio3": {
+    "narrow": 1,
+    "wide": 3,
+    "widths": "11113311131131111133133113113131131311311133133111133131111133131333311111311",
+    "modules": 135,
+    "modulesWithQuietZones": 155
+   },
+   "ratio2_5": {
+    "unitsPerModule": 2,
+    "narrow": 2,
+    "wide": 5,
+    "widths": "2,2,2,2,5,5,2,2,2,5,2,2,5,2,2,2,2,2,5,5,2,5,5,2,2,5,2,2,5,2,5,2,2,5,2,5,2,2,5,2,2,2,5,5,2,5,5,2,2,2,2,5,5,2,5,2,2,2,2,2,5,5,2,5,2,5,5,5,5,2,2,2,2,2,5,2,2",
+    "units": 241,
+    "modules": 120.5,
+    "modulesWithQuietZones": 140.5
+   },
+   "hriAsPrinted": [
+    "1 54 00141 28876 3",
+    "1 5 4 0 0 1 4 1 2 8 8 7 6 3"
+   ]
+  },
+  {
+   "id": "genspecs:table-5-24",
+   "kind": "pattern",
+   "source": "GenSpecs 26.0 5.3.2.1.1 Table 5-24 (page 345): data 0367123456789 + check digit; first pairs 03 and 67 (Figure 5-29)",
+   "gtin": "03671234567897",
+   "transmitted": "]I103671234567897",
+   "elementString": "(01)03671234567897",
+   "hri": "03671234567897",
+   "ratio3": {
+    "narrow": 1,
+    "wide": 3,
+    "widths": "11111313313111113131131331131111333131131113311333111113111133311131113313311",
+    "modules": 135,
+    "modulesWithQuietZones": 155
+   },
+   "ratio2_5": {
+    "unitsPerModule": 2,
+    "narrow": 2,
+    "wide": 5,
+    "widths": "2,2,2,2,2,5,2,5,5,2,5,2,2,2,2,2,5,2,5,2,2,5,2,5,5,2,2,5,2,2,2,2,5,5,5,2,5,2,2,5,2,2,2,5,5,2,2,5,5,5,2,2,2,2,2,5,2,2,2,2,5,5,5,2,2,2,5,2,2,2,5,5,2,5,5,2,2",
+    "units": 241,
+    "modules": 120.5,
+    "modulesWithQuietZones": 140.5
+   },
+   "pairs": [
+    [
+     "03",
+     "bars from 0 = 00110, spaces from 3 = 11000"
+    ],
+    [
+     "67",
+     "bars from 6 = 01100, spaces from 7 = 00011"
+    ]
+   ],
+   "pairWidthsRatio3": {
+    "67": "1131311313",
+    "03": "1313313111"
+   }
+  },
+  {
+   "id": "derived:gtin-13-padded",
+   "kind": "pattern",
+   "source": "derived: GTIN-13 4006381333931 padded to 14 digits with a leading 0 (GenSpecs 1.4.4 / Table 2-3 filler zeros)",
+   "gtin": "04006381333931",
+   "transmitted": "]I104006381333931",
+   "elementString": "(01)04006381333931",
+   "hri": "04006381333931",
+   "ratio3": {
+    "narrow": 1,
+    "wide": 3,
+    "widths": "11111111333113111133331113333111113311113113333311111131331113113331111113311",
+    "modules": 135,
+    "modulesWithQuietZones": 155
+   },
+   "ratio2_5": {
+    "unitsPerModule": 2,
+    "narrow": 2,
+    "wide": 5,
+    "widths": "2,2,2,2,2,2,2,2,5,5,5,2,2,5,2,2,2,2,5,5,5,5,2,2,2,5,5,5,5,2,2,2,2,2,5,5,2,2,2,2,5,2,2,5,5,5,5,5,2,2,2,2,2,2,5,2,5,5,2,2,2,5,2,2,5,5,5,2,2,2,2,2,2,5,5,2,2",
+    "units": 241,
+    "modules": 120.5,
+    "modulesWithQuietZones": 140.5
+   }
+  },
+  {
+   "id": "derived:gtin-8-padded",
+   "kind": "pattern",
+   "source": "derived: GTIN-8 95012346 padded with six leading zeros",
+   "gtin": "00000095012346",
+   "transmitted": "]I100000095012346",
+   "elementString": "(01)00000095012346",
+   "hri": "00000095012346",
+   "ratio3": {
+    "narrow": 1,
+    "wide": 3,
+    "widths": "11111111333311111133331111113333111331133111131131311313331111311113331131311",
+    "modules": 135,
+    "modulesWithQuietZones": 155
+   },
+   "ratio2_5": {
+    "unitsPerModule": 2,
+    "narrow": 2,
+    "wide": 5,
+    "widths": "2,2,2,2,2,2,2,2,5,5,5,5,2,2,2,2,2,2,5,5,5,5,2,2,2,2,2,2,5,5,5,5,2,2,2,5,5,2,2,5,5,2,2,2,2,5,2,2,5,2,5,2,2,5,2,5,5,5,2,2,2,2,5,2,2,2,2,5,5,5,2,2,5,2,5,2,2",
+    "units": 241,
+    "modules": 120.5,
+    "modulesWithQuietZones": 140.5
+   }
+  },
+  {
+   "id": "genspecs:5.3.2.2-length",
+   "kind": "dimension",
+   "source": "GenSpecs 26.0 5.3.2.2 (page 346-347): W = (P(4N+6)+N+6)X+2Q; P=7, N=2.5, X=1.016 mm, Q=10.16 mm gives 142.75 mm",
+   "P": 7,
+   "N": 2.5,
+   "X": 1.016,
+   "Q": 10.16,
+   "expectMm": 142.75,
+   "modulesWithoutQuietZones": 120.5
+  },
+  {
+   "id": "genspecs:5.3.1-density",
+   "kind": "dimension",
+   "source": "GenSpecs 26.0 5.3.1 (page 344): 16 to 18 modules per character pair (16 at 2.5:1), non-data overhead 8 to 9 modules (8.5 at 2.5:1)",
+   "perPair": {
+    "3": 18,
+    "2.25": 15,
+    "2.5": 16
+   },
+   "overhead": {
+    "3": 9,
+    "2.25": 8.25,
+    "2.5": 8.5
+   }
+  },
+  {
+   "id": "derived:bad-check",
+   "kind": "decode",
+   "source": "derived: 15400141288764 (check digit 4 instead of 3)",
+   "widths": "11113311131131111133133113113131131311311133133111133131111133131131331113311",
+   "expect": {
+    "error": "CHECK_DIGIT"
+   }
+  },
+  {
+   "id": "derived:reverse",
+   "kind": "decode",
+   "source": "derived: Figure 5-32 GTIN at 3:1, element widths reversed",
+   "widths": "11311111333313133111113133111133133111311313113131131133133111113113111331111",
+   "expect": {
+    "transmitted": "]I115400141288763",
+    "reversed": true
+   }
+  }
+ ]
+}

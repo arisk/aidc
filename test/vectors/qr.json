@@ -1,0 +1,6073 @@
+{
+ "provenance": {
+  "description": "QR Code Model 2 vectors for GS1 QR Code (FNC1 in first position, ]Q3) and QR Code carrying a GS1 Digital Link URI (]Q1): tables, gs1-barcode-engine unit test matrices, symbols sampled from GS1 publications, derived symbols cross-checked with bwip-js and zxing-wasm, structure hashes for all 160 version/level combinations, and mask penalty examples.",
+  "sources": [
+   "gs1-barcode-engine master 289c899 (2024-09-26), src/c-lib/qr.c UNIT_TESTS (test_qr_QR_encode, test_qr_QR_fixtures, test_qr_QR_versions) and src/c-lib/scandata.c",
+   "docs/specifications/gs1-general-specifications-v26.0.pdf: sections 5.7 (Tables 5-35, 5-36, 5-37, pages 386-388), 7.8.4 (page 538), Figures 2-3 (page 122), 5-7 and 5-10 (page 320), 5-52 (page 385), 6-5 (page 464), page 465",
+   "docs/specifications/gs1-2d-barcode-verification-process-implementation-guideline-v1.3.21.pdf: Figure 9-7 (page 22)",
+   "docs/specifications/gs1-qr-code-powered-by-gs1-best-practices-2023.pdf (best practice 4)",
+   "docs/specifications/gs1-2d-barcodes-at-retail-pos-implementation-guideline-v1.1.0.html (Figure 4-14, 4-16)",
+   "bwip-js 4.11.4 (BWIPP 2026-05-28) and zxing-wasm 3.1.5 as oracles; a throwaway scratch encoder/decoder written for this research"
+  ],
+  "format": "rows: one string per module row, \"X\" dark and \" \" light, no quiet zone (QR needs 4 modules). input: transmitted data without the AIM identifier; for element strings, FNC1 separators are U+001D. scan: AIM identifier + input. segments: decoded segment list in order, count is the character count indicator value (alphanumeric counts include the doubled \"%\" and each FNC1 \"%\"). dataCodewords: hex, before interleaving; interleavedCodewords: hex, final order (data then EC, no remainder bits). mask: the mask pattern reference 0..7 from the format information. penaltyMask.bwipp: mask the BWIPP/gs1-barcode-engine penalty selects for these codewords; penaltyMask.isoLiteral: mask an ISO-literal penalty (format and version information drawn, 1011101 with 4 light modules, outside counts as light) selects. structure: sha256 of the rows of encode(\"HELLO1\", { version, level }) as \"0\"/\"1\" strings joined by \"\\n\" (equal to bwip-js qrcode with fixedeclevel). versionInfo and formatInfo bits: integers, most significant bit first in reading order as in the note.",
+  "research": "docs/superpowers/research/2026-10-12-m6-qr.md",
+  "extracted": "2026-10-12",
+  "licence": "gs1-barcode-engine vectors: Apache-2.0 (test-only use); bwip-js: MIT"
+ },
+ "tables": {
+  "versions": [
+   {
+    "version": 1,
+    "size": 21,
+    "alignmentCentres": [],
+    "dataModules": 208,
+    "totalCodewords": 26,
+    "remainderBits": 0,
+    "versionInfo": null,
+    "levels": {
+     "L": {
+      "dataCodewords": 19,
+      "ecCodewordsPerBlock": 7,
+      "blocks": [
+       {
+        "count": 1,
+        "totalCodewords": 26,
+        "dataCodewords": 19
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 16,
+      "ecCodewordsPerBlock": 10,
+      "blocks": [
+       {
+        "count": 1,
+        "totalCodewords": 26,
+        "dataCodewords": 16
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 13,
+      "ecCodewordsPerBlock": 13,
+      "blocks": [
+       {
+        "count": 1,
+        "totalCodewords": 26,
+        "dataCodewords": 13
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 9,
+      "ecCodewordsPerBlock": 17,
+      "blocks": [
+       {
+        "count": 1,
+        "totalCodewords": 26,
+        "dataCodewords": 9
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 2,
+    "size": 25,
+    "alignmentCentres": [
+     6,
+     18
+    ],
+    "dataModules": 359,
+    "totalCodewords": 44,
+    "remainderBits": 7,
+    "versionInfo": null,
+    "levels": {
+     "L": {
+      "dataCodewords": 34,
+      "ecCodewordsPerBlock": 10,
+      "blocks": [
+       {
+        "count": 1,
+        "totalCodewords": 44,
+        "dataCodewords": 34
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 28,
+      "ecCodewordsPerBlock": 16,
+      "blocks": [
+       {
+        "count": 1,
+        "totalCodewords": 44,
+        "dataCodewords": 28
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 22,
+      "ecCodewordsPerBlock": 22,
+      "blocks": [
+       {
+        "count": 1,
+        "totalCodewords": 44,
+        "dataCodewords": 22
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 16,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 1,
+        "totalCodewords": 44,
+        "dataCodewords": 16
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 3,
+    "size": 29,
+    "alignmentCentres": [
+     6,
+     22
+    ],
+    "dataModules": 567,
+    "totalCodewords": 70,
+    "remainderBits": 7,
+    "versionInfo": null,
+    "levels": {
+     "L": {
+      "dataCodewords": 55,
+      "ecCodewordsPerBlock": 15,
+      "blocks": [
+       {
+        "count": 1,
+        "totalCodewords": 70,
+        "dataCodewords": 55
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 44,
+      "ecCodewordsPerBlock": 26,
+      "blocks": [
+       {
+        "count": 1,
+        "totalCodewords": 70,
+        "dataCodewords": 44
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 34,
+      "ecCodewordsPerBlock": 18,
+      "blocks": [
+       {
+        "count": 2,
+        "totalCodewords": 35,
+        "dataCodewords": 17
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 26,
+      "ecCodewordsPerBlock": 22,
+      "blocks": [
+       {
+        "count": 2,
+        "totalCodewords": 35,
+        "dataCodewords": 13
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 4,
+    "size": 33,
+    "alignmentCentres": [
+     6,
+     26
+    ],
+    "dataModules": 807,
+    "totalCodewords": 100,
+    "remainderBits": 7,
+    "versionInfo": null,
+    "levels": {
+     "L": {
+      "dataCodewords": 80,
+      "ecCodewordsPerBlock": 20,
+      "blocks": [
+       {
+        "count": 1,
+        "totalCodewords": 100,
+        "dataCodewords": 80
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 64,
+      "ecCodewordsPerBlock": 18,
+      "blocks": [
+       {
+        "count": 2,
+        "totalCodewords": 50,
+        "dataCodewords": 32
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 48,
+      "ecCodewordsPerBlock": 26,
+      "blocks": [
+       {
+        "count": 2,
+        "totalCodewords": 50,
+        "dataCodewords": 24
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 36,
+      "ecCodewordsPerBlock": 16,
+      "blocks": [
+       {
+        "count": 4,
+        "totalCodewords": 25,
+        "dataCodewords": 9
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 5,
+    "size": 37,
+    "alignmentCentres": [
+     6,
+     30
+    ],
+    "dataModules": 1079,
+    "totalCodewords": 134,
+    "remainderBits": 7,
+    "versionInfo": null,
+    "levels": {
+     "L": {
+      "dataCodewords": 108,
+      "ecCodewordsPerBlock": 26,
+      "blocks": [
+       {
+        "count": 1,
+        "totalCodewords": 134,
+        "dataCodewords": 108
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 86,
+      "ecCodewordsPerBlock": 24,
+      "blocks": [
+       {
+        "count": 2,
+        "totalCodewords": 67,
+        "dataCodewords": 43
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 62,
+      "ecCodewordsPerBlock": 18,
+      "blocks": [
+       {
+        "count": 2,
+        "totalCodewords": 33,
+        "dataCodewords": 15
+       },
+       {
+        "count": 2,
+        "totalCodewords": 34,
+        "dataCodewords": 16
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 46,
+      "ecCodewordsPerBlock": 22,
+      "blocks": [
+       {
+        "count": 2,
+        "totalCodewords": 33,
+        "dataCodewords": 11
+       },
+       {
+        "count": 2,
+        "totalCodewords": 34,
+        "dataCodewords": 12
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 6,
+    "size": 41,
+    "alignmentCentres": [
+     6,
+     34
+    ],
+    "dataModules": 1383,
+    "totalCodewords": 172,
+    "remainderBits": 7,
+    "versionInfo": null,
+    "levels": {
+     "L": {
+      "dataCodewords": 136,
+      "ecCodewordsPerBlock": 18,
+      "blocks": [
+       {
+        "count": 2,
+        "totalCodewords": 86,
+        "dataCodewords": 68
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 108,
+      "ecCodewordsPerBlock": 16,
+      "blocks": [
+       {
+        "count": 4,
+        "totalCodewords": 43,
+        "dataCodewords": 27
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 76,
+      "ecCodewordsPerBlock": 24,
+      "blocks": [
+       {
+        "count": 4,
+        "totalCodewords": 43,
+        "dataCodewords": 19
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 60,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 4,
+        "totalCodewords": 43,
+        "dataCodewords": 15
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 7,
+    "size": 45,
+    "alignmentCentres": [
+     6,
+     22,
+     38
+    ],
+    "dataModules": 1568,
+    "totalCodewords": 196,
+    "remainderBits": 0,
+    "versionInfo": 31892,
+    "levels": {
+     "L": {
+      "dataCodewords": 156,
+      "ecCodewordsPerBlock": 20,
+      "blocks": [
+       {
+        "count": 2,
+        "totalCodewords": 98,
+        "dataCodewords": 78
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 124,
+      "ecCodewordsPerBlock": 18,
+      "blocks": [
+       {
+        "count": 4,
+        "totalCodewords": 49,
+        "dataCodewords": 31
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 88,
+      "ecCodewordsPerBlock": 18,
+      "blocks": [
+       {
+        "count": 2,
+        "totalCodewords": 32,
+        "dataCodewords": 14
+       },
+       {
+        "count": 4,
+        "totalCodewords": 33,
+        "dataCodewords": 15
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 66,
+      "ecCodewordsPerBlock": 26,
+      "blocks": [
+       {
+        "count": 4,
+        "totalCodewords": 39,
+        "dataCodewords": 13
+       },
+       {
+        "count": 1,
+        "totalCodewords": 40,
+        "dataCodewords": 14
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 8,
+    "size": 49,
+    "alignmentCentres": [
+     6,
+     24,
+     42
+    ],
+    "dataModules": 1936,
+    "totalCodewords": 242,
+    "remainderBits": 0,
+    "versionInfo": 34236,
+    "levels": {
+     "L": {
+      "dataCodewords": 194,
+      "ecCodewordsPerBlock": 24,
+      "blocks": [
+       {
+        "count": 2,
+        "totalCodewords": 121,
+        "dataCodewords": 97
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 154,
+      "ecCodewordsPerBlock": 22,
+      "blocks": [
+       {
+        "count": 2,
+        "totalCodewords": 60,
+        "dataCodewords": 38
+       },
+       {
+        "count": 2,
+        "totalCodewords": 61,
+        "dataCodewords": 39
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 110,
+      "ecCodewordsPerBlock": 22,
+      "blocks": [
+       {
+        "count": 4,
+        "totalCodewords": 40,
+        "dataCodewords": 18
+       },
+       {
+        "count": 2,
+        "totalCodewords": 41,
+        "dataCodewords": 19
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 86,
+      "ecCodewordsPerBlock": 26,
+      "blocks": [
+       {
+        "count": 4,
+        "totalCodewords": 40,
+        "dataCodewords": 14
+       },
+       {
+        "count": 2,
+        "totalCodewords": 41,
+        "dataCodewords": 15
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 9,
+    "size": 53,
+    "alignmentCentres": [
+     6,
+     26,
+     46
+    ],
+    "dataModules": 2336,
+    "totalCodewords": 292,
+    "remainderBits": 0,
+    "versionInfo": 39577,
+    "levels": {
+     "L": {
+      "dataCodewords": 232,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 2,
+        "totalCodewords": 146,
+        "dataCodewords": 116
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 182,
+      "ecCodewordsPerBlock": 22,
+      "blocks": [
+       {
+        "count": 3,
+        "totalCodewords": 58,
+        "dataCodewords": 36
+       },
+       {
+        "count": 2,
+        "totalCodewords": 59,
+        "dataCodewords": 37
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 132,
+      "ecCodewordsPerBlock": 20,
+      "blocks": [
+       {
+        "count": 4,
+        "totalCodewords": 36,
+        "dataCodewords": 16
+       },
+       {
+        "count": 4,
+        "totalCodewords": 37,
+        "dataCodewords": 17
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 100,
+      "ecCodewordsPerBlock": 24,
+      "blocks": [
+       {
+        "count": 4,
+        "totalCodewords": 36,
+        "dataCodewords": 12
+       },
+       {
+        "count": 4,
+        "totalCodewords": 37,
+        "dataCodewords": 13
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 10,
+    "size": 57,
+    "alignmentCentres": [
+     6,
+     28,
+     50
+    ],
+    "dataModules": 2768,
+    "totalCodewords": 346,
+    "remainderBits": 0,
+    "versionInfo": 42195,
+    "levels": {
+     "L": {
+      "dataCodewords": 274,
+      "ecCodewordsPerBlock": 18,
+      "blocks": [
+       {
+        "count": 2,
+        "totalCodewords": 86,
+        "dataCodewords": 68
+       },
+       {
+        "count": 2,
+        "totalCodewords": 87,
+        "dataCodewords": 69
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 216,
+      "ecCodewordsPerBlock": 26,
+      "blocks": [
+       {
+        "count": 4,
+        "totalCodewords": 69,
+        "dataCodewords": 43
+       },
+       {
+        "count": 1,
+        "totalCodewords": 70,
+        "dataCodewords": 44
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 154,
+      "ecCodewordsPerBlock": 24,
+      "blocks": [
+       {
+        "count": 6,
+        "totalCodewords": 43,
+        "dataCodewords": 19
+       },
+       {
+        "count": 2,
+        "totalCodewords": 44,
+        "dataCodewords": 20
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 122,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 6,
+        "totalCodewords": 43,
+        "dataCodewords": 15
+       },
+       {
+        "count": 2,
+        "totalCodewords": 44,
+        "dataCodewords": 16
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 11,
+    "size": 61,
+    "alignmentCentres": [
+     6,
+     30,
+     54
+    ],
+    "dataModules": 3232,
+    "totalCodewords": 404,
+    "remainderBits": 0,
+    "versionInfo": 48118,
+    "levels": {
+     "L": {
+      "dataCodewords": 324,
+      "ecCodewordsPerBlock": 20,
+      "blocks": [
+       {
+        "count": 4,
+        "totalCodewords": 101,
+        "dataCodewords": 81
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 254,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 1,
+        "totalCodewords": 80,
+        "dataCodewords": 50
+       },
+       {
+        "count": 4,
+        "totalCodewords": 81,
+        "dataCodewords": 51
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 180,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 4,
+        "totalCodewords": 50,
+        "dataCodewords": 22
+       },
+       {
+        "count": 4,
+        "totalCodewords": 51,
+        "dataCodewords": 23
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 140,
+      "ecCodewordsPerBlock": 24,
+      "blocks": [
+       {
+        "count": 3,
+        "totalCodewords": 36,
+        "dataCodewords": 12
+       },
+       {
+        "count": 8,
+        "totalCodewords": 37,
+        "dataCodewords": 13
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 12,
+    "size": 65,
+    "alignmentCentres": [
+     6,
+     32,
+     58
+    ],
+    "dataModules": 3728,
+    "totalCodewords": 466,
+    "remainderBits": 0,
+    "versionInfo": 51042,
+    "levels": {
+     "L": {
+      "dataCodewords": 370,
+      "ecCodewordsPerBlock": 24,
+      "blocks": [
+       {
+        "count": 2,
+        "totalCodewords": 116,
+        "dataCodewords": 92
+       },
+       {
+        "count": 2,
+        "totalCodewords": 117,
+        "dataCodewords": 93
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 290,
+      "ecCodewordsPerBlock": 22,
+      "blocks": [
+       {
+        "count": 6,
+        "totalCodewords": 58,
+        "dataCodewords": 36
+       },
+       {
+        "count": 2,
+        "totalCodewords": 59,
+        "dataCodewords": 37
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 206,
+      "ecCodewordsPerBlock": 26,
+      "blocks": [
+       {
+        "count": 4,
+        "totalCodewords": 46,
+        "dataCodewords": 20
+       },
+       {
+        "count": 6,
+        "totalCodewords": 47,
+        "dataCodewords": 21
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 158,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 7,
+        "totalCodewords": 42,
+        "dataCodewords": 14
+       },
+       {
+        "count": 4,
+        "totalCodewords": 43,
+        "dataCodewords": 15
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 13,
+    "size": 69,
+    "alignmentCentres": [
+     6,
+     34,
+     62
+    ],
+    "dataModules": 4256,
+    "totalCodewords": 532,
+    "remainderBits": 0,
+    "versionInfo": 55367,
+    "levels": {
+     "L": {
+      "dataCodewords": 428,
+      "ecCodewordsPerBlock": 26,
+      "blocks": [
+       {
+        "count": 4,
+        "totalCodewords": 133,
+        "dataCodewords": 107
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 334,
+      "ecCodewordsPerBlock": 22,
+      "blocks": [
+       {
+        "count": 8,
+        "totalCodewords": 59,
+        "dataCodewords": 37
+       },
+       {
+        "count": 1,
+        "totalCodewords": 60,
+        "dataCodewords": 38
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 244,
+      "ecCodewordsPerBlock": 24,
+      "blocks": [
+       {
+        "count": 8,
+        "totalCodewords": 44,
+        "dataCodewords": 20
+       },
+       {
+        "count": 4,
+        "totalCodewords": 45,
+        "dataCodewords": 21
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 180,
+      "ecCodewordsPerBlock": 22,
+      "blocks": [
+       {
+        "count": 12,
+        "totalCodewords": 33,
+        "dataCodewords": 11
+       },
+       {
+        "count": 4,
+        "totalCodewords": 34,
+        "dataCodewords": 12
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 14,
+    "size": 73,
+    "alignmentCentres": [
+     6,
+     26,
+     46,
+     66
+    ],
+    "dataModules": 4651,
+    "totalCodewords": 581,
+    "remainderBits": 3,
+    "versionInfo": 58893,
+    "levels": {
+     "L": {
+      "dataCodewords": 461,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 3,
+        "totalCodewords": 145,
+        "dataCodewords": 115
+       },
+       {
+        "count": 1,
+        "totalCodewords": 146,
+        "dataCodewords": 116
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 365,
+      "ecCodewordsPerBlock": 24,
+      "blocks": [
+       {
+        "count": 4,
+        "totalCodewords": 64,
+        "dataCodewords": 40
+       },
+       {
+        "count": 5,
+        "totalCodewords": 65,
+        "dataCodewords": 41
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 261,
+      "ecCodewordsPerBlock": 20,
+      "blocks": [
+       {
+        "count": 11,
+        "totalCodewords": 36,
+        "dataCodewords": 16
+       },
+       {
+        "count": 5,
+        "totalCodewords": 37,
+        "dataCodewords": 17
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 197,
+      "ecCodewordsPerBlock": 24,
+      "blocks": [
+       {
+        "count": 11,
+        "totalCodewords": 36,
+        "dataCodewords": 12
+       },
+       {
+        "count": 5,
+        "totalCodewords": 37,
+        "dataCodewords": 13
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 15,
+    "size": 77,
+    "alignmentCentres": [
+     6,
+     26,
+     48,
+     70
+    ],
+    "dataModules": 5243,
+    "totalCodewords": 655,
+    "remainderBits": 3,
+    "versionInfo": 63784,
+    "levels": {
+     "L": {
+      "dataCodewords": 523,
+      "ecCodewordsPerBlock": 22,
+      "blocks": [
+       {
+        "count": 5,
+        "totalCodewords": 109,
+        "dataCodewords": 87
+       },
+       {
+        "count": 1,
+        "totalCodewords": 110,
+        "dataCodewords": 88
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 415,
+      "ecCodewordsPerBlock": 24,
+      "blocks": [
+       {
+        "count": 5,
+        "totalCodewords": 65,
+        "dataCodewords": 41
+       },
+       {
+        "count": 5,
+        "totalCodewords": 66,
+        "dataCodewords": 42
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 295,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 5,
+        "totalCodewords": 54,
+        "dataCodewords": 24
+       },
+       {
+        "count": 7,
+        "totalCodewords": 55,
+        "dataCodewords": 25
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 223,
+      "ecCodewordsPerBlock": 24,
+      "blocks": [
+       {
+        "count": 11,
+        "totalCodewords": 36,
+        "dataCodewords": 12
+       },
+       {
+        "count": 7,
+        "totalCodewords": 37,
+        "dataCodewords": 13
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 16,
+    "size": 81,
+    "alignmentCentres": [
+     6,
+     26,
+     50,
+     74
+    ],
+    "dataModules": 5867,
+    "totalCodewords": 733,
+    "remainderBits": 3,
+    "versionInfo": 68472,
+    "levels": {
+     "L": {
+      "dataCodewords": 589,
+      "ecCodewordsPerBlock": 24,
+      "blocks": [
+       {
+        "count": 5,
+        "totalCodewords": 122,
+        "dataCodewords": 98
+       },
+       {
+        "count": 1,
+        "totalCodewords": 123,
+        "dataCodewords": 99
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 453,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 7,
+        "totalCodewords": 73,
+        "dataCodewords": 45
+       },
+       {
+        "count": 3,
+        "totalCodewords": 74,
+        "dataCodewords": 46
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 325,
+      "ecCodewordsPerBlock": 24,
+      "blocks": [
+       {
+        "count": 15,
+        "totalCodewords": 43,
+        "dataCodewords": 19
+       },
+       {
+        "count": 2,
+        "totalCodewords": 44,
+        "dataCodewords": 20
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 253,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 3,
+        "totalCodewords": 45,
+        "dataCodewords": 15
+       },
+       {
+        "count": 13,
+        "totalCodewords": 46,
+        "dataCodewords": 16
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 17,
+    "size": 85,
+    "alignmentCentres": [
+     6,
+     30,
+     54,
+     78
+    ],
+    "dataModules": 6523,
+    "totalCodewords": 815,
+    "remainderBits": 3,
+    "versionInfo": 70749,
+    "levels": {
+     "L": {
+      "dataCodewords": 647,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 1,
+        "totalCodewords": 135,
+        "dataCodewords": 107
+       },
+       {
+        "count": 5,
+        "totalCodewords": 136,
+        "dataCodewords": 108
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 507,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 10,
+        "totalCodewords": 74,
+        "dataCodewords": 46
+       },
+       {
+        "count": 1,
+        "totalCodewords": 75,
+        "dataCodewords": 47
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 367,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 1,
+        "totalCodewords": 50,
+        "dataCodewords": 22
+       },
+       {
+        "count": 15,
+        "totalCodewords": 51,
+        "dataCodewords": 23
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 283,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 2,
+        "totalCodewords": 42,
+        "dataCodewords": 14
+       },
+       {
+        "count": 17,
+        "totalCodewords": 43,
+        "dataCodewords": 15
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 18,
+    "size": 89,
+    "alignmentCentres": [
+     6,
+     30,
+     56,
+     82
+    ],
+    "dataModules": 7211,
+    "totalCodewords": 901,
+    "remainderBits": 3,
+    "versionInfo": 76311,
+    "levels": {
+     "L": {
+      "dataCodewords": 721,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 5,
+        "totalCodewords": 150,
+        "dataCodewords": 120
+       },
+       {
+        "count": 1,
+        "totalCodewords": 151,
+        "dataCodewords": 121
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 563,
+      "ecCodewordsPerBlock": 26,
+      "blocks": [
+       {
+        "count": 9,
+        "totalCodewords": 69,
+        "dataCodewords": 43
+       },
+       {
+        "count": 4,
+        "totalCodewords": 70,
+        "dataCodewords": 44
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 397,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 17,
+        "totalCodewords": 50,
+        "dataCodewords": 22
+       },
+       {
+        "count": 1,
+        "totalCodewords": 51,
+        "dataCodewords": 23
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 313,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 2,
+        "totalCodewords": 42,
+        "dataCodewords": 14
+       },
+       {
+        "count": 19,
+        "totalCodewords": 43,
+        "dataCodewords": 15
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 19,
+    "size": 93,
+    "alignmentCentres": [
+     6,
+     30,
+     58,
+     86
+    ],
+    "dataModules": 7931,
+    "totalCodewords": 991,
+    "remainderBits": 3,
+    "versionInfo": 79154,
+    "levels": {
+     "L": {
+      "dataCodewords": 795,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 3,
+        "totalCodewords": 141,
+        "dataCodewords": 113
+       },
+       {
+        "count": 4,
+        "totalCodewords": 142,
+        "dataCodewords": 114
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 627,
+      "ecCodewordsPerBlock": 26,
+      "blocks": [
+       {
+        "count": 3,
+        "totalCodewords": 70,
+        "dataCodewords": 44
+       },
+       {
+        "count": 11,
+        "totalCodewords": 71,
+        "dataCodewords": 45
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 445,
+      "ecCodewordsPerBlock": 26,
+      "blocks": [
+       {
+        "count": 17,
+        "totalCodewords": 47,
+        "dataCodewords": 21
+       },
+       {
+        "count": 4,
+        "totalCodewords": 48,
+        "dataCodewords": 22
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 341,
+      "ecCodewordsPerBlock": 26,
+      "blocks": [
+       {
+        "count": 9,
+        "totalCodewords": 39,
+        "dataCodewords": 13
+       },
+       {
+        "count": 16,
+        "totalCodewords": 40,
+        "dataCodewords": 14
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 20,
+    "size": 97,
+    "alignmentCentres": [
+     6,
+     34,
+     62,
+     90
+    ],
+    "dataModules": 8683,
+    "totalCodewords": 1085,
+    "remainderBits": 3,
+    "versionInfo": 84390,
+    "levels": {
+     "L": {
+      "dataCodewords": 861,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 3,
+        "totalCodewords": 135,
+        "dataCodewords": 107
+       },
+       {
+        "count": 5,
+        "totalCodewords": 136,
+        "dataCodewords": 108
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 669,
+      "ecCodewordsPerBlock": 26,
+      "blocks": [
+       {
+        "count": 3,
+        "totalCodewords": 67,
+        "dataCodewords": 41
+       },
+       {
+        "count": 13,
+        "totalCodewords": 68,
+        "dataCodewords": 42
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 485,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 15,
+        "totalCodewords": 54,
+        "dataCodewords": 24
+       },
+       {
+        "count": 5,
+        "totalCodewords": 55,
+        "dataCodewords": 25
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 385,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 15,
+        "totalCodewords": 43,
+        "dataCodewords": 15
+       },
+       {
+        "count": 10,
+        "totalCodewords": 44,
+        "dataCodewords": 16
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 21,
+    "size": 101,
+    "alignmentCentres": [
+     6,
+     28,
+     50,
+     72,
+     94
+    ],
+    "dataModules": 9252,
+    "totalCodewords": 1156,
+    "remainderBits": 4,
+    "versionInfo": 87683,
+    "levels": {
+     "L": {
+      "dataCodewords": 932,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 4,
+        "totalCodewords": 144,
+        "dataCodewords": 116
+       },
+       {
+        "count": 4,
+        "totalCodewords": 145,
+        "dataCodewords": 117
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 714,
+      "ecCodewordsPerBlock": 26,
+      "blocks": [
+       {
+        "count": 17,
+        "totalCodewords": 68,
+        "dataCodewords": 42
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 512,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 17,
+        "totalCodewords": 50,
+        "dataCodewords": 22
+       },
+       {
+        "count": 6,
+        "totalCodewords": 51,
+        "dataCodewords": 23
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 406,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 19,
+        "totalCodewords": 46,
+        "dataCodewords": 16
+       },
+       {
+        "count": 6,
+        "totalCodewords": 47,
+        "dataCodewords": 17
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 22,
+    "size": 105,
+    "alignmentCentres": [
+     6,
+     26,
+     50,
+     74,
+     98
+    ],
+    "dataModules": 10068,
+    "totalCodewords": 1258,
+    "remainderBits": 4,
+    "versionInfo": 92361,
+    "levels": {
+     "L": {
+      "dataCodewords": 1006,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 2,
+        "totalCodewords": 139,
+        "dataCodewords": 111
+       },
+       {
+        "count": 7,
+        "totalCodewords": 140,
+        "dataCodewords": 112
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 782,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 17,
+        "totalCodewords": 74,
+        "dataCodewords": 46
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 568,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 7,
+        "totalCodewords": 54,
+        "dataCodewords": 24
+       },
+       {
+        "count": 16,
+        "totalCodewords": 55,
+        "dataCodewords": 25
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 442,
+      "ecCodewordsPerBlock": 24,
+      "blocks": [
+       {
+        "count": 34,
+        "totalCodewords": 37,
+        "dataCodewords": 13
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 23,
+    "size": 109,
+    "alignmentCentres": [
+     6,
+     30,
+     54,
+     78,
+     102
+    ],
+    "dataModules": 10916,
+    "totalCodewords": 1364,
+    "remainderBits": 4,
+    "versionInfo": 96236,
+    "levels": {
+     "L": {
+      "dataCodewords": 1094,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 4,
+        "totalCodewords": 151,
+        "dataCodewords": 121
+       },
+       {
+        "count": 5,
+        "totalCodewords": 152,
+        "dataCodewords": 122
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 860,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 4,
+        "totalCodewords": 75,
+        "dataCodewords": 47
+       },
+       {
+        "count": 14,
+        "totalCodewords": 76,
+        "dataCodewords": 48
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 614,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 11,
+        "totalCodewords": 54,
+        "dataCodewords": 24
+       },
+       {
+        "count": 14,
+        "totalCodewords": 55,
+        "dataCodewords": 25
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 464,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 16,
+        "totalCodewords": 45,
+        "dataCodewords": 15
+       },
+       {
+        "count": 14,
+        "totalCodewords": 46,
+        "dataCodewords": 16
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 24,
+    "size": 113,
+    "alignmentCentres": [
+     6,
+     28,
+     54,
+     80,
+     106
+    ],
+    "dataModules": 11796,
+    "totalCodewords": 1474,
+    "remainderBits": 4,
+    "versionInfo": 102084,
+    "levels": {
+     "L": {
+      "dataCodewords": 1174,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 6,
+        "totalCodewords": 147,
+        "dataCodewords": 117
+       },
+       {
+        "count": 4,
+        "totalCodewords": 148,
+        "dataCodewords": 118
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 914,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 6,
+        "totalCodewords": 73,
+        "dataCodewords": 45
+       },
+       {
+        "count": 14,
+        "totalCodewords": 74,
+        "dataCodewords": 46
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 664,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 11,
+        "totalCodewords": 54,
+        "dataCodewords": 24
+       },
+       {
+        "count": 16,
+        "totalCodewords": 55,
+        "dataCodewords": 25
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 514,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 30,
+        "totalCodewords": 46,
+        "dataCodewords": 16
+       },
+       {
+        "count": 2,
+        "totalCodewords": 47,
+        "dataCodewords": 17
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 25,
+    "size": 117,
+    "alignmentCentres": [
+     6,
+     32,
+     58,
+     84,
+     110
+    ],
+    "dataModules": 12708,
+    "totalCodewords": 1588,
+    "remainderBits": 4,
+    "versionInfo": 102881,
+    "levels": {
+     "L": {
+      "dataCodewords": 1276,
+      "ecCodewordsPerBlock": 26,
+      "blocks": [
+       {
+        "count": 8,
+        "totalCodewords": 132,
+        "dataCodewords": 106
+       },
+       {
+        "count": 4,
+        "totalCodewords": 133,
+        "dataCodewords": 107
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 1000,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 8,
+        "totalCodewords": 75,
+        "dataCodewords": 47
+       },
+       {
+        "count": 13,
+        "totalCodewords": 76,
+        "dataCodewords": 48
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 718,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 7,
+        "totalCodewords": 54,
+        "dataCodewords": 24
+       },
+       {
+        "count": 22,
+        "totalCodewords": 55,
+        "dataCodewords": 25
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 538,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 22,
+        "totalCodewords": 45,
+        "dataCodewords": 15
+       },
+       {
+        "count": 13,
+        "totalCodewords": 46,
+        "dataCodewords": 16
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 26,
+    "size": 121,
+    "alignmentCentres": [
+     6,
+     30,
+     58,
+     86,
+     114
+    ],
+    "dataModules": 13652,
+    "totalCodewords": 1706,
+    "remainderBits": 4,
+    "versionInfo": 110507,
+    "levels": {
+     "L": {
+      "dataCodewords": 1370,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 10,
+        "totalCodewords": 142,
+        "dataCodewords": 114
+       },
+       {
+        "count": 2,
+        "totalCodewords": 143,
+        "dataCodewords": 115
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 1062,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 19,
+        "totalCodewords": 74,
+        "dataCodewords": 46
+       },
+       {
+        "count": 4,
+        "totalCodewords": 75,
+        "dataCodewords": 47
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 754,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 28,
+        "totalCodewords": 50,
+        "dataCodewords": 22
+       },
+       {
+        "count": 6,
+        "totalCodewords": 51,
+        "dataCodewords": 23
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 596,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 33,
+        "totalCodewords": 46,
+        "dataCodewords": 16
+       },
+       {
+        "count": 4,
+        "totalCodewords": 47,
+        "dataCodewords": 17
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 27,
+    "size": 125,
+    "alignmentCentres": [
+     6,
+     34,
+     62,
+     90,
+     118
+    ],
+    "dataModules": 14628,
+    "totalCodewords": 1828,
+    "remainderBits": 4,
+    "versionInfo": 110734,
+    "levels": {
+     "L": {
+      "dataCodewords": 1468,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 8,
+        "totalCodewords": 152,
+        "dataCodewords": 122
+       },
+       {
+        "count": 4,
+        "totalCodewords": 153,
+        "dataCodewords": 123
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 1128,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 22,
+        "totalCodewords": 73,
+        "dataCodewords": 45
+       },
+       {
+        "count": 3,
+        "totalCodewords": 74,
+        "dataCodewords": 46
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 808,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 8,
+        "totalCodewords": 53,
+        "dataCodewords": 23
+       },
+       {
+        "count": 26,
+        "totalCodewords": 54,
+        "dataCodewords": 24
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 628,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 12,
+        "totalCodewords": 45,
+        "dataCodewords": 15
+       },
+       {
+        "count": 28,
+        "totalCodewords": 46,
+        "dataCodewords": 16
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 28,
+    "size": 129,
+    "alignmentCentres": [
+     6,
+     26,
+     50,
+     74,
+     98,
+     122
+    ],
+    "dataModules": 15371,
+    "totalCodewords": 1921,
+    "remainderBits": 3,
+    "versionInfo": 117786,
+    "levels": {
+     "L": {
+      "dataCodewords": 1531,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 3,
+        "totalCodewords": 147,
+        "dataCodewords": 117
+       },
+       {
+        "count": 10,
+        "totalCodewords": 148,
+        "dataCodewords": 118
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 1193,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 3,
+        "totalCodewords": 73,
+        "dataCodewords": 45
+       },
+       {
+        "count": 23,
+        "totalCodewords": 74,
+        "dataCodewords": 46
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 871,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 4,
+        "totalCodewords": 54,
+        "dataCodewords": 24
+       },
+       {
+        "count": 31,
+        "totalCodewords": 55,
+        "dataCodewords": 25
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 661,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 11,
+        "totalCodewords": 45,
+        "dataCodewords": 15
+       },
+       {
+        "count": 31,
+        "totalCodewords": 46,
+        "dataCodewords": 16
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 29,
+    "size": 133,
+    "alignmentCentres": [
+     6,
+     30,
+     54,
+     78,
+     102,
+     126
+    ],
+    "dataModules": 16411,
+    "totalCodewords": 2051,
+    "remainderBits": 3,
+    "versionInfo": 119615,
+    "levels": {
+     "L": {
+      "dataCodewords": 1631,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 7,
+        "totalCodewords": 146,
+        "dataCodewords": 116
+       },
+       {
+        "count": 7,
+        "totalCodewords": 147,
+        "dataCodewords": 117
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 1267,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 21,
+        "totalCodewords": 73,
+        "dataCodewords": 45
+       },
+       {
+        "count": 7,
+        "totalCodewords": 74,
+        "dataCodewords": 46
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 911,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 1,
+        "totalCodewords": 53,
+        "dataCodewords": 23
+       },
+       {
+        "count": 37,
+        "totalCodewords": 54,
+        "dataCodewords": 24
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 701,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 19,
+        "totalCodewords": 45,
+        "dataCodewords": 15
+       },
+       {
+        "count": 26,
+        "totalCodewords": 46,
+        "dataCodewords": 16
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 30,
+    "size": 137,
+    "alignmentCentres": [
+     6,
+     26,
+     52,
+     78,
+     104,
+     130
+    ],
+    "dataModules": 17483,
+    "totalCodewords": 2185,
+    "remainderBits": 3,
+    "versionInfo": 126325,
+    "levels": {
+     "L": {
+      "dataCodewords": 1735,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 5,
+        "totalCodewords": 145,
+        "dataCodewords": 115
+       },
+       {
+        "count": 10,
+        "totalCodewords": 146,
+        "dataCodewords": 116
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 1373,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 19,
+        "totalCodewords": 75,
+        "dataCodewords": 47
+       },
+       {
+        "count": 10,
+        "totalCodewords": 76,
+        "dataCodewords": 48
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 985,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 15,
+        "totalCodewords": 54,
+        "dataCodewords": 24
+       },
+       {
+        "count": 25,
+        "totalCodewords": 55,
+        "dataCodewords": 25
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 745,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 23,
+        "totalCodewords": 45,
+        "dataCodewords": 15
+       },
+       {
+        "count": 25,
+        "totalCodewords": 46,
+        "dataCodewords": 16
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 31,
+    "size": 141,
+    "alignmentCentres": [
+     6,
+     30,
+     56,
+     82,
+     108,
+     134
+    ],
+    "dataModules": 18587,
+    "totalCodewords": 2323,
+    "remainderBits": 3,
+    "versionInfo": 127568,
+    "levels": {
+     "L": {
+      "dataCodewords": 1843,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 13,
+        "totalCodewords": 145,
+        "dataCodewords": 115
+       },
+       {
+        "count": 3,
+        "totalCodewords": 146,
+        "dataCodewords": 116
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 1455,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 2,
+        "totalCodewords": 74,
+        "dataCodewords": 46
+       },
+       {
+        "count": 29,
+        "totalCodewords": 75,
+        "dataCodewords": 47
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 1033,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 42,
+        "totalCodewords": 54,
+        "dataCodewords": 24
+       },
+       {
+        "count": 1,
+        "totalCodewords": 55,
+        "dataCodewords": 25
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 793,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 23,
+        "totalCodewords": 45,
+        "dataCodewords": 15
+       },
+       {
+        "count": 28,
+        "totalCodewords": 46,
+        "dataCodewords": 16
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 32,
+    "size": 145,
+    "alignmentCentres": [
+     6,
+     34,
+     60,
+     86,
+     112,
+     138
+    ],
+    "dataModules": 19723,
+    "totalCodewords": 2465,
+    "remainderBits": 3,
+    "versionInfo": 133589,
+    "levels": {
+     "L": {
+      "dataCodewords": 1955,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 17,
+        "totalCodewords": 145,
+        "dataCodewords": 115
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 1541,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 10,
+        "totalCodewords": 74,
+        "dataCodewords": 46
+       },
+       {
+        "count": 23,
+        "totalCodewords": 75,
+        "dataCodewords": 47
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 1115,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 10,
+        "totalCodewords": 54,
+        "dataCodewords": 24
+       },
+       {
+        "count": 35,
+        "totalCodewords": 55,
+        "dataCodewords": 25
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 845,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 19,
+        "totalCodewords": 45,
+        "dataCodewords": 15
+       },
+       {
+        "count": 35,
+        "totalCodewords": 46,
+        "dataCodewords": 16
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 33,
+    "size": 149,
+    "alignmentCentres": [
+     6,
+     30,
+     58,
+     86,
+     114,
+     142
+    ],
+    "dataModules": 20891,
+    "totalCodewords": 2611,
+    "remainderBits": 3,
+    "versionInfo": 136944,
+    "levels": {
+     "L": {
+      "dataCodewords": 2071,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 17,
+        "totalCodewords": 145,
+        "dataCodewords": 115
+       },
+       {
+        "count": 1,
+        "totalCodewords": 146,
+        "dataCodewords": 116
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 1631,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 14,
+        "totalCodewords": 74,
+        "dataCodewords": 46
+       },
+       {
+        "count": 21,
+        "totalCodewords": 75,
+        "dataCodewords": 47
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 1171,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 29,
+        "totalCodewords": 54,
+        "dataCodewords": 24
+       },
+       {
+        "count": 19,
+        "totalCodewords": 55,
+        "dataCodewords": 25
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 901,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 11,
+        "totalCodewords": 45,
+        "dataCodewords": 15
+       },
+       {
+        "count": 46,
+        "totalCodewords": 46,
+        "dataCodewords": 16
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 34,
+    "size": 153,
+    "alignmentCentres": [
+     6,
+     34,
+     62,
+     90,
+     118,
+     146
+    ],
+    "dataModules": 22091,
+    "totalCodewords": 2761,
+    "remainderBits": 3,
+    "versionInfo": 141498,
+    "levels": {
+     "L": {
+      "dataCodewords": 2191,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 13,
+        "totalCodewords": 145,
+        "dataCodewords": 115
+       },
+       {
+        "count": 6,
+        "totalCodewords": 146,
+        "dataCodewords": 116
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 1725,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 14,
+        "totalCodewords": 74,
+        "dataCodewords": 46
+       },
+       {
+        "count": 23,
+        "totalCodewords": 75,
+        "dataCodewords": 47
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 1231,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 44,
+        "totalCodewords": 54,
+        "dataCodewords": 24
+       },
+       {
+        "count": 7,
+        "totalCodewords": 55,
+        "dataCodewords": 25
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 961,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 59,
+        "totalCodewords": 46,
+        "dataCodewords": 16
+       },
+       {
+        "count": 1,
+        "totalCodewords": 47,
+        "dataCodewords": 17
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 35,
+    "size": 157,
+    "alignmentCentres": [
+     6,
+     30,
+     54,
+     78,
+     102,
+     126,
+     150
+    ],
+    "dataModules": 23008,
+    "totalCodewords": 2876,
+    "remainderBits": 0,
+    "versionInfo": 145311,
+    "levels": {
+     "L": {
+      "dataCodewords": 2306,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 12,
+        "totalCodewords": 151,
+        "dataCodewords": 121
+       },
+       {
+        "count": 7,
+        "totalCodewords": 152,
+        "dataCodewords": 122
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 1812,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 12,
+        "totalCodewords": 75,
+        "dataCodewords": 47
+       },
+       {
+        "count": 26,
+        "totalCodewords": 76,
+        "dataCodewords": 48
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 1286,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 39,
+        "totalCodewords": 54,
+        "dataCodewords": 24
+       },
+       {
+        "count": 14,
+        "totalCodewords": 55,
+        "dataCodewords": 25
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 986,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 22,
+        "totalCodewords": 45,
+        "dataCodewords": 15
+       },
+       {
+        "count": 41,
+        "totalCodewords": 46,
+        "dataCodewords": 16
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 36,
+    "size": 161,
+    "alignmentCentres": [
+     6,
+     24,
+     50,
+     76,
+     102,
+     128,
+     154
+    ],
+    "dataModules": 24272,
+    "totalCodewords": 3034,
+    "remainderBits": 0,
+    "versionInfo": 150283,
+    "levels": {
+     "L": {
+      "dataCodewords": 2434,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 6,
+        "totalCodewords": 151,
+        "dataCodewords": 121
+       },
+       {
+        "count": 14,
+        "totalCodewords": 152,
+        "dataCodewords": 122
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 1914,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 6,
+        "totalCodewords": 75,
+        "dataCodewords": 47
+       },
+       {
+        "count": 34,
+        "totalCodewords": 76,
+        "dataCodewords": 48
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 1354,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 46,
+        "totalCodewords": 54,
+        "dataCodewords": 24
+       },
+       {
+        "count": 10,
+        "totalCodewords": 55,
+        "dataCodewords": 25
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 1054,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 2,
+        "totalCodewords": 45,
+        "dataCodewords": 15
+       },
+       {
+        "count": 64,
+        "totalCodewords": 46,
+        "dataCodewords": 16
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 37,
+    "size": 165,
+    "alignmentCentres": [
+     6,
+     28,
+     54,
+     80,
+     106,
+     132,
+     158
+    ],
+    "dataModules": 25568,
+    "totalCodewords": 3196,
+    "remainderBits": 0,
+    "versionInfo": 152622,
+    "levels": {
+     "L": {
+      "dataCodewords": 2566,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 17,
+        "totalCodewords": 152,
+        "dataCodewords": 122
+       },
+       {
+        "count": 4,
+        "totalCodewords": 153,
+        "dataCodewords": 123
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 1992,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 29,
+        "totalCodewords": 74,
+        "dataCodewords": 46
+       },
+       {
+        "count": 14,
+        "totalCodewords": 75,
+        "dataCodewords": 47
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 1426,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 49,
+        "totalCodewords": 54,
+        "dataCodewords": 24
+       },
+       {
+        "count": 10,
+        "totalCodewords": 55,
+        "dataCodewords": 25
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 1096,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 24,
+        "totalCodewords": 45,
+        "dataCodewords": 15
+       },
+       {
+        "count": 46,
+        "totalCodewords": 46,
+        "dataCodewords": 16
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 38,
+    "size": 169,
+    "alignmentCentres": [
+     6,
+     32,
+     58,
+     84,
+     110,
+     136,
+     162
+    ],
+    "dataModules": 26896,
+    "totalCodewords": 3362,
+    "remainderBits": 0,
+    "versionInfo": 158308,
+    "levels": {
+     "L": {
+      "dataCodewords": 2702,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 4,
+        "totalCodewords": 152,
+        "dataCodewords": 122
+       },
+       {
+        "count": 18,
+        "totalCodewords": 153,
+        "dataCodewords": 123
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 2102,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 13,
+        "totalCodewords": 74,
+        "dataCodewords": 46
+       },
+       {
+        "count": 32,
+        "totalCodewords": 75,
+        "dataCodewords": 47
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 1502,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 48,
+        "totalCodewords": 54,
+        "dataCodewords": 24
+       },
+       {
+        "count": 14,
+        "totalCodewords": 55,
+        "dataCodewords": 25
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 1142,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 42,
+        "totalCodewords": 45,
+        "dataCodewords": 15
+       },
+       {
+        "count": 32,
+        "totalCodewords": 46,
+        "dataCodewords": 16
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 39,
+    "size": 173,
+    "alignmentCentres": [
+     6,
+     26,
+     54,
+     82,
+     110,
+     138,
+     166
+    ],
+    "dataModules": 28256,
+    "totalCodewords": 3532,
+    "remainderBits": 0,
+    "versionInfo": 161089,
+    "levels": {
+     "L": {
+      "dataCodewords": 2812,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 20,
+        "totalCodewords": 147,
+        "dataCodewords": 117
+       },
+       {
+        "count": 4,
+        "totalCodewords": 148,
+        "dataCodewords": 118
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 2216,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 40,
+        "totalCodewords": 75,
+        "dataCodewords": 47
+       },
+       {
+        "count": 7,
+        "totalCodewords": 76,
+        "dataCodewords": 48
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 1582,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 43,
+        "totalCodewords": 54,
+        "dataCodewords": 24
+       },
+       {
+        "count": 22,
+        "totalCodewords": 55,
+        "dataCodewords": 25
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 1222,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 10,
+        "totalCodewords": 45,
+        "dataCodewords": 15
+       },
+       {
+        "count": 67,
+        "totalCodewords": 46,
+        "dataCodewords": 16
+       }
+      ]
+     }
+    }
+   },
+   {
+    "version": 40,
+    "size": 177,
+    "alignmentCentres": [
+     6,
+     30,
+     58,
+     86,
+     114,
+     142,
+     170
+    ],
+    "dataModules": 29648,
+    "totalCodewords": 3706,
+    "remainderBits": 0,
+    "versionInfo": 167017,
+    "levels": {
+     "L": {
+      "dataCodewords": 2956,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 19,
+        "totalCodewords": 148,
+        "dataCodewords": 118
+       },
+       {
+        "count": 6,
+        "totalCodewords": 149,
+        "dataCodewords": 119
+       }
+      ]
+     },
+     "M": {
+      "dataCodewords": 2334,
+      "ecCodewordsPerBlock": 28,
+      "blocks": [
+       {
+        "count": 18,
+        "totalCodewords": 75,
+        "dataCodewords": 47
+       },
+       {
+        "count": 31,
+        "totalCodewords": 76,
+        "dataCodewords": 48
+       }
+      ]
+     },
+     "Q": {
+      "dataCodewords": 1666,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 34,
+        "totalCodewords": 54,
+        "dataCodewords": 24
+       },
+       {
+        "count": 34,
+        "totalCodewords": 55,
+        "dataCodewords": 25
+       }
+      ]
+     },
+     "H": {
+      "dataCodewords": 1276,
+      "ecCodewordsPerBlock": 30,
+      "blocks": [
+       {
+        "count": 20,
+        "totalCodewords": 45,
+        "dataCodewords": 15
+       },
+       {
+        "count": 61,
+        "totalCodewords": 46,
+        "dataCodewords": 16
+       }
+      ]
+     }
+    }
+   }
+  ],
+  "formatInfo": [
+   {
+    "level": "L",
+    "mask": 0,
+    "bits": 30660
+   },
+   {
+    "level": "L",
+    "mask": 1,
+    "bits": 29427
+   },
+   {
+    "level": "L",
+    "mask": 2,
+    "bits": 32170
+   },
+   {
+    "level": "L",
+    "mask": 3,
+    "bits": 30877
+   },
+   {
+    "level": "L",
+    "mask": 4,
+    "bits": 26159
+   },
+   {
+    "level": "L",
+    "mask": 5,
+    "bits": 25368
+   },
+   {
+    "level": "L",
+    "mask": 6,
+    "bits": 27713
+   },
+   {
+    "level": "L",
+    "mask": 7,
+    "bits": 26998
+   },
+   {
+    "level": "M",
+    "mask": 0,
+    "bits": 21522
+   },
+   {
+    "level": "M",
+    "mask": 1,
+    "bits": 20773
+   },
+   {
+    "level": "M",
+    "mask": 2,
+    "bits": 24188
+   },
+   {
+    "level": "M",
+    "mask": 3,
+    "bits": 23371
+   },
+   {
+    "level": "M",
+    "mask": 4,
+    "bits": 17913
+   },
+   {
+    "level": "M",
+    "mask": 5,
+    "bits": 16590
+   },
+   {
+    "level": "M",
+    "mask": 6,
+    "bits": 20375
+   },
+   {
+    "level": "M",
+    "mask": 7,
+    "bits": 19104
+   },
+   {
+    "level": "Q",
+    "mask": 0,
+    "bits": 13663
+   },
+   {
+    "level": "Q",
+    "mask": 1,
+    "bits": 12392
+   },
+   {
+    "level": "Q",
+    "mask": 2,
+    "bits": 16177
+   },
+   {
+    "level": "Q",
+    "mask": 3,
+    "bits": 14854
+   },
+   {
+    "level": "Q",
+    "mask": 4,
+    "bits": 9396
+   },
+   {
+    "level": "Q",
+    "mask": 5,
+    "bits": 8579
+   },
+   {
+    "level": "Q",
+    "mask": 6,
+    "bits": 11994
+   },
+   {
+    "level": "Q",
+    "mask": 7,
+    "bits": 11245
+   },
+   {
+    "level": "H",
+    "mask": 0,
+    "bits": 5769
+   },
+   {
+    "level": "H",
+    "mask": 1,
+    "bits": 5054
+   },
+   {
+    "level": "H",
+    "mask": 2,
+    "bits": 7399
+   },
+   {
+    "level": "H",
+    "mask": 3,
+    "bits": 6608
+   },
+   {
+    "level": "H",
+    "mask": 4,
+    "bits": 1890
+   },
+   {
+    "level": "H",
+    "mask": 5,
+    "bits": 597
+   },
+   {
+    "level": "H",
+    "mask": 6,
+    "bits": 3340
+   },
+   {
+    "level": "H",
+    "mask": 7,
+    "bits": 2107
+   }
+  ],
+  "characterCountBits": {
+   "numeric": [
+    10,
+    12,
+    14
+   ],
+   "alphanumeric": [
+    9,
+    11,
+    13
+   ],
+   "byte": [
+    8,
+    16,
+    16
+   ],
+   "kanji": [
+    8,
+    10,
+    12
+   ],
+   "versionRanges": [
+    "1-9",
+    "10-26",
+    "27-40"
+   ]
+  }
+ },
+ "engine": [
+  {
+   "id": "engine-digital-link",
+   "source": "gs1-barcode-engine 289c899 src/c-lib/qr.c test_qr_QR_encode, input \"https://id.gs1.org/01/12312312312333\" (engine \"^\" = FNC1), default EC level M, expected matrix with its 4-module quiet zone removed",
+   "syntax": "digital-link",
+   "input": "https://id.gs1.org/01/12312312312333",
+   "scan": "]Q1https://id.gs1.org/01/12312312312333",
+   "version": 3,
+   "size": 29,
+   "level": "M",
+   "mask": 3,
+   "segments": [
+    {
+     "mode": "B",
+     "count": 36
+    }
+   ],
+   "dataCodewords": "42468747470733A2F2F69642E6773312E6F72672F30312F31323331323331323331323333330EC11EC11EC11",
+   "rows": [
+    "XXXXXXX X  XXX X   X  XXXXXXX",
+    "X     X X X XX  XX    X     X",
+    "X XXX X        XX X X X XXX X",
+    "X XXX X X X   XXXXXX  X XXX X",
+    "X XXX X   XXX XX XXXX X XXX X",
+    "X     X   X  X   X XX X     X",
+    "XXXXXXX X X X X X X X XXXXXXX",
+    "        X   X  X X  X        ",
+    "X XX XXX  X  X   X XX X  X XX",
+    "X   XX  X XXXXX    X  XXX   X",
+    "    X X   XX X  X   X   X XX ",
+    " X X    XXXXX  XX XX X X    X",
+    "     XX    X  XXXXX XX   XX  ",
+    "XX  XX XX X X XX XXXXXX   XXX",
+    "X XXXXXX    XX  X  XX X X XXX",
+    " X XXX XX X   X    XX  X   X ",
+    "X     XX XXXX X X  XX  XXX X ",
+    "  XXXX XXX XX XXX X      XXX ",
+    "X X  XXX     XXXXXX X X X X  ",
+    "   X    XX   XX  X X  X   X  ",
+    " X XX XXX X  XX  X XXXXXXXX  ",
+    "        XX XX       X   XXXXX",
+    "XXXXXXX XXX   X X  XX X XX X ",
+    "X     X X  X XXXX X X   XX  X",
+    "X XXX X   XXX  XXXX XXXXX X  ",
+    "X XXX X XX  X  X XX  X XXX  X",
+    "X XXX X X XX X  X  X   X  X X",
+    "X     X  X XX X    XX XXXX X ",
+    "XXXXXXX XXXX X  X  XXXXXX  X "
+   ],
+   "use": "decode, and encode bit-exact with options { level: \"M\", segments: byte-only } (the engine always uses one byte segment). The optimal encoder gives a different symbol (see derivedOptimal).",
+   "derivedOptimal": {
+    "version": 3,
+    "mask": 0,
+    "segments": [
+     {
+      "mode": "B",
+      "count": 22
+     },
+     {
+      "mode": "N",
+      "count": 14
+     }
+    ],
+    "rows": [
+     "XXXXXXX   X  X  X   X XXXXXXX",
+     "X     X X   X XXXX XX X     X",
+     "X XXX X  X   XX X XX  X XXX X",
+     "X XXX X  X   XXX      X XXX X",
+     "X XXX X XX  X X  X XX X XXX X",
+     "X     X      X   X XX X     X",
+     "XXXXXXX X X X X X X X XXXXXXX",
+     "          XX XX XX X         ",
+     "X X X X  X XX XX X      X  X ",
+     "XX  XX   X XX XX  X   X  X  X",
+     "XX   XXX XXX X   XX X XX  XXX",
+     "    XX XXX XX  X XXX  X    X ",
+     "XXXXX X  XX     X X   X  X XX",
+     "XXXXXX  X   XX XX X   X  X  X",
+     " XX  XXXXX X  XXXX    X  X XX",
+     " X XXX   XXXXXX X   X   XX X ",
+     "    XXX  X X  XX   XX X  X XX",
+     " XX  X XXX X  XX X   XXX XX X",
+     "X XXX XX X  XX   X   X  X  XX",
+     " XXXXX XXX XX  X  X XXX  X X ",
+     "X XX XXX X X    XXX XXXXX    ",
+     "        X   XX XXXXXX   X XXX",
+     "XXXXXXX   XXX XXX XXX X XX XX",
+     "X     X  X X XX X X X   XX XX",
+     "X XXX X X X X XXXX  XXXXX  XX",
+     "X XXX X   X XXXX   XX  XX X  ",
+     "X XXX X XX  X   X   X  XXX  X",
+     "X     X  XXX  XX XX X X    X ",
+     "XXXXXXX XXXXX XXX XXXX     XX"
+    ],
+    "equalsBwipJs": true
+   },
+   "byteOnlyReencodeEqual": true
+  },
+  {
+   "id": "engine-gs1-ai-element-string",
+   "source": "gs1-barcode-engine 289c899 src/c-lib/qr.c test_qr_QR_encode, input \"^011234567890123110ABC123^11210630\" (engine \"^\" = FNC1), default EC level M, expected matrix with its 4-module quiet zone removed",
+   "syntax": "element-string",
+   "input": "011234567890123110ABC123\u001d11210630",
+   "scan": "]Q3011234567890123110ABC123\u001d11210630",
+   "version": 3,
+   "size": 29,
+   "level": "M",
+   "mask": 2,
+   "segments": [
+    {
+     "mode": "FNC1"
+    },
+    {
+     "mode": "B",
+     "count": 33
+    }
+   ],
+   "dataCodewords": "54213031313233343536373839303132333131304142433132331D31313231303633300EC11EC11EC11EC11C",
+   "rows": [
+    "XXXXXXX     XX  X     XXXXXXX",
+    "X     X  X XX X XXX X X     X",
+    "X XXX X XX  X  X   X  X XXX X",
+    "X XXX X XXXXX  XXXX X X XXX X",
+    "X XXX X X     XX  XX  X XXX X",
+    "X     X X X    X XX   X     X",
+    "XXXXXXX X X X X X X X XXXXXXX",
+    "        XXXX XXXX   X        ",
+    "X XXXXX  XXXXXX  XX   XXXXX  ",
+    "  X X  X  X XX  X  X X  X    ",
+    "  XX XX XX X  X   X  X X XXX ",
+    "X X  X X X     X X  X X X   X",
+    "  XXX XX XXXX  X    XX XX XX ",
+    " X X X   XX X XX             ",
+    " XXX XX  X XX  XXXX  X X XXX ",
+    "    XX   XX  XX     X X X   X",
+    " XX X X X X XXXXX X  X  XXXX ",
+    "X       X XXXX       XX    X ",
+    "X X  XXXX  X  XXXXX XX X XXX ",
+    "X XXX  X  X        X  X XX  X",
+    "X  XXXXXX XX   X  X XXXXX  X ",
+    "        XX XX X X  XX   X    ",
+    "XXXXXXX  XXXX  XXXX X X XXXX ",
+    "X     X X   XXX     X   XX XX",
+    "X XXX X XXXXX XX XX XXXXXX X ",
+    "X XXX X X   XX X  XXXX X   X ",
+    "X XXX X X XXX XXXXX   XXXXX  ",
+    "X     X   X X X    X X X X   ",
+    "XXXXXXX XX     XX X   X X X  "
+   ],
+   "use": "decode only, plus build-from-codewords: the engine pads the bit stream with 0xEC/0x11 without first padding the terminator to a codeword boundary (non-conforming, see note), so a conforming encoder cannot reproduce it. placeDataCodewords(dataCodewords, version 3, M) with the BWIPP penalty selects mask 2 and reproduces the rows.",
+   "derivedOptimal": {
+    "version": 2,
+    "mask": 2,
+    "segments": [
+     {
+      "mode": "N",
+      "count": 18
+     },
+     {
+      "mode": "A",
+      "count": 7
+     },
+     {
+      "mode": "N",
+      "count": 8
+     }
+    ],
+    "rows": [
+     "XXXXXXX  X     XX XXXXXXX",
+     "X     X    XX   X X     X",
+     "X XXX X X X X  X  X XXX X",
+     "X XXX X XX X XXX  X XXX X",
+     "X XXX X X   XX X  X XXX X",
+     "X     X X X  X    X     X",
+     "XXXXXXX X X X X X XXXXXXX",
+     "        XXXX   X         ",
+     "X XXXXX    X X X  XXXXX  ",
+     "   X X X   X XXXX X  XXX ",
+     "   XX X  X X  XX X   XX X",
+     "XXX XX  X XX   X    XXXX ",
+     "X    XX   X     XXX  XX  ",
+     "XXXXX   XX  XX X X  XX  X",
+     "X  XX X  XX  XX X XXX X X",
+     "X      XXX  XX XXX  X   X",
+     "X X XXX X X X X XXXXX X  ",
+     "        X       X   X X X",
+     "XXXXXXX    XX  XX X X  XX",
+     "X     X XXXX  X X   X X X",
+     "X XXX X X  X   XXXXXXXX X",
+     "X XXX X X   XXXX XXX XXXX",
+     "X XXX X X    XXXXXX  X  X",
+     "X     X     XX XX XXX  XX",
+     "XXXXXXX X X X X X X X XXX"
+    ],
+    "equalsBwipJs": true
+   },
+   "byteOnlyReencodeEqual": false
+  }
+ ],
+ "figures": [
+  {
+   "id": "genspecs-fig-2-3",
+   "source": "GenSpecs 26.0 section 2.x, Figure 2-3 \"Examples of QR Code and Data Matrix with GS1 DL URI Syntax\", page 122",
+   "syntax": "digital-link-or-text",
+   "input": "https://example.com/01/09506000134369",
+   "scan": "]Q1https://example.com/01/09506000134369",
+   "version": 2,
+   "size": 25,
+   "level": "L",
+   "mask": 1,
+   "segments": [
+    {
+     "mode": "B",
+     "count": 23
+    },
+    {
+     "mode": "N",
+     "count": 14
+    }
+   ],
+   "dataCodewords": "41768747470733A2F2F6578616D706C652E636F6D2F30312F10385F0F00155E280EC",
+   "rows": [
+    "XXXXXXX X  X  X   XXXXXXX",
+    "X     X XXX XXX X X     X",
+    "X XXX X  XXX X  X X XXX X",
+    "X XXX X  X  XXX   X XXX X",
+    "X XXX X X XXX X   X XXX X",
+    "X     X X     X   X     X",
+    "XXXXXXX X X X X X XXXXXXX",
+    "        X     XXX        ",
+    "XXX  XX XXXXX X XXXXX  XX",
+    "X        X   X X XXX X XX",
+    "XX XX X    X   X X  XXX X",
+    "     X   X XX X X  X X   ",
+    " X XX X  X  X XXX XX    X",
+    " XXX     X    XXX XX   XX",
+    "XXX X XXXXXX XXXXXX  XX X",
+    "  XX X  X  XX   XX XXX   ",
+    "XXX  XX XXX   X XXXXX  X ",
+    "        XXX X X X   X   X",
+    "XXXXXXX  X XXXX X X X   X",
+    "X     X XX    XXX   X  XX",
+    "X XXX X  XX   XXXXXXX   X",
+    "X XXX X   XX X   X  X XX ",
+    "X XXX X X  XX  XXX XXX XX",
+    "X     X X X   XXXXXXX    ",
+    "XXXXXXX XXXX XX X X  X  X"
+   ],
+   "sampling": "sampled from the embedded image, 0 RS corrections, 0 module differences against the rebuild",
+   "penaltyMask": {
+    "bwipp": 1,
+    "isoLiteral": 6
+   },
+   "use": "decode, and encode bit-exact with { level: \"L\" } (optimal segmentation, BWIPP penalty); bwip-js 4.11.4 gives the same rows",
+   "equalsBwipJs": true
+  },
+  {
+   "id": "genspecs-fig-5-7",
+   "source": "GenSpecs 26.0 section 5.1, Figure 5-7 \"GS1 QR Code barcode\", page 320",
+   "syntax": "element-string",
+   "input": "010952600013436710640311\u001d2120FOOPC20",
+   "scan": "]Q3010952600013436710640311\u001d2120FOOPC20",
+   "version": 3,
+   "size": 29,
+   "level": "L",
+   "mask": 7,
+   "segments": [
+    {
+     "mode": "FNC1"
+    },
+    {
+     "mode": "B",
+     "count": 36
+    }
+   ],
+   "dataCodewords": "54243031303935323630303031333433363731303634303331311D32313230464F4F5043323000EC11EC11EC11EC11EC11EC11EC11EC11",
+   "rows": [
+    "XXXXXXX   X   X X  XX XXXXXXX",
+    "X     X XXX    X    X X     X",
+    "X XXX X X      XXX X  X XXX X",
+    "X XXX X  X  XX X X X  X XXX X",
+    "X XXX X XXX X XX   XX X XXX X",
+    "X     X X X X  XXX X  X     X",
+    "XXXXXXX X X X X X X X XXXXXXX",
+    "        X XX X  XXXX         ",
+    "XX X  XX   XX X  XX   XXX XX ",
+    " XX      X XXX   XXXX XX X X ",
+    " XX  XXXX  XXXX   XX   X     ",
+    "X XXXX  XXXXXX XXXX X X  X  X",
+    "  XXXXX X XX  X X   XXXXXXX X",
+    " XX  X     X XXXXXXXXXXX    X",
+    "X X   XXXXXX XX   X X X  XX X",
+    "  XX X XX XX   XXXX   XX    X",
+    "XXX  XX     XX  XXXXX   X X  ",
+    "  XXX  XXXX XXX X  XX X  XXX ",
+    "X   X X   XXX XXXXX   XX X  X",
+    "    XX X  X X XX XXX   X     ",
+    "X  X XX X X      XX XXXXX X X",
+    "        X XX  X XXX X   XX X ",
+    "XXXXXXX X      X XXXX X X  X ",
+    "X     X  X    XXX XXX   X XXX",
+    "X XXX X   X X   XXX XXXXX   X",
+    "X XXX X X  XX    X XX XX   XX",
+    "X XXX X  XX X   X X    XXXXXX",
+    "X     X X X XXXXXXX XX  XX   ",
+    "XXXXXXX X XX XX   X XXX XXXX "
+   ],
+   "sampling": "image is 194x201 px (3.59 px per module); rows are the rebuild from the RS-corrected codewords and mask 7, which equals the image sampled with a 3x3 sub-sample average (offset -1.5 px, scale 1.01, threshold 160) with 0 module differences",
+   "penaltyMask": {
+    "bwipp": 7,
+    "isoLiteral": 4
+   },
+   "use": "decode only, plus build-from-codewords: the figure uses one byte segment (FNC1, B36) at version 3-L, as the gs1-barcode-engine does; the optimal encoder fits version 2-L (N24, A12). Rebuilding the figure codewords with the BWIPP penalty selects mask 7 as in the figure.",
+   "derivedOptimal": {
+    "version": 2,
+    "mask": 5,
+    "segments": [
+     {
+      "mode": "N",
+      "count": 24
+     },
+     {
+      "mode": "A",
+      "count": 12
+     }
+    ],
+    "rows": [
+     "XXXXXXX    XXXX X XXXXXXX",
+     "X     X  XX    X  X     X",
+     "X XXX X     X XX  X XXX X",
+     "X XXX X X   X XX  X XXX X",
+     "X XXX X XX   XX X X XXX X",
+     "X     X    XX XX  X     X",
+     "XXXXXXX X X X X X XXXXXXX",
+     "          XX             ",
+     "XX   XXX X X  XX    XX   ",
+     " XXXX   XX  X X X X XX   ",
+     " XXX  X X X  X  XXX  XXX ",
+     "   X X   X  XX XX X X    ",
+     "X  X XXX X XXX X   X X X ",
+     "XXXXX  X X    X  XX XX  X",
+     "X XX  XX   XX  X X X    X",
+     "X  XX  X   X  X X X X   X",
+     "X XXX XXX  X   XXXXXXX  X",
+     "        XX  XX  X   X    ",
+     "XXXXXXX X XX   XX X XXX X",
+     "X     X X   XX XX   X   X",
+     "X XXX X     X X XXXXX X X",
+     "X XXX X       X    X XXXX",
+     "X XXX X  XXXX  XX X X   X",
+     "X     X XXXX  XX  X   XXX",
+     "XXXXXXX X X  XXX  X X   X"
+    ]
+   }
+  },
+  {
+   "id": "genspecs-fig-5-10",
+   "source": "GenSpecs 26.0 section 5.1, Figure 5-10 \"QR Code barcode\", page 320",
+   "syntax": "digital-link-or-text",
+   "input": "https://example.com/01/09506000134369",
+   "scan": "]Q1https://example.com/01/09506000134369",
+   "version": 2,
+   "size": 25,
+   "level": "L",
+   "mask": 1,
+   "segments": [
+    {
+     "mode": "B",
+     "count": 23
+    },
+    {
+     "mode": "N",
+     "count": 14
+    }
+   ],
+   "dataCodewords": "41768747470733A2F2F6578616D706C652E636F6D2F30312F10385F0F00155E280EC",
+   "rows": [
+    "XXXXXXX X  X  X   XXXXXXX",
+    "X     X XXX XXX X X     X",
+    "X XXX X  XXX X  X X XXX X",
+    "X XXX X  X  XXX   X XXX X",
+    "X XXX X X XXX X   X XXX X",
+    "X     X X     X   X     X",
+    "XXXXXXX X X X X X XXXXXXX",
+    "        X     XXX        ",
+    "XXX  XX XXXXX X XXXXX  XX",
+    "X        X   X X XXX X XX",
+    "XX XX X    X   X X  XXX X",
+    "     X   X XX X X  X X   ",
+    " X XX X  X  X XXX XX    X",
+    " XXX     X    XXX XX   XX",
+    "XXX X XXXXXX XXXXXX  XX X",
+    "  XX X  X  XX   XX XXX   ",
+    "XXX  XX XXX   X XXXXX  X ",
+    "        XXX X X X   X   X",
+    "XXXXXXX  X XXXX X X X   X",
+    "X     X XX    XXX   X  XX",
+    "X XXX X  XX   XXXXXXX   X",
+    "X XXX X   XX X   X  X XX ",
+    "X XXX X X  XX  XXX XXX XX",
+    "X     X X X   XXXXXXX    ",
+    "XXXXXXX XXXX XX X X  X  X"
+   ],
+   "sampling": "sampled from the embedded image, 0 RS corrections, 0 module differences against the rebuild",
+   "penaltyMask": {
+    "bwipp": 1,
+    "isoLiteral": 6
+   },
+   "use": "decode, and encode bit-exact with { level: \"L\" } (optimal segmentation, BWIPP penalty); bwip-js 4.11.4 gives the same rows",
+   "equalsBwipJs": true
+  },
+  {
+   "id": "genspecs-fig-5-52",
+   "source": "GenSpecs 26.0 section 5.7.3, Figure 5-52 \"Examples of QR Code symbols\", page 385 (four images; all four normalise to these rows, two of them after a horizontal flip)",
+   "syntax": "digital-link-or-text",
+   "input": "https://example.com/01/09521101530001",
+   "scan": "]Q1https://example.com/01/09521101530001",
+   "version": 2,
+   "size": 25,
+   "level": "L",
+   "mask": 1,
+   "segments": [
+    {
+     "mode": "B",
+     "count": 23
+    },
+    {
+     "mode": "N",
+     "count": 14
+    }
+   ],
+   "dataCodewords": "41768747470733A2F2F6578616D706C652E636F6D2F30312F10385F34C0F4B0080EC",
+   "rows": [
+    "XXXXXXX XX  X X   XXXXXXX",
+    "X     X X  X XX X X     X",
+    "X XXX X  XXX X  X X XXX X",
+    "X XXX X     XXX   X XXX X",
+    "X XXX X X X   X   X XXX X",
+    "X     X X  X  X   X     X",
+    "XXXXXXX X X X X X XXXXXXX",
+    "        X     XXX        ",
+    "XXX  XX XXXXX X XXXXX  XX",
+    "   X     X  XX X XXX X XX",
+    "  X  XX X   X  X X  XXX X",
+    "X  XXX XXX  X X X  X X   ",
+    " X  XXXX X X  XXX XX    X",
+    "       XX  X  XXX XX   XX",
+    "XX   XX   XX XXXXXX  XX X",
+    "   X X XX  XX   XX XXX   ",
+    "XXXXX XXXX    X XXXXX  X ",
+    "        XX  X X X   X   X",
+    "XXXXXXX  X XXXX X X X   X",
+    "X     X XX    XXX   X  XX",
+    "X XXX X   X   XXXXXXX   X",
+    "X XXX X    X X   X  X XX ",
+    "X XXX X XX XX  XXX XXX XX",
+    "X     X X     XXXXXXX    ",
+    "XXXXXXX XX X XX X X  X  X"
+   ],
+   "sampling": "sampled from the embedded image, 0 RS corrections, 0 module differences against the rebuild",
+   "penaltyMask": {
+    "bwipp": 1,
+    "isoLiteral": 1
+   },
+   "use": "decode, and encode bit-exact with { level: \"L\" } (optimal segmentation, BWIPP penalty); bwip-js 4.11.4 gives the same rows",
+   "equalsBwipJs": true
+  },
+  {
+   "id": "genspecs-fig-6-5",
+   "source": "GenSpecs 26.0 section 6.x, Figure 6-5 \"2D barcode placement in relation to the linear barcode example\", page 464",
+   "syntax": "digital-link-or-text",
+   "input": "https://example.com/01/09521207311504/21/1234567AD4321",
+   "scan": "]Q1https://example.com/01/09521207311504/21/1234567AD4321",
+   "version": 3,
+   "size": 29,
+   "level": "L",
+   "mask": 2,
+   "segments": [
+    {
+     "mode": "B",
+     "count": 23
+    },
+    {
+     "mode": "N",
+     "count": 14
+    },
+    {
+     "mode": "A",
+     "count": 17
+    }
+   ],
+   "dataCodewords": "41768747470733A2F2F6578616D706C652E636F6D2F30312F10385F350491CC21047C885805E22C7394549A22410EC11EC11EC11EC11EC",
+   "rows": [
+    "XXXXXXX   X X   XXXX  XXXXXXX",
+    "X     X X X  X  XX  X X     X",
+    "X XXX X     X  XX     X XXX X",
+    "X XXX X XXX XX X  X X X XXX X",
+    "X XXX X  X   X X   X  X XXX X",
+    "X     X XX XX XX  X   X     X",
+    "XXXXXXX X X X X X X X XXXXXXX",
+    "         XXX   X  X          ",
+    "XXXXX XXXX X XX XXX XX X X X ",
+    " X X   X  X X XXXX X  XXX   X",
+    "  X  XX X X  X X  X XX XX    ",
+    "X X X   X   XXXX  XXXX X X X ",
+    "X  X  XX XX X      X     XX  ",
+    " X  XX X      XX X X XXXX   X",
+    "    X X  XXXX X  X  X XXXXX  ",
+    "X  X X X  XX   XX   XX  X  X ",
+    "XX  XXXX  XX  X XXXX     XX  ",
+    "XXX X  XXXX X X X  XXXXXX X X",
+    "X  XXXXXXXX   XX    X   X X  ",
+    "X    X XX   XX XX  XX      X ",
+    "X X X X  X  X  X  XXXXXXX XXX",
+    "        X X  XXX  X X   XXXXX",
+    "XXXXXXX XXXXXX XX  XX X XXX  ",
+    "X     X   XX   X XXXX   X   X",
+    "X XXX X XX XXX X  X XXXXX X  ",
+    "X XXX X XXX X      XXX X XX  ",
+    "X XXX X X X  X X  X  XXXXXXX ",
+    "X     X X X X  XXX  X XXXX X ",
+    "XXXXXXX XX  X X    X XXXX X  "
+   ],
+   "sampling": "sampled from the embedded image, 0 RS corrections, 0 module differences against the rebuild",
+   "penaltyMask": {
+    "bwipp": 0,
+    "isoLiteral": 2
+   },
+   "use": "decode only, plus build-from-codewords with forced mask 2: same codewords as our encoder and bwip-js, but the figure's generator chose mask 2 where the BWIPP penalty picks 0 (an ISO-literal penalty picks 2)",
+   "derivedOptimal": {
+    "version": 3,
+    "mask": 0,
+    "segments": [
+     {
+      "mode": "B",
+      "count": 23
+     },
+     {
+      "mode": "N",
+      "count": 14
+     },
+     {
+      "mode": "A",
+      "count": 17
+     }
+    ],
+    "rows": [
+     "XXXXXXX  X  X XX XXXX XXXXXXX",
+     "X     X   XXX   X XXX X     X",
+     "X XXX X XXX X X     X X XXX X",
+     "X XXX X  XXX   X X XX X XXX X",
+     "X XXX X   X  XX X  XX X XXX X",
+     "X     X  X   XXX X X  X     X",
+     "XXXXXXX X X X X X X X XXXXXXX",
+     "        XXX XX X X X         ",
+     "XXX XXXXX XX X X XX  XX   X  ",
+     "X  X X    XX XXXX X   X  X  X",
+     "   XXXX  X   XX X X   XXX XXX",
+     " XX XX XX  X  XX X  XX  X  X ",
+     "X X X XXX   X XXX  XXXX  X XX",
+     "X   X      XXXXX  X  XX  X  X",
+     "  XX  X X  XX  XXX   X XXX XX",
+     " X X      X XX XXXXXXX X X X ",
+     "XXXX XXXXX X   X XXXXXX  X XX",
+     "  X XX  XXXX XX XXX XXX  XX X",
+     "X X  XXX        X    XX X  XX",
+     " X      X  X   XXXX X  XXX X ",
+     "X  X  X X X X X X XXXXXXX    ",
+     "        X XXX XX X XX   X XXX",
+     "XXXXXXX X  XXXX    XX X XX XX",
+     "X     X X X XX X    X   XX  X",
+     "X XXX X X XXXXX X X XXXXX  XX",
+     "X XXX X  XXX X   XX XX  X X  ",
+     "X XXX X XX   XX X X X  XXX  X",
+     "X     X X XX X XX XXX X    X ",
+     "XXXXXXX X X X  XX  XX  XX  XX"
+    ]
+   },
+   "equalsBwipJs": false
+  },
+  {
+   "id": "genspecs-fig-6-6",
+   "source": "GenSpecs 26.0 section 6.x, page 465 (Figure 6-6 \"Hang tag 2D barcode placement\" or Figure 6-7; first QR image on the page)",
+   "syntax": "digital-link-or-text",
+   "input": "http://example.com/01/09501101531000/21/12345678954321",
+   "scan": "]Q1http://example.com/01/09501101531000/21/12345678954321",
+   "version": 3,
+   "size": 29,
+   "level": "L",
+   "mask": 4,
+   "segments": [
+    {
+     "mode": "B",
+     "count": 22
+    },
+    {
+     "mode": "N",
+     "count": 14
+    },
+    {
+     "mode": "A",
+     "count": 4
+    },
+    {
+     "mode": "N",
+     "count": 14
+    }
+   ],
+   "dataCodewords": "416687474703A2F2F6578616D706C652E636F6D2F30312F10385F02C0F4D801013C885810387B7231587CA80EC11EC11EC11EC11EC11EC",
+   "rows": [
+    "XXXXXXX XXX X  XX  XX XXXXXXX",
+    "X     X XXX   X   XX  X     X",
+    "X XXX X X XX  XXXX XX X XXX X",
+    "X XXX X XX X XX    X  X XXX X",
+    "X XXX X      X X X  X X XXX X",
+    "X     X X  XX X   XX  X     X",
+    "XXXXXXX X X X X X X X XXXXXXX",
+    "         X  X  XXX           ",
+    "XX  XXX    X  X X  X   X XXXX",
+    "X X XX XXXX XX   X  X XXXXXXX",
+    "X     XXX  XX  XX X    X    X",
+    "X X  X    XX  XXXXX  XXX   XX",
+    "X XX XX   X XX XX XX X X   X ",
+    " X X X X X      X X X XXXX XX",
+    "    XXXXX X    XX   X X   X X",
+    " XX X  X XX X  XX  XX X X  XX",
+    "XX  X X  X X   X    X    X X ",
+    "X XX   XX   X     X X XXX  XX",
+    "  X X XX  XXX X XX  X    XX X",
+    "  XXX   XXXX X X    XX X   XX",
+    "XXX X X   X X XXXX  XXXXXX  X",
+    "        X X   XX   XX   X   X",
+    "XXXXXXX   X    X XXXX X XXX X",
+    "X     X XX  X  XX  XX   XX X ",
+    "X XXX X XXXX XX    XXXXXXX X ",
+    "X XXX X   X X X  X   X    XX ",
+    "X XXX X  XXXXXXX X XXX   X XX",
+    "X     X X  X X XXX  XXXX X XX",
+    "XXXXXXX X   XX    X XXX    X "
+   ],
+   "sampling": "sampled from the embedded image, 0 RS corrections, 0 module differences against the rebuild",
+   "penaltyMask": {
+    "bwipp": 4,
+    "isoLiteral": 4
+   },
+   "use": "decode, and encode bit-exact with { level: \"L\" } (optimal segmentation, BWIPP penalty); bwip-js 4.11.4 gives the same rows",
+   "equalsBwipJs": true
+  },
+  {
+   "id": "verif-fig-9-7",
+   "source": "GS1 2D Barcode Verification Process Implementation Guideline 1.3.21, section 9, Figure 9-7 \"GS1 QR Code with a minimum quiet zone\", page 22 (rendered at 250 dpi)",
+   "syntax": "digital-link-or-text",
+   "input": "01095070000000361508121299www.gs1.mobi/products.asp",
+   "scan": "]Q101095070000000361508121299www.gs1.mobi/products.asp",
+   "version": 3,
+   "size": 29,
+   "level": "M",
+   "mask": 0,
+   "segments": [
+    {
+     "mode": "N",
+     "count": 26
+    },
+    {
+     "mode": "B",
+     "count": 25
+    }
+   ],
+   "dataCodewords": "10680AEDABC0000399C513531A0CBBBBBB9733B9989736B7B13497B83937B23AB1BA399730B9B800EC11EC11",
+   "rows": [
+    "XXXXXXX  X   X  XX X  XXXXXXX",
+    "X     X XXXXX   X  XX X     X",
+    "X XXX X  XXXXX XX  XX X XXX X",
+    "X XXX X      X   X    X XXX X",
+    "X XXX X XX  X X X  X  X XXX X",
+    "X     X     XX XX  XX X     X",
+    "XXXXXXX X X X X X X X XXXXXXX",
+    "          X  X   XX          ",
+    "X X X X     X X         X  X ",
+    " XX     XXX X   X   XX  X X X",
+    " XXX  XX   XXX    X     X X  ",
+    " XXXX   XXX    X XXX  XX X XX",
+    "   XX XX X  X  X X XX     X  ",
+    "X X X      X X X  XX  XXXX   ",
+    "XX  XXXXXXXXX XX XXX   XX XX ",
+    "XXX X  X  XXXXX   XX  XX X XX",
+    "  XX  XX X    X X XX   X  XX ",
+    " XXXX  XX     X  X X  XX X XX",
+    "X   X X XX X X X XXX   XX X  ",
+    " XXXXX X X  X     X   X  X X ",
+    "X X   XX   XX  X  XXXXXXXX  X",
+    "        XX X X X XX X   XXXX ",
+    "XXXXXXX  XXXX X  XXXX X XXX  ",
+    "X     X      XX  XXXX   XXXXX",
+    "X XXX X XX  X XXXX  XXXXXXXXX",
+    "X XXX X   X  XX   X XXX X XX ",
+    "X XXX X X XX  XX XX XX  X X X",
+    "X     X  X XX X  XX XXX      ",
+    "XXXXXXX XXX  XX XXXXXXX XXX X"
+   ],
+   "sampling": "sampled from the embedded image, 0 RS corrections, 0 module differences against the rebuild",
+   "penaltyMask": {
+    "bwipp": 0,
+    "isoLiteral": 3
+   },
+   "use": "decode, and encode bit-exact with { level: \"M\" } (optimal segmentation, BWIPP penalty); bwip-js 4.11.4 gives the same rows",
+   "equalsBwipJs": true,
+   "note": "Captioned as a GS1 QR Code, but it has no FNC1 in first position: it is a plain QR Code (]Q1) whose text happens to look like AI data. A GS1 decoder must not treat it as ]Q3 data."
+  }
+ ],
+ "derived": [
+  {
+   "id": "genspecs-5.7.4.3-gtin",
+   "source": "GenSpecs 26.0 section 5.7.4.3 page 388: transmitted data \"]Q30110012345678902\"; symbol derived",
+   "syntax": "element-string",
+   "input": "0110012345678902",
+   "scan": "]Q30110012345678902",
+   "version": 1,
+   "size": 21,
+   "level": "M",
+   "mask": 4,
+   "segments": [
+    {
+     "mode": "FNC1"
+    },
+    {
+     "mode": "N",
+     "count": 16
+    }
+   ],
+   "dataCodewords": "510400B004EA8DF7A200EC11EC11EC11",
+   "rows": [
+    "XXXXXXX XX    XXXXXXX",
+    "X     X  XXXX X     X",
+    "X XXX X       X XXX X",
+    "X XXX X XXX X X XXX X",
+    "X XXX X XX XX X XXX X",
+    "X     X X   X X     X",
+    "XXXXXXX X X X XXXXXXX",
+    "        XX           ",
+    "X   X XXXXX XXXXXX  X",
+    "X       X   XXX X  XX",
+    " X X  XX X  X  XX X  ",
+    "X   XX  XX XX  X X   ",
+    "   XXXXXXX X XX X XXX",
+    "        XXXXX  XX XXX",
+    "XXXXXXX X  X  X XX X ",
+    "X     X  XX  XX      ",
+    "X XXX X X X XXXXX XXX",
+    "X XXX X  X  XXXX X  X",
+    "X XXX X  XX XX   XX  ",
+    "X     X   XXX  XXXXX ",
+    "XXXXXXX X  X  X X   X"
+   ],
+   "interleavedCodewords": "510400B004EA8DF7A200EC11EC11EC11D67C4B29F2442533E1A7",
+   "equalsBwipJs": true,
+   "penaltyMask": {
+    "bwipp": 4,
+    "isoLiteral": 0
+   },
+   "use": "encode bit-exact with { level } and decode"
+  },
+  {
+   "id": "engine-scandata-gs1",
+   "source": "gs1-barcode-engine 289c899 src/c-lib/scandata.c test_scandata_generateScanData; symbol derived",
+   "syntax": "element-string",
+   "input": "011231231231233310ABC123\u001d99TESTING",
+   "scan": "]Q3011231231231233310ABC123\u001d99TESTING",
+   "version": 2,
+   "size": 25,
+   "level": "M",
+   "mask": 4,
+   "segments": [
+    {
+     "mode": "FNC1"
+    },
+    {
+     "mode": "N",
+     "count": 18
+    },
+    {
+     "mode": "A",
+     "count": 16
+    }
+   ],
+   "dataCodewords": "510480B39CE739CE94D88207350E85DD6E6C94952B8360EC11EC11EC",
+   "rows": [
+    "XXXXXXX XXXX  X X XXXXXXX",
+    "X     X      XX X X     X",
+    "X XXX X  XXX  XXX X XXX X",
+    "X XXX X XX X  X X X XXX X",
+    "X XXX X X XXXX  X X XXX X",
+    "X     X X XXX XX  X     X",
+    "XXXXXXX X X X X X XXXXXXX",
+    "        XXXXXX           ",
+    "X   X XXX   X X  XXXXX  X",
+    "  XXXX X XXX   XX  XX XX ",
+    " X XXXX X  XX   XX    XX ",
+    " XXX X XXXXXX    X  X   X",
+    " X    X X XXX X XXXXX    ",
+    "XX       XX  X  XX X XX X",
+    "  XXXXX XXX  XX  X X X X ",
+    "  X XX X    X  X  XXX XX ",
+    "XX  X X X XX XXXXXXXXXX  ",
+    "        XX  X XXX   X   X",
+    "XXXXXXX XX XXXXXX X X    ",
+    "X     X   XX X  X   XX X ",
+    "X XXX X X X XX  XXXXXX  X",
+    "X XXX X  XX  XX  XXXXXXXX",
+    "X XXX X  X     X   X XXX ",
+    "X     X   X X XX X X     ",
+    "XXXXXXX X  X XXXX XX  XXX"
+   ],
+   "interleavedCodewords": "510480B39CE739CE94D88207350E85DD6E6C94952B8360EC11EC11ECD64A178541E59CCDC8B6F58802EAA5D2",
+   "equalsBwipJs": true,
+   "penaltyMask": {
+    "bwipp": 4,
+    "isoLiteral": 4
+   },
+   "use": "encode bit-exact with { level } and decode"
+  },
+  {
+   "id": "gs1-percent-alnum",
+   "source": "derived: literal \"%\" doubled inside an alphanumeric segment, FNC1 separator as single \"%\"",
+   "syntax": "element-string",
+   "input": "010950600013435210A%B",
+   "scan": "]Q3010950600013435210A%B",
+   "version": 1,
+   "size": 21,
+   "level": "M",
+   "mask": 4,
+   "segments": [
+    {
+     "mode": "FNC1"
+    },
+    {
+     "mode": "N",
+     "count": 18
+    },
+    {
+     "mode": "A",
+     "count": 4
+    }
+   ],
+   "dataCodewords": "510480AEDA58035B33488087A35C80EC",
+   "rows": [
+    "XXXXXXX XX    XXXXXXX",
+    "X     X     X X     X",
+    "X XXX X  X XX X XXX X",
+    "X XXX X X XXX X XXX X",
+    "X XXX X X X X X XXX X",
+    "X     X XX X  X     X",
+    "XXXXXXX X X X XXXXXXX",
+    "        X XXX        ",
+    "X   X XXX XX XXXXX  X",
+    " XXXXX  XXX X XXX  XX",
+    " XX XXXX XXX   XXXX  ",
+    "X   XX   X X  X   X  ",
+    "X  X  X X    XX    X ",
+    "        X X XX XXX XX",
+    "XXXXXXX X X X  X   X ",
+    "X     X  X      XXX  ",
+    "X XXX X XXXXXXXX   XX",
+    "X XXX X  X X X XXXX X",
+    "X XXX X  X X   XX    ",
+    "X     X    XXX XXXXX ",
+    "XXXXXXX XX        X X"
+   ],
+   "interleavedCodewords": "510480AEDA58035B33488087A35C80ECA24996C89B6D45C0EE66",
+   "equalsBwipJs": true,
+   "penaltyMask": {
+    "bwipp": 4,
+    "isoLiteral": 4
+   },
+   "use": "encode bit-exact with { level } and decode"
+  },
+  {
+   "id": "gs1-percent-byte",
+   "source": "derived: \"%\" literal in byte segments (no doubling), GS 0x1D as FNC1 in byte mode",
+   "syntax": "element-string",
+   "input": "010950600013435210abc%\u001d99%%%",
+   "scan": "]Q3010950600013435210abc%\u001d99%%%",
+   "version": 2,
+   "size": 25,
+   "level": "Q",
+   "mask": 3,
+   "segments": [
+    {
+     "mode": "FNC1"
+    },
+    {
+     "mode": "N",
+     "count": 18
+    },
+    {
+     "mode": "B",
+     "count": 10
+    }
+   ],
+   "dataCodewords": "510480AEDA58035B334902985898C9474E4E49494940",
+   "rows": [
+    "XXXXXXX       XX  XXXXXXX",
+    "X     X X XXX  X  X     X",
+    "X XXX X X         X XXX X",
+    "X XXX X  XX    X  X XXX X",
+    "X XXX X    X   XX X XXX X",
+    "X     X  X XXXXXX X     X",
+    "XXXXXXX X X X X X XXXXXXX",
+    "          XXXXX X        ",
+    " XXX XX  X   X  X     XX ",
+    "XX XXX  X X   X X     X  ",
+    "X XX XXX X     X XX XX  X",
+    "X XX X  XX X X   X X    X",
+    "    XXXX XX X  XX  X XX  ",
+    " XX XX XX XXXXXXXX   X X ",
+    " XX  XX XX      XX X XX  ",
+    "X X X   XX X  XXXXXX XX X",
+    "   XX XXX  XX X XXXXX  XX",
+    "        X X  XXXX   X X  ",
+    "XXXXXXX  XX XXXXX X XX XX",
+    "X     X X X XX  X   X  X ",
+    "X XXX X     X  XXXXXXX   ",
+    "X XXX X X  XX XX   XX  XX",
+    "X XXX X XXXX  XXXX  XX X ",
+    "X     X XXX   X X X X  X ",
+    "XXXXXXX  XXXX  XXXX   XXX"
+   ],
+   "interleavedCodewords": "510480AEDA58035B334902985898C9474E4E49494940B17B188361642C5914D477BD6054ECDAFD9EEFE9713B",
+   "equalsBwipJs": false,
+   "bwipJs": {
+    "version": 3,
+    "mask": 3,
+    "segments": [
+     {
+      "mode": "FNC1"
+     },
+     {
+      "mode": "N",
+      "count": 18
+     },
+     {
+      "mode": "B",
+      "count": 3
+     },
+     {
+      "mode": "A",
+      "count": 11
+     }
+    ],
+    "segmentBits": 188,
+    "decodedEqualsInput": true,
+    "ourSegmentBits": 170
+   },
+   "penaltyMask": {
+    "bwipp": 3,
+    "isoLiteral": 7
+   },
+   "use": "encode bit-exact with { level } and decode"
+  },
+  {
+   "id": "gs1-mixed-modes",
+   "source": "derived: N23, A15 (two FNC1 as \"%\"), N8",
+   "syntax": "element-string",
+   "input": "01095060001343521012345A\u001d21ABCDEF1234\u001d17201225",
+   "scan": "]Q301095060001343521012345A\u001d21ABCDEF1234\u001d17201225",
+   "version": 4,
+   "size": 33,
+   "level": "H",
+   "mask": 6,
+   "segments": [
+    {
+     "mode": "FNC1"
+    },
+    {
+     "mode": "N",
+     "count": 23
+    },
+    {
+     "mode": "A",
+     "count": 15
+    },
+    {
+     "mode": "N",
+     "count": 8
+    }
+   ],
+   "dataCodewords": "5105C0AEDA58035B33487B5A40F3D016CE6A2950A0BC45CC204158061900EC11EC11EC11",
+   "rows": [
+    "XXXXXXX  X  X    X      X XXXXXXX",
+    "X     X  X  X  X  X   XX  X     X",
+    "X XXX X X  X X XX XX  X   X XXX X",
+    "X XXX X XXXX   XXX X X    X XXX X",
+    "X XXX X    XXXX XXX  X XX X XXX X",
+    "X     X   XX  XX X X   X  X     X",
+    "XXXXXXX X X X X X X X X X XXXXXXX",
+    "          XXXXXXX XX    X        ",
+    "   XX XX   X   X X XXXX X    XX  ",
+    " X     XX X  XXX XXX X  X    XXX ",
+    "X  XXXXX XXXXX XXX XX XXXX    X  ",
+    " XXXXX   X XXX X XX  XX XXXX XXXX",
+    "   XXXX     X XXX    X XXXXXXXX X",
+    "X X X  X X X XXX   XX  X   XX X X",
+    "XX X  XXX  X  XXX X X X    X XX  ",
+    " XXX       XX    X XX   X XX    X",
+    "XX XXXX X XX XXX X X   X XXX  X X",
+    " X  X   X  XXX  XX XX   XX X    X",
+    "X XXXXXX  X  XX  XXXX  XXXX  XX X",
+    "X  XXX XXX  X X      X  X X X XXX",
+    "XXX   XX XX X X X   X X XX XX XX ",
+    "X   XX   X   X  X   X X  XX XXXXX",
+    "X X  XX   X   X  X   XX XXXX  X  ",
+    "X   X  X  XXXX   XXXXX   X XXX  X",
+    "XX   XXXXXXX X XX  XXXX XXXXXX XX",
+    "        XXX XXX XXX     X   X  XX",
+    "XXXXXXX X  XX X  X X XX X X X  XX",
+    "X     X      X    X    XX   X X X",
+    "X XXX X XX XX    X  XX  XXXXXXXXX",
+    "X XXX X X XXXX    XX X XX X  XXX ",
+    "X XXX X  XXX    XXXX X   XX  XXXX",
+    "X     X   XX  XXXXXXXX  X   X X X",
+    "XXXXXXX    X  X   X  X  X  X  X  "
+   ],
+   "interleavedCodewords": "51482906057B5019C05AA000AE40BCECDAF3451158D0CCEC031620115BCE41EC336A5811CC924671E7B98F4D9F0646C71D1546E489ECDC489842777E8FE4C2EA728F8C7CEFF0491C193E85B1E33A965EF729E1F0163414559AA0AB1B1393E0C0EB9F1DD0",
+   "equalsBwipJs": true,
+   "penaltyMask": {
+    "bwipp": 6,
+    "isoLiteral": 3
+   },
+   "use": "encode bit-exact with { level } and decode"
+  },
+  {
+   "id": "dl-lowercase",
+   "source": "derived: lowercase scheme and host need a byte segment",
+   "syntax": "digital-link",
+   "input": "https://id.gs1.org/01/09506000134352",
+   "scan": "]Q1https://id.gs1.org/01/09506000134352",
+   "version": 3,
+   "size": 29,
+   "level": "M",
+   "mask": 0,
+   "segments": [
+    {
+     "mode": "B",
+     "count": 22
+    },
+    {
+     "mode": "N",
+     "count": 14
+    }
+   ],
+   "dataCodewords": "41668747470733A2F2F69642E6773312E6F72672F30312F10385F0F00155DA00EC11EC11EC11EC11EC11EC11",
+   "rows": [
+    "XXXXXXX   XX X  X   X XXXXXXX",
+    "X     X XXXX  XXXX XX X     X",
+    "X XXX X  XXX XX X XX  X XXX X",
+    "X XXX X  XX  XXX      X XXX X",
+    "X XXX X XX  X X  X XX X XXX X",
+    "X     X  XX XX   X XX X     X",
+    "XXXXXXX X X X X X X X XXXXXXX",
+    "         X XXXX XX X         ",
+    "X X X X    XX XX        X  X ",
+    "   XX    XX X XX  X   X  X  X",
+    " XX XXXX XX XX   X  X XX  XXX",
+    "X  X     XX    X XXX  X    X ",
+    "X X   X X  XX   X X   X  X XX",
+    "    X  X    XX XX     X  X  X",
+    " XX XXX X  X  XXXX    X  X XX",
+    "    X  XX X  XX XXX X   XX X ",
+    "XXX  XX     X XX  XXX X  X XX",
+    " XXXX  X  XXX XX X   XXX XX X",
+    "X  X XX  X   X    X  X  X  XX",
+    " XX  X  XXXX   X X  XXX  X X ",
+    "X X X X    X    X X XXXXX    ",
+    "        XXX  X XXXXXX   X XXX",
+    "XXXXXXX  XXXX XXX  XX X XX XX",
+    "X     X  XXXXXX XXX X   XX XX",
+    "X XXX X X  X  XXX   XXXXX  XX",
+    "X XXX X  X  X XX  XXX  XX X  ",
+    "X XXX X X  XX X X   X  XXX  X",
+    "X     X  X XX  X  X X X    X ",
+    "XXXXXXX X    X  XXXXXX     XX"
+   ],
+   "interleavedCodewords": "41668747470733A2F2F69642E6773312E6F72672F30312F10385F0F00155DA00EC11EC11EC11EC11EC11EC118F4FCB943EA6D8E64DC534DDF5344571403BD3DFE07A44017974",
+   "equalsBwipJs": true,
+   "penaltyMask": {
+    "bwipp": 0,
+    "isoLiteral": 0
+   },
+   "use": "encode bit-exact with { level } and decode"
+  },
+  {
+   "id": "dl-uppercase-host",
+   "source": "derived: QR Code powered by GS1 best practices 2023, best practice 4 (upper case scheme and domain); alphanumeric segment",
+   "syntax": "digital-link",
+   "input": "HTTPS://ID.GS1.ORG/01/09506000134352",
+   "scan": "]Q1HTTPS://ID.GS1.ORG/01/09506000134352",
+   "version": 2,
+   "size": 25,
+   "level": "M",
+   "mask": 5,
+   "segments": [
+    {
+     "mode": "A",
+     "count": 22
+    },
+    {
+     "mode": "N",
+     "count": 14
+    }
+   ],
+   "dataCodewords": "20B31AA65463DD337EE53B7BD4CFF1E16040E17C3C00557680EC11EC",
+   "rows": [
+    "XXXXXXX  X   X XX XXXXXXX",
+    "X     X XXX XXX   X     X",
+    "X XXX X X X  XX X X XXX X",
+    "X XXX X X XX   XX X XXX X",
+    "X XXX X  XX X  X  X XXX X",
+    "X     X  X   X    X     X",
+    "XXXXXXX X X X X X XXXXXXX",
+    "        XX XXXX X        ",
+    "X     X X X   XX XX  XXX ",
+    "XXXXXX X   X  X XX   XX  ",
+    "  XXX XXX      X XXXX  XX",
+    " X   X XXX XX  XXX   X   ",
+    "XXXXXXX  XX XXXX X  XXXX ",
+    "XX      XX       X X X   ",
+    "X X XXX  XXXX XX X  XXX  ",
+    "X  X X X XXX   X XXX  XXX",
+    "X XX XXX  XX  X XXXXX X X",
+    "        XX  X XXX   XXXX ",
+    "XXXXXXX    X   XX X X XXX",
+    "X     X  X  X X X   XXXX ",
+    "X XXX X  XX XXXXXXXXX    ",
+    "X XXX X  XX  XXX XX   X X",
+    "X XXX X  X XX   X XXX X X",
+    "X     X   XX   XXX XX    ",
+    "XXXXXXX X X XXX  XX X  XX"
+   ],
+   "interleavedCodewords": "20B31AA65463DD337EE53B7BD4CFF1E16040E17C3C00557680EC11ECB731C7792F28CEEC92E5FF307CF80D39",
+   "equalsBwipJs": true,
+   "penaltyMask": {
+    "bwipp": 5,
+    "isoLiteral": 1
+   },
+   "use": "encode bit-exact with { level } and decode"
+  },
+  {
+   "id": "dl-best-practice-example",
+   "source": "QR Code powered by GS1 best practices 2023, best practice 4 example URI; symbol derived",
+   "syntax": "digital-link",
+   "input": "https://id.dalgiardino.com/01/09506000134352",
+   "scan": "]Q1https://id.dalgiardino.com/01/09506000134352",
+   "version": 3,
+   "size": 29,
+   "level": "M",
+   "mask": 1,
+   "segments": [
+    {
+     "mode": "B",
+     "count": 30
+    },
+    {
+     "mode": "N",
+     "count": 14
+    }
+   ],
+   "dataCodewords": "41E68747470733A2F2F69642E64616C6769617264696E6F2E636F6D2F30312F10385F0F00155DA00EC11EC11",
+   "rows": [
+    "XXXXXXX XX  X  X  X X XXXXXXX",
+    "X     X  XXX  X XXX X X     X",
+    "X XXX X XX     X XX   X XXX X",
+    "X XXX X  XX XX  XXXX  X XXX X",
+    "X XXX X  XX XXXXXXX   X XXX X",
+    "X     X XXXXX    X    X     X",
+    "XXXXXXX X X X X X X X XXXXXXX",
+    "         X  X     XXX        ",
+    "X X   XX XXX XXXX   X  X  X X",
+    " XX  X  X  X X   X XX XX   XX",
+    "X X  XXXXX  X  X   X XXXXXX X",
+    "XX XXX     X X XX X  X X X   ",
+    "X   X X    X X  X   X XX    X",
+    "  X XX X    X    X XX XX   XX",
+    " XX  XX X X XXXX X XX  X    X",
+    "XXXX X   X XX XXX X X  XX    ",
+    "XX XX X    X XX   XXX XX    X",
+    "  X     XX   XX XX XX X   XXX",
+    "XXX X XX   XX  XX  XX XXXX  X",
+    "  X  X X XX  X    XX XXX     ",
+    "XX  XXXXXX X X    XXXXXXXX X ",
+    "        X      X  XXX   XXX X",
+    "XXXXXXX X XXXXXXXXX X X X   X",
+    "X     X  XXX  X    XX   X   X",
+    "X XXX X  XX XXXX  XXXXXXXX   ",
+    "X XXX X   X   X   XX X  XXXX ",
+    "X XXX X X   XX X XXXXX  X  XX",
+    "X     X   XX   XX X X XX X   ",
+    "XXXXXXX XX  XXX X X X XX X  X"
+   ],
+   "interleavedCodewords": "41E68747470733A2F2F69642E64616C6769617264696E6F2E636F6D2F30312F10385F0F00155DA00EC11EC1140A8A1016D2B5B6B7668462EFC3974358B853DB451B2F3D35C38",
+   "equalsBwipJs": true,
+   "penaltyMask": {
+    "bwipp": 1,
+    "isoLiteral": 1
+   },
+   "use": "encode bit-exact with { level } and decode"
+  },
+  {
+   "id": "dl-pos-guideline-upper",
+   "source": "2D Barcodes at Retail POS Implementation Guideline 1.1.0, Figure 4-14 (upper case data; the HTML text contains U+00AD soft hyphens, removed); symbol derived",
+   "syntax": "digital-link",
+   "input": "https://example.com/01/09526064055028/22/TEST/10/ABC123/21/435DER?17=250521",
+   "scan": "]Q1https://example.com/01/09526064055028/22/TEST/10/ABC123/21/435DER?17=250521",
+   "version": 4,
+   "size": 33,
+   "level": "M",
+   "mask": 5,
+   "segments": [
+    {
+     "mode": "B",
+     "count": 23
+    },
+    {
+     "mode": "N",
+     "count": 14
+    },
+    {
+     "mode": "A",
+     "count": 28
+    },
+    {
+     "mode": "B",
+     "count": 4
+    },
+    {
+     "mode": "N",
+     "count": 6
+    }
+   ],
+   "dataCodewords": "41768747470733A2F2F6578616D706C652E636F6D2F30312F10385F41280898E1073C8885A4F427C802B39A8742EF910B02DC772914043F31373D1018FA82400",
+   "rows": [
+    "XXXXXXX  XX XX XXX  X X   XXXXXXX",
+    "X     X X XX X X     XX X X     X",
+    "X XXX X XX  X  X  X   X X X XXX X",
+    "X XXX X XX     XXXX X X X X XXX X",
+    "X XXX X   XXXX X      XX  X XXX X",
+    "X     X  XXX   X  X   XXX X     X",
+    "XXXXXXX X X X X X X X X X XXXXXXX",
+    "        X    X X    X  XX        ",
+    "X     X X XXXXX  XX X X  XX  XXX ",
+    " X     XXXXX  X XXXXX XX    XXX X",
+    "  X  XX  XX X  X X  XX    X X X X",
+    " XXX    XX XX      XX X    XXXX  ",
+    "XX    X  XXXXXX   X  XX XXXXX    ",
+    " XX  X XXXX  X XXX         XX  XX",
+    "X XXX XXX   X X  X  XXX  XX X XX ",
+    " XX     X  X X  X   X  X X XX   X",
+    "  XXX XX  X X     XX    XX XX X X",
+    " X      X   X  X   X X X  X  XXXX",
+    "  XX  X XX XXX X XXX  XX XXX XXXX",
+    "XX X   XX XX  X     X X X X XXXXX",
+    "  X X XXX XXX  XXXXX X  X XXXX X ",
+    "XXX XX   X  X X X  XXXX XX  XXX  ",
+    "X   X X  X   X X  X X XXXX X XXX ",
+    "X  X X      XX    XXX  XXX X   XX",
+    "XXX   X X X XXXXX XXX   XXXXXX  X",
+    "        XX XXXX X  XX   X   X X  ",
+    "XXXXXXX   XX XXXXX  X  XX X X X  ",
+    "X     X     X  X   X XXXX   XXXXX",
+    "X XXX X  XX     XXXXXXX XXXXXX   ",
+    "X XXX X  X X     X XX X XX XXXXX ",
+    "X XXX X    X  XX XXXX XX   XXXXXX",
+    "X     X   XX    X X X XXX  XXX   ",
+    "XXXXXXX XXXXXX  X  X  X  XXX X X "
+   ],
+   "interleavedCodewords": "4110767387C84788475A074F3342A27CF280F62B573986A81674D72E06F9C61052B0E62D36C7F672D291F340034312F3F113037385D1F401128F80A889248E00D85029F022F71A90E06426DB1A47E6C9B65782F4F485EC9FC2C72A633751C08BFBB99BF3",
+   "equalsBwipJs": true,
+   "penaltyMask": {
+    "bwipp": 5,
+    "isoLiteral": 3
+   },
+   "use": "encode bit-exact with { level } and decode"
+  },
+  {
+   "id": "dl-pos-guideline-lower",
+   "source": "2D Barcodes at Retail POS Implementation Guideline 1.1.0, Figure 4-14 and 4-16 (lower case data); symbol derived",
+   "syntax": "digital-link",
+   "input": "https://example.com/01/09526064055028/22/test/10/abc123/21/435der?17=250521",
+   "scan": "]Q1https://example.com/01/09526064055028/22/test/10/abc123/21/435der?17=250521",
+   "version": 5,
+   "size": 37,
+   "level": "M",
+   "mask": 2,
+   "segments": [
+    {
+     "mode": "B",
+     "count": 23
+    },
+    {
+     "mode": "N",
+     "count": 14
+    },
+    {
+     "mode": "B",
+     "count": 15
+    },
+    {
+     "mode": "A",
+     "count": 10
+    },
+    {
+     "mode": "B",
+     "count": 7
+    },
+    {
+     "mode": "N",
+     "count": 6
+    }
+   ],
+   "dataCodewords": "41768747470733A2F2F6578616D706C652E636F6D2F30312F10385F41280898E20797991917BA32B9BA17989817B0B1319028178B20B7E4C46203B232B91F989B9E880C7D41200EC11EC11EC11EC11EC11EC11EC11EC",
+   "rows": [
+    "XXXXXXX  XX XXXXXXX X    XX   XXXXXXX",
+    "X     X  X  X X X XX X   XXX  X     X",
+    "X XXX X XX   X  X  XXX        X XXX X",
+    "X XXX X X   X XX  XXXXXX XXX  X XXX X",
+    "X XXX X XXX X   X    XXXX     X XXX X",
+    "X     X XX X XX X XXXX  XX XX X     X",
+    "XXXXXXX X X X X X X X X X X X XXXXXXX",
+    "        X      X   XXXX XX XX        ",
+    "X XXXXX  XX X XX  X X    X XX XXXXX  ",
+    "XX  X   X  X X XXX     X  X      X X ",
+    "X   XXX  X XXX    X X X XX  XXXXXX XX",
+    "X    X XXXXX    X    XX   X  XX XXX X",
+    "XXX X XX   X    X X XXXX XXX XX X XXX",
+    "X X X    XXXXXXX X   X  XX  XX X   X ",
+    " XX X X XXXX  X XX XXX     X  XXXX   ",
+    "        XX XX   XXXXXX X  XXX XXX  X ",
+    "X  XX XX   X  XXX    X XX         XXX",
+    "X  X X   XX  X X  X XX  XXXX X  XX X ",
+    " X  X X XX X  XXXX X X  XXXX   XX  XX",
+    "XXXX    X   X XX X XXXX X X   XX X  X",
+    " XXXX X X  XXX XXXXX   XXXXX XX X X  ",
+    " X X X  X    XXX       XXX  X    X XX",
+    "XX X XX XX  XXXX  X   X  XXX XXXXX  X",
+    "  XXXX X X  XX     X    XXXX X XX   X",
+    "XXXX  X X  X XX   X XXX X  X X X  X  ",
+    "XX     X X    XXXX      XXX X    X   ",
+    "X XX XXXXX X X   XX XX XX XX  X    XX",
+    "X X    XXX X  X X X  X X  XXXXX XXXX ",
+    "X X X X X X X X XXX  X X X XXXXXX  XX",
+    "        XXX XX   X XXX XXX  X   XX XX",
+    "XXXXXXX  XXX XX XX X X  X   X X X X  ",
+    "X     X XX XXX X XX  XX XX  X   XX  X",
+    "X XXX X X  X  X X  X X     XXXXXX X  ",
+    "X XXX X XXX X XX  X X X XXX  XX XX XX",
+    "X XXX X X X  XXXXXXX X X XX X    X  X",
+    "X     X  X X XXX XXXX  XX XX XX XX  X",
+    "XXXXXXX X X XX XXXXXXX X X  X X XXXXX"
+   ],
+   "interleavedCodewords": "41897681877B470B471307193302A281F278F6B2570B867E164CD7460620C63B5223E62B3691F6F9D289F3B903E81280F1C703D48512F40012EC801189EC8E1120EC791179EC911191EC7B11A3EC2B119BECA11179EC1E7DCC64A1C4D3EF34ED7A71B87D849DBBEE5841030C93430A820743677B3550D0E4F2A3235843ECA0B05FD5046877CD",
+   "equalsBwipJs": false,
+   "bwipJs": {
+    "version": 5,
+    "mask": 2,
+    "segments": [
+     {
+      "mode": "B",
+      "count": 23
+     },
+     {
+      "mode": "N",
+      "count": 14
+     },
+     {
+      "mode": "A",
+      "count": 4
+     },
+     {
+      "mode": "B",
+      "count": 28
+     },
+     {
+      "mode": "N",
+      "count": 6
+     }
+    ],
+    "segmentBits": 562,
+    "decodedEqualsInput": true,
+    "ourSegmentBits": 559
+   },
+   "penaltyMask": {
+    "bwipp": 2,
+    "isoLiteral": 2
+   },
+   "use": "encode bit-exact with { level } and decode"
+  },
+  {
+   "id": "iso-annex-01234567",
+   "source": "derived: the ISO/IEC 18004 Annex I worked example as widely reproduced (paid standard not consulted): \"01234567\", 1-M",
+   "syntax": "text",
+   "input": "01234567",
+   "scan": "]Q101234567",
+   "version": 1,
+   "size": 21,
+   "level": "M",
+   "mask": 0,
+   "segments": [
+    {
+     "mode": "N",
+     "count": 8
+    }
+   ],
+   "dataCodewords": "10200C566180EC11EC11EC11EC11EC11",
+   "rows": [
+    "XXXXXXX   XXX XXXXXXX",
+    "X     X XXX   X     X",
+    "X XXX X  XX   X XXX X",
+    "X XXX X  X XX X XXX X",
+    "X XXX X XX XX X XXX X",
+    "X     X    X  X     X",
+    "XXXXXXX X X X XXXXXXX",
+    "                     ",
+    "X X X X   X X   X  X ",
+    "XX X    X XX X X   X ",
+    "   XX XXX XX XXX XXX ",
+    "XX  XX X X XXX XX  X ",
+    "  X  XXX XXX XXX    X",
+    "        X X   X    X ",
+    "XXXXXXX     X   X   X",
+    "X     X   X   X  X XX",
+    "X XXX X XXX X X XXX X",
+    "X XXX X  X X X X XXX ",
+    "X XXX X XX X XXX  X X",
+    "X     X    XXX XXX   ",
+    "XXXXXXX X  X XXX  X X"
+   ],
+   "interleavedCodewords": "10200C566180EC11EC11EC11EC11EC11A524D4C1ED36C7872C55",
+   "equalsBwipJs": true,
+   "penaltyMask": {
+    "bwipp": 0,
+    "isoLiteral": 2
+   },
+   "use": "encode bit-exact with { level } and decode",
+   "note": "Data codewords 10 20 0C 56 61 80 EC 11 EC 11 EC 11 EC 11 EC 11 and EC codewords A5 24 D4 C1 ED 36 C7 87 2C 55 match the widely reproduced Annex I values. The annex is recalled to show mask 010 (2); an ISO-literal penalty picks 2, BWIPP/engine pick 0. Rows here use mask 0 (bwip-js)."
+  },
+  {
+   "id": "tutorial-hello-world-q",
+   "source": "derived: common tutorial example \"HELLO WORLD\" 1-Q",
+   "syntax": "text",
+   "input": "HELLO WORLD",
+   "scan": "]Q1HELLO WORLD",
+   "version": 1,
+   "size": 21,
+   "level": "Q",
+   "mask": 3,
+   "segments": [
+    {
+     "mode": "A",
+     "count": 11
+    }
+   ],
+   "dataCodewords": "205B0B78D172DC4D4340EC11EC",
+   "rows": [
+    "XXXXXXX   X   XXXXXXX",
+    "X     X XX X  X     X",
+    "X XXX X X  X  X XXX X",
+    "X XXX X    XX X XXX X",
+    "X XXX X    XX X XXX X",
+    "X     X  X X  X     X",
+    "XXXXXXX X X X XXXXXXX",
+    "         X           ",
+    " XXX XX           XX ",
+    "X    X XXXX XX  XXXXX",
+    "X XXX XX X XX X   X  ",
+    " XXX   X X   X  X XX ",
+    "X XX  X  X XX     X  ",
+    "        X  X X X  XX ",
+    "XXXXXXX   X XXXX X XX",
+    "X     X XX   XXX  XX ",
+    "X XXX X    XX XX   XX",
+    "X XXX X X X  X  XX X ",
+    "X XXX X XXXX X  XX   ",
+    "X     X XXXXX XX X   ",
+    "XXXXXXX    XX  X  XX "
+   ],
+   "interleavedCodewords": "205B0B78D172DC4D4340EC11ECA8481652D9369C002E0FB47A10",
+   "equalsBwipJs": true,
+   "penaltyMask": {
+    "bwipp": 3,
+    "isoLiteral": 0
+   },
+   "use": "encode bit-exact with { level } and decode"
+  },
+  {
+   "id": "large-v10-h",
+   "source": "derived: version 10-H, exercises version information and multi-block interleaving",
+   "syntax": "digital-link",
+   "input": "https://example.com/01/09506000134352/10/ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/21/abcdefghijklmnopqrstuvwxyz0123456789?17=201225",
+   "scan": "]Q1https://example.com/01/09506000134352/10/ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/21/abcdefghijklmnopqrstuvwxyz0123456789?17=201225",
+   "version": 10,
+   "size": 57,
+   "level": "H",
+   "mask": 3,
+   "segments": [
+    {
+     "mode": "B",
+     "count": 23
+    },
+    {
+     "mode": "N",
+     "count": 14
+    },
+    {
+     "mode": "A",
+     "count": 44
+    },
+    {
+     "mode": "B",
+     "count": 26
+    },
+    {
+     "mode": "N",
+     "count": 10
+    },
+    {
+     "mode": "B",
+     "count": 4
+    },
+    {
+     "mode": "N",
+     "count": 6
+    }
+   ],
+   "dataCodewords": "4001768747470733A2F2F6578616D706C652E636F6D2F30312F100E17C3C005576840B3C802B39A8A542AE167AE65FAC5195B426B2DC1C3A0042E8B922A5C7C88584001A6162636465666768696A6B6C6D6E6F707172737475767778797A100A03159A9A500010FCC4DCF44018C93840EC11EC11EC11EC11EC11",
+   "rows": [
+    "XXXXXXX     X      XX   XXXXX        X  X XXXXXX  XXXXXXX",
+    "X     X  X  XXX      X  XXX  X   X X XXX   X   X  X     X",
+    "X XXX X  X    XX  XXX X X X  X   X  X X   XXX XX  X XXX X",
+    "X XXX X  XX XXXXXXX   X  X  XXXXX X  XX    X X X  X XXX X",
+    "X XXX X XX X X X XX   XX  XXXXXXXX   X  X  X X X  X XXX X",
+    "X     X   X  X X XXXXXXXXXX   XX     X XXX  XXX   X     X",
+    "XXXXXXX X X X X X X X X X X X X X X X X X X X X X XXXXXXX",
+    "        XX  XX XX X  XXX  X   X  XX X X  X XXXXX         ",
+    "  XX  XXXX X   X    XX XXXXXXXX    XX    XXX    XXX X    ",
+    "   XXX X X XX    XXXXXX  X  XX XX XX   XX  X  XX X  X  XX",
+    "X XX XXXX XXX X X  XX   X XXXX XX XX XXXXXX X  XX    XXX ",
+    "X XX X  X X X XXX   XX X XXXXXX X X   X  X XX XX X X X   ",
+    " XXXX X  X X   X XX X    X X    XX  XX      X X X    XXX ",
+    "X X     X XX X  XX X  XX XXX XXX XXXXXXX X XX  X       XX",
+    " XXXX X  X  XXXX   XXXX X  X     XXX  X XXXXXX    XXX X  ",
+    " XXXXX XX  XX XX XX XX XX          XX  X XXX  X X X    X ",
+    "XX XX X   X  XX XXX  XX X XXXX XX XX X XX X XXXXXXX X  XX",
+    "  XX   XXX XXXX X XX XXXX  XXXXX  X   XX    X XX    XX XX",
+    "X  XX XX X XX    X X  XX  X XX     X       X  X  X  XX X ",
+    "X      X  X XX XX  X  X  XXXX   XXX  XX X      X    XXX X",
+    "XX    XXX  XX X  XX XXX  X XXXXXXXXX  XXXX X     X      X",
+    " XX     XXX XX X X   XXX  X X     XXX X   X XXX XX  XXXX ",
+    " X   XXX  XXXXXXXXX XX XXXXXXXX X X X    X XXXXX XXX X  X",
+    "XX X    XXX X   XXX X X   X XX  X X XXX XXXX    X  X   X ",
+    "X  X XXXXXX     XXX XX X   XXX    X XXX X  XX X   XXX X  ",
+    "  XX   X X       X      XX XXXXXX XX    X XXX  X X  X   X",
+    "XXXXXXXXX  XXX X XXX  XX XXXXXXXX  X   X   X   XXXXXXXX  ",
+    "X XXX   XXXX    XXX X X X X   X  X  XX X XX  X  X   XXXXX",
+    "X  XX X XX       X XXX   XX X XX XXX         X  X X XXXX ",
+    "X   X   X     XXXX X X X XX   X XXX    XXX XX  XX   XX  X",
+    "  XXXXXXX  X XX X  XX XXX XXXXXXXX X XXX X  XXXXXXXXXXXX ",
+    "XX X   X  XXXX  XX   XX X XX X   X  XXX  X   X  X XX X X ",
+    "XXXX  XXXXXXX XX    XX   X XXXXXX X   XXX  X     X  X X  ",
+    "    XX X  X  X XX X X   X  XX     X  X  X XX  X XX XXXX  ",
+    "XXXX  X  X X X  X     XX XXX  X  XXXX  X X  XXXX  X   X  ",
+    "XXX  X      X XXX XX XX  X  X XX  XX  XXXX XX X  X X X XX",
+    "XX X  XX   X XX  XX X   XX X  X     X     X     X      X ",
+    "XX  X   XX XX XXXXXX         XXX XX XXX XX X X XXX   XX  ",
+    "    X XX   X  X  X XXX  X X    X XXX X XX X XXX  XXXX XX ",
+    "XX  X  XX  XXX XX    XX XXXX   X   XXXXXX X  X XX    X  X",
+    " X  X X         X XX     X  XX XX X      X X X   XX  X  X",
+    " X X    XX X XX X  XX XX      XX X  X X X  XX X  X XXXXXX",
+    "XXX   XXX X XXXXXXX  X X X  XX XX XXX     XXX    X X  XX ",
+    "  X XX   XX X XX X  XX   XX  X  X X  X  X     XXXX  X    ",
+    " XX X X  XXX X   XX   X X  X X  XX     X  XXX  X  X  XX X",
+    "XXXX X   XXXX XXX  X XX    X  XX XXXXXXXXXXX X X XX  XX  ",
+    "X X  XXX  X X   X X   X  XX X  X  XXX X XX    XX XX XXX X",
+    "XXXXX   XXXXX XX X XX XX  X XXXX XX XX XXX X  X XXXX  XX ",
+    "      X XX XXX  XX  X     XXXXXXX  XXX X X   X  XXXXX    ",
+    "        X   X XX      X X X   X  XXX  X XX X   XX   X    ",
+    "XXXXXXX X  X    XXXXX   X X X XX X XX  X XX  X  X X XXX  ",
+    "X     X    X XXXXX    XX XX   X  X X   XX XX X  X   X    ",
+    "X XXX X  X XXX XXXX   X X XXXXX X XX XXX X  XXX XXXXX   X",
+    "X XXX X XXX XXX XXX X X  X   X  XX   X  X  XX    X X   X ",
+    "X XXX X XX   XX  XX X XXXX    X XXX X XXX XX   XXXX  XX  ",
+    "X     X  X XXX    XX X    X  XX X XXX XX X  XXX XX   XX X",
+    "XXXXXXX  X  XXX  X XX  XXX  X X     XXX XX  XXX XX       "
+   ],
+   "interleavedCodewords": "400600E6226877F401C6555FA5697840765276ACC76A791887E68451C86B7AC947360B95856C103847F63CB4846D0A4007D28026006E03EC33F32BB21A6F1511A20339DC61709AECF212A81C62719A11F6F1A53A637250EC570042006473001186E1AE42657410EC167C16E86675FC11D73C7AB96776C4ECDC11122A03C6916571A3C042D5C1603F1A25F6EE0D61DE3A344F1D6FBA5F2EA4B02CDCC5308AFC9308047B761D885CE88F7A78EE222C474A06233A201978F7DDD1FE2DD04950649CC80237EAA3984353EE5A752400D51F2C7F627B32B14E7E364DE64037FD94E01286B8DAEE2AA50B2E2BB18AC3D2AEDFA8AE66F1441ADFB4D180666C4EDDFB761387EA62AD6BB4F332D23867F6C47F3433A63D520BFDFCDAC2B47EFAAADDF5C55B8BB1F6A3DD63A5C031791C82DB2A99A6676593F690951EF1BEC166FFEB6B435CD8F5906A7B31D12539846BD3789C4F71E17D3E17904775DBA882",
+   "equalsBwipJs": true,
+   "penaltyMask": {
+    "bwipp": 3,
+    "isoLiteral": 3
+   },
+   "use": "encode bit-exact with { level } and decode"
+  }
+ ],
+ "structure": [
+  {
+   "version": 1,
+   "level": "L",
+   "mask": 4,
+   "sha256": "ab526e4f98366738ff1cf9f1d919923f6f23389beb1195717b7e1c9a62de9e16",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 1,
+   "level": "M",
+   "mask": 0,
+   "sha256": "2bb3297f82235a85bb14b341b1326534e0c0f8e922dfaf26d22f1dc6e033c205",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 1,
+   "level": "Q",
+   "mask": 7,
+   "sha256": "1461e4accbd845bb4ffc1059683661269a584247c9db84e1b055d7670cbfdc02",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 1,
+   "level": "H",
+   "mask": 7,
+   "sha256": "dd11552314d634c8211c694f42b4039b86805b8160490cd919ce1bc28d5bd436",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 2,
+   "level": "L",
+   "mask": 0,
+   "sha256": "fce8f908f23bf343f70b22d2371447becea1d3a22c4e49de9efe8369eb7d4378",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 2,
+   "level": "M",
+   "mask": 0,
+   "sha256": "9b26f30020a2dd2092189fbf72c96719b16bf02e1f275d2ea51fb72dfd6b80d4",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 2,
+   "level": "Q",
+   "mask": 7,
+   "sha256": "aa9fb2c9e62576f56ae5215748cba489bc8df3c65ccddf5e27dc9956ebe86a4a",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 2,
+   "level": "H",
+   "mask": 7,
+   "sha256": "cd20e733061fc17cb1b0a4c7bc6c7f6ababb4a56c8363c20c7c89066e539b488",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 3,
+   "level": "L",
+   "mask": 0,
+   "sha256": "b2e6cd262b8678a130ee26383c112819eafbe5a36b28f08ca76a491393a399fa",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 3,
+   "level": "M",
+   "mask": 0,
+   "sha256": "21e03b867ee1edbd6c18fe91a35c0a691f79fab9d2fb513a7e233856c9882c65",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 3,
+   "level": "Q",
+   "mask": 3,
+   "sha256": "f21837775ed9e19d391ae1d01b2a2dc28993dfe351c0b1f490dea15a919038dc",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 3,
+   "level": "H",
+   "mask": 3,
+   "sha256": "1b62182ab5d9e2253bd1c97011ff801bbe1c5324499a9a4a2272a103c167ccdd",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 4,
+   "level": "L",
+   "mask": 1,
+   "sha256": "7d4c87623db6756fa1fcc3e69fb93819f4cbfc52ff34ed1585675ef81a9eb81a",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 4,
+   "level": "M",
+   "mask": 6,
+   "sha256": "1663fbf2dc17805261a13c90bd2116ba445dbf895113137519cecdaee43dd711",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 4,
+   "level": "Q",
+   "mask": 2,
+   "sha256": "323a6482c4316eedcb65d1393862bb243bb76bb6f06f61de1b735184ca5d7e93",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 4,
+   "level": "H",
+   "mask": 6,
+   "sha256": "39941e37cf74f3b8e7e288d2754999656b2cae73c35b66c0dc2ae5dd24362057",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 5,
+   "level": "L",
+   "mask": 1,
+   "sha256": "e63ab5bc004fc4003bc6c224ee86e86532e5628d0465cf2f00d88d5aca67f168",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 5,
+   "level": "M",
+   "mask": 4,
+   "sha256": "7a4462f622f56a112ce19f5a34eb4c2520163d4d1cb7316cd0c285ad6665021a",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 5,
+   "level": "Q",
+   "mask": 2,
+   "sha256": "06679513829578f6762225a011aa93ef77da32271157d6ec9ef7d043655fc8a2",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 5,
+   "level": "H",
+   "mask": 4,
+   "sha256": "134b567892cb0dacc444c0acb13703e49c70a5dd8c8b96dad3fc9d1ee7f759d4",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 6,
+   "level": "L",
+   "mask": 4,
+   "sha256": "862d27da1d959f71451ba2c23035c45656c5b9d1d26eaffe66a1fa352b1ba891",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 6,
+   "level": "M",
+   "mask": 2,
+   "sha256": "58dd1d7806c576ded85d21065a9ba3a012f8244c5b20ee372093c459d0851e6d",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 6,
+   "level": "Q",
+   "mask": 2,
+   "sha256": "1758ea0439734c8398052f6510c3cfa33f247495213e78c656a6ad953ae54a80",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 6,
+   "level": "H",
+   "mask": 3,
+   "sha256": "5093597f6f55ba8465d69232e216d423be603290208ceb7d3eeffa57c6292770",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 7,
+   "level": "L",
+   "mask": 2,
+   "sha256": "7615a28b8573c3d1b05e3d199bad384be6d31b432c73336da99661540a78eb08",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 7,
+   "level": "M",
+   "mask": 0,
+   "sha256": "63b0ea7e85e6e97ddf6ee17480279ab492f315552c30495c59893dcc0705eeaf",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 7,
+   "level": "Q",
+   "mask": 6,
+   "sha256": "80c612ff32d3792e22de365db5a2f5aabe02a46af903846e65d70baabda5f50c",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 7,
+   "level": "H",
+   "mask": 0,
+   "sha256": "bfa0f3be2fa34adcf278bf33b0db3909432e458ce5d79aa2632d3efb40e9e49e",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 8,
+   "level": "L",
+   "mask": 2,
+   "sha256": "71492c940ad038c909db18b3558009c97bd077dff1164ce1238166bcf5842335",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 8,
+   "level": "M",
+   "mask": 4,
+   "sha256": "d8a412881513fa8fb711201db5eb6a169e32ee37a9fffc372b2d23fb1028297d",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 8,
+   "level": "Q",
+   "mask": 4,
+   "sha256": "3b109ebee31b7fb6275e49041a450e109af2344ab44f0823702b0befa45297c0",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 8,
+   "level": "H",
+   "mask": 4,
+   "sha256": "80c9795c11dc52be34f7d76cda7c4086247001feb2272e0b786201489e7f8fb5",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 9,
+   "level": "L",
+   "mask": 2,
+   "sha256": "833a5cad08643edf1662c67797d85f8a12976097d31d7669e37c2d42b6d0ef61",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 9,
+   "level": "M",
+   "mask": 2,
+   "sha256": "78bd2f73b6fe78d16f370b2395667dbe320788ac180ca0c0c20fb2c7aa19a346",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 9,
+   "level": "Q",
+   "mask": 4,
+   "sha256": "5b55ba0a934704fc714ee05ebf3f7c4b3fbc3342083056f5903332dbe8bc3f96",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 9,
+   "level": "H",
+   "mask": 2,
+   "sha256": "b867c4bea3c42e50aa0779ff1f05a811f6b2533a1215eb96ade7d732c5db5961",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 10,
+   "level": "L",
+   "mask": 2,
+   "sha256": "36e31b6be95d4e9df510a68995608018b8d50da926ff3560e4ff373f109b1e82",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 10,
+   "level": "M",
+   "mask": 0,
+   "sha256": "7b29a0f616e11be37dbcf0adc83d9342d321d9d48ce4d13d43b9541faae44930",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 10,
+   "level": "Q",
+   "mask": 0,
+   "sha256": "ebb2b57b33437ac0e904cf819c86ee1048c695533ce691aadff727bb4ac01e6f",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 10,
+   "level": "H",
+   "mask": 0,
+   "sha256": "babffc6031f686160113cfa11f4c0e613ce9ab256812849913be77d65c188a14",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 11,
+   "level": "L",
+   "mask": 0,
+   "sha256": "11e2156870682f5e537e4d37732ba3b690b3846fbad738fc486c6f50bf7b4c54",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 11,
+   "level": "M",
+   "mask": 0,
+   "sha256": "bcfd7a8f9bcd86b4abfc41c3b9d331c590a67daf00028a9dad752f01312edd9f",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 11,
+   "level": "Q",
+   "mask": 0,
+   "sha256": "ad8ddf7f6529f3c89f679a2ecfeb2356ce9c644dc88c69892fc1621731b50caf",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 11,
+   "level": "H",
+   "mask": 2,
+   "sha256": "742bb1106f4daed06714fe3a3caa793c2aaf5165b9e00e59f152fb6e804ac2bb",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 12,
+   "level": "L",
+   "mask": 2,
+   "sha256": "eef963cf1bfc59f8c603cd54ca4bc5b62cddb19ecaaa120af185ee33177d12c7",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 12,
+   "level": "M",
+   "mask": 2,
+   "sha256": "64b65fea30665f0bec67c94243d032f0a0cadd4296699245a81a68a2557d9099",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 12,
+   "level": "Q",
+   "mask": 2,
+   "sha256": "7f5c4f1008cb43102e5d2ea225b95194e89036fdc49b2e5c3b9475065727665c",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 12,
+   "level": "H",
+   "mask": 2,
+   "sha256": "e2d1efc61257a72f2bb41f1831dc93f8a5bccf9755ec799c8ff42595857e319e",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 13,
+   "level": "L",
+   "mask": 0,
+   "sha256": "58a77f47849b0e4ff97e83e28ddec56b45d0303f1bbf68a5a4e7c2a14d7831fc",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 13,
+   "level": "M",
+   "mask": 0,
+   "sha256": "1bff0e15554b118dad792f69724f9b8e5c1b86aa32d6c5d85d27e1043b802c88",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 13,
+   "level": "Q",
+   "mask": 4,
+   "sha256": "05c83fca98fdb16f7a05c5bb9238cd601a9d0ba62beb967c0aa31da28c9c5fe9",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 13,
+   "level": "H",
+   "mask": 0,
+   "sha256": "dd16b6a49fe9a6c97edc629da7bb638d6c1f7330e6b8a4f98589f94e080f1ef3",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 14,
+   "level": "L",
+   "mask": 0,
+   "sha256": "980370da4848b13839fc2db24c47556d76767f1646d763f136414655ee4bcdff",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 14,
+   "level": "M",
+   "mask": 4,
+   "sha256": "59234df2b45ff3963144984b3f7a01baf25db3c165bd85588426b9d5372baa5d",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 14,
+   "level": "Q",
+   "mask": 4,
+   "sha256": "6b786451f1f469ee04e4bb055b1cf55ad20afe1b2f6b21617d9214b6c9af2d52",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 14,
+   "level": "H",
+   "mask": 4,
+   "sha256": "1639061e8fa496ba1f58805d8f3646873f93295505d0a050d5791af98deed05a",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 15,
+   "level": "L",
+   "mask": 0,
+   "sha256": "43604cdb2ad9851b6c657f501602542d265a66fd3ef45e740045986e0d7d5243",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 15,
+   "level": "M",
+   "mask": 2,
+   "sha256": "8049e729615de1759ebe512e23c55344a6b78d3f0a6c536bfeeb6e3c7cbb9388",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 15,
+   "level": "Q",
+   "mask": 4,
+   "sha256": "c16b8c253deb37db7f448568d60188e146a88b479fe21a4e06c6afaef7b54b28",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 15,
+   "level": "H",
+   "mask": 4,
+   "sha256": "3ff47bba8cf25c5de5dd747053334678652555c405e0517e93f5bcd12bfba7a6",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 16,
+   "level": "L",
+   "mask": 4,
+   "sha256": "b68d09fdebea99ecc000e253dfc5425cfd5e7d63afd177d624b077e89a6f6a38",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 16,
+   "level": "M",
+   "mask": 0,
+   "sha256": "2fa6b5060f9b5ab2257a044ca2f73f794c1d91305b0c960738e4180a7f50a9b3",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 16,
+   "level": "Q",
+   "mask": 4,
+   "sha256": "b23970eb5224b3f9c0e664e63bbf67c638db7a307d0a9f6c6ee70d2d115db745",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 16,
+   "level": "H",
+   "mask": 6,
+   "sha256": "d41bef42a896023de8db89047808901e1dd1fb758c71ce639fe414fbbeed4c4c",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 17,
+   "level": "L",
+   "mask": 2,
+   "sha256": "37a120ebc51b8afbd7f14152909b58ef31d46252546824f12dea07a8874c0815",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 17,
+   "level": "M",
+   "mask": 4,
+   "sha256": "25bf9d953984901cbbe8406d71356e08d02cf254e6418a8957e8f97217dc2538",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 17,
+   "level": "Q",
+   "mask": 4,
+   "sha256": "2cdf9c4790f552d3ce94f68562c9946c941b8b5c352fe8c1ddee2683cc851d26",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 17,
+   "level": "H",
+   "mask": 0,
+   "sha256": "5771a0f0f45c29d0924cab76e0fcc031d2e58eb661b9821febf74a57f37033bf",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 18,
+   "level": "L",
+   "mask": 4,
+   "sha256": "c51565932614091d1287550f9401249e94a5b01cf49161d99f10a3a6de5ae611",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 18,
+   "level": "M",
+   "mask": 4,
+   "sha256": "3260b4dee638af34d6a6b2c1f6843aca88de304468e2e0f4479bfe4f9c916d3f",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 18,
+   "level": "Q",
+   "mask": 4,
+   "sha256": "508f55a3cb185bb671d1c52238793b9b3d6ed14043e305884eb8bc8a03ab0b20",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 18,
+   "level": "H",
+   "mask": 4,
+   "sha256": "05a5126b8bfe3d4f1a2760d900fcffe20ea03ea569aefe97fa0e9c5a30e6fdae",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 19,
+   "level": "L",
+   "mask": 4,
+   "sha256": "4136b622b369abe9a7f50d0e4055471086122e804e529f763833dd8326da81ca",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 19,
+   "level": "M",
+   "mask": 4,
+   "sha256": "322905a005a7acdddf8b618421bd7e21d570c92d88ca139fa8174bb04c138475",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 19,
+   "level": "Q",
+   "mask": 4,
+   "sha256": "46f85d6013c675561c1b16148a97b08eff4ca445fbffb7c618a39f4e60cd071f",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 19,
+   "level": "H",
+   "mask": 4,
+   "sha256": "beac578ddcded9d31ca378b5ba1ff98015b7bec84fbbc5445f83227eb100b6fc",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 20,
+   "level": "L",
+   "mask": 4,
+   "sha256": "8e313f8b62941dfe50a323b59cd5a5990df066642e9d6104a8b13e0b80914428",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 20,
+   "level": "M",
+   "mask": 2,
+   "sha256": "f65aab10038a17ff860ef4dbe0ff00f495dc0703e7c5ad741064026e56c94cdf",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 20,
+   "level": "Q",
+   "mask": 6,
+   "sha256": "55f9e846a95ecf964e15b79dab87d8f29503f188c13fe21242c95cc1039a38ad",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 20,
+   "level": "H",
+   "mask": 4,
+   "sha256": "bd468fbc88e4e232f9c2f84aa7f5cfc9be50dbb5e74da6f3b7784f09b3a3d799",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 21,
+   "level": "L",
+   "mask": 4,
+   "sha256": "ad87a64c8d17f33b577314ceb1a5f78562f043557216bb32f042176f2b9e594e",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 21,
+   "level": "M",
+   "mask": 2,
+   "sha256": "41d5a8e35911c11bae48c724360d8a385885e945d86095f2a502084f8d0884db",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 21,
+   "level": "Q",
+   "mask": 4,
+   "sha256": "a7a118e36368e1b1555fb73e76760a4e4256d58f04c21df5659847056f53bd9a",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 21,
+   "level": "H",
+   "mask": 4,
+   "sha256": "3a21a28ab7be40753c765cbda06e8f00b3984478ddc61b4e1d5715f9e1f9d7b0",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 22,
+   "level": "L",
+   "mask": 2,
+   "sha256": "0683e786785a1f7bec84b746b542cae601531a9a95e630ef8e9d1ea7776c26ee",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 22,
+   "level": "M",
+   "mask": 4,
+   "sha256": "e87dc828de447c5f45ebba6d14f5962cc96b416e6b0298a32dbc87aa3d26dd0c",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 22,
+   "level": "Q",
+   "mask": 4,
+   "sha256": "79f21cd5d865b42be76dce86ae369964ca761960fbeb31830c9c6c493015d845",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 22,
+   "level": "H",
+   "mask": 0,
+   "sha256": "a2ce57bdc8ec2b9b995b9cdd12baca853545c442cb5a913904acf67aa1ffb5b6",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 23,
+   "level": "L",
+   "mask": 4,
+   "sha256": "ede63dbee4a1ef0d0771e37defad91f550308a6210b720f64b695e79c6409623",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 23,
+   "level": "M",
+   "mask": 4,
+   "sha256": "ee722fdc5e56c6e4c6320e13c73d6f9c62e903c352af2421d52d6371399ef9f7",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 23,
+   "level": "Q",
+   "mask": 4,
+   "sha256": "f436edbec5817c92e0d02e4d1228c5b35513101b747ebc178d852891408ec6c5",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 23,
+   "level": "H",
+   "mask": 4,
+   "sha256": "b6971f4d46f171d6911c3e664326f155772578d5101d541c3819f84723af1527",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 24,
+   "level": "L",
+   "mask": 4,
+   "sha256": "a388579d4b4b889f8e8df89cc617f8ff5053fefa1e60bafe17b3b72932b59c62",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 24,
+   "level": "M",
+   "mask": 4,
+   "sha256": "97538e89beb18104841a88abcba92ea16509121352493965d36c28f88ba36900",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 24,
+   "level": "Q",
+   "mask": 0,
+   "sha256": "c203111683a9e726df72754eccbffcf3379285eb10d1ffc022955fb460a98b8a",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 24,
+   "level": "H",
+   "mask": 0,
+   "sha256": "21bab0fd3109224b9c565f98c72cf27f43df76f99b245010c01e538296dd99e0",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 25,
+   "level": "L",
+   "mask": 4,
+   "sha256": "5a5ea877ee86cd25990c54ea1013a6c171bf0958732397b2833d5cd543a807ae",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 25,
+   "level": "M",
+   "mask": 4,
+   "sha256": "61866b4896d1cc7b0949849c3fdcdf227469d2df1e4d09c3de182297769c971f",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 25,
+   "level": "Q",
+   "mask": 0,
+   "sha256": "525f9fa451c144221a4800d4ae76455916dddf2810c2fbfd45c3646e695d9936",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 25,
+   "level": "H",
+   "mask": 0,
+   "sha256": "8725736eaed3505f5509b4c5e9ea42991a8875c81f08cc83874172599e6424c5",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 26,
+   "level": "L",
+   "mask": 2,
+   "sha256": "014f8cd403773d1a75ed9d5d76e60e211c686ea77a34c10a3e00c49fdcd160d7",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 26,
+   "level": "M",
+   "mask": 2,
+   "sha256": "cdf7060e7f86d58287a4eedabcee3aba959abe9691833c8d94585fd78aa899cd",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 26,
+   "level": "Q",
+   "mask": 4,
+   "sha256": "99392a99f118ae6483ff4b7a40cac244c329f5c3b7138e7e2e37d4bffe352343",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 26,
+   "level": "H",
+   "mask": 4,
+   "sha256": "6d4eee7a25d59d6780810ec9913bd748c026411f363f498b33da0d5d2a00b4e5",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 27,
+   "level": "L",
+   "mask": 2,
+   "sha256": "9cdd6d4f5b097485538fd19844d199499896a0b17e87a8495dd7cd3ab0621821",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 27,
+   "level": "M",
+   "mask": 0,
+   "sha256": "d2c4ae62fb4479740b025990f068afade871b15bb2c49b22a9a008d59e431bdb",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 27,
+   "level": "Q",
+   "mask": 2,
+   "sha256": "dc10de56a9ed640a061cb779758a5f7d6f82816fc7831f9aa3832ae6b117b639",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 27,
+   "level": "H",
+   "mask": 4,
+   "sha256": "72d4e64b2b640f9959f6254f572fafc43037668c1f3504e64e58387474e2fc7f",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 28,
+   "level": "L",
+   "mask": 4,
+   "sha256": "1f9fcd04178caa3f3293de42f72f12b2f5a11deef357e1d765dbb36adf6d7401",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 28,
+   "level": "M",
+   "mask": 4,
+   "sha256": "72ce6996c157791dafffb6b736543b12758bc61c2dd9bd74e806ca95cfd32487",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 28,
+   "level": "Q",
+   "mask": 0,
+   "sha256": "eeac45e1d6bc667fc4a23a74d4766eda0e344c5c11d723843658751e86b5ce26",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 28,
+   "level": "H",
+   "mask": 2,
+   "sha256": "e72b82bda2096a3e4de6b54d9e3b6e665c7d80d1afcbde0baa00122871978158",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 29,
+   "level": "L",
+   "mask": 4,
+   "sha256": "96a7b9c4bbaf856c1bc7711b1675e4b89d35608ab311ca88fe238bde19c59067",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 29,
+   "level": "M",
+   "mask": 0,
+   "sha256": "f6ffd08b47be7059036c9db2ec5010f3ffb10cee0021508513f5a8939bf08722",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 29,
+   "level": "Q",
+   "mask": 4,
+   "sha256": "d6ffad9615c1361ef472ae430775b1d9d3abd3620e8b9e842b64a00ab6147f48",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 29,
+   "level": "H",
+   "mask": 2,
+   "sha256": "9232ab5a84f57206d34be3566ec1461c431dd3c9ff19181c4c37e71038afea95",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 30,
+   "level": "L",
+   "mask": 4,
+   "sha256": "73af018eca227292060f4af7484ceceb8ae5a53d0e61daa310d4a972316fb053",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 30,
+   "level": "M",
+   "mask": 4,
+   "sha256": "3f5d42741b03844bf12b01cc0630a167d1a215be933271a37d9bd149fa387671",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 30,
+   "level": "Q",
+   "mask": 0,
+   "sha256": "d1962b3e8928b9bccdd89394aadc2119aea92267b35d99426e8c18b0b395dfba",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 30,
+   "level": "H",
+   "mask": 2,
+   "sha256": "e2b71cb40d72f6ac6d69f73c68e2686df8eacc0508177461974839eade1fc43c",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 31,
+   "level": "L",
+   "mask": 0,
+   "sha256": "09f6291ac3466ba7beba4e1cd5967c2430f11769769f60f64b039eb21cc9d856",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 31,
+   "level": "M",
+   "mask": 0,
+   "sha256": "987f4362d8197f6bb7428cf2ca595388e60ffb614d3cf6d1d82326090b1f9fd4",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 31,
+   "level": "Q",
+   "mask": 4,
+   "sha256": "fdc82aaeea9981fc1f424d5289b460ec3a39e16920e01b2411e9081dc34244bc",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 31,
+   "level": "H",
+   "mask": 5,
+   "sha256": "a0a9ded3dfe32ed2a96140ec53c1cb99929114443b3f8f8db86fa97aebfc2de7",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 32,
+   "level": "L",
+   "mask": 0,
+   "sha256": "9afc9eeda33e07d946e6d305c538b587aa23e046009448c37b425baeff5ebf06",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 32,
+   "level": "M",
+   "mask": 0,
+   "sha256": "859142f4067a29aad3603d96d0ef155287e816e8dcccbaf41eb12e9686bcf2ab",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 32,
+   "level": "Q",
+   "mask": 0,
+   "sha256": "50fc8269b1e29ce03ad44e470d6236475f7a17b99c93d3d1bce36343e092fb9d",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 32,
+   "level": "H",
+   "mask": 2,
+   "sha256": "2d71500f0fe16ff33b3930a5e702bc9e1e3863feb9c9373db335475f758f7363",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 33,
+   "level": "L",
+   "mask": 0,
+   "sha256": "d8c4a06cf65e51f094c501491bf07c7795bd0ca6b19d1eb3a9d34f98db67c79f",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 33,
+   "level": "M",
+   "mask": 4,
+   "sha256": "dd18c0bb48171d02a5d30944ae310d4b44b099021d45eecf9784e722fc25d31a",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 33,
+   "level": "Q",
+   "mask": 4,
+   "sha256": "ce6f73b5371956a0d2e6ffd9c819ce7f748f4aebe67c95e00cf35c5e5a032683",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 33,
+   "level": "H",
+   "mask": 4,
+   "sha256": "56af93a9d6186bece44910be75f2296dd50d58023b4e76d8e9b09b14b319bee5",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 34,
+   "level": "L",
+   "mask": 4,
+   "sha256": "da574a545fe38f56d712b1249db392111c98c5f32edad795e2eff569f769b9bc",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 34,
+   "level": "M",
+   "mask": 4,
+   "sha256": "1f92f19d273ff3da09838db07f808247c1c526a12c04f59a49fd609cd0414ec8",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 34,
+   "level": "Q",
+   "mask": 4,
+   "sha256": "feb6927b44dc0ea7cd29c11ff9f5898772634012d1f92892981af7af32e9f01d",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 34,
+   "level": "H",
+   "mask": 4,
+   "sha256": "ad71aa72d679ca3c02a67ab5243b56080e27152f9a762d3263f23ec30928c45d",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 35,
+   "level": "L",
+   "mask": 0,
+   "sha256": "833fd9814a83c0686fb107a0d9dd9cbeeef5c6e1a97ed7e309b565b115948081",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 35,
+   "level": "M",
+   "mask": 4,
+   "sha256": "0227ca84ad458f8d9bdac6e978e5e9cc639ee4201fa9f537655abbe5e982b356",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 35,
+   "level": "Q",
+   "mask": 2,
+   "sha256": "22742ad25e7e6129465b82f14e53e33ff426109ad9889310c32de8d3ea0029c5",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 35,
+   "level": "H",
+   "mask": 0,
+   "sha256": "aefb7789ef2adc3087d69dd285bb076dae11c8cc048ef88aa78bff4081bc395d",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 36,
+   "level": "L",
+   "mask": 2,
+   "sha256": "4474cb47db7fae85a5ae15e49efca357e03b9f4e3915d8cc18a25bd5fd0f1f7f",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 36,
+   "level": "M",
+   "mask": 4,
+   "sha256": "3a654a8932df9a85e10a58c1d0a611aff39256e80bb3224cb5243e8734fa5bf0",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 36,
+   "level": "Q",
+   "mask": 4,
+   "sha256": "0d5120114e56b36c161bf85c9e9b14884f60c78c496fcc104f337a97d73d5137",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 36,
+   "level": "H",
+   "mask": 3,
+   "sha256": "227b7dffcd2aecd90dd3c170c1641f034a0f4fe05015fd33dfaf632bf9ca0b58",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 37,
+   "level": "L",
+   "mask": 2,
+   "sha256": "4e9005c86e69442396e90b66f4cf627624bee0693c36d4123d47cf815b649c74",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 37,
+   "level": "M",
+   "mask": 0,
+   "sha256": "ac847683f275edd2cabf74e99950212650817ecc08fbab5b5e7fe12e558c8e56",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 37,
+   "level": "Q",
+   "mask": 2,
+   "sha256": "9cbe12ceebfcf2e0e047e54f98b38b20ed23b2fb17cd41ee968a78d8971c27b2",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 37,
+   "level": "H",
+   "mask": 0,
+   "sha256": "2e8e0af41defa7d78a4a2fab337ed1bad8dc8565325979fb116a9b3188fc18a8",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 38,
+   "level": "L",
+   "mask": 0,
+   "sha256": "7d03f726d061a31b15beb3e1f855e5a361cc78117402794717ff4dd66c1a1da5",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 38,
+   "level": "M",
+   "mask": 0,
+   "sha256": "2cbe37211fe19b526ac8eb31078fabc33657de71b14596653c33b19e1c11d32a",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 38,
+   "level": "Q",
+   "mask": 4,
+   "sha256": "738352bbe9bcc2f4096578bfdc5519998a7f5a22363746d8d292a4e567cb065f",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 38,
+   "level": "H",
+   "mask": 0,
+   "sha256": "27a831fbbf4009987ad66fd6903724feda300df9832cff0e6280abd1cae25fb1",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 39,
+   "level": "L",
+   "mask": 0,
+   "sha256": "a7346e50f905ca0219bab6393595fb4a9ae56aa460e16bd1a8ef6c62b9769ec3",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 39,
+   "level": "M",
+   "mask": 0,
+   "sha256": "c5d180940befea4a78d00e2f4f414ac39bdeb65e8a2c0865684b4ddc8eae6fdf",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 39,
+   "level": "Q",
+   "mask": 2,
+   "sha256": "36351af68865573ba9000bc16b372fda331dc3b408e2dcb1a5c2b5c60f4d5712",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 39,
+   "level": "H",
+   "mask": 3,
+   "sha256": "92086ea025f033e18dbfab945239196261c0b0889ef0c890ab4be7f63eeea9e6",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 40,
+   "level": "L",
+   "mask": 4,
+   "sha256": "4dd94b81f417e5b2e2b291c4dbddfe399236dd1a6c9e403696dfd6404f5325ba",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 40,
+   "level": "M",
+   "mask": 4,
+   "sha256": "75f621cd08990c7401cf10e202dc74c2e1b53628e31b19a8636abd8ff30b0ea8",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 40,
+   "level": "Q",
+   "mask": 0,
+   "sha256": "8ebdfceb222bf7f725bf6b1393f1ca5d733eca1db7b01289818697a397941842",
+   "equalsBwipJs": true
+  },
+  {
+   "version": 40,
+   "level": "H",
+   "mask": 0,
+   "sha256": "e9d9f2b301094ff549b284d3399f07c39cbc00f95aafb30bb6bb0ed13f69e892",
+   "equalsBwipJs": true
+  }
+ ],
+ "penaltyExamples": [
+  {
+   "id": "iso-annex-01234567",
+   "version": 1,
+   "level": "M",
+   "bwippScores": [
+    1032,
+    1052,
+    1050,
+    1081,
+    1135,
+    1180,
+    1112,
+    1056
+   ],
+   "bwippMask": 0,
+   "isoLiteralScores": [
+    1057,
+    1093,
+    1037,
+    1052,
+    1130,
+    1197,
+    1099,
+    1046
+   ],
+   "isoLiteralMask": 2
+  },
+  {
+   "id": "tutorial-hello-world-q",
+   "version": 1,
+   "level": "Q",
+   "bwippScores": [
+    1043,
+    1097,
+    1165,
+    1039,
+    1132,
+    1190,
+    1088,
+    1045
+   ],
+   "bwippMask": 3,
+   "isoLiteralScores": [
+    1027,
+    1110,
+    1146,
+    1081,
+    1139,
+    1116,
+    1074,
+    1078
+   ],
+   "isoLiteralMask": 0
+  },
+  {
+   "id": "dl-uppercase-host",
+   "version": 2,
+   "level": "M",
+   "bwippScores": [
+    1200,
+    1161,
+    1202,
+    1289,
+    1275,
+    1147,
+    1282,
+    1189
+   ],
+   "bwippMask": 5,
+   "isoLiteralScores": [
+    1185,
+    1167,
+    1177,
+    1217,
+    1229,
+    1205,
+    1263,
+    1194
+   ],
+   "isoLiteralMask": 1
+  }
+ ]
+}

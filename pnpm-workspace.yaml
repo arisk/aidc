@@ -1,0 +1,25 @@
+# pnpm settings. pnpm 12 fails the install on a key it does not recognize, so keep these in
+# step with https://pnpm.io/settings. The pnpm version itself is pinned by "packageManager" in
+# package.json, which is where pnpm reads it.
+
+# Supply-chain policy (https://pnpm.io/supply-chain-security).
+# A version must be at least three days old (minutes) before it is installed, with no fallback
+# to a newer one and no exemption for registries that omit publish times.
+minimumReleaseAge: 4320
+minimumReleaseAgeStrict: true
+minimumReleaseAgeIgnoreMissingTime: false
+# Refuse a release whose trust level (trusted publisher, provenance) dropped since an earlier one.
+trustPolicy: no-downgrade
+# Transitive dependencies come from the registry only, never from git or tarball URLs.
+blockExoticSubdeps: true
+# Re-verify every lockfile entry against the rules above on each install.
+trustLockfile: false
+
+# Dependency executables: no dependency runs install scripts (preinstall, install, postinstall).
+# None of ours needs to. A new one that does fails the install until it is reviewed and listed
+# under allowBuilds.
+strictDepBuilds: true
+dangerouslyAllowAllBuilds: false
+allowBuilds: {}
+# Never run a script against a stale node_modules; install explicitly instead.
+verifyDepsBeforeRun: error

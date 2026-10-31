@@ -1,0 +1,11 @@
+export { parse, tryParse, validate } from './api.ts';
+export { ElementString } from './element-string.ts';
+export type { AiValue } from './element-string.ts';
+export { format, hri } from './format.ts';
+export type { ElementStringFormat, FormatOptions } from './format.ts';
+export type { ParseOptions } from './parse.ts';
+export { getAi } from './lookup.ts';
+export type { AiComponent, AiEntry } from './dictionary.ts';
+export { SYNTAX_DICTIONARY_RELEASE } from './table.gen.ts';
+export { identifyKey } from './keys.ts';
+export type { GS1KeyType, KeyCandidate } from './keys.ts';

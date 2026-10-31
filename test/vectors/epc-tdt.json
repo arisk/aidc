@@ -1,0 +1,6613 @@
+{
+  "provenance": {
+    "generator": "scripts/gen-epc-tdt-vectors.ts",
+    "source": "docs/specifications/data/repos/gs1-tdt-main-a655cc3-2026-09-19.tar.gz (gs1/TDT main @ a655cc3)",
+    "sourceSha256": "4776e0e37a4a2ce005c117094c5f6b6425c3b9cb12335d31e05a1b28a9cd8734",
+    "translator": "TDT-main/TDT_2_3_demo/TDTtranslator.js",
+    "translatorSha256": "8182a137989512f39140d4b990f2e253dd88f047a48791db0ceafe22e57c1767",
+    "license": "Apache-2.0 (GS1 TDT); the vectors are test data only and are not shipped",
+    "normative": "No: TDT 2.3 is a draft. TDS 2.3 wins on conflict (plan decisions E3, E19).",
+    "seed": 2654435769,
+    "perScheme": 25,
+    "notes": [
+      "Inputs come from a seeded xorshift32 PRNG; each is a valid TDS 2.3 pure identity URI plus a filter.",
+      "Escapes are upper-case only: TDT rejects lower-case escapes such as %2f (research C.3).",
+      "cpi-var and usdod-96: TDT encoding throws \"Input is not binary\" (research C.3), so these vectors run in the decode direction: inputHex is our encoding of pureIdentityUri, and expect holds what TDT decodes it to.",
+      "usdod-96 filters are 0 to 9: the TDT tag URI pattern for its 4-bit filter is [0-9].",
+      "itip piece and total satisfy 1 <= piece <= total, as the (8006) pieceoftotal linter requires.",
+      "gid-96, usdod-96 and adi-var have no GS1 key, so no aiJson.",
+      "skipped sgtin-198 GS1_AI_JSON of urn:epc:id:sgtin:05362700329.49.c5ak1aKd9MsCo%22: TDT output is not JSON: {\"01\":\"40536270032994\",\"21\":\"c5ak1aKd9MsCo\"\"}",
+      "skipped sgln-195 GS1_AI_JSON of urn:epc:id:sgln:038702772261..ghWBNWyFnc%22UG=cA: TDT output is not JSON: {\"414\":\"0387027722611\",\"254\":\"ghWBNWyFnc\"UG=cA\"}",
+      "skipped grai-170 GS1_AI_JSON of urn:epc:id:grai:747809410.921.hej%225M!T_lysdJ2: TDT output is not JSON: {\"8003\":\"07478094109214hej\"5M!T_lysdJ2\"}",
+      "skipped grai-170 GS1_AI_JSON of urn:epc:id:grai:92523467397.6.zE%225j: TDT output is not JSON: {\"8003\":\"09252346739767zE\"5j\"}"
+    ]
+  },
+  "vectors": [
+    {
+      "scheme": "sgtin-96",
+      "pureIdentityUri": "urn:epc:id:sgtin:2411121584.634.36771466",
+      "filter": 4,
+      "expect": {
+        "hex": "30888FB6CBB09E800231168A",
+        "tagUri": "urn:epc:tag:sgtin-96:4.2411121584.634.36771466",
+        "aiJson": {
+          "21": "36771466",
+          "01": "62411121584346"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-96",
+      "pureIdentityUri": "urn:epc:id:sgtin:809268553224.2.8580918164",
+      "filter": 5,
+      "expect": {
+        "hex": "30A2F1B0A8982081FF766B94",
+        "tagUri": "urn:epc:tag:sgtin-96:5.809268553224.2.8580918164",
+        "aiJson": {
+          "21": "8580918164",
+          "01": "28092685532248"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-96",
+      "pureIdentityUri": "urn:epc:id:sgtin:85899320.04093.4",
+      "filter": 3,
+      "expect": {
+        "hex": "30728F5C1C03FF4000000004",
+        "tagUri": "urn:epc:tag:sgtin-96:3.85899320.04093.4",
+        "aiJson": {
+          "21": "4",
+          "01": "08589932040930"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-96",
+      "pureIdentityUri": "urn:epc:id:sgtin:555127589.3196.0",
+      "filter": 4,
+      "expect": {
+        "hex": "308E116932531F0000000000",
+        "tagUri": "urn:epc:tag:sgtin-96:4.555127589.3196.0",
+        "aiJson": {
+          "21": "0",
+          "01": "35551275891962"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-96",
+      "pureIdentityUri": "urn:epc:id:sgtin:816594178.5077.365867",
+      "filter": 1,
+      "expect": {
+        "hex": "302F0AC3D024F5400005952B",
+        "tagUri": "urn:epc:tag:sgtin-96:1.816594178.5077.365867",
+        "aiJson": {
+          "21": "365867",
+          "01": "58165941780774"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-96",
+      "pureIdentityUri": "urn:epc:id:sgtin:293790795.9650.9573016820",
+      "filter": 5,
+      "expect": {
+        "hex": "30AD182E44B96C823A98A4F4",
+        "tagUri": "urn:epc:tag:sgtin-96:5.293790795.9650.9573016820",
+        "aiJson": {
+          "21": "9573016820",
+          "01": "92937907956509"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-96",
+      "pureIdentityUri": "urn:epc:id:sgtin:7736814872.814.694420549",
+      "filter": 4,
+      "expect": {
+        "hex": "3089CD266D18CB8029640445",
+        "tagUri": "urn:epc:tag:sgtin-96:4.7736814872.814.694420549",
+        "aiJson": {
+          "21": "694420549",
+          "01": "87736814872142"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-96",
+      "pureIdentityUri": "urn:epc:id:sgtin:3047849.242839.29",
+      "filter": 5,
+      "expect": {
+        "hex": "30B4BA06A4ED25C00000001D",
+        "tagUri": "urn:epc:tag:sgtin-96:5.3047849.242839.29",
+        "aiJson": {
+          "21": "29",
+          "01": "23047849428399"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-96",
+      "pureIdentityUri": "urn:epc:id:sgtin:69813696.13020.7604",
+      "filter": 6,
+      "expect": {
+        "hex": "30D214A2E00CB70000001DB4",
+        "tagUri": "urn:epc:tag:sgtin-96:6.69813696.13020.7604",
+        "aiJson": {
+          "21": "7604",
+          "01": "16981369630200"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-96",
+      "pureIdentityUri": "urn:epc:id:sgtin:35884820.65529.108",
+      "filter": 3,
+      "expect": {
+        "hex": "307111C78A3FFE400000006C",
+        "tagUri": "urn:epc:tag:sgtin-96:3.35884820.65529.108",
+        "aiJson": {
+          "21": "108",
+          "01": "63588482055293"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-96",
+      "pureIdentityUri": "urn:epc:id:sgtin:6266400.740430.129281",
+      "filter": 1,
+      "expect": {
+        "hex": "30357E7882D313800001F901",
+        "tagUri": "urn:epc:tag:sgtin-96:1.6266400.740430.129281",
+        "aiJson": {
+          "21": "129281",
+          "01": "76266400404302"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-96",
+      "pureIdentityUri": "urn:epc:id:sgtin:5495466207.416.6",
+      "filter": 0,
+      "expect": {
+        "hex": "3009478E28DF680000000006",
+        "tagUri": "urn:epc:tag:sgtin-96:0.5495466207.416.6",
+        "aiJson": {
+          "21": "6",
+          "01": "45495466207163"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-96",
+      "pureIdentityUri": "urn:epc:id:sgtin:15654517440.57.46335",
+      "filter": 4,
+      "expect": {
+        "hex": "308474A29F580E400000B4FF",
+        "tagUri": "urn:epc:tag:sgtin-96:4.15654517440.57.46335",
+        "aiJson": {
+          "21": "46335",
+          "01": "51565451744070"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-96",
+      "pureIdentityUri": "urn:epc:id:sgtin:48179289.69873.84625162654",
+      "filter": 3,
+      "expect": {
+        "hex": "30716F942CC43C53B40D819E",
+        "tagUri": "urn:epc:tag:sgtin-96:3.48179289.69873.84625162654",
+        "aiJson": {
+          "21": "84625162654",
+          "01": "64817928998733"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-96",
+      "pureIdentityUri": "urn:epc:id:sgtin:021759.8785996.83",
+      "filter": 3,
+      "expect": {
+        "hex": "3078153FE184130000000053",
+        "tagUri": "urn:epc:tag:sgtin-96:3.021759.8785996.83",
+        "aiJson": {
+          "21": "83",
+          "01": "80217597859966"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-96",
+      "pureIdentityUri": "urn:epc:id:sgtin:59647775672.41.65659",
+      "filter": 1,
+      "expect": {
+        "hex": "3025BC691A770A400001007B",
+        "tagUri": "urn:epc:tag:sgtin-96:1.59647775672.41.65659",
+        "aiJson": {
+          "21": "65659",
+          "01": "45964777567216"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-96",
+      "pureIdentityUri": "urn:epc:id:sgtin:4511777.408996.5",
+      "filter": 5,
+      "expect": {
+        "hex": "30B51360858F690000000005",
+        "tagUri": "urn:epc:tag:sgtin-96:5.4511777.408996.5",
+        "aiJson": {
+          "21": "5",
+          "01": "44511777089968"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-96",
+      "pureIdentityUri": "urn:epc:id:sgtin:12250572638.62.0",
+      "filter": 1,
+      "expect": {
+        "hex": "30245B461CEBCF8000000000",
+        "tagUri": "urn:epc:tag:sgtin-96:1.12250572638.62.0",
+        "aiJson": {
+          "21": "0",
+          "01": "61225057263821"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-96",
+      "pureIdentityUri": "urn:epc:id:sgtin:4226609525.624.64",
+      "filter": 5,
+      "expect": {
+        "hex": "30A8FBECF1759C0000000040",
+        "tagUri": "urn:epc:tag:sgtin-96:5.4226609525.624.64",
+        "aiJson": {
+          "21": "64",
+          "01": "64226609525241"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-96",
+      "pureIdentityUri": "urn:epc:id:sgtin:03314877916.09.73",
+      "filter": 3,
+      "expect": {
+        "hex": "306418B2A0BB824000000049",
+        "tagUri": "urn:epc:tag:sgtin-96:3.03314877916.09.73",
+        "aiJson": {
+          "21": "73",
+          "01": "00331487791694"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-96",
+      "pureIdentityUri": "urn:epc:id:sgtin:1151258658.128.0",
+      "filter": 1,
+      "expect": {
+        "hex": "3028449ED022200000000000",
+        "tagUri": "urn:epc:tag:sgtin-96:1.1151258658.128.0",
+        "aiJson": {
+          "21": "0",
+          "01": "11151258658287"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-96",
+      "pureIdentityUri": "urn:epc:id:sgtin:9296371.700405.70",
+      "filter": 0,
+      "expect": {
+        "hex": "30163767CEABFD4000000046",
+        "tagUri": "urn:epc:tag:sgtin-96:0.9296371.700405.70",
+        "aiJson": {
+          "21": "70",
+          "01": "79296371004055"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-96",
+      "pureIdentityUri": "urn:epc:id:sgtin:00448965115.06.4244577186",
+      "filter": 0,
+      "expect": {
+        "hex": "30040358553F6180FCFF1BA2",
+        "tagUri": "urn:epc:tag:sgtin-96:0.00448965115.06.4244577186",
+        "aiJson": {
+          "21": "4244577186",
+          "01": "00044896511561"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-96",
+      "pureIdentityUri": "urn:epc:id:sgtin:494266916.9886.71563903246",
+      "filter": 0,
+      "expect": {
+        "hex": "300DD75EA249A790A98A810E",
+        "tagUri": "urn:epc:tag:sgtin-96:0.494266916.9886.71563903246",
+        "aiJson": {
+          "21": "71563903246",
+          "01": "94942669168860"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-96",
+      "pureIdentityUri": "urn:epc:id:sgtin:484007943952.0.15574814262",
+      "filter": 3,
+      "expect": {
+        "hex": "3061C2C47C7C4003A054CE36",
+        "tagUri": "urn:epc:tag:sgtin-96:3.484007943952.0.15574814262",
+        "aiJson": {
+          "21": "15574814262",
+          "01": "04840079439525"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-198",
+      "pureIdentityUri": "urn:epc:id:sgtin:62339048.78068.bg4n8ulQ3rllKkNC",
+      "filter": 6,
+      "expect": {
+        "hex": "36D1DB9BF44C3D316769B9C75D9459F2D9B25EB9D0C0000000",
+        "tagUri": "urn:epc:tag:sgtin-198:6.62339048.78068.bg4n8ulQ3rllKkNC",
+        "aiJson": {
+          "21": "bg4n8ulQ3rllKkNC",
+          "01": "76233904880680"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-198",
+      "pureIdentityUri": "urn:epc:id:sgtin:126958.3185805.9Rn",
+      "filter": 5,
+      "expect": {
+        "hex": "36B87BFB8C27235CD2DC000000000000000000000000000000",
+        "tagUri": "urn:epc:tag:sgtin-198:5.126958.3185805.9Rn",
+        "aiJson": {
+          "21": "9Rn",
+          "01": "31269581858053"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-198",
+      "pureIdentityUri": "urn:epc:id:sgtin:488299168583.3.iUc5Wvm63HTP",
+      "filter": 3,
+      "expect": {
+        "hex": "3661C6C3980D1CF4D5C6D6BF6DAD99C8A94000000000000000",
+        "tagUri": "urn:epc:tag:sgtin-198:3.488299168583.3.iUc5Wvm63HTP",
+        "aiJson": {
+          "21": "iUc5Wvm63HTP",
+          "01": "34882991685834"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-198",
+      "pureIdentityUri": "urn:epc:id:sgtin:6302282161.697.SkyKaILp",
+      "filter": 5,
+      "expect": {
+        "hex": "36A977A531B1AE69EBF32F0C999C0000000000000000000000",
+        "tagUri": "urn:epc:tag:sgtin-198:5.6302282161.697.SkyKaILp",
+        "aiJson": {
+          "21": "SkyKaILp",
+          "01": "66302282161971"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-198",
+      "pureIdentityUri": "urn:epc:id:sgtin:2488074248.620.u%3EJ",
+      "filter": 3,
+      "expect": {
+        "hex": "3668944D00089B3ABE94000000000000000000000000000000",
+        "tagUri": "urn:epc:tag:sgtin-198:3.2488074248.620.u%3EJ",
+        "aiJson": {
+          "21": "u>J",
+          "01": "62488074248205"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-198",
+      "pureIdentityUri": "urn:epc:id:sgtin:367131.5953527.i8svUF56cZOkav1%25bD",
+      "filter": 3,
+      "expect": {
+        "hex": "36796686D6B5FDF4B8E7DAAC66ADB1DA9FAF0F662971440000",
+        "tagUri": "urn:epc:tag:sgtin-198:3.367131.5953527.i8svUF56cZOkav1%25bD",
+        "aiJson": {
+          "21": "i8svUF56cZOkav1%bD",
+          "01": "53671319535273"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-198",
+      "pureIdentityUri": "urn:epc:id:sgtin:833027.5181045.A%2525nuzKgekR=*UmH",
+      "filter": 6,
+      "expect": {
+        "hex": "36DB2D80D3C39D60A564D7775F52F3E5D749EAAABB64000000",
+        "tagUri": "urn:epc:tag:sgtin-198:6.833027.5181045.A%2525nuzKgekR=*UmH",
+        "aiJson": {
+          "21": "A%25nuzKgekR=*UmH",
+          "01": "58330271810457"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-198",
+      "pureIdentityUri": "urn:epc:id:sgtin:8535128775.662.aiyN6Z6r9=wdJxyTC7",
+      "filter": 7,
+      "expect": {
+        "hex": "36E9FCBBBAC7A5B0E9F339B5A6DC9CBDEF92578F3521B70000",
+        "tagUri": "urn:epc:tag:sgtin-198:7.8535128775.662.aiyN6Z6r9=wdJxyTC7",
+        "aiJson": {
+          "21": "aiyN6Z6r9=wdJxyTC7",
+          "01": "68535128775621"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-198",
+      "pureIdentityUri": "urn:epc:id:sgtin:799339.8442049.KYLHk0bjK4HNeHwsIgV*",
+      "filter": 4,
+      "expect": {
+        "hex": "369B0C9AE0343065D999235B0C5AA5B4913B2C8EFCE4E7ACA8",
+        "tagUri": "urn:epc:tag:sgtin-198:4.799339.8442049.KYLHk0bjK4HNeHwsIgV*",
+        "aiJson": {
+          "21": "KYLHk0bjK4HNeHwsIgV*",
+          "01": "87993394420495"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-198",
+      "pureIdentityUri": "urn:epc:id:sgtin:763270.7663952.Ra4pbZU",
+      "filter": 3,
+      "expect": {
+        "hex": "367AE9619D3C54296169C315AAA00000000000000000000000",
+        "tagUri": "urn:epc:tag:sgtin-198:3.763270.7663952.Ra4pbZU",
+        "aiJson": {
+          "21": "Ra4pbZU",
+          "01": "77632706639523"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-198",
+      "pureIdentityUri": "urn:epc:id:sgtin:8378317.039200.UBNBdVy8hWyUrqvI",
+      "filter": 6,
+      "expect": {
+        "hex": "36D5FF5F3426482AC29D0B256F2E3457F357971ED240000000",
+        "tagUri": "urn:epc:tag:sgtin-198:6.8378317.039200.UBNBdVy8hWyUrqvI",
+        "aiJson": {
+          "21": "UBNBdVy8hWyUrqvI",
+          "01": "08378317392005"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-198",
+      "pureIdentityUri": "urn:epc:id:sgtin:595064389551.4.EqVn5qZOsCLkcF",
+      "filter": 3,
+      "expect": {
+        "hex": "36622A3267FEBD22F1ADB9AF1B53F9C399AF1C600000000000",
+        "tagUri": "urn:epc:tag:sgtin-198:3.595064389551.4.EqVn5qZOsCLkcF",
+        "aiJson": {
+          "21": "EqVn5qZOsCLkcF",
+          "01": "45950643895514"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-198",
+      "pureIdentityUri": "urn:epc:id:sgtin:969638956.1890.MdJeSL7iz2CeZU1K1jOO",
+      "filter": 4,
+      "expect": {
+        "hex": "368F9CB842C1D8A6E495969CC6FA7D328796D55632D8EA9F3C",
+        "tagUri": "urn:epc:tag:sgtin-198:4.969638956.1890.MdJeSL7iz2CeZU1K1jOO",
+        "aiJson": {
+          "21": "MdJeSL7iz2CeZU1K1jOO",
+          "01": "19696389568903"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-198",
+      "pureIdentityUri": "urn:epc:id:sgtin:3426558322.393.EBxvTBeEsQT2Ix3n",
+      "filter": 3,
+      "expect": {
+        "hex": "3668CC3D21726262C2F1DAA42CB179D1A8CA4F867B80000000",
+        "tagUri": "urn:epc:tag:sgtin-198:3.3426558322.393.EBxvTBeEsQT2Ix3n",
+        "aiJson": {
+          "21": "EBxvTBeEsQT2Ix3n",
+          "01": "33426558322933"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-198",
+      "pureIdentityUri": "urn:epc:id:sgtin:32997162.47965.+xOg2EU",
+      "filter": 2,
+      "expect": {
+        "hex": "3650FBBF952ED755F89F9D945AA00000000000000000000000",
+        "tagUri": "urn:epc:tag:sgtin-198:2.32997162.47965.+xOg2EU",
+        "aiJson": {
+          "21": "+xOg2EU",
+          "01": "43299716279656"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-198",
+      "pureIdentityUri": "urn:epc:id:sgtin:33287287025.46.eB18'vmL7WsQDh5hQ_",
+      "filter": 5,
+      "expect": {
+        "hex": "36A4F802761E2BB2C262E13F6DB31BD7E7462686BA28DF0000",
+        "tagUri": "urn:epc:tag:sgtin-198:5.33287287025.46.eB18'vmL7WsQDh5hQ_",
+        "aiJson": {
+          "21": "eB18'vmL7WsQDh5hQ_",
+          "01": "43328728702569"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-198",
+      "pureIdentityUri": "urn:epc:id:sgtin:33683206.80500.kUnIkm",
+      "filter": 2,
+      "expect": {
+        "hex": "365100FB834E9D35D5DD275ED0000000000000000000000000",
+        "tagUri": "urn:epc:tag:sgtin-198:2.33683206.80500.kUnIkm",
+        "aiJson": {
+          "21": "kUnIkm",
+          "01": "83368320605002"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-198",
+      "pureIdentityUri": "urn:epc:id:sgtin:110604701062.7.4HT8fYeD8Lt",
+      "filter": 6,
+      "expect": {
+        "hex": "36C06702373619DA48A8E3359CB11C4CE80000000000000000",
+        "tagUri": "urn:epc:tag:sgtin-198:6.110604701062.7.4HT8fYeD8Lt",
+        "aiJson": {
+          "21": "4HT8fYeD8Lt",
+          "01": "71106047010625"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-198",
+      "pureIdentityUri": "urn:epc:id:sgtin:8653465181.912.CiDd2mkO46woBCxch9J",
+      "filter": 4,
+      "expect": {
+        "hex": "368A03C9665DE421E9899196DD73DA36EFBE143F18F4399400",
+        "tagUri": "urn:epc:tag:sgtin-198:4.8653465181.912.CiDd2mkO46woBCxch9J",
+        "aiJson": {
+          "21": "CiDd2mkO46woBCxch9J",
+          "01": "98653465181125"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-198",
+      "pureIdentityUri": "urn:epc:id:sgtin:05362700329.49.c5ak1aKd9MsCo%22",
+      "filter": 0,
+      "expect": {
+        "hex": "360427F48A052C71B5C3AD8E19791CCDE70F7A200000000000",
+        "tagUri": "urn:epc:tag:sgtin-198:0.05362700329.49.c5ak1aKd9MsCo%22"
+      }
+    },
+    {
+      "scheme": "sgtin-198",
+      "pureIdentityUri": "urn:epc:id:sgtin:63514982162.81.:KxmwrdoeS",
+      "filter": 7,
+      "expect": {
+        "hex": "36E5D93936E2545D4BF1B7BF2C9BF2D3000000000000000000",
+        "tagUri": "urn:epc:tag:sgtin-198:7.63514982162.81.:KxmwrdoeS",
+        "aiJson": {
+          "21": ":KxmwrdoeS",
+          "01": "86351498216214"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-198",
+      "pureIdentityUri": "urn:epc:id:sgtin:4237485537.167.'I%3F'8",
+      "filter": 3,
+      "expect": {
+        "hex": "3668FC92E5E129D3C97E9DC000000000000000000000000000",
+        "tagUri": "urn:epc:tag:sgtin-198:3.4237485537.167.'I%3F'8",
+        "aiJson": {
+          "21": "'I?'8",
+          "01": "14237485537674"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-198",
+      "pureIdentityUri": "urn:epc:id:sgtin:414539.2246503.f29c9li",
+      "filter": 0,
+      "expect": {
+        "hex": "361994D2C891D9F332738DCECD200000000000000000000000",
+        "tagUri": "urn:epc:tag:sgtin-198:0.414539.2246503.f29c9li",
+        "aiJson": {
+          "21": "f29c9li",
+          "01": "24145392465034"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-198",
+      "pureIdentityUri": "urn:epc:id:sgtin:351256077360.3.lfFMm",
+      "filter": 0,
+      "expect": {
+        "hex": "36014721F990C0F6668D376800000000000000000000000000",
+        "tagUri": "urn:epc:tag:sgtin-198:0.351256077360.3.lfFMm",
+        "aiJson": {
+          "21": "lfFMm",
+          "01": "33512560773600"
+        }
+      }
+    },
+    {
+      "scheme": "sgtin-198",
+      "pureIdentityUri": "urn:epc:id:sgtin:624795184.8904.u(mr",
+      "filter": 7,
+      "expect": {
+        "hex": "36EE53D9E308B23AA8DBC80000000000000000000000000000",
+        "tagUri": "urn:epc:tag:sgtin-198:7.624795184.8904.u(mr",
+        "aiJson": {
+          "21": "u(mr",
+          "01": "86247951849047"
+        }
+      }
+    },
+    {
+      "scheme": "sscc-96",
+      "pureIdentityUri": "urn:epc:id:sscc:79421747.634768502",
+      "filter": 4,
+      "expect": {
+        "hex": "31925DF099A5D5CC76000000",
+        "tagUri": "urn:epc:tag:sscc-96:4.79421747.634768502",
+        "aiJson": {
+          "00": "679421747347685022"
+        }
+      }
+    },
+    {
+      "scheme": "sscc-96",
+      "pureIdentityUri": "urn:epc:id:sscc:45333569.647915738",
+      "filter": 5,
+      "expect": {
+        "hex": "31B159DE20A69E68DA000000",
+        "tagUri": "urn:epc:tag:sscc-96:5.45333569.647915738",
+        "aiJson": {
+          "00": "645333569479157380"
+        }
+      }
+    },
+    {
+      "scheme": "sscc-96",
+      "pureIdentityUri": "urn:epc:id:sscc:35168936424.760982",
+      "filter": 1,
+      "expect": {
+        "hex": "312506076C3D0B9C96000000",
+        "tagUri": "urn:epc:tag:sscc-96:1.35168936424.760982",
+        "aiJson": {
+          "00": "735168936424609823"
+        }
+      }
+    },
+    {
+      "scheme": "sscc-96",
+      "pureIdentityUri": "urn:epc:id:sscc:413731867.67711739",
+      "filter": 7,
+      "expect": {
+        "hex": "31ED8A90C1B40932FB000000",
+        "tagUri": "urn:epc:tag:sscc-96:7.413731867.67711739",
+        "aiJson": {
+          "00": "641373186777117399"
+        }
+      }
+    },
+    {
+      "scheme": "sscc-96",
+      "pureIdentityUri": "urn:epc:id:sscc:026237.67970888700",
+      "filter": 6,
+      "expect": {
+        "hex": "31D8199F4FD36173FC000000",
+        "tagUri": "urn:epc:tag:sscc-96:6.026237.67970888700",
+        "aiJson": {
+          "00": "602623779708887008"
+        }
+      }
+    },
+    {
+      "scheme": "sscc-96",
+      "pureIdentityUri": "urn:epc:id:sscc:6071541805.2165768",
+      "filter": 3,
+      "expect": {
+        "hex": "316969E4602D210C08000000",
+        "tagUri": "urn:epc:tag:sscc-96:3.6071541805.2165768",
+        "aiJson": {
+          "00": "260715418051657686"
+        }
+      }
+    },
+    {
+      "scheme": "sscc-96",
+      "pureIdentityUri": "urn:epc:id:sscc:334418055.52901104",
+      "filter": 7,
+      "expect": {
+        "hex": "31ED3EED08732734F0000000",
+        "tagUri": "urn:epc:tag:sscc-96:7.334418055.52901104",
+        "aiJson": {
+          "00": "533441805529011041"
+        }
+      }
+    },
+    {
+      "scheme": "sscc-96",
+      "pureIdentityUri": "urn:epc:id:sscc:306109212654.01694",
+      "filter": 3,
+      "expect": {
+        "hex": "31611D161F9FB8069E000000",
+        "tagUri": "urn:epc:tag:sscc-96:3.306109212654.01694",
+        "aiJson": {
+          "00": "030610921265416949"
+        }
+      }
+    },
+    {
+      "scheme": "sscc-96",
+      "pureIdentityUri": "urn:epc:id:sscc:8382359183.5962635",
+      "filter": 7,
+      "expect": {
+        "hex": "31E9F3A0A68F5AFB8B000000",
+        "tagUri": "urn:epc:tag:sscc-96:7.8382359183.5962635",
+        "aiJson": {
+          "00": "583823591839626352"
+        }
+      }
+    },
+    {
+      "scheme": "sscc-96",
+      "pureIdentityUri": "urn:epc:id:sscc:046129.14413012048",
+      "filter": 3,
+      "expect": {
+        "hex": "31782D0C435B151C50000000",
+        "tagUri": "urn:epc:tag:sscc-96:3.046129.14413012048",
+        "aiJson": {
+          "00": "104612944130120488"
+        }
+      }
+    },
+    {
+      "scheme": "sscc-96",
+      "pureIdentityUri": "urn:epc:id:sscc:043792833.82437440",
+      "filter": 7,
+      "expect": {
+        "hex": "31EC29C39C14E9E540000000",
+        "tagUri": "urn:epc:tag:sscc-96:7.043792833.82437440",
+        "aiJson": {
+          "00": "804379283324374403"
+        }
+      }
+    },
+    {
+      "scheme": "sscc-96",
+      "pureIdentityUri": "urn:epc:id:sscc:2439503.4153846702",
+      "filter": 2,
+      "expect": {
+        "hex": "315494E53CF796ABAE000000",
+        "tagUri": "urn:epc:tag:sscc-96:2.2439503.4153846702",
+        "aiJson": {
+          "00": "424395031538467026"
+        }
+      }
+    },
+    {
+      "scheme": "sscc-96",
+      "pureIdentityUri": "urn:epc:id:sscc:73008615212.614200",
+      "filter": 7,
+      "expect": {
+        "hex": "31E61FF4E1E5895F38000000",
+        "tagUri": "urn:epc:tag:sscc-96:7.73008615212.614200",
+        "aiJson": {
+          "00": "673008615212142004"
+        }
+      }
+    },
+    {
+      "scheme": "sscc-96",
+      "pureIdentityUri": "urn:epc:id:sscc:67909357.410081964",
+      "filter": 5,
+      "expect": {
+        "hex": "31B2061B7698715AAC000000",
+        "tagUri": "urn:epc:tag:sscc-96:5.67909357.410081964",
+        "aiJson": {
+          "00": "467909357100819647"
+        }
+      }
+    },
+    {
+      "scheme": "sscc-96",
+      "pureIdentityUri": "urn:epc:id:sscc:463212637.72806003",
+      "filter": 7,
+      "expect": {
+        "hex": "31EDB9C105D456EE73000000",
+        "tagUri": "urn:epc:tag:sscc-96:7.463212637.72806003",
+        "aiJson": {
+          "00": "746321263728060030"
+        }
+      }
+    },
+    {
+      "scheme": "sscc-96",
+      "pureIdentityUri": "urn:epc:id:sscc:946821614.98275199",
+      "filter": 7,
+      "expect": {
+        "hex": "31EF86F59EE5DB8F7F000000",
+        "tagUri": "urn:epc:tag:sscc-96:7.946821614.98275199",
+        "aiJson": {
+          "00": "994682161482751993"
+        }
+      }
+    },
+    {
+      "scheme": "sscc-96",
+      "pureIdentityUri": "urn:epc:id:sscc:87441540007.639125",
+      "filter": 2,
+      "expect": {
+        "hex": "31468B7D8074E9C095000000",
+        "tagUri": "urn:epc:tag:sscc-96:2.87441540007.639125",
+        "aiJson": {
+          "00": "687441540007391252"
+        }
+      }
+    },
+    {
+      "scheme": "sscc-96",
+      "pureIdentityUri": "urn:epc:id:sscc:94886988203.153985",
+      "filter": 4,
+      "expect": {
+        "hex": "3186C2F69135625981000000",
+        "tagUri": "urn:epc:tag:sscc-96:4.94886988203.153985",
+        "aiJson": {
+          "00": "194886988203539856"
+        }
+      }
+    },
+    {
+      "scheme": "sscc-96",
+      "pureIdentityUri": "urn:epc:id:sscc:672454.36025109703",
+      "filter": 0,
+      "expect": {
+        "hex": "311A90B18863438CC7000000",
+        "tagUri": "urn:epc:tag:sscc-96:0.672454.36025109703",
+        "aiJson": {
+          "00": "367245460251097030"
+        }
+      }
+    },
+    {
+      "scheme": "sscc-96",
+      "pureIdentityUri": "urn:epc:id:sscc:674518945.93143553",
+      "filter": 2,
+      "expect": {
+        "hex": "314E83457A158D4201000000",
+        "tagUri": "urn:epc:tag:sscc-96:2.674518945.93143553",
+        "aiJson": {
+          "00": "967451894531435532"
+        }
+      }
+    },
+    {
+      "scheme": "sscc-96",
+      "pureIdentityUri": "urn:epc:id:sscc:109319103855.76172",
+      "filter": 1,
+      "expect": {
+        "hex": "312065CFB495BD298C000000",
+        "tagUri": "urn:epc:tag:sscc-96:1.109319103855.76172",
+        "aiJson": {
+          "00": "710931910385561722"
+        }
+      }
+    },
+    {
+      "scheme": "sscc-96",
+      "pureIdentityUri": "urn:epc:id:sscc:775711.24843499395",
+      "filter": 0,
+      "expect": {
+        "hex": "311AF587C5C8C9B783000000",
+        "tagUri": "urn:epc:tag:sscc-96:0.775711.24843499395",
+        "aiJson": {
+          "00": "277571148434993952"
+        }
+      }
+    },
+    {
+      "scheme": "sscc-96",
+      "pureIdentityUri": "urn:epc:id:sscc:994536.18789595145",
+      "filter": 1,
+      "expect": {
+        "hex": "313BCB3A045FF27809000000",
+        "tagUri": "urn:epc:tag:sscc-96:1.994536.18789595145",
+        "aiJson": {
+          "00": "199453687895951458"
+        }
+      }
+    },
+    {
+      "scheme": "sscc-96",
+      "pureIdentityUri": "urn:epc:id:sscc:858982926.51090468",
+      "filter": 6,
+      "expect": {
+        "hex": "31CF3330A0E30B9424000000",
+        "tagUri": "urn:epc:tag:sscc-96:6.858982926.51090468",
+        "aiJson": {
+          "00": "585898292610904680"
+        }
+      }
+    },
+    {
+      "scheme": "sscc-96",
+      "pureIdentityUri": "urn:epc:id:sscc:077345229.51975072",
+      "filter": 7,
+      "expect": {
+        "hex": "31EC49C31CD31913A0000000",
+        "tagUri": "urn:epc:tag:sscc-96:7.077345229.51975072",
+        "aiJson": {
+          "00": "507734522919750721"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-96",
+      "pureIdentityUri": "urn:epc:id:sgln:65237265.6587.6767274036",
+      "filter": 6,
+      "expect": {
+        "hex": "32D1F1B888B37601935C6834",
+        "tagUri": "urn:epc:tag:sgln-96:6.65237265.6587.6767274036",
+        "aiJson": {
+          "254": "6767274036",
+          "414": "6523726565874"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-96",
+      "pureIdentityUri": "urn:epc:id:sgln:329508434164..25112984",
+      "filter": 5,
+      "expect": {
+        "hex": "32A132E0EEC3D000017F3198",
+        "tagUri": "urn:epc:tag:sgln-96:5.329508434164..25112984",
+        "aiJson": {
+          "254": "25112984",
+          "414": "3295084341645"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-96",
+      "pureIdentityUri": "urn:epc:id:sgln:6816565329.59.26575",
+      "filter": 5,
+      "expect": {
+        "hex": "32A9964C88517600000067CF",
+        "tagUri": "urn:epc:tag:sgln-96:5.6816565329.59.26575",
+        "aiJson": {
+          "254": "26575",
+          "414": "6816565329593"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-96",
+      "pureIdentityUri": "urn:epc:id:sgln:046018.303845.15",
+      "filter": 7,
+      "expect": {
+        "hex": "32F82CF08945CA000000000F",
+        "tagUri": "urn:epc:tag:sgln-96:7.046018.303845.15",
+        "aiJson": {
+          "254": "15",
+          "414": "0460183038458"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-96",
+      "pureIdentityUri": "urn:epc:id:sgln:2942693167.45.110710",
+      "filter": 2,
+      "expect": {
+        "hex": "3248AF65EF2F5A000001B076",
+        "tagUri": "urn:epc:tag:sgln-96:2.2942693167.45.110710",
+        "aiJson": {
+          "254": "110710",
+          "414": "2942693167456"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-96",
+      "pureIdentityUri": "urn:epc:id:sgln:7503644719.87.92490208526",
+      "filter": 7,
+      "expect": {
+        "hex": "32E9BF40882FAE1588D8950E",
+        "tagUri": "urn:epc:tag:sgln-96:7.7503644719.87.92490208526",
+        "aiJson": {
+          "254": "92490208526",
+          "414": "7503644719879"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-96",
+      "pureIdentityUri": "urn:epc:id:sgln:8299379069.35.0",
+      "filter": 7,
+      "expect": {
+        "hex": "32E9EEAE797D460000000000",
+        "tagUri": "urn:epc:tag:sgln-96:7.8299379069.35.0",
+        "aiJson": {
+          "254": "0",
+          "414": "8299379069356"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-96",
+      "pureIdentityUri": "urn:epc:id:sgln:23528910109.5.2",
+      "filter": 7,
+      "expect": {
+        "hex": "32E4AF4DD5A3AA0000000002",
+        "tagUri": "urn:epc:tag:sgln-96:7.23528910109.5.2",
+        "aiJson": {
+          "254": "2",
+          "414": "2352891010957"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-96",
+      "pureIdentityUri": "urn:epc:id:sgln:64386330235.4.85",
+      "filter": 7,
+      "expect": {
+        "hex": "32E5DFB72DCF680000000055",
+        "tagUri": "urn:epc:tag:sgln-96:7.64386330235.4.85",
+        "aiJson": {
+          "254": "85",
+          "414": "6438633023549"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-96",
+      "pureIdentityUri": "urn:epc:id:sgln:784879677798..57083",
+      "filter": 1,
+      "expect": {
+        "hex": "3222DAF9E5C598000000DEFB",
+        "tagUri": "urn:epc:tag:sgln-96:1.784879677798..57083",
+        "aiJson": {
+          "254": "57083",
+          "414": "7848796777989"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-96",
+      "pureIdentityUri": "urn:epc:id:sgln:6294035897.73.7860034",
+      "filter": 4,
+      "expect": {
+        "hex": "328977275DB992000077EF42",
+        "tagUri": "urn:epc:tag:sgln-96:4.6294035897.73.7860034",
+        "aiJson": {
+          "254": "7860034",
+          "414": "6294035897733"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-96",
+      "pureIdentityUri": "urn:epc:id:sgln:8095163690.97.35534892945",
+      "filter": 2,
+      "expect": {
+        "hex": "3249E282652AC208460B6F91",
+        "tagUri": "urn:epc:tag:sgln-96:2.8095163690.97.35534892945",
+        "aiJson": {
+          "254": "35534892945",
+          "414": "8095163690979"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-96",
+      "pureIdentityUri": "urn:epc:id:sgln:530657.958529.2414",
+      "filter": 0,
+      "expect": {
+        "hex": "321A06385D4082000000096E",
+        "tagUri": "urn:epc:tag:sgln-96:0.530657.958529.2414",
+        "aiJson": {
+          "254": "2414",
+          "414": "5306579585296"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-96",
+      "pureIdentityUri": "urn:epc:id:sgln:625339249424..15121",
+      "filter": 1,
+      "expect": {
+        "hex": "322246647ECC400000003B11",
+        "tagUri": "urn:epc:tag:sgln-96:1.625339249424..15121",
+        "aiJson": {
+          "254": "15121",
+          "414": "6253392494245"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-96",
+      "pureIdentityUri": "urn:epc:id:sgln:27871589813.9.0",
+      "filter": 0,
+      "expect": {
+        "hex": "3204CFA8D6B6B20000000000",
+        "tagUri": "urn:epc:tag:sgln-96:0.27871589813.9.0",
+        "aiJson": {
+          "254": "0",
+          "414": "2787158981396"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-96",
+      "pureIdentityUri": "urn:epc:id:sgln:74652237.0199.859295410",
+      "filter": 7,
+      "expect": {
+        "hex": "32F2398D26818E003337CEB2",
+        "tagUri": "urn:epc:tag:sgln-96:7.74652237.0199.859295410",
+        "aiJson": {
+          "254": "859295410",
+          "414": "7465223701999"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-96",
+      "pureIdentityUri": "urn:epc:id:sgln:25823986.1991.4433422",
+      "filter": 0,
+      "expect": {
+        "hex": "3210C505790F8E000043A60E",
+        "tagUri": "urn:epc:tag:sgln-96:0.25823986.1991.4433422",
+        "aiJson": {
+          "254": "4433422",
+          "414": "2582398619913"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-96",
+      "pureIdentityUri": "urn:epc:id:sgln:9526138.61091.6035746280",
+      "filter": 7,
+      "expect": {
+        "hex": "32F6456DE9DD460167C22DE8",
+        "tagUri": "urn:epc:tag:sgln-96:7.9526138.61091.6035746280",
+        "aiJson": {
+          "254": "6035746280",
+          "414": "9526138610917"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-96",
+      "pureIdentityUri": "urn:epc:id:sgln:0821627.64635.178284805608",
+      "filter": 1,
+      "expect": {
+        "hex": "32343225EDF8F629829A3DE8",
+        "tagUri": "urn:epc:tag:sgln-96:1.0821627.64635.178284805608",
+        "aiJson": {
+          "254": "178284805608",
+          "414": "0821627646354"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-96",
+      "pureIdentityUri": "urn:epc:id:sgln:37907726.1812.40765",
+      "filter": 2,
+      "expect": {
+        "hex": "32512136870E280000009F3D",
+        "tagUri": "urn:epc:tag:sgln-96:2.37907726.1812.40765",
+        "aiJson": {
+          "254": "40765",
+          "414": "3790772618127"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-96",
+      "pureIdentityUri": "urn:epc:id:sgln:041575253456..0",
+      "filter": 5,
+      "expect": {
+        "hex": "32A026B85017400000000000",
+        "tagUri": "urn:epc:tag:sgln-96:5.041575253456..0",
+        "aiJson": {
+          "254": "0",
+          "414": "0415752534565"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-96",
+      "pureIdentityUri": "urn:epc:id:sgln:386255790916..28352383",
+      "filter": 2,
+      "expect": {
+        "hex": "324167BA8E8D100001B09F7F",
+        "tagUri": "urn:epc:tag:sgln-96:2.386255790916..28352383",
+        "aiJson": {
+          "254": "28352383",
+          "414": "3862557909161"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-96",
+      "pureIdentityUri": "urn:epc:id:sgln:729152.140976.12803466854",
+      "filter": 3,
+      "expect": {
+        "hex": "327AC810044D6002FB256666",
+        "tagUri": "urn:epc:tag:sgln-96:3.729152.140976.12803466854",
+        "aiJson": {
+          "254": "12803466854",
+          "414": "7291521409769"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-96",
+      "pureIdentityUri": "urn:epc:id:sgln:804454682196..3357329631",
+      "filter": 2,
+      "expect": {
+        "hex": "3242ED34F1395000C81CC8DF",
+        "tagUri": "urn:epc:tag:sgln-96:2.804454682196..3357329631",
+        "aiJson": {
+          "254": "3357329631",
+          "414": "8044546821967"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-96",
+      "pureIdentityUri": "urn:epc:id:sgln:1660789892.31.5048",
+      "filter": 2,
+      "expect": {
+        "hex": "324862FDA4843E00000013B8",
+        "tagUri": "urn:epc:tag:sgln-96:2.1660789892.31.5048",
+        "aiJson": {
+          "254": "5048",
+          "414": "1660789892310"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-195",
+      "pureIdentityUri": "urn:epc:id:sgln:45940915.3125.t7",
+      "filter": 6,
+      "expect": {
+        "hex": "39D15E8059986BD1B80000000000000000000000000000000",
+        "tagUri": "urn:epc:tag:sgln-195:6.45940915.3125.t7",
+        "aiJson": {
+          "254": "t7",
+          "414": "4594091531254"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-195",
+      "pureIdentityUri": "urn:epc:id:sgln:308755254421..g9oti'bANqy9vU4Yu",
+      "filter": 5,
+      "expect": {
+        "hex": "39A11F8CFD32559DCEFE9A53E2833B8F973DAAB4B3D400000",
+        "tagUri": "urn:epc:tag:sgln-195:5.308755254421..g9oti'bANqy9vU4Yu",
+        "aiJson": {
+          "254": "g9oti'bANqy9vU4Yu",
+          "414": "3087552544210"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-195",
+      "pureIdentityUri": "urn:epc:id:sgln:038702772261..ghWBNWyFnc%22UG=cA",
+      "filter": 4,
+      "expect": {
+        "hex": "3980240B75C0959F457853ABF98DBB1A2AB1DEE3820000000",
+        "tagUri": "urn:epc:tag:sgln-195:4.038702772261..ghWBNWyFnc%22UG=cA"
+      }
+    },
+    {
+      "scheme": "sgln-195",
+      "pureIdentityUri": "urn:epc:id:sgln:63856374255.5.d6J%3C*",
+      "filter": 4,
+      "expect": {
+        "hex": "3985DBC45E3DEB91B4A78A800000000000000000000000000",
+        "tagUri": "urn:epc:tag:sgln-195:4.63856374255.5.d6J%3C*",
+        "aiJson": {
+          "254": "d6J<*",
+          "414": "6385637425551"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-195",
+      "pureIdentityUri": "urn:epc:id:sgln:776616922174..w4qr+PyIQ5AzR6PfW",
+      "filter": 1,
+      "expect": {
+        "hex": "3922D347E730F9DDA71E4AE8799345AC1F549B50CD5C00000",
+        "tagUri": "urn:epc:tag:sgln-195:1.776616922174..w4qr+PyIQ5AzR6PfW",
+        "aiJson": {
+          "254": "w4qr+PyIQ5AzR6PfW",
+          "414": "7766169221740"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-195",
+      "pureIdentityUri": "urn:epc:id:sgln:60848641.5163.!SvU",
+      "filter": 0,
+      "expect": {
+        "hex": "3911D03D00A856869F6AA0000000000000000000000000000",
+        "tagUri": "urn:epc:tag:sgln-195:0.60848641.5163.!SvU",
+        "aiJson": {
+          "254": "!SvU",
+          "414": "6084864151638"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-195",
+      "pureIdentityUri": "urn:epc:id:sgln:87696215592.0.e.D5",
+      "filter": 7,
+      "expect": {
+        "hex": "39E68D6341C501957446A0000000000000000000000000000",
+        "tagUri": "urn:epc:tag:sgln-195:7.87696215592.0.e.D5",
+        "aiJson": {
+          "254": "e.D5",
+          "414": "8769621559206"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-195",
+      "pureIdentityUri": "urn:epc:id:sgln:0184411.48697.Xg1fpLTGPC7h",
+      "filter": 6,
+      "expect": {
+        "hex": "39D40B416D7C73633B1CDC26548F421B7D000000000000000",
+        "tagUri": "urn:epc:tag:sgln-195:6.0184411.48697.Xg1fpLTGPC7h",
+        "aiJson": {
+          "254": "Xg1fpLTGPC7h",
+          "414": "0184411486971"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-195",
+      "pureIdentityUri": "urn:epc:id:sgln:618621604357..C%3Ft8dM7jzvm.c,8r",
+      "filter": 7,
+      "expect": {
+        "hex": "39E24022E248150DFF471926B7D5EBB6D5D8D638E40000000",
+        "tagUri": "urn:epc:tag:sgln-195:7.618621604357..C%3Ft8dM7jzvm.c,8r",
+        "aiJson": {
+          "254": "C?t8dM7jzvm.c,8r",
+          "414": "6186216043575"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-195",
+      "pureIdentityUri": "urn:epc:id:sgln:416168491.552.KcDKk",
+      "filter": 6,
+      "expect": {
+        "hex": "39CD8CE3A2B4512F1C497AC00000000000000000000000000",
+        "tagUri": "urn:epc:tag:sgln-195:6.416168491.552.KcDKk",
+        "aiJson": {
+          "254": "KcDKk",
+          "414": "4161684915526"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-195",
+      "pureIdentityUri": "urn:epc:id:sgln:016133522.741.Hef8tFxoGe0",
+      "filter": 6,
+      "expect": {
+        "hex": "39CC0F62D925CB232E671D2378DF1F2B00000000000000000",
+        "tagUri": "urn:epc:tag:sgln-195:6.016133522.741.Hef8tFxoGe0",
+        "aiJson": {
+          "254": "Hef8tFxoGe0",
+          "414": "0161335227415"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-195",
+      "pureIdentityUri": "urn:epc:id:sgln:871983.319200.vUcs",
+      "filter": 7,
+      "expect": {
+        "hex": "39FB538BC9BDC1DAAE3E60000000000000000000000000000",
+        "tagUri": "urn:epc:tag:sgln-195:7.871983.319200.vUcs",
+        "aiJson": {
+          "254": "vUcs",
+          "414": "8719833192005"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-195",
+      "pureIdentityUri": "urn:epc:id:sgln:6730493227.94.Hv48ii4zawKvZ",
+      "filter": 3,
+      "expect": {
+        "hex": "3969912B2D2BBD23B3471A74B4F587BCBED68000000000000",
+        "tagUri": "urn:epc:tag:sgln-195:3.6730493227.94.Hv48ii4zawKvZ",
+        "aiJson": {
+          "254": "Hv48ii4zawKvZ",
+          "414": "6730493227946"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-195",
+      "pureIdentityUri": "urn:epc:id:sgln:8328175804.27.G8nFj",
+      "filter": 6,
+      "expect": {
+        "hex": "39C9F065E0BC371DC6E8DA800000000000000000000000000",
+        "tagUri": "urn:epc:tag:sgln-195:6.8328175804.27.G8nFj",
+        "aiJson": {
+          "254": "G8nFj",
+          "414": "8328175804271"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-195",
+      "pureIdentityUri": "urn:epc:id:sgln:96618163.7259.wvt",
+      "filter": 6,
+      "expect": {
+        "hex": "39D2E12359B8B7DFB74000000000000000000000000000000",
+        "tagUri": "urn:epc:tag:sgln-195:6.96618163.7259.wvt",
+        "aiJson": {
+          "254": "wvt",
+          "414": "9661816372593"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-195",
+      "pureIdentityUri": "urn:epc:id:sgln:378593.615454.ahbjROZlPga1iAG0X9",
+      "filter": 0,
+      "expect": {
+        "hex": "391971B852C83D87462D54A7DAD9433E163A60C76161C8000",
+        "tagUri": "urn:epc:tag:sgln-195:0.378593.615454.ahbjROZlPga1iAG0X9",
+        "aiJson": {
+          "254": "ahbjROZlPga1iAG0X9",
+          "414": "3785936154542"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-195",
+      "pureIdentityUri": "urn:epc:id:sgln:742634262.377.AU*",
+      "filter": 1,
+      "expect": {
+        "hex": "392EC43B3162F306AAA000000000000000000000000000000",
+        "tagUri": "urn:epc:tag:sgln-195:1.742634262.377.AU*",
+        "aiJson": {
+          "254": "AU*",
+          "414": "7426342623777"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-195",
+      "pureIdentityUri": "urn:epc:id:sgln:29488741.6146.2:qs5",
+      "filter": 3,
+      "expect": {
+        "hex": "3970E0FB32B004C9D71E6D400000000000000000000000000",
+        "tagUri": "urn:epc:tag:sgln-195:3.29488741.6146.2:qs5",
+        "aiJson": {
+          "254": "2:qs5",
+          "414": "2948874161466"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-195",
+      "pureIdentityUri": "urn:epc:id:sgln:04171551.5554.W4cffIIrKXDNaFLC",
+      "filter": 0,
+      "expect": {
+        "hex": "39101FD38FAB655DA63CD9A4C9E52EC449D8634C860000000",
+        "tagUri": "urn:epc:tag:sgln-195:0.04171551.5554.W4cffIIrKXDNaFLC",
+        "aiJson": {
+          "254": "W4cffIIrKXDNaFLC",
+          "414": "0417155155545"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-195",
+      "pureIdentityUri": "urn:epc:id:sgln:6784029.78002.rbrcr3uDhR9mx",
+      "filter": 3,
+      "expect": {
+        "hex": "39759E10766165CB172C7C99F589A2939DBE0000000000000",
+        "tagUri": "urn:epc:tag:sgln-195:3.6784029.78002.rbrcr3uDhR9mx",
+        "aiJson": {
+          "254": "rbrcr3uDhR9mx",
+          "414": "6784029780023"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-195",
+      "pureIdentityUri": "urn:epc:id:sgln:3098485.30298.N1%2FO6EQI2qA",
+      "filter": 0,
+      "expect": {
+        "hex": "3914BD1DD4ECB5398AF9EDA2D192CB8C10000000000000000",
+        "tagUri": "urn:epc:tag:sgln-195:0.3098485.30298.N1%2FO6EQI2qA",
+        "aiJson": {
+          "254": "N1/O6EQI2qA",
+          "414": "3098485302983"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-195",
+      "pureIdentityUri": "urn:epc:id:sgln:915667.552630.cyjZjv",
+      "filter": 6,
+      "expect": {
+        "hex": "39DB7E34D0DD6D8FCEAB5ABB0000000000000000000000000",
+        "tagUri": "urn:epc:tag:sgln-195:6.915667.552630.cyjZjv",
+        "aiJson": {
+          "254": "cyjZjv",
+          "414": "9156675526305"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-195",
+      "pureIdentityUri": "urn:epc:id:sgln:986596787911..j",
+      "filter": 0,
+      "expect": {
+        "hex": "390396D7011B1DA8000000000000000000000000000000000",
+        "tagUri": "urn:epc:tag:sgln-195:0.986596787911..j",
+        "aiJson": {
+          "254": "j",
+          "414": "9865967879110"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-195",
+      "pureIdentityUri": "urn:epc:id:sgln:9383764.26643.qmibzc5T",
+      "filter": 7,
+      "expect": {
+        "hex": "39F63CBD50D027C76E9C5EB1B5A8000000000000000000000",
+        "tagUri": "urn:epc:tag:sgln-195:7.9383764.26643.qmibzc5T",
+        "aiJson": {
+          "254": "qmibzc5T",
+          "414": "9383764266433"
+        }
+      }
+    },
+    {
+      "scheme": "sgln-195",
+      "pureIdentityUri": "urn:epc:id:sgln:135718.516236.wo10x_blzOIh;zKj",
+      "filter": 7,
+      "expect": {
+        "hex": "39F884898FC119DF7B161E2FE2D9EA7C9D0EFD4BD40000000",
+        "tagUri": "urn:epc:tag:sgln-195:7.135718.516236.wo10x_blzOIh;zKj",
+        "aiJson": {
+          "254": "wo10x_blzOIh;zKj",
+          "414": "1357185162368"
+        }
+      }
+    },
+    {
+      "scheme": "grai-96",
+      "pureIdentityUri": "urn:epc:id:grai:549819.861204.1641562886",
+      "filter": 7,
+      "expect": {
+        "hex": "33FA18EEC349050061D84306",
+        "tagUri": "urn:epc:tag:grai-96:7.549819.861204.1641562886",
+        "aiJson": {
+          "8003": "054981986120471641562886"
+        }
+      }
+    },
+    {
+      "scheme": "grai-96",
+      "pureIdentityUri": "urn:epc:id:grai:8271195.39546.513061",
+      "filter": 1,
+      "expect": {
+        "hex": "3335F8D56C269E800007D425",
+        "tagUri": "urn:epc:tag:grai-96:1.8271195.39546.513061",
+        "aiJson": {
+          "8003": "08271195395468513061"
+        }
+      }
+    },
+    {
+      "scheme": "grai-96",
+      "pureIdentityUri": "urn:epc:id:grai:3873469.92807.221295686802",
+      "filter": 1,
+      "expect": {
+        "hex": "3334EC6AF45AA1F386403492",
+        "tagUri": "urn:epc:tag:grai-96:1.3873469.92807.221295686802",
+        "aiJson": {
+          "8003": "03873469928072221295686802"
+        }
+      }
+    },
+    {
+      "scheme": "grai-96",
+      "pureIdentityUri": "urn:epc:id:grai:1650340518.91.8",
+      "filter": 5,
+      "expect": {
+        "hex": "33A8625E32A616C000000008",
+        "tagUri": "urn:epc:tag:grai-96:5.1650340518.91.8",
+        "aiJson": {
+          "8003": "016503405189198"
+        }
+      }
+    },
+    {
+      "scheme": "grai-96",
+      "pureIdentityUri": "urn:epc:id:grai:546276696.394.3694647421",
+      "filter": 2,
+      "expect": {
+        "hex": "334E08F855806280DC37D87D",
+        "tagUri": "urn:epc:tag:grai-96:2.546276696.394.3694647421",
+        "aiJson": {
+          "8003": "054627669639473694647421"
+        }
+      }
+    },
+    {
+      "scheme": "grai-96",
+      "pureIdentityUri": "urn:epc:id:grai:64054508.7696.21585",
+      "filter": 3,
+      "expect": {
+        "hex": "3371E8B27607840000005451",
+        "tagUri": "urn:epc:tag:grai-96:3.64054508.7696.21585",
+        "aiJson": {
+          "8003": "0640545087696221585"
+        }
+      }
+    },
+    {
+      "scheme": "grai-96",
+      "pureIdentityUri": "urn:epc:id:grai:1743783078.62.437541",
+      "filter": 1,
+      "expect": {
+        "hex": "332867F004A60F800006AD25",
+        "tagUri": "urn:epc:tag:grai-96:1.1743783078.62.437541",
+        "aiJson": {
+          "8003": "01743783078628437541"
+        }
+      }
+    },
+    {
+      "scheme": "grai-96",
+      "pureIdentityUri": "urn:epc:id:grai:61120078434.8.23933034",
+      "filter": 5,
+      "expect": {
+        "hex": "33A5C7614C4C4200016D306A",
+        "tagUri": "urn:epc:tag:grai-96:5.61120078434.8.23933034",
+        "aiJson": {
+          "8003": "0611200784348223933034"
+        }
+      }
+    },
+    {
+      "scheme": "grai-96",
+      "pureIdentityUri": "urn:epc:id:grai:5733315.48084.1",
+      "filter": 2,
+      "expect": {
+        "hex": "33555DEF0C2EF50000000001",
+        "tagUri": "urn:epc:tag:grai-96:2.5733315.48084.1",
+        "aiJson": {
+          "8003": "057333154808411"
+        }
+      }
+    },
+    {
+      "scheme": "grai-96",
+      "pureIdentityUri": "urn:epc:id:grai:8736786.68034.0",
+      "filter": 4,
+      "expect": {
+        "hex": "339615404842708000000000",
+        "tagUri": "urn:epc:tag:grai-96:4.8736786.68034.0",
+        "aiJson": {
+          "8003": "087367866803420"
+        }
+      }
+    },
+    {
+      "scheme": "grai-96",
+      "pureIdentityUri": "urn:epc:id:grai:227587128.413.0",
+      "filter": 0,
+      "expect": {
+        "hex": "330CD90B4380674000000000",
+        "tagUri": "urn:epc:tag:grai-96:0.227587128.413.0",
+        "aiJson": {
+          "8003": "022758712841340"
+        }
+      }
+    },
+    {
+      "scheme": "grai-96",
+      "pureIdentityUri": "urn:epc:id:grai:589524762.769.916126304",
+      "filter": 6,
+      "expect": {
+        "hex": "33CE3236F1A0C040369AFA60",
+        "tagUri": "urn:epc:tag:grai-96:6.589524762.769.916126304",
+        "aiJson": {
+          "8003": "05895247627692916126304"
+        }
+      }
+    },
+    {
+      "scheme": "grai-96",
+      "pureIdentityUri": "urn:epc:id:grai:96698100681.3.256968",
+      "filter": 2,
+      "expect": {
+        "hex": "3346D074FD7920C00003EBC8",
+        "tagUri": "urn:epc:tag:grai-96:2.96698100681.3.256968",
+        "aiJson": {
+          "8003": "09669810068139256968"
+        }
+      }
+    },
+    {
+      "scheme": "grai-96",
+      "pureIdentityUri": "urn:epc:id:grai:839801674167..7",
+      "filter": 4,
+      "expect": {
+        "hex": "33830E205266DC0000000007",
+        "tagUri": "urn:epc:tag:grai-96:4.839801674167..7",
+        "aiJson": {
+          "8003": "083980167416767"
+        }
+      }
+    },
+    {
+      "scheme": "grai-96",
+      "pureIdentityUri": "urn:epc:id:grai:44798400072.0.222",
+      "filter": 0,
+      "expect": {
+        "hex": "33054DC62AC90000000000DE",
+        "tagUri": "urn:epc:tag:grai-96:0.44798400072.0.222",
+        "aiJson": {
+          "8003": "04479840007207222"
+        }
+      }
+    },
+    {
+      "scheme": "grai-96",
+      "pureIdentityUri": "urn:epc:id:grai:3604488606.19.206922065750",
+      "filter": 0,
+      "expect": {
+        "hex": "3308D6D8219E04F02D842756",
+        "tagUri": "urn:epc:tag:grai-96:0.3604488606.19.206922065750",
+        "aiJson": {
+          "8003": "03604488606197206922065750"
+        }
+      }
+    },
+    {
+      "scheme": "grai-96",
+      "pureIdentityUri": "urn:epc:id:grai:112356625.766.0",
+      "filter": 2,
+      "expect": {
+        "hex": "334C6B26D110BF8000000000",
+        "tagUri": "urn:epc:tag:grai-96:2.112356625.766.0",
+        "aiJson": {
+          "8003": "011235662576600"
+        }
+      }
+    },
+    {
+      "scheme": "grai-96",
+      "pureIdentityUri": "urn:epc:id:grai:8758204.69426.0",
+      "filter": 4,
+      "expect": {
+        "hex": "3396168EF043CC8000000000",
+        "tagUri": "urn:epc:tag:grai-96:4.8758204.69426.0",
+        "aiJson": {
+          "8003": "087582046942670"
+        }
+      }
+    },
+    {
+      "scheme": "grai-96",
+      "pureIdentityUri": "urn:epc:id:grai:906660.627125.692",
+      "filter": 1,
+      "expect": {
+        "hex": "333B756902646D40000002B4",
+        "tagUri": "urn:epc:tag:grai-96:1.906660.627125.692",
+        "aiJson": {
+          "8003": "09066606271252692"
+        }
+      }
+    },
+    {
+      "scheme": "grai-96",
+      "pureIdentityUri": "urn:epc:id:grai:546120.829821.87148049851",
+      "filter": 5,
+      "expect": {
+        "hex": "33BA1552032A5F544A6DB5BB",
+        "tagUri": "urn:epc:tag:grai-96:5.546120.829821.87148049851",
+        "aiJson": {
+          "8003": "0546120829821087148049851"
+        }
+      }
+    },
+    {
+      "scheme": "grai-96",
+      "pureIdentityUri": "urn:epc:id:grai:4575901964.71.75877737379",
+      "filter": 7,
+      "expect": {
+        "hex": "33E910BEB90C11D1AAAA63A3",
+        "tagUri": "urn:epc:tag:grai-96:7.4575901964.71.75877737379",
+        "aiJson": {
+          "8003": "0457590196471475877737379"
+        }
+      }
+    },
+    {
+      "scheme": "grai-96",
+      "pureIdentityUri": "urn:epc:id:grai:560625369346..21813",
+      "filter": 1,
+      "expect": {
+        "hex": "33220A1F8104080000005535",
+        "tagUri": "urn:epc:tag:grai-96:1.560625369346..21813",
+        "aiJson": {
+          "8003": "0560625369346121813"
+        }
+      }
+    },
+    {
+      "scheme": "grai-96",
+      "pureIdentityUri": "urn:epc:id:grai:14216804.8299.482668",
+      "filter": 0,
+      "expect": {
+        "hex": "33106C7732081AC000075D6C",
+        "tagUri": "urn:epc:tag:grai-96:0.14216804.8299.482668",
+        "aiJson": {
+          "8003": "01421680482990482668"
+        }
+      }
+    },
+    {
+      "scheme": "grai-96",
+      "pureIdentityUri": "urn:epc:id:grai:44987639595.4.2",
+      "filter": 4,
+      "expect": {
+        "hex": "33854F2F1CE5610000000002",
+        "tagUri": "urn:epc:tag:grai-96:4.44987639595.4.2",
+        "aiJson": {
+          "8003": "044987639595472"
+        }
+      }
+    },
+    {
+      "scheme": "grai-96",
+      "pureIdentityUri": "urn:epc:id:grai:94503751.7859.113560983",
+      "filter": 1,
+      "expect": {
+        "hex": "3332D101A387ACC006C4CD97",
+        "tagUri": "urn:epc:tag:grai-96:1.94503751.7859.113560983",
+        "aiJson": {
+          "8003": "09450375178599113560983"
+        }
+      }
+    },
+    {
+      "scheme": "grai-170",
+      "pureIdentityUri": "urn:epc:id:grai:8223555.98253.b-2",
+      "filter": 0,
+      "expect": {
+        "hex": "3715F5ED0C5FF3712D6400000000000000000000000",
+        "tagUri": "urn:epc:tag:grai-170:0.8223555.98253.b-2",
+        "aiJson": {
+          "8003": "08223555982535b-2"
+        }
+      }
+    },
+    {
+      "scheme": "grai-170",
+      "pureIdentityUri": "urn:epc:id:grai:77070872854.7.cFStjHsuHYRfgJm7",
+      "filter": 4,
+      "expect": {
+        "hex": "37863E390622C1F1C6A7D3548E7D6459A59B3CADADC",
+        "tagUri": "urn:epc:tag:grai-170:4.77070872854.7.cFStjHsuHYRfgJm7",
+        "aiJson": {
+          "8003": "07707087285476cFStjHsuHYRfgJm7"
+        }
+      }
+    },
+    {
+      "scheme": "grai-170",
+      "pureIdentityUri": "urn:epc:id:grai:3890954356.90.TqjuW_HTeeUJ",
+      "filter": 5,
+      "expect": {
+        "hex": "37A8E7EB407416AA71D5D6BDF91532E5AB280000000",
+        "tagUri": "urn:epc:tag:grai-170:5.3890954356.90.TqjuW_HTeeUJ",
+        "aiJson": {
+          "8003": "03890954356905TqjuW_HTeeUJ"
+        }
+      }
+    },
+    {
+      "scheme": "grai-170",
+      "pureIdentityUri": "urn:epc:id:grai:03225461932.0.dk7rh",
+      "filter": 2,
+      "expect": {
+        "hex": "37441808149580326B6FCB400000000000000000000",
+        "tagUri": "urn:epc:tag:grai-170:2.03225461932.0.dk7rh",
+        "aiJson": {
+          "8003": "00322546193207dk7rh"
+        }
+      }
+    },
+    {
+      "scheme": "grai-170",
+      "pureIdentityUri": "urn:epc:id:grai:32635985.1812.LI4QZ",
+      "filter": 5,
+      "expect": {
+        "hex": "37B0F8FE2881C526496946D00000000000000000000",
+        "tagUri": "urn:epc:tag:grai-170:5.32635985.1812.LI4QZ",
+        "aiJson": {
+          "8003": "03263598518129LI4QZ"
+        }
+      }
+    },
+    {
+      "scheme": "grai-170",
+      "pureIdentityUri": "urn:epc:id:grai:84717866.5917.GRBbCEjlVE;",
+      "filter": 6,
+      "expect": {
+        "hex": "37D286589505C763D2858A1C5D5B2B4576000000000",
+        "tagUri": "urn:epc:tag:grai-170:6.84717866.5917.GRBbCEjlVE;",
+        "aiJson": {
+          "8003": "08471786659171GRBbCEjlVE;"
+        }
+      }
+    },
+    {
+      "scheme": "grai-170",
+      "pureIdentityUri": "urn:epc:id:grai:747809410.921.hej%225M!T_lysdJ2",
+      "filter": 2,
+      "expect": {
+        "hex": "374EC92AA820E67465D489ACD4352FECF3CF24A6400",
+        "tagUri": "urn:epc:tag:grai-170:2.747809410.921.hej%225M!T_lysdJ2"
+      }
+    },
+    {
+      "scheme": "grai-170",
+      "pureIdentityUri": "urn:epc:id:grai:64636503523.8.l(_8LuuKDuFP",
+      "filter": 7,
+      "expect": {
+        "hex": "37E5E19458BC623628BEE2675EB2E2758D400000000",
+        "tagUri": "urn:epc:tag:grai-170:7.64636503523.8.l(_8LuuKDuFP",
+        "aiJson": {
+          "8003": "06463650352389l(_8LuuKDuFP"
+        }
+      }
+    },
+    {
+      "scheme": "grai-170",
+      "pureIdentityUri": "urn:epc:id:grai:09905504.5651.BUemeF8DDCI5YTZg",
+      "filter": 3,
+      "expect": {
+        "hex": "37704B92B00584E155CBB72C6711224392D6CD4B59C",
+        "tagUri": "urn:epc:tag:grai-170:3.09905504.5651.BUemeF8DDCI5YTZg",
+        "aiJson": {
+          "8003": "00990550456511BUemeF8DDCI5YTZg"
+        }
+      }
+    },
+    {
+      "scheme": "grai-170",
+      "pureIdentityUri": "urn:epc:id:grai:020282.224446.nf99r1452",
+      "filter": 2,
+      "expect": {
+        "hex": "375813CE80DB2FB76672E793168D590000000000000",
+        "tagUri": "urn:epc:tag:grai-170:2.020282.224446.nf99r1452",
+        "aiJson": {
+          "8003": "00202822244468nf99r1452"
+        }
+      }
+    },
+    {
+      "scheme": "grai-170",
+      "pureIdentityUri": "urn:epc:id:grai:1088038252.69.e7Rdt3!Z",
+      "filter": 3,
+      "expect": {
+        "hex": "376840DA256C1172B7A593A33436800000000000000",
+        "tagUri": "urn:epc:tag:grai-170:3.1088038252.69.e7Rdt3!Z",
+        "aiJson": {
+          "8003": "01088038252690e7Rdt3!Z"
+        }
+      }
+    },
+    {
+      "scheme": "grai-170",
+      "pureIdentityUri": "urn:epc:id:grai:115798794.618.4XzC",
+      "filter": 3,
+      "expect": {
+        "hex": "376C6E6F30A09A9A58F50C000000000000000000000",
+        "tagUri": "urn:epc:tag:grai-170:3.115798794.618.4XzC",
+        "aiJson": {
+          "8003": "011579879461864XzC"
+        }
+      }
+    },
+    {
+      "scheme": "grai-170",
+      "pureIdentityUri": "urn:epc:id:grai:664866297582..zHqERjQvJN",
+      "filter": 4,
+      "expect": {
+        "hex": "37826B347A5BB83D48E31696AA3DA54E00000000000",
+        "tagUri": "urn:epc:tag:grai-170:4.664866297582..zHqERjQvJN",
+        "aiJson": {
+          "8003": "06648662975829zHqERjQvJN"
+        }
+      }
+    },
+    {
+      "scheme": "grai-170",
+      "pureIdentityUri": "urn:epc:id:grai:805283053.904.XAWKp",
+      "filter": 3,
+      "expect": {
+        "hex": "376EFFFA4ED0E22C41AF2F800000000000000000000",
+        "tagUri": "urn:epc:tag:grai-170:3.805283053.904.XAWKp",
+        "aiJson": {
+          "8003": "08052830539047XAWKp"
+        }
+      }
+    },
+    {
+      "scheme": "grai-170",
+      "pureIdentityUri": "urn:epc:id:grai:29985968.1353.Avsv%25pXVq0%3CFL7t",
+      "filter": 1,
+      "expect": {
+        "hex": "3730E4C658015260F6E7D92F0B15B8B0791A637E800",
+        "tagUri": "urn:epc:tag:grai-170:1.29985968.1353.Avsv%25pXVq0%3CFL7t",
+        "aiJson": {
+          "8003": "02998596813532Avsv%pXVq0<FL7t"
+        }
+      }
+    },
+    {
+      "scheme": "grai-170",
+      "pureIdentityUri": "urn:epc:id:grai:467853377961..F,eJd9GNx4X9",
+      "filter": 7,
+      "expect": {
+        "hex": "37E1B3B8F006A4232CCB2B2398F3BC34B0E40000000",
+        "tagUri": "urn:epc:tag:grai-170:7.467853377961..F,eJd9GNx4X9",
+        "aiJson": {
+          "8003": "04678533779616F,eJd9GNx4X9"
+        }
+      }
+    },
+    {
+      "scheme": "grai-170",
+      "pureIdentityUri": "urn:epc:id:grai:1770373.33223.GxbMN9ba",
+      "filter": 7,
+      "expect": {
+        "hex": "37F46C0E142071E3F8C536739C58400000000000000",
+        "tagUri": "urn:epc:tag:grai-170:7.1770373.33223.GxbMN9ba",
+        "aiJson": {
+          "8003": "01770373332235GxbMN9ba"
+        }
+      }
+    },
+    {
+      "scheme": "grai-170",
+      "pureIdentityUri": "urn:epc:id:grai:705894407762..%3EacrLLDx9",
+      "filter": 6,
+      "expect": {
+        "hex": "37C2916A5779481F61C7CA64C89E1C8000000000000",
+        "tagUri": "urn:epc:tag:grai-170:6.705894407762..%3EacrLLDx9",
+        "aiJson": {
+          "8003": "07058944077629>acrLLDx9"
+        }
+      }
+    },
+    {
+      "scheme": "grai-170",
+      "pureIdentityUri": "urn:epc:id:grai:682126.935940.DDcz2",
+      "filter": 4,
+      "expect": {
+        "hex": "379A9A238392012244C7E9900000000000000000000",
+        "tagUri": "urn:epc:tag:grai-170:4.682126.935940.DDcz2",
+        "aiJson": {
+          "8003": "06821269359401DDcz2"
+        }
+      }
+    },
+    {
+      "scheme": "grai-170",
+      "pureIdentityUri": "urn:epc:id:grai:578931829.542.FD9ql2Ai0iBS",
+      "filter": 7,
+      "expect": {
+        "hex": "37EE281CC75087A34473C763283A5869854C0000000",
+        "tagUri": "urn:epc:tag:grai-170:7.578931829.542.FD9ql2Ai0iBS",
+        "aiJson": {
+          "8003": "05789318295425FD9ql2Ai0iBS"
+        }
+      }
+    },
+    {
+      "scheme": "grai-170",
+      "pureIdentityUri": "urn:epc:id:grai:92523467397.6.zE%225j",
+      "filter": 0,
+      "expect": {
+        "hex": "3706B15A8250A1BD4544D7500000000000000000000",
+        "tagUri": "urn:epc:tag:grai-170:0.92523467397.6.zE%225j"
+      }
+    },
+    {
+      "scheme": "grai-170",
+      "pureIdentityUri": "urn:epc:id:grai:94851864.4435.;+wj3hQTlCyp",
+      "filter": 0,
+      "expect": {
+        "hex": "3712D3A98C0454DDABEFA99E8A353643F3C00000000",
+        "tagUri": "urn:epc:tag:grai-170:0.94851864.4435.;+wj3hQTlCyp",
+        "aiJson": {
+          "8003": "09485186444359;+wj3hQTlCyp"
+        }
+      }
+    },
+    {
+      "scheme": "grai-170",
+      "pureIdentityUri": "urn:epc:id:grai:181323.873983.m",
+      "filter": 1,
+      "expect": {
+        "hex": "3738B112C3557FF6800000000000000000000000000",
+        "tagUri": "urn:epc:tag:grai-170:1.181323.873983.m",
+        "aiJson": {
+          "8003": "01813238739838m"
+        }
+      }
+    },
+    {
+      "scheme": "grai-170",
+      "pureIdentityUri": "urn:epc:id:grai:468370.184231.sN3mlhWs",
+      "filter": 4,
+      "expect": {
+        "hex": "3799C96480B3E9F9CE67B7668AFCC00000000000000",
+        "tagUri": "urn:epc:tag:grai-170:4.468370.184231.sN3mlhWs",
+        "aiJson": {
+          "8003": "04683701842313sN3mlhWs"
+        }
+      }
+    },
+    {
+      "scheme": "grai-170",
+      "pureIdentityUri": "urn:epc:id:grai:196447190829..cnBqk0qVeKYs",
+      "filter": 0,
+      "expect": {
+        "hex": "3700B6F4A8FCB431EE85C75B0E35B2CBB3CC0000000",
+        "tagUri": "urn:epc:tag:grai-170:0.196447190829..cnBqk0qVeKYs",
+        "aiJson": {
+          "8003": "01964471908298cnBqk0qVeKYs"
+        }
+      }
+    },
+    {
+      "scheme": "giai-96",
+      "pureIdentityUri": "urn:epc:id:giai:511914878.1342",
+      "filter": 2,
+      "expect": {
+        "hex": "344DE83337E000000000053E",
+        "tagUri": "urn:epc:tag:giai-96:2.511914878.1342",
+        "aiJson": {
+          "8004": "5119148781342"
+        }
+      }
+    },
+    {
+      "scheme": "giai-96",
+      "pureIdentityUri": "urn:epc:id:giai:2691701682.64026539",
+      "filter": 3,
+      "expect": {
+        "hex": "3468A0701BB2000003D0F7AB",
+        "tagUri": "urn:epc:tag:giai-96:3.2691701682.64026539",
+        "aiJson": {
+          "8004": "269170168264026539"
+        }
+      }
+    },
+    {
+      "scheme": "giai-96",
+      "pureIdentityUri": "urn:epc:id:giai:346328352294.671",
+      "filter": 7,
+      "expect": {
+        "hex": "34E1428B1D1898000000029F",
+        "tagUri": "urn:epc:tag:giai-96:7.346328352294.671",
+        "aiJson": {
+          "8004": "346328352294671"
+        }
+      }
+    },
+    {
+      "scheme": "giai-96",
+      "pureIdentityUri": "urn:epc:id:giai:58712381090.38969",
+      "filter": 7,
+      "expect": {
+        "hex": "34E5B570FAD4400000009839",
+        "tagUri": "urn:epc:tag:giai-96:7.58712381090.38969",
+        "aiJson": {
+          "8004": "5871238109038969"
+        }
+      }
+    },
+    {
+      "scheme": "giai-96",
+      "pureIdentityUri": "urn:epc:id:giai:411115.5167",
+      "filter": 1,
+      "expect": {
+        "hex": "3439917AC00000000000142F",
+        "tagUri": "urn:epc:tag:giai-96:1.411115.5167",
+        "aiJson": {
+          "8004": "4111155167"
+        }
+      }
+    },
+    {
+      "scheme": "giai-96",
+      "pureIdentityUri": "urn:epc:id:giai:4851164313.3262",
+      "filter": 4,
+      "expect": {
+        "hex": "34892126E499000000000CBE",
+        "tagUri": "urn:epc:tag:giai-96:4.4851164313.3262",
+        "aiJson": {
+          "8004": "48511643133262"
+        }
+      }
+    },
+    {
+      "scheme": "giai-96",
+      "pureIdentityUri": "urn:epc:id:giai:2332490.5709650",
+      "filter": 0,
+      "expect": {
+        "hex": "34148E5D2800000000571F52",
+        "tagUri": "urn:epc:tag:giai-96:0.2332490.5709650",
+        "aiJson": {
+          "8004": "23324905709650"
+        }
+      }
+    },
+    {
+      "scheme": "giai-96",
+      "pureIdentityUri": "urn:epc:id:giai:380199795121.3625153312285",
+      "filter": 1,
+      "expect": {
+        "hex": "34216216B1E6C74C0BF9B61D",
+        "tagUri": "urn:epc:tag:giai-96:1.380199795121.3625153312285",
+        "aiJson": {
+          "8004": "3801997951213625153312285"
+        }
+      }
+    },
+    {
+      "scheme": "giai-96",
+      "pureIdentityUri": "urn:epc:id:giai:06486305.8160",
+      "filter": 6,
+      "expect": {
+        "hex": "34D0317C9080000000001FE0",
+        "tagUri": "urn:epc:tag:giai-96:6.06486305.8160",
+        "aiJson": {
+          "8004": "064863058160"
+        }
+      }
+    },
+    {
+      "scheme": "giai-96",
+      "pureIdentityUri": "urn:epc:id:giai:869900131220.995202861",
+      "filter": 3,
+      "expect": {
+        "hex": "34632A285A6E50003B51972D",
+        "tagUri": "urn:epc:tag:giai-96:3.869900131220.995202861",
+        "aiJson": {
+          "8004": "869900131220995202861"
+        }
+      }
+    },
+    {
+      "scheme": "giai-96",
+      "pureIdentityUri": "urn:epc:id:giai:370475692533.5",
+      "filter": 5,
+      "expect": {
+        "hex": "34A1590849C7D40000000005",
+        "tagUri": "urn:epc:tag:giai-96:5.370475692533.5",
+        "aiJson": {
+          "8004": "3704756925335"
+        }
+      }
+    },
+    {
+      "scheme": "giai-96",
+      "pureIdentityUri": "urn:epc:id:giai:290667406.890951341387",
+      "filter": 2,
+      "expect": {
+        "hex": "344D1533B8E000CF70D6954B",
+        "tagUri": "urn:epc:tag:giai-96:2.290667406.890951341387",
+        "aiJson": {
+          "8004": "290667406890951341387"
+        }
+      }
+    },
+    {
+      "scheme": "giai-96",
+      "pureIdentityUri": "urn:epc:id:giai:260050547446.2260968349346",
+      "filter": 4,
+      "expect": {
+        "hex": "3480F230E1CBDA0E6C371EA2",
+        "tagUri": "urn:epc:tag:giai-96:4.260050547446.2260968349346",
+        "aiJson": {
+          "8004": "2600505474462260968349346"
+        }
+      }
+    },
+    {
+      "scheme": "giai-96",
+      "pureIdentityUri": "urn:epc:id:giai:914243197315.0",
+      "filter": 2,
+      "expect": {
+        "hex": "3443537490660C0000000000",
+        "tagUri": "urn:epc:tag:giai-96:2.914243197315.0",
+        "aiJson": {
+          "8004": "9142431973150"
+        }
+      }
+    },
+    {
+      "scheme": "giai-96",
+      "pureIdentityUri": "urn:epc:id:giai:354950.516932213619494758",
+      "filter": 0,
+      "expect": {
+        "hex": "34195AA1872C831C05BF0F80",
+        "tagUri": "urn:epc:tag:giai-96:0.354950.516932213619494758",
+        "aiJson": {
+          "8004": "354950516932213619494758"
+        }
+      }
+    },
+    {
+      "scheme": "giai-96",
+      "pureIdentityUri": "urn:epc:id:giai:633999250833.0",
+      "filter": 6,
+      "expect": {
+        "hex": "34C24E753356440000000000",
+        "tagUri": "urn:epc:tag:giai-96:6.633999250833.0",
+        "aiJson": {
+          "8004": "6339992508330"
+        }
+      }
+    },
+    {
+      "scheme": "giai-96",
+      "pureIdentityUri": "urn:epc:id:giai:51042352621.27430173455963",
+      "filter": 6,
+      "expect": {
+        "hex": "34C57C4B8FBDB8F295BEB65B",
+        "tagUri": "urn:epc:tag:giai-96:6.51042352621.27430173455963",
+        "aiJson": {
+          "8004": "5104235262127430173455963"
+        }
+      }
+    },
+    {
+      "scheme": "giai-96",
+      "pureIdentityUri": "urn:epc:id:giai:3694378462.379",
+      "filter": 2,
+      "expect": {
+        "hex": "3448DC33BDDE00000000017B",
+        "tagUri": "urn:epc:tag:giai-96:2.3694378462.379",
+        "aiJson": {
+          "8004": "3694378462379"
+        }
+      }
+    },
+    {
+      "scheme": "giai-96",
+      "pureIdentityUri": "urn:epc:id:giai:4694279020.3535304690",
+      "filter": 4,
+      "expect": {
+        "hex": "348917CD036C0000D2B877F2",
+        "tagUri": "urn:epc:tag:giai-96:4.4694279020.3535304690",
+        "aiJson": {
+          "8004": "46942790203535304690"
+        }
+      }
+    },
+    {
+      "scheme": "giai-96",
+      "pureIdentityUri": "urn:epc:id:giai:0023389162.6754",
+      "filter": 2,
+      "expect": {
+        "hex": "34480164E3EA000000001A62",
+        "tagUri": "urn:epc:tag:giai-96:2.0023389162.6754",
+        "aiJson": {
+          "8004": "00233891626754"
+        }
+      }
+    },
+    {
+      "scheme": "giai-96",
+      "pureIdentityUri": "urn:epc:id:giai:879860.93398430546526",
+      "filter": 7,
+      "expect": {
+        "hex": "34FB5B3D000054F204467A5E",
+        "tagUri": "urn:epc:tag:giai-96:7.879860.93398430546526",
+        "aiJson": {
+          "8004": "87986093398430546526"
+        }
+      }
+    },
+    {
+      "scheme": "giai-96",
+      "pureIdentityUri": "urn:epc:id:giai:3566058.680235",
+      "filter": 4,
+      "expect": {
+        "hex": "3494D9A7A8000000000A612B",
+        "tagUri": "urn:epc:tag:giai-96:4.3566058.680235",
+        "aiJson": {
+          "8004": "3566058680235"
+        }
+      }
+    },
+    {
+      "scheme": "giai-96",
+      "pureIdentityUri": "urn:epc:id:giai:002585274.8",
+      "filter": 2,
+      "expect": {
+        "hex": "344C02772BA0000000000008",
+        "tagUri": "urn:epc:tag:giai-96:2.002585274.8",
+        "aiJson": {
+          "8004": "0025852748"
+        }
+      }
+    },
+    {
+      "scheme": "giai-96",
+      "pureIdentityUri": "urn:epc:id:giai:528445237426.555528364",
+      "filter": 0,
+      "expect": {
+        "hex": "3401EC2729A2C800211CB0AC",
+        "tagUri": "urn:epc:tag:giai-96:0.528445237426.555528364",
+        "aiJson": {
+          "8004": "528445237426555528364"
+        }
+      }
+    },
+    {
+      "scheme": "giai-96",
+      "pureIdentityUri": "urn:epc:id:giai:12291910.0",
+      "filter": 0,
+      "expect": {
+        "hex": "34105DC7A300000000000000",
+        "tagUri": "urn:epc:tag:giai-96:0.12291910.0",
+        "aiJson": {
+          "8004": "122919100"
+        }
+      }
+    },
+    {
+      "scheme": "giai-202",
+      "pureIdentityUri": "urn:epc:id:giai:033754013.7Ua)WI*j:g",
+      "filter": 3,
+      "expect": {
+        "hex": "386C2030B9D6F570A9AF2556A759C0000000000000000000000",
+        "tagUri": "urn:epc:tag:giai-202:3.033754013.7Ua)WI*j:g",
+        "aiJson": {
+          "8004": "0337540137Ua)WI*j:g"
+        }
+      }
+    },
+    {
+      "scheme": "giai-202",
+      "pureIdentityUri": "urn:epc:id:giai:47318869.YZGQvnwqa",
+      "filter": 5,
+      "expect": {
+        "hex": "38B16903AAD9B51E8F6DDDF8E10000000000000000000000000",
+        "tagUri": "urn:epc:tag:giai-202:5.47318869.YZGQvnwqa",
+        "aiJson": {
+          "8004": "47318869YZGQvnwqa"
+        }
+      }
+    },
+    {
+      "scheme": "giai-202",
+      "pureIdentityUri": "urn:epc:id:giai:866691334570.9dgziEwqs",
+      "filter": 0,
+      "expect": {
+        "hex": "3803272B5106A9CE4CFEB4C5EFC798000000000000000000000",
+        "tagUri": "urn:epc:tag:giai-202:0.866691334570.9dgziEwqs",
+        "aiJson": {
+          "8004": "8666913345709dgziEwqs"
+        }
+      }
+    },
+    {
+      "scheme": "giai-202",
+      "pureIdentityUri": "urn:epc:id:giai:9565577019.6kaXe",
+      "filter": 1,
+      "expect": {
+        "hex": "382A3A271F3B6DAF0D8CA000000000000000000000000000000",
+        "tagUri": "urn:epc:tag:giai-202:1.9565577019.6kaXe",
+        "aiJson": {
+          "8004": "95655770196kaXe"
+        }
+      }
+    },
+    {
+      "scheme": "giai-202",
+      "pureIdentityUri": "urn:epc:id:giai:20706157.dxKHc",
+      "filter": 6,
+      "expect": {
+        "hex": "38D09DF9B6E4F12E46300000000000000000000000000000000",
+        "tagUri": "urn:epc:tag:giai-202:6.20706157.dxKHc",
+        "aiJson": {
+          "8004": "20706157dxKHc"
+        }
+      }
+    },
+    {
+      "scheme": "giai-202",
+      "pureIdentityUri": "urn:epc:id:giai:522560271.ULAlNW",
+      "filter": 2,
+      "expect": {
+        "hex": "384DF25A30FAB320EC9D5C00000000000000000000000000000",
+        "tagUri": "urn:epc:tag:giai-202:2.522560271.ULAlNW",
+        "aiJson": {
+          "8004": "522560271ULAlNW"
+        }
+      }
+    },
+    {
+      "scheme": "giai-202",
+      "pureIdentityUri": "urn:epc:id:giai:431039.6xX5keO4.VQ9Cm3vl-Pk)Y",
+      "filter": 6,
+      "expect": {
+        "hex": "38D9A4EFDB78B0D75E59ED1756A2E61ED67DB62DA1AD4D90000",
+        "tagUri": "urn:epc:tag:giai-202:6.431039.6xX5keO4.VQ9Cm3vl-Pk)Y",
+        "aiJson": {
+          "8004": "4310396xX5keO4.VQ9Cm3vl-Pk)Y"
+        }
+      }
+    },
+    {
+      "scheme": "giai-202",
+      "pureIdentityUri": "urn:epc:id:giai:43333129466.cqykX=y",
+      "filter": 7,
+      "expect": {
+        "hex": "38E542DB629F58F8F9D761EF900000000000000000000000000",
+        "tagUri": "urn:epc:tag:giai-202:7.43333129466.cqykX=y",
+        "aiJson": {
+          "8004": "43333129466cqykX=y"
+        }
+      }
+    },
+    {
+      "scheme": "giai-202",
+      "pureIdentityUri": "urn:epc:id:giai:016615622257.H",
+      "filter": 6,
+      "expect": {
+        "hex": "38C00F797919C64000000000000000000000000000000000000",
+        "tagUri": "urn:epc:tag:giai-202:6.016615622257.H",
+        "aiJson": {
+          "8004": "016615622257H"
+        }
+      }
+    },
+    {
+      "scheme": "giai-202",
+      "pureIdentityUri": "urn:epc:id:giai:15447178072.q8aDYSZvmIS13izqMu",
+      "filter": 0,
+      "expect": {
+        "hex": "38047317276B1C5C6189669DAEDB64D362CF4FAE337A8000000",
+        "tagUri": "urn:epc:tag:giai-202:0.15447178072.q8aDYSZvmIS13izqMu",
+        "aiJson": {
+          "8004": "15447178072q8aDYSZvmIS13izqMu"
+        }
+      }
+    },
+    {
+      "scheme": "giai-202",
+      "pureIdentityUri": "urn:epc:id:giai:1712944.AMfh4liP8u(6kcAApvmQ+Y",
+      "filter": 1,
+      "expect": {
+        "hex": "3834688CC20CDCDA1A6CD341C7550DB5E38307876DB455D9000",
+        "tagUri": "urn:epc:tag:giai-202:1.1712944.AMfh4liP8u(6kcAApvmQ+Y",
+        "aiJson": {
+          "8004": "1712944AMfh4liP8u(6kcAApvmQ+Y"
+        }
+      }
+    },
+    {
+      "scheme": "giai-202",
+      "pureIdentityUri": "urn:epc:id:giai:655670.KrVY",
+      "filter": 5,
+      "expect": {
+        "hex": "38BA804DA5F2AD6400000000000000000000000000000000000",
+        "tagUri": "urn:epc:tag:giai-202:5.655670.KrVY",
+        "aiJson": {
+          "8004": "655670KrVY"
+        }
+      }
+    },
+    {
+      "scheme": "giai-202",
+      "pureIdentityUri": "urn:epc:id:giai:081008154.Ma",
+      "filter": 0,
+      "expect": {
+        "hex": "380C4D4161A9B84000000000000000000000000000000000000",
+        "tagUri": "urn:epc:tag:giai-202:0.081008154.Ma",
+        "aiJson": {
+          "8004": "081008154Ma"
+        }
+      }
+    },
+    {
+      "scheme": "giai-202",
+      "pureIdentityUri": "urn:epc:id:giai:4294676.Hm6Gx5%3Cw4%3Elkf3FRKLY",
+      "filter": 3,
+      "expect": {
+        "hex": "387506205246D6D1FC3579DDA3ED9AF3338D4A5CCB200000000",
+        "tagUri": "urn:epc:tag:giai-202:3.4294676.Hm6Gx5%3Cw4%3Elkf3FRKLY",
+        "aiJson": {
+          "8004": "4294676Hm6Gx5<w4>lkf3FRKLY"
+        }
+      }
+    },
+    {
+      "scheme": "giai-202",
+      "pureIdentityUri": "urn:epc:id:giai:346003.EzZ'E8jNFp",
+      "filter": 4,
+      "expect": {
+        "hex": "389951E4E2FAB49E2B8D53A3700000000000000000000000000",
+        "tagUri": "urn:epc:tag:giai-202:4.346003.EzZ'E8jNFp",
+        "aiJson": {
+          "8004": "346003EzZ'E8jNFp"
+        }
+      }
+    },
+    {
+      "scheme": "giai-202",
+      "pureIdentityUri": "urn:epc:id:giai:6551578.4BsH98cn5+l1UNZiTo",
+      "filter": 2,
+      "expect": {
+        "hex": "38558FE069A42E721CB8C7B9AABD8C6ACEB5A6A6F0000000000",
+        "tagUri": "urn:epc:tag:giai-202:2.6551578.4BsH98cn5+l1UNZiTo",
+        "aiJson": {
+          "8004": "65515784BsH98cn5+l1UNZiTo"
+        }
+      }
+    },
+    {
+      "scheme": "giai-202",
+      "pureIdentityUri": "urn:epc:id:giai:8474794836.9XonQKTs6VjL0YQsXX3U",
+      "filter": 1,
+      "expect": {
+        "hex": "3829F9231B5473637EEA32EA736D5B54C61668F3B1619D50000",
+        "tagUri": "urn:epc:tag:giai-202:1.8474794836.9XonQKTs6VjL0YQsXX3U",
+        "aiJson": {
+          "8004": "84747948369XonQKTs6VjL0YQsXX3U"
+        }
+      }
+    },
+    {
+      "scheme": "giai-202",
+      "pureIdentityUri": "urn:epc:id:giai:263430439241.jVd7XB72kJi%3Cx",
+      "filter": 6,
+      "expect": {
+        "hex": "38C0F556B60527556C8DEC426ECB5CAD2F3C000000000000000",
+        "tagUri": "urn:epc:tag:giai-202:6.263430439241.jVd7XB72kJi%3Cx",
+        "aiJson": {
+          "8004": "263430439241jVd7XB72kJi<x"
+        }
+      }
+    },
+    {
+      "scheme": "giai-202",
+      "pureIdentityUri": "urn:epc:id:giai:165856271.L4qjW6EHaCp",
+      "filter": 3,
+      "expect": {
+        "hex": "386C9E2C40F98D38EAAEDA2C8C30F8000000000000000000000",
+        "tagUri": "urn:epc:tag:giai-202:3.165856271.L4qjW6EHaCp",
+        "aiJson": {
+          "8004": "165856271L4qjW6EHaCp"
+        }
+      }
+    },
+    {
+      "scheme": "giai-202",
+      "pureIdentityUri": "urn:epc:id:giai:522852639.QmgUhl50x_skEwHHX",
+      "filter": 0,
+      "expect": {
+        "hex": "380DF2A191FA3B73D5D1B1AB0F17F9EB8BDE448B00000000000",
+        "tagUri": "urn:epc:tag:giai-202:0.522852639.QmgUhl50x_skEwHHX",
+        "aiJson": {
+          "8004": "522852639QmgUhl50x_skEwHHX"
+        }
+      }
+    },
+    {
+      "scheme": "giai-202",
+      "pureIdentityUri": "urn:epc:id:giai:1221826185.4E",
+      "filter": 0,
+      "expect": {
+        "hex": "380848D39689691400000000000000000000000000000000000",
+        "tagUri": "urn:epc:tag:giai-202:0.1221826185.4E",
+        "aiJson": {
+          "8004": "12218261854E"
+        }
+      }
+    },
+    {
+      "scheme": "giai-202",
+      "pureIdentityUri": "urn:epc:id:giai:87613824790.VzrBFM74mR%3EhT",
+      "filter": 3,
+      "expect": {
+        "hex": "38668CC61BE2D5BD72851A6B769B693ED150000000000000000",
+        "tagUri": "urn:epc:tag:giai-202:3.87613824790.VzrBFM74mR%3EhT",
+        "aiJson": {
+          "8004": "87613824790VzrBFM74mR>hT"
+        }
+      }
+    },
+    {
+      "scheme": "giai-202",
+      "pureIdentityUri": "urn:epc:id:giai:592796883080.fBQFKI6LP7j9K",
+      "filter": 1,
+      "expect": {
+        "hex": "38222815CA6223342A31A5C96D32837D4E65800000000000000",
+        "tagUri": "urn:epc:tag:giai-202:1.592796883080.fBQFKI6LP7j9K",
+        "aiJson": {
+          "8004": "592796883080fBQFKI6LP7j9K"
+        }
+      }
+    },
+    {
+      "scheme": "giai-202",
+      "pureIdentityUri": "urn:epc:id:giai:641015.XaIhSVQ8R7nB%25i54a",
+      "filter": 7,
+      "expect": {
+        "hex": "38FA71FDEC6193A29D6A2E2937DD092E96AD308000000000000",
+        "tagUri": "urn:epc:tag:giai-202:7.641015.XaIhSVQ8R7nB%25i54a",
+        "aiJson": {
+          "8004": "641015XaIhSVQ8R7nB%i54a"
+        }
+      }
+    },
+    {
+      "scheme": "giai-202",
+      "pureIdentityUri": "urn:epc:id:giai:7104207.K",
+      "filter": 1,
+      "expect": {
+        "hex": "3835B19B3E58000000000000000000000000000000000000000",
+        "tagUri": "urn:epc:tag:giai-202:1.7104207.K",
+        "aiJson": {
+          "8004": "7104207K"
+        }
+      }
+    },
+    {
+      "scheme": "gsrn-96",
+      "pureIdentityUri": "urn:epc:id:gsrn:129567525688.51370",
+      "filter": 1,
+      "expect": {
+        "hex": "2D2078AB4E2CE0C8AA000000",
+        "tagUri": "urn:epc:tag:gsrn-96:1.129567525688.51370",
+        "aiJson": {
+          "8018": "129567525688513706"
+        }
+      }
+    },
+    {
+      "scheme": "gsrn-96",
+      "pureIdentityUri": "urn:epc:id:gsrn:499416.82837004429",
+      "filter": 2,
+      "expect": {
+        "hex": "2D59E7B6134978608D000000",
+        "tagUri": "urn:epc:tag:gsrn-96:2.499416.82837004429",
+        "aiJson": {
+          "8018": "499416828370044290"
+        }
+      }
+    },
+    {
+      "scheme": "gsrn-96",
+      "pureIdentityUri": "urn:epc:id:gsrn:8983604668.1192323",
+      "filter": 3,
+      "expect": {
+        "hex": "2D6A1776EDBC123183000000",
+        "tagUri": "urn:epc:tag:gsrn-96:3.8983604668.1192323",
+        "aiJson": {
+          "8018": "898360466811923235"
+        }
+      }
+    },
+    {
+      "scheme": "gsrn-96",
+      "pureIdentityUri": "urn:epc:id:gsrn:7485386.2317427545",
+      "filter": 6,
+      "expect": {
+        "hex": "2DD5C8DF288A212359000000",
+        "tagUri": "urn:epc:tag:gsrn-96:6.7485386.2317427545",
+        "aiJson": {
+          "8018": "748538623174275457"
+        }
+      }
+    },
+    {
+      "scheme": "gsrn-96",
+      "pureIdentityUri": "urn:epc:id:gsrn:525805.72183468941",
+      "filter": 6,
+      "expect": {
+        "hex": "2DDA017B50CE78538D000000",
+        "tagUri": "urn:epc:tag:gsrn-96:6.525805.72183468941",
+        "aiJson": {
+          "8018": "525805721834689418"
+        }
+      }
+    },
+    {
+      "scheme": "gsrn-96",
+      "pureIdentityUri": "urn:epc:id:gsrn:68511416.070570801",
+      "filter": 1,
+      "expect": {
+        "hex": "2D320AB35C0434D331000000",
+        "tagUri": "urn:epc:tag:gsrn-96:1.68511416.070570801",
+        "aiJson": {
+          "8018": "685114160705708012"
+        }
+      }
+    },
+    {
+      "scheme": "gsrn-96",
+      "pureIdentityUri": "urn:epc:id:gsrn:452306.96768567243",
+      "filter": 0,
+      "expect": {
+        "hex": "2D19B9B49687DB27CB000000",
+        "tagUri": "urn:epc:tag:gsrn-96:0.452306.96768567243",
+        "aiJson": {
+          "8018": "452306967685672435"
+        }
+      }
+    },
+    {
+      "scheme": "gsrn-96",
+      "pureIdentityUri": "urn:epc:id:gsrn:386824549532.56305",
+      "filter": 1,
+      "expect": {
+        "hex": "2D21684228D270DBF1000000",
+        "tagUri": "urn:epc:tag:gsrn-96:1.386824549532.56305",
+        "aiJson": {
+          "8018": "386824549532563050"
+        }
+      }
+    },
+    {
+      "scheme": "gsrn-96",
+      "pureIdentityUri": "urn:epc:id:gsrn:559513.64587379505",
+      "filter": 3,
+      "expect": {
+        "hex": "2D7A22664F09B53331000000",
+        "tagUri": "urn:epc:tag:gsrn-96:3.559513.64587379505",
+        "aiJson": {
+          "8018": "559513645873795053"
+        }
+      }
+    },
+    {
+      "scheme": "gsrn-96",
+      "pureIdentityUri": "urn:epc:id:gsrn:1395063.7209134354",
+      "filter": 7,
+      "expect": {
+        "hex": "2DF45525DDADB2A912000000",
+        "tagUri": "urn:epc:tag:gsrn-96:7.1395063.7209134354",
+        "aiJson": {
+          "8018": "139506372091343547"
+        }
+      }
+    },
+    {
+      "scheme": "gsrn-96",
+      "pureIdentityUri": "urn:epc:id:gsrn:12955299.020637754",
+      "filter": 2,
+      "expect": {
+        "hex": "2D5062D751813AE83A000000",
+        "tagUri": "urn:epc:tag:gsrn-96:2.12955299.020637754",
+        "aiJson": {
+          "8018": "129552990206377548"
+        }
+      }
+    },
+    {
+      "scheme": "gsrn-96",
+      "pureIdentityUri": "urn:epc:id:gsrn:3189822.8258071863",
+      "filter": 7,
+      "expect": {
+        "hex": "2DF4C2B0F9EC382D37000000",
+        "tagUri": "urn:epc:tag:gsrn-96:7.3189822.8258071863",
+        "aiJson": {
+          "8018": "318982282580718631"
+        }
+      }
+    },
+    {
+      "scheme": "gsrn-96",
+      "pureIdentityUri": "urn:epc:id:gsrn:4813580.0082882895",
+      "filter": 4,
+      "expect": {
+        "hex": "2D9525CC3004F0B14F000000",
+        "tagUri": "urn:epc:tag:gsrn-96:4.4813580.0082882895",
+        "aiJson": {
+          "8018": "481358000828828955"
+        }
+      }
+    },
+    {
+      "scheme": "gsrn-96",
+      "pureIdentityUri": "urn:epc:id:gsrn:547235871323.25654",
+      "filter": 3,
+      "expect": {
+        "hex": "2D61FDA732E96C6436000000",
+        "tagUri": "urn:epc:tag:gsrn-96:3.547235871323.25654",
+        "aiJson": {
+          "8018": "547235871323256542"
+        }
+      }
+    },
+    {
+      "scheme": "gsrn-96",
+      "pureIdentityUri": "urn:epc:id:gsrn:448508720.96980135",
+      "filter": 0,
+      "expect": {
+        "hex": "2D0DABBB3305C7CCA7000000",
+        "tagUri": "urn:epc:tag:gsrn-96:0.448508720.96980135",
+        "aiJson": {
+          "8018": "448508720969801353"
+        }
+      }
+    },
+    {
+      "scheme": "gsrn-96",
+      "pureIdentityUri": "urn:epc:id:gsrn:8950516065.8514630",
+      "filter": 1,
+      "expect": {
+        "hex": "2D2A157E096181EC46000000",
+        "tagUri": "urn:epc:tag:gsrn-96:1.8950516065.8514630",
+        "aiJson": {
+          "8018": "895051606585146308"
+        }
+      }
+    },
+    {
+      "scheme": "gsrn-96",
+      "pureIdentityUri": "urn:epc:id:gsrn:2676597080.6519679",
+      "filter": 6,
+      "expect": {
+        "hex": "2DC89F89A158637B7F000000",
+        "tagUri": "urn:epc:tag:gsrn-96:6.2676597080.6519679",
+        "aiJson": {
+          "8018": "267659708065196795"
+        }
+      }
+    },
+    {
+      "scheme": "gsrn-96",
+      "pureIdentityUri": "urn:epc:id:gsrn:0118448619.0789530",
+      "filter": 6,
+      "expect": {
+        "hex": "2DC8070F61EB0C0C1A000000",
+        "tagUri": "urn:epc:tag:gsrn-96:6.0118448619.0789530",
+        "aiJson": {
+          "8018": "011844861907895302"
+        }
+      }
+    },
+    {
+      "scheme": "gsrn-96",
+      "pureIdentityUri": "urn:epc:id:gsrn:876505915.89347397",
+      "filter": 5,
+      "expect": {
+        "hex": "2DAF43E6B3B5535545000000",
+        "tagUri": "urn:epc:tag:gsrn-96:5.876505915.89347397",
+        "aiJson": {
+          "8018": "876505915893473972"
+        }
+      }
+    },
+    {
+      "scheme": "gsrn-96",
+      "pureIdentityUri": "urn:epc:id:gsrn:441297.73730800904",
+      "filter": 5,
+      "expect": {
+        "hex": "2DB9AEF4512AB2BD08000000",
+        "tagUri": "urn:epc:tag:gsrn-96:5.441297.73730800904",
+        "aiJson": {
+          "8018": "441297737308009040"
+        }
+      }
+    },
+    {
+      "scheme": "gsrn-96",
+      "pureIdentityUri": "urn:epc:id:gsrn:83074592499.530690",
+      "filter": 5,
+      "expect": {
+        "hex": "2DA66AF435DE681902000000",
+        "tagUri": "urn:epc:tag:gsrn-96:5.83074592499.530690",
+        "aiJson": {
+          "8018": "830745924995306901"
+        }
+      }
+    },
+    {
+      "scheme": "gsrn-96",
+      "pureIdentityUri": "urn:epc:id:gsrn:693841450100.68703",
+      "filter": 1,
+      "expect": {
+        "hex": "2D228630B151D10C5F000000",
+        "tagUri": "urn:epc:tag:gsrn-96:1.693841450100.68703",
+        "aiJson": {
+          "8018": "693841450100687039"
+        }
+      }
+    },
+    {
+      "scheme": "gsrn-96",
+      "pureIdentityUri": "urn:epc:id:gsrn:925513.48602202955",
+      "filter": 2,
+      "expect": {
+        "hex": "2D5B87D24B50EAC34B000000",
+        "tagUri": "urn:epc:tag:gsrn-96:2.925513.48602202955",
+        "aiJson": {
+          "8018": "925513486022029550"
+        }
+      }
+    },
+    {
+      "scheme": "gsrn-96",
+      "pureIdentityUri": "urn:epc:id:gsrn:9548515895.9745696",
+      "filter": 1,
+      "expect": {
+        "hex": "2D2A3922CA3794B520000000",
+        "tagUri": "urn:epc:tag:gsrn-96:1.9548515895.9745696",
+        "aiJson": {
+          "8018": "954851589597456961"
+        }
+      }
+    },
+    {
+      "scheme": "gsrn-96",
+      "pureIdentityUri": "urn:epc:id:gsrn:676140.62738381877",
+      "filter": 3,
+      "expect": {
+        "hex": "2D7A944B0E9B7FBC35000000",
+        "tagUri": "urn:epc:tag:gsrn-96:3.676140.62738381877",
+        "aiJson": {
+          "8018": "676140627383818776"
+        }
+      }
+    },
+    {
+      "scheme": "gsrnp-96",
+      "pureIdentityUri": "urn:epc:id:gsrnp:04564449.329756496",
+      "filter": 4,
+      "expect": {
+        "hex": "2E9022D2F093A7AF50000000",
+        "tagUri": "urn:epc:tag:gsrnp-96:4.04564449.329756496",
+        "aiJson": {
+          "8017": "045644493297564963"
+        }
+      }
+    },
+    {
+      "scheme": "gsrnp-96",
+      "pureIdentityUri": "urn:epc:id:gsrnp:815496.01316483904",
+      "filter": 7,
+      "expect": {
+        "hex": "2EFB1C62004E77F340000000",
+        "tagUri": "urn:epc:tag:gsrnp-96:7.815496.01316483904",
+        "aiJson": {
+          "8017": "815496013164839044"
+        }
+      }
+    },
+    {
+      "scheme": "gsrnp-96",
+      "pureIdentityUri": "urn:epc:id:gsrnp:7533574.4552526061",
+      "filter": 1,
+      "expect": {
+        "hex": "2E35CBD0190F5A08ED000000",
+        "tagUri": "urn:epc:tag:gsrnp-96:1.7533574.4552526061",
+        "aiJson": {
+          "8017": "753357445525260612"
+        }
+      }
+    },
+    {
+      "scheme": "gsrnp-96",
+      "pureIdentityUri": "urn:epc:id:gsrnp:7592169.8930566316",
+      "filter": 5,
+      "expect": {
+        "hex": "2EB5CF63A6144DA0AC000000",
+        "tagUri": "urn:epc:tag:gsrnp-96:5.7592169.8930566316",
+        "aiJson": {
+          "8017": "759216989305663164"
+        }
+      }
+    },
+    {
+      "scheme": "gsrnp-96",
+      "pureIdentityUri": "urn:epc:id:gsrnp:77090484.716334736",
+      "filter": 3,
+      "expect": {
+        "hex": "2E724C275A2AB26690000000",
+        "tagUri": "urn:epc:tag:gsrnp-96:3.77090484.716334736",
+        "aiJson": {
+          "8017": "770904847163347363"
+        }
+      }
+    },
+    {
+      "scheme": "gsrnp-96",
+      "pureIdentityUri": "urn:epc:id:gsrnp:430990.86897513780",
+      "filter": 7,
+      "expect": {
+        "hex": "2EF9A4E3943B7ED534000000",
+        "tagUri": "urn:epc:tag:gsrnp-96:7.430990.86897513780",
+        "aiJson": {
+          "8017": "430990868975137805"
+        }
+      }
+    },
+    {
+      "scheme": "gsrnp-96",
+      "pureIdentityUri": "urn:epc:id:gsrnp:2639825.8682693509",
+      "filter": 3,
+      "expect": {
+        "hex": "2E74A11F4605876385000000",
+        "tagUri": "urn:epc:tag:gsrnp-96:3.2639825.8682693509",
+        "aiJson": {
+          "8017": "263982586826935091"
+        }
+      }
+    },
+    {
+      "scheme": "gsrnp-96",
+      "pureIdentityUri": "urn:epc:id:gsrnp:3864994795.0002011",
+      "filter": 0,
+      "expect": {
+        "hex": "2E08E65F23EB0007DB000000",
+        "tagUri": "urn:epc:tag:gsrnp-96:0.3864994795.0002011",
+        "aiJson": {
+          "8017": "386499479500020118"
+        }
+      }
+    },
+    {
+      "scheme": "gsrnp-96",
+      "pureIdentityUri": "urn:epc:id:gsrnp:2647959.7712842325",
+      "filter": 6,
+      "expect": {
+        "hex": "2ED4A19E5DCBB8A255000000",
+        "tagUri": "urn:epc:tag:gsrnp-96:6.2647959.7712842325",
+        "aiJson": {
+          "8017": "264795977128423257"
+        }
+      }
+    },
+    {
+      "scheme": "gsrnp-96",
+      "pureIdentityUri": "urn:epc:id:gsrnp:8450976.8401730343",
+      "filter": 6,
+      "expect": {
+        "hex": "2ED603CE81F4C83B27000000",
+        "tagUri": "urn:epc:tag:gsrnp-96:6.8450976.8401730343",
+        "aiJson": {
+          "8017": "845097684017303434"
+        }
+      }
+    },
+    {
+      "scheme": "gsrnp-96",
+      "pureIdentityUri": "urn:epc:id:gsrnp:8865153960.9591394",
+      "filter": 0,
+      "expect": {
+        "hex": "2E0A106783A8925A62000000",
+        "tagUri": "urn:epc:tag:gsrnp-96:0.8865153960.9591394",
+        "aiJson": {
+          "8017": "886515396095913941"
+        }
+      }
+    },
+    {
+      "scheme": "gsrnp-96",
+      "pureIdentityUri": "urn:epc:id:gsrnp:3769779.0703059690",
+      "filter": 2,
+      "expect": {
+        "hex": "2E54E616CC29E7D6EA000000",
+        "tagUri": "urn:epc:tag:gsrnp-96:2.3769779.0703059690",
+        "aiJson": {
+          "8017": "376977907030596901"
+        }
+      }
+    },
+    {
+      "scheme": "gsrnp-96",
+      "pureIdentityUri": "urn:epc:id:gsrnp:2209569.1333108975",
+      "filter": 3,
+      "expect": {
+        "hex": "2E7486DC844F75A0EF000000",
+        "tagUri": "urn:epc:tag:gsrnp-96:3.2209569.1333108975",
+        "aiJson": {
+          "8017": "220956913331089755"
+        }
+      }
+    },
+    {
+      "scheme": "gsrnp-96",
+      "pureIdentityUri": "urn:epc:id:gsrnp:102821798.90995615",
+      "filter": 6,
+      "expect": {
+        "hex": "2ECC620EFA656C7B9F000000",
+        "tagUri": "urn:epc:tag:gsrnp-96:6.102821798.90995615",
+        "aiJson": {
+          "8017": "102821798909956158"
+        }
+      }
+    },
+    {
+      "scheme": "gsrnp-96",
+      "pureIdentityUri": "urn:epc:id:gsrnp:7209827684.4731529",
+      "filter": 4,
+      "expect": {
+        "hex": "2E89ADBD3D64483289000000",
+        "tagUri": "urn:epc:tag:gsrnp-96:4.7209827684.4731529",
+        "aiJson": {
+          "8017": "720982768447315294"
+        }
+      }
+    },
+    {
+      "scheme": "gsrnp-96",
+      "pureIdentityUri": "urn:epc:id:gsrnp:078755118564.99277",
+      "filter": 2,
+      "expect": {
+        "hex": "2E404958AEF79183CD000000",
+        "tagUri": "urn:epc:tag:gsrnp-96:2.078755118564.99277",
+        "aiJson": {
+          "8017": "078755118564992777"
+        }
+      }
+    },
+    {
+      "scheme": "gsrnp-96",
+      "pureIdentityUri": "urn:epc:id:gsrnp:136355566843.09359",
+      "filter": 7,
+      "expect": {
+        "hex": "2EE07EFDB353EC248F000000",
+        "tagUri": "urn:epc:tag:gsrnp-96:7.136355566843.09359",
+        "aiJson": {
+          "8017": "136355566843093591"
+        }
+      }
+    },
+    {
+      "scheme": "gsrnp-96",
+      "pureIdentityUri": "urn:epc:id:gsrnp:9475582348.5534954",
+      "filter": 3,
+      "expect": {
+        "hex": "2E6A34C9E98C5474EA000000",
+        "tagUri": "urn:epc:tag:gsrnp-96:3.9475582348.5534954",
+        "aiJson": {
+          "8017": "947558234855349544"
+        }
+      }
+    },
+    {
+      "scheme": "gsrnp-96",
+      "pureIdentityUri": "urn:epc:id:gsrnp:536896996904.29864",
+      "filter": 6,
+      "expect": {
+        "hex": "2EC1F4063818A074A8000000",
+        "tagUri": "urn:epc:tag:gsrnp-96:6.536896996904.29864",
+        "aiJson": {
+          "8017": "536896996904298649"
+        }
+      }
+    },
+    {
+      "scheme": "gsrnp-96",
+      "pureIdentityUri": "urn:epc:id:gsrnp:480163415465.34690",
+      "filter": 1,
+      "expect": {
+        "hex": "2E21BF2FE116A48782000000",
+        "tagUri": "urn:epc:tag:gsrnp-96:1.480163415465.34690",
+        "aiJson": {
+          "8017": "480163415465346903"
+        }
+      }
+    },
+    {
+      "scheme": "gsrnp-96",
+      "pureIdentityUri": "urn:epc:id:gsrnp:8870475246.0352486",
+      "filter": 4,
+      "expect": {
+        "hex": "2E8A10B8B5EE0560E6000000",
+        "tagUri": "urn:epc:tag:gsrnp-96:4.8870475246.0352486",
+        "aiJson": {
+          "8017": "887047524603524865"
+        }
+      }
+    },
+    {
+      "scheme": "gsrnp-96",
+      "pureIdentityUri": "urn:epc:id:gsrnp:169423.52365337083",
+      "filter": 6,
+      "expect": {
+        "hex": "2ED8A573CC3137A1FB000000",
+        "tagUri": "urn:epc:tag:gsrnp-96:6.169423.52365337083",
+        "aiJson": {
+          "8017": "169423523653370838"
+        }
+      }
+    },
+    {
+      "scheme": "gsrnp-96",
+      "pureIdentityUri": "urn:epc:id:gsrnp:2696569946.7292446",
+      "filter": 6,
+      "expect": {
+        "hex": "2EC8A0BA645A6F461E000000",
+        "tagUri": "urn:epc:tag:gsrnp-96:6.2696569946.7292446",
+        "aiJson": {
+          "8017": "269656994672924464"
+        }
+      }
+    },
+    {
+      "scheme": "gsrnp-96",
+      "pureIdentityUri": "urn:epc:id:gsrnp:453831265.08814544",
+      "filter": 2,
+      "expect": {
+        "hex": "2E4DB0CEA610867FD0000000",
+        "tagUri": "urn:epc:tag:gsrnp-96:2.453831265.08814544",
+        "aiJson": {
+          "8017": "453831265088145449"
+        }
+      }
+    },
+    {
+      "scheme": "gsrnp-96",
+      "pureIdentityUri": "urn:epc:id:gsrnp:12484669891.627314",
+      "filter": 7,
+      "expect": {
+        "hex": "2EE45D049E38699272000000",
+        "tagUri": "urn:epc:tag:gsrnp-96:7.12484669891.627314",
+        "aiJson": {
+          "8017": "124846698916273143"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-96",
+      "pureIdentityUri": "urn:epc:id:gdti:429834078190..7328389401",
+      "filter": 2,
+      "expect": {
+        "hex": "2C4190506E1FB801B4CE5919",
+        "tagUri": "urn:epc:tag:gdti-96:2.429834078190..7328389401",
+        "aiJson": {
+          "253": "42983407819017328389401"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-96",
+      "pureIdentityUri": "urn:epc:id:gdti:1986784.59810.1986164538046",
+      "filter": 0,
+      "expect": {
+        "hex": "2C14794381D345CE70A1BABE",
+        "tagUri": "urn:epc:tag:gdti-96:0.1986784.59810.1986164538046",
+        "aiJson": {
+          "253": "19867845981021986164538046"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-96",
+      "pureIdentityUri": "urn:epc:id:gdti:329891179279..638359380314",
+      "filter": 2,
+      "expect": {
+        "hex": "2C41333C2FAC3C94A12F215A",
+        "tagUri": "urn:epc:tag:gdti-96:2.329891179279..638359380314",
+        "aiJson": {
+          "253": "3298911792795638359380314"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-96",
+      "pureIdentityUri": "urn:epc:id:gdti:54211614723.1.84170939777",
+      "filter": 5,
+      "expect": {
+        "hex": "2CA593E87300621398FA9D81",
+        "tagUri": "urn:epc:tag:gdti-96:5.54211614723.1.84170939777",
+        "aiJson": {
+          "253": "542116147231784170939777"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-96",
+      "pureIdentityUri": "urn:epc:id:gdti:794948.098221.6453",
+      "filter": 0,
+      "expect": {
+        "hex": "2C1B085102FF5A0000001935",
+        "tagUri": "urn:epc:tag:gdti-96:0.794948.098221.6453",
+        "aiJson": {
+          "253": "79494809822116453"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-96",
+      "pureIdentityUri": "urn:epc:id:gdti:435798094949..188640363",
+      "filter": 5,
+      "expect": {
+        "hex": "2CA195DE5CD194000B3E6C6B",
+        "tagUri": "urn:epc:tag:gdti-96:5.435798094949..188640363",
+        "aiJson": {
+          "253": "4357980949499188640363"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-96",
+      "pureIdentityUri": "urn:epc:id:gdti:7912448.08381.410447",
+      "filter": 4,
+      "expect": {
+        "hex": "2C95E2F000417A000006434F",
+        "tagUri": "urn:epc:tag:gdti-96:4.7912448.08381.410447",
+        "aiJson": {
+          "253": "7912448083817410447"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-96",
+      "pureIdentityUri": "urn:epc:id:gdti:208222313954..46004",
+      "filter": 7,
+      "expect": {
+        "hex": "2CE0C1EC117788000000B3B4",
+        "tagUri": "urn:epc:tag:gdti-96:7.208222313954..46004",
+        "aiJson": {
+          "253": "208222313954346004"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-96",
+      "pureIdentityUri": "urn:epc:id:gdti:419014450.006.555889929",
+      "filter": 7,
+      "expect": {
+        "hex": "2CED8F9A73200C0021223509",
+        "tagUri": "urn:epc:tag:gdti-96:7.419014450.006.555889929",
+        "aiJson": {
+          "253": "4190144500064555889929"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-96",
+      "pureIdentityUri": "urn:epc:id:gdti:91047455.5039.35184463302",
+      "filter": 0,
+      "expect": {
+        "hex": "2C12B6A30FA75E0831284DC6",
+        "tagUri": "urn:epc:tag:gdti-96:0.91047455.5039.35184463302",
+        "aiJson": {
+          "253": "910474555039235184463302"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-96",
+      "pureIdentityUri": "urn:epc:id:gdti:747773.191177.0",
+      "filter": 3,
+      "expect": {
+        "hex": "2C7ADA3F45D5920000000000",
+        "tagUri": "urn:epc:tag:gdti-96:3.747773.191177.0",
+        "aiJson": {
+          "253": "74777319117770"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-96",
+      "pureIdentityUri": "urn:epc:id:gdti:01669593184.5.0",
+      "filter": 2,
+      "expect": {
+        "hex": "2C440C707F0C0A0000000000",
+        "tagUri": "urn:epc:tag:gdti-96:2.01669593184.5.0",
+        "aiJson": {
+          "253": "01669593184570"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-96",
+      "pureIdentityUri": "urn:epc:id:gdti:7843583.91468.248329717298",
+      "filter": 2,
+      "expect": {
+        "hex": "2C55DEBBFECA9839D19AC632",
+        "tagUri": "urn:epc:tag:gdti-96:2.7843583.91468.248329717298",
+        "aiJson": {
+          "253": "7843583914684248329717298"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-96",
+      "pureIdentityUri": "urn:epc:id:gdti:0619295179.44.65397584143",
+      "filter": 2,
+      "expect": {
+        "hex": "2C4824E9B1CB580F39FFF10F",
+        "tagUri": "urn:epc:tag:gdti-96:2.0619295179.44.65397584143",
+        "aiJson": {
+          "253": "061929517944765397584143"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-96",
+      "pureIdentityUri": "urn:epc:id:gdti:9101318.29008.95877",
+      "filter": 5,
+      "expect": {
+        "hex": "2CB62B8018E2A00000017685",
+        "tagUri": "urn:epc:tag:gdti-96:5.9101318.29008.95877",
+        "aiJson": {
+          "253": "910131829008295877"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-96",
+      "pureIdentityUri": "urn:epc:id:gdti:1724606.60329.7264599866",
+      "filter": 2,
+      "expect": {
+        "hex": "2C546942F9D75201B100FF3A",
+        "tagUri": "urn:epc:tag:gdti-96:2.1724606.60329.7264599866",
+        "aiJson": {
+          "253": "17246066032967264599866"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-96",
+      "pureIdentityUri": "urn:epc:id:gdti:283923661608..1825088800495",
+      "filter": 2,
+      "expect": {
+        "hex": "2C41086CAD0CA1A8EFC506EF",
+        "tagUri": "urn:epc:tag:gdti-96:2.283923661608..1825088800495",
+        "aiJson": {
+          "253": "28392366160861825088800495"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-96",
+      "pureIdentityUri": "urn:epc:id:gdti:56508100.2643.3707614247",
+      "filter": 2,
+      "expect": {
+        "hex": "2C51AF1F6214A600DCFDB427",
+        "tagUri": "urn:epc:tag:gdti-96:2.56508100.2643.3707614247",
+        "aiJson": {
+          "253": "56508100264383707614247"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-96",
+      "pureIdentityUri": "urn:epc:id:gdti:406528.209188.718",
+      "filter": 7,
+      "expect": {
+        "hex": "2CF98D0006624800000002CE",
+        "tagUri": "urn:epc:tag:gdti-96:7.406528.209188.718",
+        "aiJson": {
+          "253": "4065282091883718"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-96",
+      "pureIdentityUri": "urn:epc:id:gdti:288034486347..45774",
+      "filter": 3,
+      "expect": {
+        "hex": "2C610C40C5E12C000000B2CE",
+        "tagUri": "urn:epc:tag:gdti-96:3.288034486347..45774",
+        "aiJson": {
+          "253": "288034486347345774"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-96",
+      "pureIdentityUri": "urn:epc:id:gdti:335647784.791.11711683",
+      "filter": 1,
+      "expect": {
+        "hex": "2C2D401942862E0000B2B4C3",
+        "tagUri": "urn:epc:tag:gdti-96:1.335647784.791.11711683",
+        "aiJson": {
+          "253": "335647784791211711683"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-96",
+      "pureIdentityUri": "urn:epc:id:gdti:688971948112..473203888",
+      "filter": 3,
+      "expect": {
+        "hex": "2C6281A7B68140001C3484B0",
+        "tagUri": "urn:epc:tag:gdti-96:3.688971948112..473203888",
+        "aiJson": {
+          "253": "6889719481126473203888"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-96",
+      "pureIdentityUri": "urn:epc:id:gdti:6128938103.78.0",
+      "filter": 4,
+      "expect": {
+        "hex": "2C896D502C779C0000000000",
+        "tagUri": "urn:epc:tag:gdti-96:4.6128938103.78.0",
+        "aiJson": {
+          "253": "61289381037860"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-96",
+      "pureIdentityUri": "urn:epc:id:gdti:87409129.8798.693176",
+      "filter": 0,
+      "expect": {
+        "hex": "2C129AE0F4C4BC00000A93B8",
+        "tagUri": "urn:epc:tag:gdti-96:0.87409129.8798.693176",
+        "aiJson": {
+          "253": "8740912987984693176"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-96",
+      "pureIdentityUri": "urn:epc:id:gdti:62134450285.0.7020411",
+      "filter": 2,
+      "expect": {
+        "hex": "2C45CEF00F0DA000006B1F7B",
+        "tagUri": "urn:epc:tag:gdti-96:2.62134450285.0.7020411",
+        "aiJson": {
+          "253": "62134450285067020411"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-113",
+      "pureIdentityUri": "urn:epc:id:gdti:5463388093.43.1934490687935",
+      "filter": 0,
+      "expect": {
+        "hex": "3A0945A4AFBD560000E13450ACDF8",
+        "tagUri": "urn:epc:tag:gdti-113:0.5463388093.43.1934490687935",
+        "aiJson": {
+          "253": "54633880934321934490687935"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-113",
+      "pureIdentityUri": "urn:epc:id:gdti:706557843090..7",
+      "filter": 3,
+      "expect": {
+        "hex": "3A629208845A48000000000000038",
+        "tagUri": "urn:epc:tag:gdti-113:3.706557843090..7",
+        "aiJson": {
+          "253": "70655784309047"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-113",
+      "pureIdentityUri": "urn:epc:id:gdti:57453592.3600.979",
+      "filter": 3,
+      "expect": {
+        "hex": "3A71B6560C1C20000000000001E98",
+        "tagUri": "urn:epc:tag:gdti-113:3.57453592.3600.979",
+        "aiJson": {
+          "253": "5745359236001979"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-113",
+      "pureIdentityUri": "urn:epc:id:gdti:919697.769658.86555322",
+      "filter": 6,
+      "expect": {
+        "hex": "3ADB8224577CF400000002945D5D0",
+        "tagUri": "urn:epc:tag:gdti-113:6.919697.769658.86555322",
+        "aiJson": {
+          "253": "919697769658086555322"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-113",
+      "pureIdentityUri": "urn:epc:id:gdti:48618364.2783.2392349214",
+      "filter": 6,
+      "expect": {
+        "hex": "3AD172EDBE15BE000000474C2D0F0",
+        "tagUri": "urn:epc:tag:gdti-113:6.48618364.2783.2392349214",
+        "aiJson": {
+          "253": "48618364278382392349214"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-113",
+      "pureIdentityUri": "urn:epc:id:gdti:99758218921.5.8923320",
+      "filter": 5,
+      "expect": {
+        "hex": "3AA6E741B3D52A0000000044145C0",
+        "tagUri": "urn:epc:tag:gdti-113:5.99758218921.5.8923320",
+        "aiJson": {
+          "253": "99758218921528923320"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-113",
+      "pureIdentityUri": "urn:epc:id:gdti:5757249.48102.38380",
+      "filter": 3,
+      "expect": {
+        "hex": "3A755F650577CC00000000004AF60",
+        "tagUri": "urn:epc:tag:gdti-113:3.5757249.48102.38380",
+        "aiJson": {
+          "253": "575724948102638380"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-113",
+      "pureIdentityUri": "urn:epc:id:gdti:80647670.1728.00709",
+      "filter": 3,
+      "expect": {
+        "hex": "3A72674AFB0D80000000000001628",
+        "tagUri": "urn:epc:tag:gdti-113:3.80647670.1728.00709",
+        "aiJson": {
+          "253": "806476701728400709"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-113",
+      "pureIdentityUri": "urn:epc:id:gdti:9907859048.17.49810",
+      "filter": 7,
+      "expect": {
+        "hex": "3AEA4E8DEE6822000000000061490",
+        "tagUri": "urn:epc:tag:gdti-113:7.9907859048.17.49810",
+        "aiJson": {
+          "253": "990785904817149810"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-113",
+      "pureIdentityUri": "urn:epc:id:gdti:101942767256..784163873",
+      "filter": 5,
+      "expect": {
+        "hex": "3AA05EF10CBA60000000175EB2108",
+        "tagUri": "urn:epc:tag:gdti-113:5.101942767256..784163873",
+        "aiJson": {
+          "253": "1019427672560784163873"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-113",
+      "pureIdentityUri": "urn:epc:id:gdti:533336.609815.2291647",
+      "filter": 3,
+      "expect": {
+        "hex": "3A7A08D6129C2E00000000117BDF8",
+        "tagUri": "urn:epc:tag:gdti-113:3.533336.609815.2291647",
+        "aiJson": {
+          "253": "53333660981582291647"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-113",
+      "pureIdentityUri": "urn:epc:id:gdti:63314109.7908.40026985061",
+      "filter": 1,
+      "expect": {
+        "hex": "3A31E30C5EBDC8000004A8E5A9328",
+        "tagUri": "urn:epc:tag:gdti-113:1.63314109.7908.40026985061",
+        "aiJson": {
+          "253": "633141097908740026985061"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-113",
+      "pureIdentityUri": "urn:epc:id:gdti:576468368524..77036520",
+      "filter": 1,
+      "expect": {
+        "hex": "3A2218E0C4F230000000024BBDF40",
+        "tagUri": "urn:epc:tag:gdti-113:1.576468368524..77036520",
+        "aiJson": {
+          "253": "576468368524877036520"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-113",
+      "pureIdentityUri": "urn:epc:id:gdti:1526492316.01.11953",
+      "filter": 4,
+      "expect": {
+        "hex": "3A885AFC6C9C02000000000017588",
+        "tagUri": "urn:epc:tag:gdti-113:4.1526492316.01.11953",
+        "aiJson": {
+          "253": "152649231601011953"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-113",
+      "pureIdentityUri": "urn:epc:id:gdti:737778827.958.01460",
+      "filter": 1,
+      "expect": {
+        "hex": "3A2EBF99C8B77C000000000002DA0",
+        "tagUri": "urn:epc:tag:gdti-113:1.737778827.958.01460",
+        "aiJson": {
+          "253": "737778827958801460"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-113",
+      "pureIdentityUri": "urn:epc:id:gdti:1887231.12546.51806613412408519",
+      "filter": 2,
+      "expect": {
+        "hex": "3A54732FFC62045C06EB92BB36640",
+        "tagUri": "urn:epc:tag:gdti-113:2.1887231.12546.51806613412408519",
+        "aiJson": {
+          "253": "188723112546251806613412408519"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-113",
+      "pureIdentityUri": "urn:epc:id:gdti:809673.179483.67744",
+      "filter": 1,
+      "expect": {
+        "hex": "3A3B16B2457A36000000000084500",
+        "tagUri": "urn:epc:tag:gdti-113:1.809673.179483.67744",
+        "aiJson": {
+          "253": "809673179483967744"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-113",
+      "pureIdentityUri": "urn:epc:id:gdti:577755.228823.2147819161455",
+      "filter": 7,
+      "expect": {
+        "hex": "3AFA3436C6FBAE0000FA09FFC3B78",
+        "tagUri": "urn:epc:tag:gdti-113:7.577755.228823.2147819161455",
+        "aiJson": {
+          "253": "57775522882352147819161455"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-113",
+      "pureIdentityUri": "urn:epc:id:gdti:71909205.2773.326246543437",
+      "filter": 7,
+      "expect": {
+        "hex": "3AF2249FAA95AA000025FAE798268",
+        "tagUri": "urn:epc:tag:gdti-113:7.71909205.2773.326246543437",
+        "aiJson": {
+          "253": "7190920527732326246543437"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-113",
+      "pureIdentityUri": "urn:epc:id:gdti:25783819527.9.89",
+      "filter": 5,
+      "expect": {
+        "hex": "3AA4C01ABBA0F20000000000002C8",
+        "tagUri": "urn:epc:tag:gdti-113:5.25783819527.9.89",
+        "aiJson": {
+          "253": "257838195279289"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-113",
+      "pureIdentityUri": "urn:epc:id:gdti:101280716.520.557051183",
+      "filter": 2,
+      "expect": {
+        "hex": "3A4C6096BCC4100000001099F6978",
+        "tagUri": "urn:epc:tag:gdti-113:2.101280716.520.557051183",
+        "aiJson": {
+          "253": "1012807165201557051183"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-113",
+      "pureIdentityUri": "urn:epc:id:gdti:211573881701..6935",
+      "filter": 7,
+      "expect": {
+        "hex": "3AE0C50B24ED9400000000000D8B8",
+        "tagUri": "urn:epc:tag:gdti-113:7.211573881701..6935",
+        "aiJson": {
+          "253": "21157388170166935"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-113",
+      "pureIdentityUri": "urn:epc:id:gdti:6604328.22550.14865810241",
+      "filter": 7,
+      "expect": {
+        "hex": "3AF59318A0B02C000001BB0921A08",
+        "tagUri": "urn:epc:tag:gdti-113:7.6604328.22550.14865810241",
+        "aiJson": {
+          "253": "660432822550914865810241"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-113",
+      "pureIdentityUri": "urn:epc:id:gdti:01029430.5201.7",
+      "filter": 5,
+      "expect": {
+        "hex": "3AB007DA9B28A2000000000000038",
+        "tagUri": "urn:epc:tag:gdti-113:5.01029430.5201.7",
+        "aiJson": {
+          "253": "01029430520137"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-113",
+      "pureIdentityUri": "urn:epc:id:gdti:939890940.845.147408",
+      "filter": 1,
+      "expect": {
+        "hex": "3A2F80598FC69A00000000011FE80",
+        "tagUri": "urn:epc:tag:gdti-113:1.939890940.845.147408",
+        "aiJson": {
+          "253": "9398909408456147408"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-174",
+      "pureIdentityUri": "urn:epc:id:gdti:098824.176190.BFQ",
+      "filter": 1,
+      "expect": {
+        "hex": "3E38608205607D0A3510000000000000000000000000",
+        "tagUri": "urn:epc:tag:gdti-174:1.098824.176190.BFQ",
+        "aiJson": {
+          "253": "0988241761907BFQ"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-174",
+      "pureIdentityUri": "urn:epc:id:gdti:923973.982108.hBBMYypqXTtWiAmZ",
+      "filter": 0,
+      "expect": {
+        "hex": "3E1B86515DF8B9A21429B67CF0E362A74AFA60EDB400",
+        "tagUri": "urn:epc:tag:gdti-174:0.923973.982108.hBBMYypqXTtWiAmZ",
+        "aiJson": {
+          "253": "9239739821087hBBMYypqXTtWiAmZ"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-174",
+      "pureIdentityUri": "urn:epc:id:gdti:49595239.0316.bXzkCZgEzLQYer%26G",
+      "filter": 2,
+      "expect": {
+        "hex": "3E517A61B382798AC7AD70ED678BEA651B3979268E00",
+        "tagUri": "urn:epc:tag:gdti-174:2.49595239.0316.bXzkCZgEzLQYer%26G",
+        "aiJson": {
+          "253": "4959523903168bXzkCZgEzLQYer&G"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-174",
+      "pureIdentityUri": "urn:epc:id:gdti:243759305.909.+Adf%26ZS",
+      "filter": 5,
+      "expect": {
+        "hex": "3EACE8778C971AAE0E4CC9AD53000000000000000000",
+        "tagUri": "urn:epc:tag:gdti-174:5.243759305.909.+Adf%26ZS",
+        "aiJson": {
+          "253": "2437593059098+Adf&ZS"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-174",
+      "pureIdentityUri": "urn:epc:id:gdti:462690596.321.x62sHS-%3E8UyA7J",
+      "filter": 2,
+      "expect": {
+        "hex": "3E4DB941924283E1B32E7229AD7CE2AF982DE5000000",
+        "tagUri": "urn:epc:tag:gdti-174:2.462690596.321.x62sHS-%3E8UyA7J",
+        "aiJson": {
+          "253": "4626905963217x62sHS->8UyA7J"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-174",
+      "pureIdentityUri": "urn:epc:id:gdti:8899169153.87.w%3CaX",
+      "filter": 1,
+      "expect": {
+        "hex": "3E2A126E8B81AFDDE61B000000000000000000000000",
+        "tagUri": "urn:epc:tag:gdti-174:1.8899169153.87.w%3CaX",
+        "aiJson": {
+          "253": "8899169153878w<aX"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-174",
+      "pureIdentityUri": "urn:epc:id:gdti:919817365.374.XD%3FqyWq9",
+      "filter": 6,
+      "expect": {
+        "hex": "3ECF6D34C952ED6223FE3E6BF1720000000000000000",
+        "tagUri": "urn:epc:tag:gdti-174:6.919817365.374.XD%3FqyWq9",
+        "aiJson": {
+          "253": "9198173653749XD?qyWq9"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-174",
+      "pureIdentityUri": "urn:epc:id:gdti:949655035744..97JomghxfBeN%251N",
+      "filter": 0,
+      "expect": {
+        "hex": "3E03746F677D80E5BCADFB73E8F19A1659C958CE0000",
+        "tagUri": "urn:epc:tag:gdti-174:0.949655035744..97JomghxfBeN%251N",
+        "aiJson": {
+          "253": "949655035744197JomghxfBeN%1N"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-174",
+      "pureIdentityUri": "urn:epc:id:gdti:876675912253..XVS3r%25",
+      "filter": 6,
+      "expect": {
+        "hex": "3EC33077D348F562B5367C9280000000000000000000",
+        "tagUri": "urn:epc:tag:gdti-174:6.876675912253..XVS3r%25",
+        "aiJson": {
+          "253": "8766759122531XVS3r%"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-174",
+      "pureIdentityUri": "urn:epc:id:gdti:384795344.152.g",
+      "filter": 1,
+      "expect": {
+        "hex": "3E2D6EF82D01319C0000000000000000000000000000",
+        "tagUri": "urn:epc:tag:gdti-174:1.384795344.152.g",
+        "aiJson": {
+          "253": "3847953441521g"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-174",
+      "pureIdentityUri": "urn:epc:id:gdti:67935391.2159.20s7VSrqR1Cy=CO",
+      "filter": 3,
+      "expect": {
+        "hex": "3E72064E4F90DEC98736F5A9F2E3498C3F2F61CF0000",
+        "tagUri": "urn:epc:tag:gdti-174:3.67935391.2159.20s7VSrqR1Cy=CO",
+        "aiJson": {
+          "253": "679353912159220s7VSrqR1Cy=CO"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-174",
+      "pureIdentityUri": "urn:epc:id:gdti:970728.358288.-ah",
+      "filter": 5,
+      "expect": {
+        "hex": "3EBBB3FA0AEF20B70E80000000000000000000000000",
+        "tagUri": "urn:epc:tag:gdti-174:5.970728.358288.-ah",
+        "aiJson": {
+          "253": "9707283582889-ah"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-174",
+      "pureIdentityUri": "urn:epc:id:gdti:252289927227..kwEFaNaIdDM",
+      "filter": 7,
+      "expect": {
+        "hex": "3EE0EAF69B20EDAFBC58D86761939224D00000000000",
+        "tagUri": "urn:epc:tag:gdti-174:7.252289927227..kwEFaNaIdDM",
+        "aiJson": {
+          "253": "2522899272279kwEFaNaIdDM"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-174",
+      "pureIdentityUri": "urn:epc:id:gdti:604915733097..2tfdc",
+      "filter": 2,
+      "expect": {
+        "hex": "3E42335F2649A4CBA66C98C000000000000000000000",
+        "tagUri": "urn:epc:tag:gdti-174:2.604915733097..2tfdc",
+        "aiJson": {
+          "253": "60491573309782tfdc"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-174",
+      "pureIdentityUri": "urn:epc:id:gdti:367158628.054.zw99TfcgJ'v%25%2F!F",
+      "filter": 5,
+      "expect": {
+        "hex": "3EAD5E2656406DEBBB97353363CF293F64ABD0C60000",
+        "tagUri": "urn:epc:tag:gdti-174:5.367158628.054.zw99TfcgJ'v%25%2F!F",
+        "aiJson": {
+          "253": "3671586280543zw99TfcgJ'v%/!F"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-174",
+      "pureIdentityUri": "urn:epc:id:gdti:959065.089940.ftM%2FE+kOrl,",
+      "filter": 4,
+      "expect": {
+        "hex": "3E9BA89642BEA99BA4D5F155EB9FCB62C00000000000",
+        "tagUri": "urn:epc:tag:gdti-174:4.959065.089940.ftM%2FE+kOrl,",
+        "aiJson": {
+          "253": "9590650899402ftM/E+kOrl,"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-174",
+      "pureIdentityUri": "urn:epc:id:gdti:543748.489837.s",
+      "filter": 0,
+      "expect": {
+        "hex": "3E1A13010EF2DBCC0000000000000000000000000000",
+        "tagUri": "urn:epc:tag:gdti-174:0.543748.489837.s",
+        "aiJson": {
+          "253": "5437484898376s"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-174",
+      "pureIdentityUri": "urn:epc:id:gdti:35946688070.5.8b8ISTbY",
+      "filter": 7,
+      "expect": {
+        "hex": "3EE50BD2DDC8CAE3138934EA62B20000000000000000",
+        "tagUri": "urn:epc:tag:gdti-174:7.35946688070.5.8b8ISTbY",
+        "aiJson": {
+          "253": "35946688070598b8ISTbY"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-174",
+      "pureIdentityUri": "urn:epc:id:gdti:6202004717.58.UNLzIiP",
+      "filter": 7,
+      "expect": {
+        "hex": "3EE971AB14ED755674CF5274D0000000000000000000",
+        "tagUri": "urn:epc:tag:gdti-174:7.6202004717.58.UNLzIiP",
+        "aiJson": {
+          "253": "6202004717586UNLzIiP"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-174",
+      "pureIdentityUri": "urn:epc:id:gdti:2148673.26986.M2;SMLn9J",
+      "filter": 3,
+      "expect": {
+        "hex": "3E74832504D2D53593BA73666E732800000000000000",
+        "tagUri": "urn:epc:tag:gdti-174:3.2148673.26986.M2;SMLn9J",
+        "aiJson": {
+          "253": "2148673269862M2;SMLn9J"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-174",
+      "pureIdentityUri": "urn:epc:id:gdti:9729255.24914.7F",
+      "filter": 7,
+      "expect": {
+        "hex": "3EF651D39CC2A4DE3000000000000000000000000000",
+        "tagUri": "urn:epc:tag:gdti-174:7.9729255.24914.7F",
+        "aiJson": {
+          "253": "97292552491497F"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-174",
+      "pureIdentityUri": "urn:epc:id:gdti:542826.863667.30lLiI8seVjvB",
+      "filter": 5,
+      "expect": {
+        "hex": "3EBA121A9A5B66CD86C99A64B8E796B6AED080000000",
+        "tagUri": "urn:epc:tag:gdti-174:5.542826.863667.30lLiI8seVjvB",
+        "aiJson": {
+          "253": "542826863667330lLiI8seVjvB"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-174",
+      "pureIdentityUri": "urn:epc:id:gdti:4698483672.04.cEhWCM5,UhgRvuTH",
+      "filter": 4,
+      "expect": {
+        "hex": "3E89180D2BD8098E2E8AF0E6B55957467A5DBAD49000",
+        "tagUri": "urn:epc:tag:gdti-174:4.4698483672.04.cEhWCM5,UhgRvuTH",
+        "aiJson": {
+          "253": "4698483672041cEhWCM5,UhgRvuTH"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-174",
+      "pureIdentityUri": "urn:epc:id:gdti:78358377297.2.5SSc",
+      "filter": 3,
+      "expect": {
+        "hex": "3E6647D0BE6A24D69D3C600000000000000000000000",
+        "tagUri": "urn:epc:tag:gdti-174:3.78358377297.2.5SSc",
+        "aiJson": {
+          "253": "78358377297245SSc"
+        }
+      }
+    },
+    {
+      "scheme": "gdti-174",
+      "pureIdentityUri": "urn:epc:id:gdti:3933242.96105.;-h2w8SJesLiSrB6w",
+      "filter": 2,
+      "expect": {
+        "hex": "3E54F010EAEED2ED6E865DDC5395979CCD34F9426DDC",
+        "tagUri": "urn:epc:tag:gdti-174:2.3933242.96105.;-h2w8SJesLiSrB6w",
+        "aiJson": {
+          "253": "3933242961051;-h2w8SJesLiSrB6w"
+        }
+      }
+    },
+    {
+      "scheme": "sgcn-96",
+      "pureIdentityUri": "urn:epc:id:sgcn:7887373.43545.18",
+      "filter": 4,
+      "expect": {
+        "hex": "3F95E1683554320000000076",
+        "tagUri": "urn:epc:tag:sgcn-96:4.7887373.43545.18",
+        "aiJson": {
+          "255": "788737343545418"
+        }
+      }
+    },
+    {
+      "scheme": "sgcn-96",
+      "pureIdentityUri": "urn:epc:id:sgcn:4802136.25577.08211575",
+      "filter": 2,
+      "expect": {
+        "hex": "3F55251960C7D20006732D77",
+        "tagUri": "urn:epc:tag:sgcn-96:2.4802136.25577.08211575",
+        "aiJson": {
+          "255": "480213625577608211575"
+        }
+      }
+    },
+    {
+      "scheme": "sgcn-96",
+      "pureIdentityUri": "urn:epc:id:sgcn:7711683.04539.74",
+      "filter": 6,
+      "expect": {
+        "hex": "3FD5D6AF0C237600000000AE",
+        "tagUri": "urn:epc:tag:sgcn-96:6.7711683.04539.74",
+        "aiJson": {
+          "255": "771168304539674"
+        }
+      }
+    },
+    {
+      "scheme": "sgcn-96",
+      "pureIdentityUri": "urn:epc:id:sgcn:006126998.549.2267",
+      "filter": 6,
+      "expect": {
+        "hex": "3FCC05D7D9644A0000002FEB",
+        "tagUri": "urn:epc:tag:sgcn-96:6.006126998.549.2267",
+        "aiJson": {
+          "255": "00612699854912267"
+        }
+      }
+    },
+    {
+      "scheme": "sgcn-96",
+      "pureIdentityUri": "urn:epc:id:sgcn:252828.238399.75160",
+      "filter": 3,
+      "expect": {
+        "hex": "3F78F6E707467E000002AC38",
+        "tagUri": "urn:epc:tag:sgcn-96:3.252828.238399.75160",
+        "aiJson": {
+          "255": "252828238399775160"
+        }
+      }
+    },
+    {
+      "scheme": "sgcn-96",
+      "pureIdentityUri": "urn:epc:id:sgcn:6598743833.01.1772",
+      "filter": 1,
+      "expect": {
+        "hex": "3F298950D719020000002DFC",
+        "tagUri": "urn:epc:tag:sgcn-96:1.6598743833.01.1772",
+        "aiJson": {
+          "255": "65987438330151772"
+        }
+      }
+    },
+    {
+      "scheme": "sgcn-96",
+      "pureIdentityUri": "urn:epc:id:sgcn:359523900005..264",
+      "filter": 7,
+      "expect": {
+        "hex": "3FE14ED52D699400000004F0",
+        "tagUri": "urn:epc:tag:sgcn-96:7.359523900005..264",
+        "aiJson": {
+          "255": "3595239000053264"
+        }
+      }
+    },
+    {
+      "scheme": "sgcn-96",
+      "pureIdentityUri": "urn:epc:id:sgcn:9553041.12344.0147016857",
+      "filter": 4,
+      "expect": {
+        "hex": "3F964712446070025CCF3099",
+        "tagUri": "urn:epc:tag:sgcn-96:4.9553041.12344.0147016857",
+        "aiJson": {
+          "255": "95530411234490147016857"
+        }
+      }
+    },
+    {
+      "scheme": "sgcn-96",
+      "pureIdentityUri": "urn:epc:id:sgcn:057329.062849.351609682538",
+      "filter": 0,
+      "expect": {
+        "hex": "3F1837FC41EB033AB2370A6A",
+        "tagUri": "urn:epc:tag:sgcn-96:0.057329.062849.351609682538",
+        "aiJson": {
+          "255": "0573290628495351609682538"
+        }
+      }
+    },
+    {
+      "scheme": "sgcn-96",
+      "pureIdentityUri": "urn:epc:id:sgcn:319827045.818.66941184549",
+      "filter": 4,
+      "expect": {
+        "hex": "3F8D3102C6566426DE785225",
+        "tagUri": "urn:epc:tag:sgcn-96:4.319827045.818.66941184549",
+        "aiJson": {
+          "255": "319827045818266941184549"
+        }
+      }
+    },
+    {
+      "scheme": "sgcn-96",
+      "pureIdentityUri": "urn:epc:id:sgcn:38635491.5012.702081",
+      "filter": 2,
+      "expect": {
+        "hex": "3F5126C3F1A728000019F8C1",
+        "tagUri": "urn:epc:tag:sgcn-96:2.38635491.5012.702081",
+        "aiJson": {
+          "255": "3863549150127702081"
+        }
+      }
+    },
+    {
+      "scheme": "sgcn-96",
+      "pureIdentityUri": "urn:epc:id:sgcn:6370839.63772.888025",
+      "filter": 0,
+      "expect": {
+        "hex": "3F1584D85DF23800001CCF19",
+        "tagUri": "urn:epc:tag:sgcn-96:0.6370839.63772.888025",
+        "aiJson": {
+          "255": "6370839637727888025"
+        }
+      }
+    },
+    {
+      "scheme": "sgcn-96",
+      "pureIdentityUri": "urn:epc:id:sgcn:756457.476604.07341116",
+      "filter": 1,
+      "expect": {
+        "hex": "3F3AE2BA4E8B78000665E53C",
+        "tagUri": "urn:epc:tag:sgcn-96:1.756457.476604.07341116",
+        "aiJson": {
+          "255": "756457476604307341116"
+        }
+      }
+    },
+    {
+      "scheme": "sgcn-96",
+      "pureIdentityUri": "urn:epc:id:sgcn:37505007713.9.05366005",
+      "filter": 6,
+      "expect": {
+        "hex": "3FC5176F200C32000647C1F5",
+        "tagUri": "urn:epc:tag:sgcn-96:6.37505007713.9.05366005",
+        "aiJson": {
+          "255": "375050077139505366005"
+        }
+      }
+    },
+    {
+      "scheme": "sgcn-96",
+      "pureIdentityUri": "urn:epc:id:sgcn:140628.216191.94695",
+      "filter": 6,
+      "expect": {
+        "hex": "3FD889550698FE000002F887",
+        "tagUri": "urn:epc:tag:sgcn-96:6.140628.216191.94695",
+        "aiJson": {
+          "255": "140628216191794695"
+        }
+      }
+    },
+    {
+      "scheme": "sgcn-96",
+      "pureIdentityUri": "urn:epc:id:sgcn:202668447605..95",
+      "filter": 4,
+      "expect": {
+        "hex": "3F80BCBFEC5DD400000000C3",
+        "tagUri": "urn:epc:tag:sgcn-96:4.202668447605..95",
+        "aiJson": {
+          "255": "202668447605295"
+        }
+      }
+    },
+    {
+      "scheme": "sgcn-96",
+      "pureIdentityUri": "urn:epc:id:sgcn:922466376.917.1662445917",
+      "filter": 0,
+      "expect": {
+        "hex": "3F0F6FBB84872A02B722CD5D",
+        "tagUri": "urn:epc:tag:sgcn-96:0.922466376.917.1662445917",
+        "aiJson": {
+          "255": "92246637691781662445917"
+        }
+      }
+    },
+    {
+      "scheme": "sgcn-96",
+      "pureIdentityUri": "urn:epc:id:sgcn:5072025.40749.7",
+      "filter": 7,
+      "expect": {
+        "hex": "3FF53592653E5A0000000011",
+        "tagUri": "urn:epc:tag:sgcn-96:7.5072025.40749.7",
+        "aiJson": {
+          "255": "50720254074977"
+        }
+      }
+    },
+    {
+      "scheme": "sgcn-96",
+      "pureIdentityUri": "urn:epc:id:sgcn:762423.072138.8902",
+      "filter": 3,
+      "expect": {
+        "hex": "3F7AE88DC2339400000049D6",
+        "tagUri": "urn:epc:tag:sgcn-96:3.762423.072138.8902",
+        "aiJson": {
+          "255": "76242307213878902"
+        }
+      }
+    },
+    {
+      "scheme": "sgcn-96",
+      "pureIdentityUri": "urn:epc:id:sgcn:565441827.838.193870082",
+      "filter": 1,
+      "expect": {
+        "hex": "3F2E1B3F52368C0047290302",
+        "tagUri": "urn:epc:tag:sgcn-96:1.565441827.838.193870082",
+        "aiJson": {
+          "255": "5654418278381193870082"
+        }
+      }
+    },
+    {
+      "scheme": "sgcn-96",
+      "pureIdentityUri": "urn:epc:id:sgcn:999997.844330.3",
+      "filter": 6,
+      "expect": {
+        "hex": "3FDBD08F59C454000000000D",
+        "tagUri": "urn:epc:tag:sgcn-96:6.999997.844330.3",
+        "aiJson": {
+          "255": "99999784433023"
+        }
+      }
+    },
+    {
+      "scheme": "sgcn-96",
+      "pureIdentityUri": "urn:epc:id:sgcn:29870447777.8.9",
+      "filter": 2,
+      "expect": {
+        "hex": "3F44DE8D5B94300000000013",
+        "tagUri": "urn:epc:tag:sgcn-96:2.29870447777.8.9",
+        "aiJson": {
+          "255": "29870447777869"
+        }
+      }
+    },
+    {
+      "scheme": "sgcn-96",
+      "pureIdentityUri": "urn:epc:id:sgcn:540994.327622.296",
+      "filter": 4,
+      "expect": {
+        "hex": "3F9A105089FF8C0000000510",
+        "tagUri": "urn:epc:tag:sgcn-96:4.540994.327622.296",
+        "aiJson": {
+          "255": "5409943276223296"
+        }
+      }
+    },
+    {
+      "scheme": "sgcn-96",
+      "pureIdentityUri": "urn:epc:id:sgcn:391831247.457.00",
+      "filter": 2,
+      "expect": {
+        "hex": "3F4D75ADECF3920000000064",
+        "tagUri": "urn:epc:tag:sgcn-96:2.391831247.457.00",
+        "aiJson": {
+          "255": "391831247457000"
+        }
+      }
+    },
+    {
+      "scheme": "sgcn-96",
+      "pureIdentityUri": "urn:epc:id:sgcn:91225148.7013.33",
+      "filter": 6,
+      "expect": {
+        "hex": "3FD2B7FE1E36CA0000000085",
+        "tagUri": "urn:epc:tag:sgcn-96:6.91225148.7013.33",
+        "aiJson": {
+          "255": "912251487013733"
+        }
+      }
+    },
+    {
+      "scheme": "itip-110",
+      "pureIdentityUri": "urn:epc:id:itip:064099073.6319.54.82.0",
+      "filter": 1,
+      "expect": {
+        "hex": "402C3D2130162BDB520000000000",
+        "tagUri": "urn:epc:tag:itip-110:1.064099073.6319.54.82.0",
+        "aiJson": {
+          "21": "0",
+          "8006": "606409907331935482"
+        }
+      }
+    },
+    {
+      "scheme": "itip-110",
+      "pureIdentityUri": "urn:epc:id:itip:894792.2432540.07.31.72750109",
+      "filter": 2,
+      "expect": {
+        "hex": "405B69D2094787039F0011585074",
+        "tagUri": "urn:epc:tag:itip-110:2.894792.2432540.07.31.72750109",
+        "aiJson": {
+          "21": "72750109",
+          "8006": "289479243254050731"
+        }
+      }
+    },
+    {
+      "scheme": "itip-110",
+      "pureIdentityUri": "urn:epc:id:itip:824052303.2113.37.54.4959343788",
+      "filter": 6,
+      "expect": {
+        "hex": "40CF11E0A4F21052B6049E6652B0",
+        "tagUri": "urn:epc:tag:itip-110:6.824052303.2113.37.54.4959343788",
+        "aiJson": {
+          "21": "4959343788",
+          "8006": "282405230311363754"
+        }
+      }
+    },
+    {
+      "scheme": "itip-110",
+      "pureIdentityUri": "urn:epc:id:itip:1484057.883067.62.63.289",
+      "filter": 4,
+      "expect": {
+        "hex": "40945A94675E5EDF3F0000000484",
+        "tagUri": "urn:epc:tag:itip-110:4.1484057.883067.62.63.289",
+        "aiJson": {
+          "21": "289",
+          "8006": "814840578306776263"
+        }
+      }
+    },
+    {
+      "scheme": "itip-110",
+      "pureIdentityUri": "urn:epc:id:itip:031883791011.1.32.43.0",
+      "filter": 4,
+      "expect": {
+        "hex": "40801DB1B02A8C502B0000000000",
+        "tagUri": "urn:epc:tag:itip-110:4.031883791011.1.32.43.0",
+        "aiJson": {
+          "21": "0",
+          "8006": "103188379101173243"
+        }
+      }
+    },
+    {
+      "scheme": "itip-110",
+      "pureIdentityUri": "urn:epc:id:itip:5571932.347884.01.47.1713545283",
+      "filter": 6,
+      "expect": {
+        "hex": "40D554157153BB00AF01988A810C",
+        "tagUri": "urn:epc:tag:itip-110:6.5571932.347884.01.47.1713545283",
+        "aiJson": {
+          "21": "1713545283",
+          "8006": "355719324788480147"
+        }
+      }
+    },
+    {
+      "scheme": "itip-110",
+      "pureIdentityUri": "urn:epc:id:itip:362617865580.8.12.70.947649683",
+      "filter": 7,
+      "expect": {
+        "hex": "40E151B6D615B2064600E1EFF24C",
+        "tagUri": "urn:epc:tag:itip-110:7.362617865580.8.12.70.947649683",
+        "aiJson": {
+          "21": "947649683",
+          "8006": "836261786558091270"
+        }
+      }
+    },
+    {
+      "scheme": "itip-110",
+      "pureIdentityUri": "urn:epc:id:itip:429949635959.7.44.58.7",
+      "filter": 7,
+      "expect": {
+        "hex": "40E1906BFB35DDD63A000000001C",
+        "tagUri": "urn:epc:tag:itip-110:7.429949635959.7.44.58.7",
+        "aiJson": {
+          "21": "7",
+          "8006": "742994963595934458"
+        }
+      }
+    },
+    {
+      "scheme": "itip-110",
+      "pureIdentityUri": "urn:epc:id:itip:000237601.6344.18.81.5718990125",
+      "filter": 2,
+      "expect": {
+        "hex": "404C003A021632095105538374B4",
+        "tagUri": "urn:epc:tag:itip-110:2.000237601.6344.18.81.5718990125",
+        "aiJson": {
+          "21": "5718990125",
+          "8006": "600023760134401881"
+        }
+      }
+    },
+    {
+      "scheme": "itip-110",
+      "pureIdentityUri": "urn:epc:id:itip:404740.0918740.01.01.12",
+      "filter": 0,
+      "expect": {
+        "hex": "40198B4103813500810000000030",
+        "tagUri": "urn:epc:tag:itip-110:0.404740.0918740.01.01.12",
+        "aiJson": {
+          "21": "12",
+          "8006": "040474091874020101"
+        }
+      }
+    },
+    {
+      "scheme": "itip-110",
+      "pureIdentityUri": "urn:epc:id:itip:39815845.72355.02.04.2165654654",
+      "filter": 4,
+      "expect": {
+        "hex": "40912FC552C6A8C10402045511F8",
+        "tagUri": "urn:epc:tag:itip-110:4.39815845.72355.02.04.2165654654",
+        "aiJson": {
+          "21": "2165654654",
+          "8006": "739815845235590204"
+        }
+      }
+    },
+    {
+      "scheme": "itip-110",
+      "pureIdentityUri": "urn:epc:id:itip:238461344143.9.40.43.9019625580",
+      "filter": 4,
+      "expect": {
+        "hex": "4080DE159D663E542B08667241B0",
+        "tagUri": "urn:epc:tag:itip-110:4.238461344143.9.40.43.9019625580",
+        "aiJson": {
+          "21": "9019625580",
+          "8006": "923846134414384043"
+        }
+      }
+    },
+    {
+      "scheme": "itip-110",
+      "pureIdentityUri": "urn:epc:id:itip:591154463309.8.56.85.965",
+      "filter": 5,
+      "expect": {
+        "hex": "40A2268E3509361C550000000F14",
+        "tagUri": "urn:epc:tag:itip-110:5.591154463309.8.56.85.965",
+        "aiJson": {
+          "21": "965",
+          "8006": "859115446330925685"
+        }
+      }
+    },
+    {
+      "scheme": "itip-110",
+      "pureIdentityUri": "urn:epc:id:itip:82505816782.32.13.33.0",
+      "filter": 0,
+      "expect": {
+        "hex": "400666B75B59C806A10000000000",
+        "tagUri": "urn:epc:tag:itip-110:0.82505816782.32.13.33.0",
+        "aiJson": {
+          "21": "0",
+          "8006": "382505816782251333"
+        }
+      }
+    },
+    {
+      "scheme": "itip-110",
+      "pureIdentityUri": "urn:epc:id:itip:411332462.8332.08.65.693",
+      "filter": 4,
+      "expect": {
+        "hex": "408D8846F6E82304410000000AD4",
+        "tagUri": "urn:epc:tag:itip-110:4.411332462.8332.08.65.693",
+        "aiJson": {
+          "21": "693",
+          "8006": "841133246233280865"
+        }
+      }
+    },
+    {
+      "scheme": "itip-110",
+      "pureIdentityUri": "urn:epc:id:itip:063268961.9916.22.43.818050155",
+      "filter": 2,
+      "expect": {
+        "hex": "404C3C568619AF0B2B00C309D1AC",
+        "tagUri": "urn:epc:tag:itip-110:2.063268961.9916.22.43.818050155",
+        "aiJson": {
+          "21": "818050155",
+          "8006": "906326896191622243"
+        }
+      }
+    },
+    {
+      "scheme": "itip-110",
+      "pureIdentityUri": "urn:epc:id:itip:44555486.86023.17.17.86947136113",
+      "filter": 7,
+      "expect": {
+        "hex": "40F153EE6F5401C89150F9D009C4",
+        "tagUri": "urn:epc:tag:itip-110:7.44555486.86023.17.17.86947136113",
+        "aiJson": {
+          "21": "86947136113",
+          "8006": "844555486602301717"
+        }
+      }
+    },
+    {
+      "scheme": "itip-110",
+      "pureIdentityUri": "urn:epc:id:itip:4656385281.012.61.96.253584634779",
+      "filter": 2,
+      "expect": {
+        "hex": "4049158ACD01031EE0EC2B49CE6C",
+        "tagUri": "urn:epc:tag:itip-110:2.4656385281.012.61.96.253584634779",
+        "aiJson": {
+          "21": "253584634779",
+          "8006": "046563852811296196"
+        }
+      }
+    },
+    {
+      "scheme": "itip-110",
+      "pureIdentityUri": "urn:epc:id:itip:979116067.8359.78.91.69",
+      "filter": 1,
+      "expect": {
+        "hex": "402FA5C2023829E75B0000000114",
+        "tagUri": "urn:epc:tag:itip-110:1.979116067.8359.78.91.69",
+        "aiJson": {
+          "21": "69",
+          "8006": "897911606735997891"
+        }
+      }
+    },
+    {
+      "scheme": "itip-110",
+      "pureIdentityUri": "urn:epc:id:itip:50534314606.66.68.70.15668",
+      "filter": 5,
+      "expect": {
+        "hex": "40A578828E4DD0A246000000F4D0",
+        "tagUri": "urn:epc:tag:itip-110:5.50534314606.66.68.70.15668",
+        "aiJson": {
+          "21": "15668",
+          "8006": "650534314606676870"
+        }
+      }
+    },
+    {
+      "scheme": "itip-110",
+      "pureIdentityUri": "urn:epc:id:itip:72687526.36449.01.02.363088284",
+      "filter": 4,
+      "expect": {
+        "hex": "40922A8FD3239840820056912670",
+        "tagUri": "urn:epc:tag:itip-110:4.72687526.36449.01.02.363088284",
+        "aiJson": {
+          "21": "363088284",
+          "8006": "372687526644970102"
+        }
+      }
+    },
+    {
+      "scheme": "itip-110",
+      "pureIdentityUri": "urn:epc:id:itip:187540.4810646.77.84.2452",
+      "filter": 2,
+      "expect": {
+        "hex": "4058B7251259E5A6D40000002650",
+        "tagUri": "urn:epc:tag:itip-110:2.187540.4810646.77.84.2452",
+        "aiJson": {
+          "21": "2452",
+          "8006": "418754081064667784"
+        }
+      }
+    },
+    {
+      "scheme": "itip-110",
+      "pureIdentityUri": "urn:epc:id:itip:22465148.15554.15.53.246753245296",
+      "filter": 3,
+      "expect": {
+        "hex": "4070AB653E0F3087B5E5CE8EE1C0",
+        "tagUri": "urn:epc:tag:itip-110:3.22465148.15554.15.53.246753245296",
+        "aiJson": {
+          "21": "246753245296",
+          "8006": "122465148555441553"
+        }
+      }
+    },
+    {
+      "scheme": "itip-110",
+      "pureIdentityUri": "urn:epc:id:itip:1853609.577952.23.23.521101227",
+      "filter": 4,
+      "expect": {
+        "hex": "40947122A634680B97007C3D7EAC",
+        "tagUri": "urn:epc:tag:itip-110:4.1853609.577952.23.23.521101227",
+        "aiJson": {
+          "21": "521101227",
+          "8006": "518536097795252323"
+        }
+      }
+    },
+    {
+      "scheme": "itip-110",
+      "pureIdentityUri": "urn:epc:id:itip:40176868007.45.12.41.8",
+      "filter": 1,
+      "expect": {
+        "hex": "40252B574B54EB46290000000020",
+        "tagUri": "urn:epc:tag:itip-110:1.40176868007.45.12.41.8",
+        "aiJson": {
+          "21": "8",
+          "8006": "440176868007501241"
+        }
+      }
+    },
+    {
+      "scheme": "itip-212",
+      "pureIdentityUri": "urn:epc:id:itip:8114086.670701.02.04.lE6bBKZ%25kaL84fh",
+      "filter": 7,
+      "expect": {
+        "hex": "41F5EF3E9A8EFB4104D915B62852ED25D786638699B4000000000",
+        "tagUri": "urn:epc:tag:itip-212:7.8114086.670701.02.04.lE6bBKZ%25kaL84fh",
+        "aiJson": {
+          "21": "lE6bBKZ%kaL84fh",
+          "8006": "681140867070130204"
+        }
+      }
+    },
+    {
+      "scheme": "itip-212",
+      "pureIdentityUri": "urn:epc:id:itip:4394527701.769.01.84.jimuC",
+      "filter": 2,
+      "expect": {
+        "hex": "414905EF2BD5C040D4D5A76F58600000000000000000000000000",
+        "tagUri": "urn:epc:tag:itip-212:2.4394527701.769.01.84.jimuC",
+        "aiJson": {
+          "21": "jimuC",
+          "8006": "743945277016900184"
+        }
+      }
+    },
+    {
+      "scheme": "itip-212",
+      "pureIdentityUri": "urn:epc:id:itip:20536935.45710.20.30.V4.Job",
+      "filter": 6,
+      "expect": {
+        "hex": "41D09CAF33ACA38A1EACD174ADF88000000000000000000000000",
+        "tagUri": "urn:epc:tag:itip-212:6.20536935.45710.20.30.V4.Job",
+        "aiJson": {
+          "21": "V4.Job",
+          "8006": "420536935571042030"
+        }
+      }
+    },
+    {
+      "scheme": "itip-212",
+      "pureIdentityUri": "urn:epc:id:itip:156550.2780433.50.94.XE0fHhx3",
+      "filter": 1,
+      "expect": {
+        "hex": "413898E18A9B44595EB11586691A3C33000000000000000000000",
+        "tagUri": "urn:epc:tag:itip-212:1.156550.2780433.50.94.XE0fHhx3",
+        "aiJson": {
+          "21": "XE0fHhx3",
+          "8006": "215655078043375094"
+        }
+      }
+    },
+    {
+      "scheme": "itip-212",
+      "pureIdentityUri": "urn:epc:id:itip:1796398.208353.38.89.WZfwkhrCDKUodviim",
+      "filter": 7,
+      "expect": {
+        "hex": "41F46DA4B8CB785359AF6B377D7A3943892EAEFC9DB4E9DA00000",
+        "tagUri": "urn:epc:tag:itip-212:7.1796398.208353.38.89.WZfwkhrCDKUodviim",
+        "aiJson": {
+          "21": "WZfwkhrCDKUodviim",
+          "8006": "217963980835363889"
+        }
+      }
+    },
+    {
+      "scheme": "itip-212",
+      "pureIdentityUri": "urn:epc:id:itip:37774929807.51.38.57.%3EckemPiqXD",
+      "filter": 5,
+      "expect": {
+        "hex": "41A51971F5F1ECD3397D8F5E5DB434F1B11000000000000000000",
+        "tagUri": "urn:epc:tag:itip-212:5.37774929807.51.38.57.%3EckemPiqXD",
+        "aiJson": {
+          "21": ">ckemPiqXD",
+          "8006": "537774929807153857"
+        }
+      }
+    },
+    {
+      "scheme": "itip-212",
+      "pureIdentityUri": "urn:epc:id:itip:859829816403.3.26.53.hi57Kebom1SAXUm2;c",
+      "filter": 6,
+      "expect": {
+        "hex": "41C320C767314CCD35D1A5AB7979716FDAC69C1B1576B2778C000",
+        "tagUri": "urn:epc:tag:itip-212:6.859829816403.3.26.53.hi57Kebom1SAXUm2;c",
+        "aiJson": {
+          "21": "hi57Kebom1SAXUm2;c",
+          "8006": "385982981640382653"
+        }
+      }
+    },
+    {
+      "scheme": "itip-212",
+      "pureIdentityUri": "urn:epc:id:itip:72182805.99860.06.21.RqFsh7G",
+      "filter": 0,
+      "expect": {
+        "hex": "411226B60AE1850315A5C6373D0DE380000000000000000000000",
+        "tagUri": "urn:epc:tag:itip-212:0.72182805.99860.06.21.RqFsh7G",
+        "aiJson": {
+          "21": "RqFsh7G",
+          "8006": "972182805986050621"
+        }
+      }
+    },
+    {
+      "scheme": "itip-212",
+      "pureIdentityUri": "urn:epc:id:itip:9842517.663375.14.66.xndE7KNtQzJEUk)CF",
+      "filter": 6,
+      "expect": {
+        "hex": "41D658BD5687D3C742F1BB2456F2E774A3EA545ABAD4C38C00000",
+        "tagUri": "urn:epc:tag:itip-212:6.9842517.663375.14.66.xndE7KNtQzJEUk)CF",
+        "aiJson": {
+          "21": "xndE7KNtQzJEUk)CF",
+          "8006": "698425176337521466"
+        }
+      }
+    },
+    {
+      "scheme": "itip-212",
+      "pureIdentityUri": "urn:epc:id:itip:162510899.7419.09.09.tz",
+      "filter": 7,
+      "expect": {
+        "hex": "41EC9AFB83373EC489E9E80000000000000000000000000000000",
+        "tagUri": "urn:epc:tag:itip-212:7.162510899.7419.09.09.tz",
+        "aiJson": {
+          "21": "tz",
+          "8006": "716251089941980909"
+        }
+      }
+    },
+    {
+      "scheme": "itip-212",
+      "pureIdentityUri": "urn:epc:id:itip:756096.8277381.36.79.IVEeXRVl",
+      "filter": 6,
+      "expect": {
+        "hex": "41DAE2601F9361524F935A2E5B14AB6C000000000000000000000",
+        "tagUri": "urn:epc:tag:itip-212:6.756096.8277381.36.79.IVEeXRVl",
+        "aiJson": {
+          "21": "IVEeXRVl",
+          "8006": "875609627738113679"
+        }
+      }
+    },
+    {
+      "scheme": "itip-212",
+      "pureIdentityUri": "urn:epc:id:itip:9418836.897535.75.81.;-oy9gykYNn",
+      "filter": 3,
+      "expect": {
+        "hex": "41763EE1536C7FE5D176B77F9739FCEBB33B70000000000000000",
+        "tagUri": "urn:epc:tag:itip-212:3.9418836.897535.75.81.;-oy9gykYNn",
+        "aiJson": {
+          "21": ";-oy9gykYNn",
+          "8006": "894188369753507581"
+        }
+      }
+    },
+    {
+      "scheme": "itip-212",
+      "pureIdentityUri": "urn:epc:id:itip:4474245418.128.08.65.iFaOY7%3F",
+      "filter": 0,
+      "expect": {
+        "hex": "41090AAF912A200441D31B0CFB2DDF80000000000000000000000",
+        "tagUri": "urn:epc:tag:itip-212:0.4474245418.128.08.65.iFaOY7%3F",
+        "aiJson": {
+          "21": "iFaOY7?",
+          "8006": "144742454182800865"
+        }
+      }
+    },
+    {
+      "scheme": "itip-212",
+      "pureIdentityUri": "urn:epc:id:itip:7703084194.216.07.18.Jvy8jV",
+      "filter": 6,
+      "expect": {
+        "hex": "41C9CB23BCA236039295DBCB8D558000000000000000000000000",
+        "tagUri": "urn:epc:tag:itip-212:6.7703084194.216.07.18.Jvy8jV",
+        "aiJson": {
+          "21": "Jvy8jV",
+          "8006": "277030841941660718"
+        }
+      }
+    },
+    {
+      "scheme": "itip-212",
+      "pureIdentityUri": "urn:epc:id:itip:774925697028.9.10.64.48Mlgrjje6agArT",
+      "filter": 4,
+      "expect": {
+        "hex": "4182D1B4AF0012454068E26ECCFCB56ACADB0E783CAA000000000",
+        "tagUri": "urn:epc:tag:itip-212:4.774925697028.9.10.64.48Mlgrjje6agArT",
+        "aiJson": {
+          "21": "48Mlgrjje6agArT",
+          "8006": "977492569702811064"
+        }
+      }
+    },
+    {
+      "scheme": "itip-212",
+      "pureIdentityUri": "urn:epc:id:itip:2688570.517289.45.87.BhVqc",
+      "filter": 0,
+      "expect": {
+        "hex": "4114A418E9F92A56D785A2B71C600000000000000000000000000",
+        "tagUri": "urn:epc:tag:itip-212:0.2688570.517289.45.87.BhVqc",
+        "aiJson": {
+          "21": "BhVqc",
+          "8006": "526885701728964587"
+        }
+      }
+    },
+    {
+      "scheme": "itip-212",
+      "pureIdentityUri": "urn:epc:id:itip:6085285477.217.31.82.Oz1(",
+      "filter": 0,
+      "expect": {
+        "hex": "41096AB61665364FD29FE98A80000000000000000000000000000",
+        "tagUri": "urn:epc:tag:itip-212:0.6085285477.217.31.82.Oz1(",
+        "aiJson": {
+          "21": "Oz1(",
+          "8006": "260852854771723182"
+        }
+      }
+    },
+    {
+      "scheme": "itip-212",
+      "pureIdentityUri": "urn:epc:id:itip:448306622.1536.07.27.w*iK94oayiD32",
+      "filter": 4,
+      "expect": {
+        "hex": "418DAB89DBE180039BEEAB4CB72D37E1F3A623364000000000000",
+        "tagUri": "urn:epc:tag:itip-212:4.448306622.1536.07.27.w*iK94oayiD32",
+        "aiJson": {
+          "21": "w*iK94oayiD32",
+          "8006": "144830662253660727"
+        }
+      }
+    },
+    {
+      "scheme": "itip-212",
+      "pureIdentityUri": "urn:epc:id:itip:7537258.793445.19.75.j5uaokVv+4s_0",
+      "filter": 2,
+      "expect": {
+        "hex": "4155CC09AB06D949CBD4D7AE1DFAEB7656D39DF60000000000000",
+        "tagUri": "urn:epc:tag:itip-212:2.7537258.793445.19.75.j5uaokVv+4s_0",
+        "aiJson": {
+          "21": "j5uaokVv+4s_0",
+          "8006": "775372589344571975"
+        }
+      }
+    },
+    {
+      "scheme": "itip-212",
+      "pureIdentityUri": "urn:epc:id:itip:16860359933.95.55.59.53YbL27c%3EyxO5",
+      "filter": 0,
+      "expect": {
+        "hex": "41047D9E959FB7DBBB6ACECE298C9BE37DE7C4F6A000000000000",
+        "tagUri": "urn:epc:tag:itip-212:0.16860359933.95.55.59.53YbL27c%3EyxO5",
+        "aiJson": {
+          "21": "53YbL27c>yxO5",
+          "8006": "916860359933515559"
+        }
+      }
+    },
+    {
+      "scheme": "itip-212",
+      "pureIdentityUri": "urn:epc:id:itip:184961145.7998.21.86.ExS",
+      "filter": 3,
+      "expect": {
+        "hex": "416CB0648797CF8AD68BE29800000000000000000000000000000",
+        "tagUri": "urn:epc:tag:itip-212:3.184961145.7998.21.86.ExS",
+        "aiJson": {
+          "21": "ExS",
+          "8006": "718496114599862186"
+        }
+      }
+    },
+    {
+      "scheme": "itip-212",
+      "pureIdentityUri": "urn:epc:id:itip:480218879831.6.01.91.x",
+      "filter": 2,
+      "expect": {
+        "hex": "4141BF3D1A5D5D80DBF0000000000000000000000000000000000",
+        "tagUri": "urn:epc:tag:itip-212:2.480218879831.6.01.91.x",
+        "aiJson": {
+          "21": "x",
+          "8006": "648021887983150191"
+        }
+      }
+    },
+    {
+      "scheme": "itip-212",
+      "pureIdentityUri": "urn:epc:id:itip:73220277.19693.13.23.uL9Dc",
+      "filter": 3,
+      "expect": {
+        "hex": "41722EA05A933B4697EB31CC4C600000000000000000000000000",
+        "tagUri": "urn:epc:tag:itip-212:3.73220277.19693.13.23.uL9Dc",
+        "aiJson": {
+          "21": "uL9Dc",
+          "8006": "173220277969341323"
+        }
+      }
+    },
+    {
+      "scheme": "itip-212",
+      "pureIdentityUri": "urn:epc:id:itip:5509555216.940.33.45.VQGQTGsU6oI",
+      "filter": 4,
+      "expect": {
+        "hex": "418948652410EB10ADAD463D1A91F9D56DBE48000000000000000",
+        "tagUri": "urn:epc:tag:itip-212:4.5509555216.940.33.45.VQGQTGsU6oI",
+        "aiJson": {
+          "21": "VQGQTGsU6oI",
+          "8006": "955095552164023345"
+        }
+      }
+    },
+    {
+      "scheme": "itip-212",
+      "pureIdentityUri": "urn:epc:id:itip:5588927322.078.54.54.tQup2orSgYEOKJk",
+      "filter": 0,
+      "expect": {
+        "hex": "41094D20435A139B36E947AF065BF953CF662CF972B5800000000",
+        "tagUri": "urn:epc:tag:itip-212:0.5588927322.078.54.54.tQup2orSgYEOKJk",
+        "aiJson": {
+          "21": "tQup2orSgYEOKJk",
+          "8006": "055889273227885454"
+        }
+      }
+    },
+    {
+      "scheme": "gid-96",
+      "pureIdentityUri": "urn:epc:id:gid:250.941.912404",
+      "expect": {
+        "hex": "3500000FA0003AD0000DEC14",
+        "tagUri": "urn:epc:tag:gid-96:250.941.912404"
+      }
+    },
+    {
+      "scheme": "gid-96",
+      "pureIdentityUri": "urn:epc:id:gid:79.705.18",
+      "expect": {
+        "hex": "35000004F0002C1000000012",
+        "tagUri": "urn:epc:tag:gid-96:79.705.18"
+      }
+    },
+    {
+      "scheme": "gid-96",
+      "pureIdentityUri": "urn:epc:id:gid:68465937.3410.0",
+      "expect": {
+        "hex": "35414B511000D52000000000",
+        "tagUri": "urn:epc:tag:gid-96:68465937.3410.0"
+      }
+    },
+    {
+      "scheme": "gid-96",
+      "pureIdentityUri": "urn:epc:id:gid:0.5923.494",
+      "expect": {
+        "hex": "3500000000017230000001EE",
+        "tagUri": "urn:epc:tag:gid-96:0.5923.494"
+      }
+    },
+    {
+      "scheme": "gid-96",
+      "pureIdentityUri": "urn:epc:id:gid:21435.8138.534800926",
+      "expect": {
+        "hex": "3500053BB001FCA01FE06A1E",
+        "tagUri": "urn:epc:tag:gid-96:21435.8138.534800926"
+      }
+    },
+    {
+      "scheme": "gid-96",
+      "pureIdentityUri": "urn:epc:id:gid:552.88.674605",
+      "expect": {
+        "hex": "3500002280000580000A4B2D",
+        "tagUri": "urn:epc:tag:gid-96:552.88.674605"
+      }
+    },
+    {
+      "scheme": "gid-96",
+      "pureIdentityUri": "urn:epc:id:gid:1.679.0",
+      "expect": {
+        "hex": "3500000010002A7000000000",
+        "tagUri": "urn:epc:tag:gid-96:1.679.0"
+      }
+    },
+    {
+      "scheme": "gid-96",
+      "pureIdentityUri": "urn:epc:id:gid:7.8230252.50804215636",
+      "expect": {
+        "hex": "3500000077D956CBD42ACF54",
+        "tagUri": "urn:epc:tag:gid-96:7.8230252.50804215636"
+      }
+    },
+    {
+      "scheme": "gid-96",
+      "pureIdentityUri": "urn:epc:id:gid:3609045.1760.473460908",
+      "expect": {
+        "hex": "3503711D50006E001C3870AC",
+        "tagUri": "urn:epc:tag:gid-96:3609045.1760.473460908"
+      }
+    },
+    {
+      "scheme": "gid-96",
+      "pureIdentityUri": "urn:epc:id:gid:82583466.56961.7202934684",
+      "expect": {
+        "hex": "354EC1FAA00DE811AD540F9C",
+        "tagUri": "urn:epc:tag:gid-96:82583466.56961.7202934684"
+      }
+    },
+    {
+      "scheme": "gid-96",
+      "pureIdentityUri": "urn:epc:id:gid:82.81.5",
+      "expect": {
+        "hex": "350000052000051000000005",
+        "tagUri": "urn:epc:tag:gid-96:82.81.5"
+      }
+    },
+    {
+      "scheme": "gid-96",
+      "pureIdentityUri": "urn:epc:id:gid:44583.0.56",
+      "expect": {
+        "hex": "35000AE27000000000000038",
+        "tagUri": "urn:epc:tag:gid-96:44583.0.56"
+      }
+    },
+    {
+      "scheme": "gid-96",
+      "pureIdentityUri": "urn:epc:id:gid:11.74.430",
+      "expect": {
+        "hex": "35000000B00004A0000001AE",
+        "tagUri": "urn:epc:tag:gid-96:11.74.430"
+      }
+    },
+    {
+      "scheme": "gid-96",
+      "pureIdentityUri": "urn:epc:id:gid:56452127.44.272523709",
+      "expect": {
+        "hex": "3535D641F00002C0103E61BD",
+        "tagUri": "urn:epc:tag:gid-96:56452127.44.272523709"
+      }
+    },
+    {
+      "scheme": "gid-96",
+      "pureIdentityUri": "urn:epc:id:gid:1759.1.28197",
+      "expect": {
+        "hex": "3500006DF000001000006E25",
+        "tagUri": "urn:epc:tag:gid-96:1759.1.28197"
+      }
+    },
+    {
+      "scheme": "gid-96",
+      "pureIdentityUri": "urn:epc:id:gid:572.895.9308",
+      "expect": {
+        "hex": "35000023C00037F00000245C",
+        "tagUri": "urn:epc:tag:gid-96:572.895.9308"
+      }
+    },
+    {
+      "scheme": "gid-96",
+      "pureIdentityUri": "urn:epc:id:gid:437677.2108337.974995981",
+      "expect": {
+        "hex": "35006ADAD202BB103A1D420D",
+        "tagUri": "urn:epc:tag:gid-96:437677.2108337.974995981"
+      }
+    },
+    {
+      "scheme": "gid-96",
+      "pureIdentityUri": "urn:epc:id:gid:6413170.63.6149",
+      "expect": {
+        "hex": "35061DB7200003F000001805",
+        "tagUri": "urn:epc:tag:gid-96:6413170.63.6149"
+      }
+    },
+    {
+      "scheme": "gid-96",
+      "pureIdentityUri": "urn:epc:id:gid:32941796.0.452",
+      "expect": {
+        "hex": "351F6A6E40000000000001C4",
+        "tagUri": "urn:epc:tag:gid-96:32941796.0.452"
+      }
+    },
+    {
+      "scheme": "gid-96",
+      "pureIdentityUri": "urn:epc:id:gid:0.53.68",
+      "expect": {
+        "hex": "350000000000035000000044",
+        "tagUri": "urn:epc:tag:gid-96:0.53.68"
+      }
+    },
+    {
+      "scheme": "gid-96",
+      "pureIdentityUri": "urn:epc:id:gid:2.912.0",
+      "expect": {
+        "hex": "350000002000390000000000",
+        "tagUri": "urn:epc:tag:gid-96:2.912.0"
+      }
+    },
+    {
+      "scheme": "gid-96",
+      "pureIdentityUri": "urn:epc:id:gid:803751.877.8655969",
+      "expect": {
+        "hex": "3500C43A700036D000841461",
+        "tagUri": "urn:epc:tag:gid-96:803751.877.8655969"
+      }
+    },
+    {
+      "scheme": "gid-96",
+      "pureIdentityUri": "urn:epc:id:gid:55.3890.7367",
+      "expect": {
+        "hex": "350000037000F32000001CC7",
+        "tagUri": "urn:epc:tag:gid-96:55.3890.7367"
+      }
+    },
+    {
+      "scheme": "gid-96",
+      "pureIdentityUri": "urn:epc:id:gid:9477.50.495301",
+      "expect": {
+        "hex": "350002505000032000078EC5",
+        "tagUri": "urn:epc:tag:gid-96:9477.50.495301"
+      }
+    },
+    {
+      "scheme": "gid-96",
+      "pureIdentityUri": "urn:epc:id:gid:494351.291982.88001",
+      "expect": {
+        "hex": "350078B0F04748E0000157C1",
+        "tagUri": "urn:epc:tag:gid-96:494351.291982.88001"
+      }
+    },
+    {
+      "scheme": "cpi-96",
+      "pureIdentityUri": "urn:epc:id:cpi:427228830489.0.179",
+      "filter": 6,
+      "expect": {
+        "hex": "3CC18DE34A6C6400000000B3",
+        "tagUri": "urn:epc:tag:cpi-96:6.427228830489.0.179",
+        "aiJson": {
+          "8010": "4272288304890",
+          "8011": "179"
+        }
+      }
+    },
+    {
+      "scheme": "cpi-96",
+      "pureIdentityUri": "urn:epc:id:cpi:749520942340.6.6387",
+      "filter": 2,
+      "expect": {
+        "hex": "3C42BA0BB7D41003000018F3",
+        "tagUri": "urn:epc:tag:cpi-96:2.749520942340.6.6387",
+        "aiJson": {
+          "8010": "7495209423406",
+          "8011": "6387"
+        }
+      }
+    },
+    {
+      "scheme": "cpi-96",
+      "pureIdentityUri": "urn:epc:id:cpi:32329971.24843.1448699845",
+      "filter": 2,
+      "expect": {
+        "hex": "3C50F6A879803085D65967C5",
+        "tagUri": "urn:epc:tag:cpi-96:2.32329971.24843.1448699845",
+        "aiJson": {
+          "8010": "3232997124843",
+          "8011": "1448699845"
+        }
+      }
+    },
+    {
+      "scheme": "cpi-96",
+      "pureIdentityUri": "urn:epc:id:cpi:729283.7262738.8646458",
+      "filter": 4,
+      "expect": {
+        "hex": "3C9AC830C041F79D0083EF3A",
+        "tagUri": "urn:epc:tag:cpi-96:4.729283.8646458.8646458",
+        "aiJson": {
+          "8010": "7292838646458",
+          "8011": "8646458"
+        }
+      }
+    },
+    {
+      "scheme": "cpi-96",
+      "pureIdentityUri": "urn:epc:id:cpi:042557079900.34.84936",
+      "filter": 1,
+      "expect": {
+        "hex": "3C2027A26605701100014BC8",
+        "tagUri": "urn:epc:tag:cpi-96:1.042557079900.34.84936",
+        "aiJson": {
+          "8010": "04255707990034",
+          "8011": "84936"
+        }
+      }
+    },
+    {
+      "scheme": "cpi-96",
+      "pureIdentityUri": "urn:epc:id:cpi:83707543.9785.7137170",
+      "filter": 1,
+      "expect": {
+        "hex": "3C327EA34B80131C806CE792",
+        "tagUri": "urn:epc:tag:cpi-96:1.83707543.9785.7137170",
+        "aiJson": {
+          "8010": "837075439785",
+          "8011": "7137170"
+        }
+      }
+    },
+    {
+      "scheme": "cpi-96",
+      "pureIdentityUri": "urn:epc:id:cpi:7270398.54969.2167254",
+      "filter": 7,
+      "expect": {
+        "hex": "3CF5BBBFF8006B5C802111D6",
+        "tagUri": "urn:epc:tag:cpi-96:7.7270398.54969.2167254",
+        "aiJson": {
+          "8010": "727039854969",
+          "8011": "2167254"
+        }
+      }
+    },
+    {
+      "scheme": "cpi-96",
+      "pureIdentityUri": "urn:epc:id:cpi:3183793540.1899.3",
+      "filter": 2,
+      "expect": {
+        "hex": "3C48BDC4D58403B580000003",
+        "tagUri": "urn:epc:tag:cpi-96:2.3183793540.1899.3",
+        "aiJson": {
+          "8010": "31837935401899",
+          "8011": "3"
+        }
+      }
+    },
+    {
+      "scheme": "cpi-96",
+      "pureIdentityUri": "urn:epc:id:cpi:357342.558.6",
+      "filter": 1,
+      "expect": {
+        "hex": "3C395CF78000000300000006",
+        "tagUri": "urn:epc:tag:cpi-96:1.357342.6.6",
+        "aiJson": {
+          "8010": "3573426",
+          "8011": "6"
+        }
+      }
+    },
+    {
+      "scheme": "cpi-96",
+      "pureIdentityUri": "urn:epc:id:cpi:15895246363.98.0",
+      "filter": 4,
+      "expect": {
+        "hex": "3C84766DC6C3603100000000",
+        "tagUri": "urn:epc:tag:cpi-96:4.15895246363.98.0",
+        "aiJson": {
+          "8010": "1589524636398",
+          "8011": "0"
+        }
+      }
+    },
+    {
+      "scheme": "cpi-96",
+      "pureIdentityUri": "urn:epc:id:cpi:8941586651.41.8107",
+      "filter": 2,
+      "expect": {
+        "hex": "3C4A14F5C8DB001480001FAB",
+        "tagUri": "urn:epc:tag:cpi-96:2.8941586651.41.8107",
+        "aiJson": {
+          "8010": "894158665141",
+          "8011": "8107"
+        }
+      }
+    },
+    {
+      "scheme": "cpi-96",
+      "pureIdentityUri": "urn:epc:id:cpi:38833207.0.64887",
+      "filter": 5,
+      "expect": {
+        "hex": "3CB128461B8000000000FD77",
+        "tagUri": "urn:epc:tag:cpi-96:5.38833207.0.64887",
+        "aiJson": {
+          "8010": "388332070",
+          "8011": "64887"
+        }
+      }
+    },
+    {
+      "scheme": "cpi-96",
+      "pureIdentityUri": "urn:epc:id:cpi:44592718.2171.14413546",
+      "filter": 4,
+      "expect": {
+        "hex": "3C9154372700043D80DBEEEA",
+        "tagUri": "urn:epc:tag:cpi-96:4.44592718.2171.14413546",
+        "aiJson": {
+          "8010": "445927182171",
+          "8011": "14413546"
+        }
+      }
+    },
+    {
+      "scheme": "cpi-96",
+      "pureIdentityUri": "urn:epc:id:cpi:848489484.9600.695394",
+      "filter": 2,
+      "expect": {
+        "hex": "3C4F292EC0C012C0000A9C62",
+        "tagUri": "urn:epc:tag:cpi-96:2.848489484.9600.695394",
+        "aiJson": {
+          "8010": "8484894849600",
+          "8011": "695394"
+        }
+      }
+    },
+    {
+      "scheme": "cpi-96",
+      "pureIdentityUri": "urn:epc:id:cpi:7422582.462998.36116",
+      "filter": 6,
+      "expect": {
+        "hex": "3CD5C509D803884B00008D14",
+        "tagUri": "urn:epc:tag:cpi-96:6.7422582.462998.36116",
+        "aiJson": {
+          "8010": "7422582462998",
+          "8011": "36116"
+        }
+      }
+    },
+    {
+      "scheme": "cpi-96",
+      "pureIdentityUri": "urn:epc:id:cpi:547469.43756642.58155",
+      "filter": 7,
+      "expect": {
+        "hex": "3CFA16A3400071958000E32B",
+        "tagUri": "urn:epc:tag:cpi-96:7.547469.58155.58155",
+        "aiJson": {
+          "8010": "54746958155",
+          "8011": "58155"
+        }
+      }
+    },
+    {
+      "scheme": "cpi-96",
+      "pureIdentityUri": "urn:epc:id:cpi:74464572.8190.167125037",
+      "filter": 4,
+      "expect": {
+        "hex": "3C92381E9E000FFF09F6202D",
+        "tagUri": "urn:epc:tag:cpi-96:4.74464572.8190.167125037",
+        "aiJson": {
+          "8010": "744645728190",
+          "8011": "167125037"
+        }
+      }
+    },
+    {
+      "scheme": "cpi-96",
+      "pureIdentityUri": "urn:epc:id:cpi:076585385.68.60201258",
+      "filter": 0,
+      "expect": {
+        "hex": "3C0C49099A9000220396992A",
+        "tagUri": "urn:epc:tag:cpi-96:0.076585385.68.60201258",
+        "aiJson": {
+          "8010": "07658538568",
+          "8011": "60201258"
+        }
+      }
+    },
+    {
+      "scheme": "cpi-96",
+      "pureIdentityUri": "urn:epc:id:cpi:89081544854.66.503911198",
+      "filter": 3,
+      "expect": {
+        "hex": "3C6697B59012C0211E09131E",
+        "tagUri": "urn:epc:tag:cpi-96:3.89081544854.66.503911198",
+        "aiJson": {
+          "8010": "8908154485466",
+          "8011": "503911198"
+        }
+      }
+    },
+    {
+      "scheme": "cpi-96",
+      "pureIdentityUri": "urn:epc:id:cpi:36271348854.10.4026636",
+      "filter": 4,
+      "expect": {
+        "hex": "3C850E3E1B8EC005003D710C",
+        "tagUri": "urn:epc:tag:cpi-96:4.36271348854.10.4026636",
+        "aiJson": {
+          "8010": "3627134885410",
+          "8011": "4026636"
+        }
+      }
+    },
+    {
+      "scheme": "cpi-96",
+      "pureIdentityUri": "urn:epc:id:cpi:1365406308.5.80550",
+      "filter": 2,
+      "expect": {
+        "hex": "3C4851627264000280013AA6",
+        "tagUri": "urn:epc:tag:cpi-96:2.1365406308.5.80550",
+        "aiJson": {
+          "8010": "13654063085",
+          "8011": "80550"
+        }
+      }
+    },
+    {
+      "scheme": "cpi-96",
+      "pureIdentityUri": "urn:epc:id:cpi:9365159.0.760",
+      "filter": 1,
+      "expect": {
+        "hex": "3C363B9A9C000000000002F8",
+        "tagUri": "urn:epc:tag:cpi-96:1.9365159.0.760",
+        "aiJson": {
+          "8010": "93651590",
+          "8011": "760"
+        }
+      }
+    },
+    {
+      "scheme": "cpi-96",
+      "pureIdentityUri": "urn:epc:id:cpi:80915409.79022.364872260",
+      "filter": 1,
+      "expect": {
+        "hex": "3C326955E8809A5715BF8244",
+        "tagUri": "urn:epc:tag:cpi-96:1.80915409.79022.364872260",
+        "aiJson": {
+          "8010": "8091540979022",
+          "8011": "364872260"
+        }
+      }
+    },
+    {
+      "scheme": "cpi-96",
+      "pureIdentityUri": "urn:epc:id:cpi:681865126.0.2780122",
+      "filter": 3,
+      "expect": {
+        "hex": "3C6E8A46FA600000002A6BDA",
+        "tagUri": "urn:epc:tag:cpi-96:3.681865126.0.2780122",
+        "aiJson": {
+          "8010": "6818651260",
+          "8011": "2780122"
+        }
+      }
+    },
+    {
+      "scheme": "cpi-96",
+      "pureIdentityUri": "urn:epc:id:cpi:7803870664.0.310",
+      "filter": 3,
+      "expect": {
+        "hex": "3C69D1259DC8000000000136",
+        "tagUri": "urn:epc:tag:cpi-96:3.7803870664.0.310",
+        "aiJson": {
+          "8010": "78038706640",
+          "8011": "310"
+        }
+      }
+    },
+    {
+      "scheme": "cpi-var",
+      "pureIdentityUri": "urn:epc:id:cpi:932900956.9S%23%23%2FMAU16-OI9W6LF5G.13152",
+      "filter": 6,
+      "inputHex": "3DCF79AF05CE538E3BCD055C76B4F2795F6306D4700000000CD80000",
+      "expect": {
+        "tagUri": "urn:epc:tag:cpi-var:6.932900956.9S%23%23%2FMAU16-OI9W6LF5G.13152",
+        "pureIdentityUri": "urn:epc:id:cpi:932900956.9S%23%23%2FMAU16-OI9W6LF5G.13152",
+        "aiJson": {
+          "8010": "9329009569S##/MAU16-OI9W6LF5G",
+          "8011": ""
+        }
+      }
+    },
+    {
+      "scheme": "cpi-var",
+      "pureIdentityUri": "urn:epc:id:cpi:35461841.Y%235%2FK100T7%23QLH5OI.95653088599",
+      "filter": 1,
+      "inputHex": "3D310E8D68B31EB7978E1829BC689846A79200B22AF26AB8",
+      "expect": {
+        "tagUri": "urn:epc:tag:cpi-var:1.35461841.Y%235%2FK100T7%23QLH5OI.95653088599",
+        "pureIdentityUri": "urn:epc:id:cpi:35461841.Y%235%2FK100T7%23QLH5OI.95653088599",
+        "aiJson": {
+          "8010": "35461841Y#5/K100T7#QLH5OI",
+          "8011": ""
+        }
+      }
+    },
+    {
+      "scheme": "cpi-var",
+      "pureIdentityUri": "urn:epc:id:cpi:488833132.O6E64JE7.554143198",
+      "filter": 1,
+      "inputHex": "3D2DD23006C3F6176D0A1770000841E37780",
+      "expect": {
+        "tagUri": "urn:epc:tag:cpi-var:1.488833132.O6E64JE7.554143198",
+        "pureIdentityUri": "urn:epc:id:cpi:488833132.O6E64JE7.554143198",
+        "aiJson": {
+          "8010": "488833132O6E64JE7",
+          "8011": ""
+        }
+      }
+    },
+    {
+      "scheme": "cpi-var",
+      "pureIdentityUri": "urn:epc:id:cpi:17586922855.BA-K-G2.6",
+      "filter": 0,
+      "inputHex": "3D04830864ACE10369768F900000000000C0",
+      "expect": {
+        "tagUri": "urn:epc:tag:cpi-var:0.17586922855.BA-K-G2.6",
+        "pureIdentityUri": "urn:epc:id:cpi:17586922855.BA-K-G2.6",
+        "aiJson": {
+          "8010": "17586922855BA-K-G2",
+          "8011": ""
+        }
+      }
+    },
+    {
+      "scheme": "cpi-var",
+      "pureIdentityUri": "urn:epc:id:cpi:18533573490.I8SDZ%2FLC-K0OXM%2FSP1.0",
+      "filter": 3,
+      "inputHex": "3D648A15FC6E44F0988D5E60769781EC1B7A6862000000000000",
+      "expect": {
+        "tagUri": "urn:epc:tag:cpi-var:3.18533573490.I8SDZ%2FLC-K0OXM%2FSP1.0",
+        "pureIdentityUri": "urn:epc:id:cpi:18533573490.I8SDZ%2FLC-K0OXM%2FSP1.0",
+        "aiJson": {
+          "8010": "18533573490I8SDZ/LC-K0OXM/SP1",
+          "8011": ""
+        }
+      }
+    },
+    {
+      "scheme": "cpi-var",
+      "pureIdentityUri": "urn:epc:id:cpi:485552.79%23P8S30T5LNTKM-.18",
+      "filter": 4,
+      "inputHex": "3D99DA2C37E634384F3C14D4C3942CDB400000000012",
+      "expect": {
+        "tagUri": "urn:epc:tag:cpi-var:4.485552.79%23P8S30T5LNTKM-.18",
+        "pureIdentityUri": "urn:epc:id:cpi:485552.79%23P8S30T5LNTKM-.18",
+        "aiJson": {
+          "8010": "48555279#P8S30T5LNTKM-",
+          "8011": ""
+        }
+      }
+    },
+    {
+      "scheme": "cpi-var",
+      "pureIdentityUri": "urn:epc:id:cpi:38503651.%23.93421621623",
+      "filter": 3,
+      "inputHex": "3D7125C271C600AE02E68BB8",
+      "expect": {
+        "tagUri": "urn:epc:tag:cpi-var:3.38503651.%23.93421621623",
+        "pureIdentityUri": "urn:epc:id:cpi:38503651.%23.93421621623",
+        "aiJson": {
+          "8010": "38503651#",
+          "8011": ""
+        }
+      }
+    },
+    {
+      "scheme": "cpi-var",
+      "pureIdentityUri": "urn:epc:id:cpi:898272547257.U1P%23.713181310",
+      "filter": 7,
+      "inputHex": "3DE34494DD46E55C508C0002A82487E0",
+      "expect": {
+        "tagUri": "urn:epc:tag:cpi-var:7.898272547257.U1P%23.713181310",
+        "pureIdentityUri": "urn:epc:id:cpi:898272547257.U1P%23.713181310",
+        "aiJson": {
+          "8010": "898272547257U1P#",
+          "8011": ""
+        }
+      }
+    },
+    {
+      "scheme": "cpi-var",
+      "pureIdentityUri": "urn:epc:id:cpi:796809973995.RN00KU8-%23GQLM-6SK8.56654719916",
+      "filter": 5,
+      "inputHex": "3DA2E6164D43AD23B0C0B578B631D130DB764CBE000D30E26BAC",
+      "expect": {
+        "tagUri": "urn:epc:tag:cpi-var:5.796809973995.RN00KU8-%23GQLM-6SK8.56654719916",
+        "pureIdentityUri": "urn:epc:id:cpi:796809973995.RN00KU8-%23GQLM-6SK8.56654719916",
+        "aiJson": {
+          "8010": "796809973995RN00KU8-#GQLM-6SK8",
+          "8011": ""
+        }
+      }
+    },
+    {
+      "scheme": "cpi-var",
+      "pureIdentityUri": "urn:epc:id:cpi:7683467.1%23XH0L6%23MZ-GE0.384858643940",
+      "filter": 2,
+      "inputHex": "3D55D4F62F18D82303368CD6AD1C5C00599B5CDDE400",
+      "expect": {
+        "tagUri": "urn:epc:tag:cpi-var:2.7683467.1%23XH0L6%23MZ-GE0.384858643940",
+        "pureIdentityUri": "urn:epc:id:cpi:7683467.1%23XH0L6%23MZ-GE0.384858643940",
+        "aiJson": {
+          "8010": "76834671#XH0L6#MZ-GE0",
+          "8011": ""
+        }
+      }
+    },
+    {
+      "scheme": "cpi-var",
+      "pureIdentityUri": "urn:epc:id:cpi:249881.7D%2FAO3LHSFPTFYW.907818",
+      "filter": 1,
+      "inputHex": "3D38F4067712F04FCCC2131905066570000003768A80",
+      "expect": {
+        "tagUri": "urn:epc:tag:cpi-var:1.249881.7D%2FAO3LHSFPTFYW.907818",
+        "pureIdentityUri": "urn:epc:id:cpi:249881.7D%2FAO3LHSFPTFYW.907818",
+        "aiJson": {
+          "8010": "2498817D/AO3LHSFPTFYW",
+          "8011": ""
+        }
+      }
+    },
+    {
+      "scheme": "cpi-var",
+      "pureIdentityUri": "urn:epc:id:cpi:258469033384.ZZDJ.722",
+      "filter": 1,
+      "inputHex": "3D20F0B7D1D6A1A68428000000002D20",
+      "expect": {
+        "tagUri": "urn:epc:tag:cpi-var:1.258469033384.ZZDJ.722",
+        "pureIdentityUri": "urn:epc:id:cpi:258469033384.ZZDJ.722",
+        "aiJson": {
+          "8010": "258469033384ZZDJ",
+          "8011": ""
+        }
+      }
+    },
+    {
+      "scheme": "cpi-var",
+      "pureIdentityUri": "urn:epc:id:cpi:725217280.-UIV-ME.11147008642",
+      "filter": 7,
+      "inputHex": "3DEEB39F000B55256B4D140029869DA82000",
+      "expect": {
+        "tagUri": "urn:epc:tag:cpi-var:7.725217280.-UIV-ME.11147008642",
+        "pureIdentityUri": "urn:epc:id:cpi:725217280.-UIV-ME.11147008642",
+        "aiJson": {
+          "8010": "725217280-UIV-ME",
+          "8011": ""
+        }
+      }
+    },
+    {
+      "scheme": "cpi-var",
+      "pureIdentityUri": "urn:epc:id:cpi:9577107581.X9GYOJ%23W5ECEPU9EX%2F2.452007472260",
+      "filter": 2,
+      "inputHex": "3D4A3AD7107D6391D93CA8D7D450C5415E4562FC80693DBEAC84",
+      "expect": {
+        "tagUri": "urn:epc:tag:cpi-var:2.9577107581.X9GYOJ%23W5ECEPU9EX%2F2.452007472260",
+        "pureIdentityUri": "urn:epc:id:cpi:9577107581.X9GYOJ%23W5ECEPU9EX%2F2.452007472260",
+        "aiJson": {
+          "8010": "9577107581X9GYOJ#W5ECEPU9EX/2",
+          "8011": ""
+        }
+      }
+    },
+    {
+      "scheme": "cpi-var",
+      "pureIdentityUri": "urn:epc:id:cpi:334565384.D.216331436181",
+      "filter": 3,
+      "inputHex": "3D6D3F11008100325E5BC095",
+      "expect": {
+        "tagUri": "urn:epc:tag:cpi-var:3.334565384.D.216331436181",
+        "pureIdentityUri": "urn:epc:id:cpi:334565384.D.216331436181",
+        "aiJson": {
+          "8010": "334565384D",
+          "8011": ""
+        }
+      }
+    },
+    {
+      "scheme": "cpi-var",
+      "pureIdentityUri": "urn:epc:id:cpi:5504493902.JJ3I%2FI%2FF1G-AH9-KP%23V.9",
+      "filter": 4,
+      "inputHex": "3D894817E94E28ACC9BC9BC6C47B41239B4B4235800000000009",
+      "expect": {
+        "tagUri": "urn:epc:tag:cpi-var:4.5504493902.JJ3I%2FI%2FF1G-AH9-KP%23V.9",
+        "pureIdentityUri": "urn:epc:id:cpi:5504493902.JJ3I%2FI%2FF1G-AH9-KP%23V.9",
+        "aiJson": {
+          "8010": "5504493902JJ3I/I/F1G-AH9-KP#V",
+          "8011": ""
+        }
+      }
+    },
+    {
+      "scheme": "cpi-var",
+      "pureIdentityUri": "urn:epc:id:cpi:45423099465.%2F2X.41344205270",
+      "filter": 5,
+      "inputHex": "3DA5526DAFC937E4C0013409D03AC000",
+      "expect": {
+        "tagUri": "urn:epc:tag:cpi-var:5.45423099465.%2F2X.41344205270",
+        "pureIdentityUri": "urn:epc:id:cpi:45423099465.%2F2X.41344205270",
+        "aiJson": {
+          "8010": "45423099465/2X",
+          "8011": ""
+        }
+      }
+    },
+    {
+      "scheme": "cpi-var",
+      "pureIdentityUri": "urn:epc:id:cpi:576051.7.5343",
+      "filter": 0,
+      "inputHex": "3D1A328CF700000000537C00",
+      "expect": {
+        "tagUri": "urn:epc:tag:cpi-var:0.576051.7.5343",
+        "pureIdentityUri": "urn:epc:id:cpi:576051.7.5343",
+        "aiJson": {
+          "8010": "5760517",
+          "8011": ""
+        }
+      }
+    },
+    {
+      "scheme": "cpi-var",
+      "pureIdentityUri": "urn:epc:id:cpi:81089513332.-.93900015",
+      "filter": 3,
+      "inputHex": "3D665C29F8EE9680000B3199DE00",
+      "expect": {
+        "tagUri": "urn:epc:tag:cpi-var:3.81089513332.-.93900015",
+        "pureIdentityUri": "urn:epc:id:cpi:81089513332.-.93900015",
+        "aiJson": {
+          "8010": "81089513332-",
+          "8011": ""
+        }
+      }
+    },
+    {
+      "scheme": "cpi-var",
+      "pureIdentityUri": "urn:epc:id:cpi:77836023720.%2F8K9T11AJ9.46269634",
+      "filter": 2,
+      "inputHex": "3D4643EC6EF517F05F2A63882572000016102610",
+      "expect": {
+        "tagUri": "urn:epc:tag:cpi-var:2.77836023720.%2F8K9T11AJ9.46269634",
+        "pureIdentityUri": "urn:epc:id:cpi:77836023720.%2F8K9T11AJ9.46269634",
+        "aiJson": {
+          "8010": "77836023720/8K9T11AJ9",
+          "8011": ""
+        }
+      }
+    },
+    {
+      "scheme": "cpi-var",
+      "pureIdentityUri": "urn:epc:id:cpi:3547673116.UXTNF%2FU9R0WV%23-6A54SE.28",
+      "filter": 5,
+      "inputHex": "3DA8D375321C55850E1AF5794B05D68EDD81D744C500000000007000",
+      "expect": {
+        "tagUri": "urn:epc:tag:cpi-var:5.3547673116.UXTNF%2FU9R0WV%23-6A54SE.28",
+        "pureIdentityUri": "urn:epc:id:cpi:3547673116.UXTNF%2FU9R0WV%23-6A54SE.28",
+        "aiJson": {
+          "8010": "3547673116UXTNF/U9R0WV#-6A54SE",
+          "8011": ""
+        }
+      }
+    },
+    {
+      "scheme": "cpi-var",
+      "pureIdentityUri": "urn:epc:id:cpi:56134970810.Y-MF9AO8Z.5",
+      "filter": 7,
+      "inputHex": "3DE5A23CF5B74CDA68DC827F0D00000000000A00",
+      "expect": {
+        "tagUri": "urn:epc:tag:cpi-var:7.56134970810.Y-MF9AO8Z.5",
+        "pureIdentityUri": "urn:epc:id:cpi:56134970810.Y-MF9AO8Z.5",
+        "aiJson": {
+          "8010": "56134970810Y-MF9AO8Z",
+          "8011": ""
+        }
+      }
+    },
+    {
+      "scheme": "cpi-var",
+      "pureIdentityUri": "urn:epc:id:cpi:99337151.%2FU9%236E%2FP.5865",
+      "filter": 6,
+      "inputHex": "3DD2F5E1DFDEAF31EC2DE8000000002DD200",
+      "expect": {
+        "tagUri": "urn:epc:tag:cpi-var:6.99337151.%2FU9%236E%2FP.5865",
+        "pureIdentityUri": "urn:epc:id:cpi:99337151.%2FU9%236E%2FP.5865",
+        "aiJson": {
+          "8010": "99337151/U9#6E/P",
+          "8011": ""
+        }
+      }
+    },
+    {
+      "scheme": "cpi-var",
+      "pureIdentityUri": "urn:epc:id:cpi:452384279.Z9PRSN14P3F4CO.6497",
+      "filter": 4,
+      "inputHex": "3D8DAF6D6176B94124CEC744331B40CF000000006584",
+      "expect": {
+        "tagUri": "urn:epc:tag:cpi-var:4.452384279.Z9PRSN14P3F4CO.6497",
+        "pureIdentityUri": "urn:epc:id:cpi:452384279.Z9PRSN14P3F4CO.6497",
+        "aiJson": {
+          "8010": "452384279Z9PRSN14P3F4CO",
+          "8011": ""
+        }
+      }
+    },
+    {
+      "scheme": "cpi-var",
+      "pureIdentityUri": "urn:epc:id:cpi:69270235.%23T1TZ-5-A0Z%2FDO5MP-24.101631898",
+      "filter": 3,
+      "inputHex": "3D72107D6DC6A62A356EB6838357887EA6A16E5A00000C1D8F34",
+      "expect": {
+        "tagUri": "urn:epc:tag:cpi-var:3.69270235.%23T1TZ-5-A0Z%2FDO5MP-24.101631898",
+        "pureIdentityUri": "urn:epc:id:cpi:69270235.%23T1TZ-5-A0Z%2FDO5MP-24.101631898",
+        "aiJson": {
+          "8010": "69270235#T1TZ-5-A0Z/DO5MP-24",
+          "8011": ""
+        }
+      }
+    },
+    {
+      "scheme": "usdod-96",
+      "pureIdentityUri": "urn:epc:id:usdod:FJG5M.25816893594",
+      "filter": 7,
+      "inputHex": "2F720464A47354D602CE889A",
+      "expect": {
+        "tagUri": "urn:epc:tag:usdod-96:7. FJG5M.25816893594",
+        "pureIdentityUri": "urn:epc:id:usdod: FJG5M.25816893594"
+      }
+    },
+    {
+      "scheme": "usdod-96",
+      "pureIdentityUri": "urn:epc:id:usdod:HLZSW.0",
+      "filter": 3,
+      "inputHex": "2F320484C5A5357000000000",
+      "expect": {
+        "tagUri": "urn:epc:tag:usdod-96:3. HLZSW.0",
+        "pureIdentityUri": "urn:epc:id:usdod: HLZSW.0"
+      }
+    },
+    {
+      "scheme": "usdod-96",
+      "pureIdentityUri": "urn:epc:id:usdod:QRNWJ.858687558",
+      "filter": 2,
+      "inputHex": "2F22051524E574A0332E8846",
+      "expect": {
+        "tagUri": "urn:epc:tag:usdod-96:2. QRNWJ.858687558",
+        "pureIdentityUri": "urn:epc:id:usdod: QRNWJ.858687558"
+      }
+    },
+    {
+      "scheme": "usdod-96",
+      "pureIdentityUri": "urn:epc:id:usdod:NMYTXG.1763538",
+      "filter": 4,
+      "inputHex": "2F44E4D595458470001AE8D2",
+      "expect": {
+        "tagUri": "urn:epc:tag:usdod-96:4.NMYTXG.1763538",
+        "pureIdentityUri": "urn:epc:id:usdod:NMYTXG.1763538"
+      }
+    },
+    {
+      "scheme": "usdod-96",
+      "pureIdentityUri": "urn:epc:id:usdod:DDG07W.441",
+      "filter": 1,
+      "inputHex": "2F14444473037570000001B9",
+      "expect": {
+        "tagUri": "urn:epc:tag:usdod-96:1.DDG07W.441",
+        "pureIdentityUri": "urn:epc:id:usdod:DDG07W.441"
+      }
+    },
+    {
+      "scheme": "usdod-96",
+      "pureIdentityUri": "urn:epc:id:usdod:253JJN.516",
+      "filter": 1,
+      "inputHex": "2F13235334A4A4E000000204",
+      "expect": {
+        "tagUri": "urn:epc:tag:usdod-96:1.253JJN.516",
+        "pureIdentityUri": "urn:epc:id:usdod:253JJN.516"
+      }
+    },
+    {
+      "scheme": "usdod-96",
+      "pureIdentityUri": "urn:epc:id:usdod:AHZGT1.0",
+      "filter": 3,
+      "inputHex": "2F341485A475431000000000",
+      "expect": {
+        "tagUri": "urn:epc:tag:usdod-96:3.AHZGT1.0",
+        "pureIdentityUri": "urn:epc:id:usdod:AHZGT1.0"
+      }
+    },
+    {
+      "scheme": "usdod-96",
+      "pureIdentityUri": "urn:epc:id:usdod:NZ0Q3Z.6",
+      "filter": 1,
+      "inputHex": "2F14E5A3051335A000000006",
+      "expect": {
+        "tagUri": "urn:epc:tag:usdod-96:1.NZ0Q3Z.6",
+        "pureIdentityUri": "urn:epc:id:usdod:NZ0Q3Z.6"
+      }
+    },
+    {
+      "scheme": "usdod-96",
+      "pureIdentityUri": "urn:epc:id:usdod:JW3RX9.88",
+      "filter": 6,
+      "inputHex": "2F64A5733525839000000058",
+      "expect": {
+        "tagUri": "urn:epc:tag:usdod-96:6.JW3RX9.88",
+        "pureIdentityUri": "urn:epc:id:usdod:JW3RX9.88"
+      }
+    },
+    {
+      "scheme": "usdod-96",
+      "pureIdentityUri": "urn:epc:id:usdod:06NYR.0",
+      "filter": 4,
+      "inputHex": "2F42030364E5952000000000",
+      "expect": {
+        "tagUri": "urn:epc:tag:usdod-96:4. 06NYR.0",
+        "pureIdentityUri": "urn:epc:id:usdod: 06NYR.0"
+      }
+    },
+    {
+      "scheme": "usdod-96",
+      "pureIdentityUri": "urn:epc:id:usdod:RN6A7.307488753",
+      "filter": 0,
+      "inputHex": "2F020524E36413701253E7F1",
+      "expect": {
+        "tagUri": "urn:epc:tag:usdod-96:0. RN6A7.307488753",
+        "pureIdentityUri": "urn:epc:id:usdod: RN6A7.307488753"
+      }
+    },
+    {
+      "scheme": "usdod-96",
+      "pureIdentityUri": "urn:epc:id:usdod:4LQBGN.19531347841",
+      "filter": 4,
+      "inputHex": "2F4344C5142474E48C28B781",
+      "expect": {
+        "tagUri": "urn:epc:tag:usdod-96:4.4LQBGN.19531347841",
+        "pureIdentityUri": "urn:epc:id:usdod:4LQBGN.19531347841"
+      }
+    },
+    {
+      "scheme": "usdod-96",
+      "pureIdentityUri": "urn:epc:id:usdod:NMUTM.637025306",
+      "filter": 7,
+      "inputHex": "2F7204E4D55544D025F83C1A",
+      "expect": {
+        "tagUri": "urn:epc:tag:usdod-96:7. NMUTM.637025306",
+        "pureIdentityUri": "urn:epc:id:usdod: NMUTM.637025306"
+      }
+    },
+    {
+      "scheme": "usdod-96",
+      "pureIdentityUri": "urn:epc:id:usdod:XS40C.12811",
+      "filter": 4,
+      "inputHex": "2F420585334304300000320B",
+      "expect": {
+        "tagUri": "urn:epc:tag:usdod-96:4. XS40C.12811",
+        "pureIdentityUri": "urn:epc:id:usdod: XS40C.12811"
+      }
+    },
+    {
+      "scheme": "usdod-96",
+      "pureIdentityUri": "urn:epc:id:usdod:WN28VF.664",
+      "filter": 3,
+      "inputHex": "2F3574E32385646000000298",
+      "expect": {
+        "tagUri": "urn:epc:tag:usdod-96:3.WN28VF.664",
+        "pureIdentityUri": "urn:epc:id:usdod:WN28VF.664"
+      }
+    },
+    {
+      "scheme": "usdod-96",
+      "pureIdentityUri": "urn:epc:id:usdod:BPEA4.5907194336",
+      "filter": 3,
+      "inputHex": "2F320425045413416018A1E0",
+      "expect": {
+        "tagUri": "urn:epc:tag:usdod-96:3. BPEA4.5907194336",
+        "pureIdentityUri": "urn:epc:id:usdod: BPEA4.5907194336"
+      }
+    },
+    {
+      "scheme": "usdod-96",
+      "pureIdentityUri": "urn:epc:id:usdod:0UHKZ.887409412",
+      "filter": 0,
+      "inputHex": "2F0203055484B5A034E4CB04",
+      "expect": {
+        "tagUri": "urn:epc:tag:usdod-96:0. 0UHKZ.887409412",
+        "pureIdentityUri": "urn:epc:id:usdod: 0UHKZ.887409412"
+      }
+    },
+    {
+      "scheme": "usdod-96",
+      "pureIdentityUri": "urn:epc:id:usdod:3U2LEA.0",
+      "filter": 4,
+      "inputHex": "2F43355324C4541000000000",
+      "expect": {
+        "tagUri": "urn:epc:tag:usdod-96:4.3U2LEA.0",
+        "pureIdentityUri": "urn:epc:id:usdod:3U2LEA.0"
+      }
+    },
+    {
+      "scheme": "usdod-96",
+      "pureIdentityUri": "urn:epc:id:usdod:TKV3C.354626",
+      "filter": 3,
+      "inputHex": "2F320544B563343000056942",
+      "expect": {
+        "tagUri": "urn:epc:tag:usdod-96:3. TKV3C.354626",
+        "pureIdentityUri": "urn:epc:id:usdod: TKV3C.354626"
+      }
+    },
+    {
+      "scheme": "usdod-96",
+      "pureIdentityUri": "urn:epc:id:usdod:Q02UD.0",
+      "filter": 5,
+      "inputHex": "2F5205130325544000000000",
+      "expect": {
+        "tagUri": "urn:epc:tag:usdod-96:5. Q02UD.0",
+        "pureIdentityUri": "urn:epc:id:usdod: Q02UD.0"
+      }
+    },
+    {
+      "scheme": "usdod-96",
+      "pureIdentityUri": "urn:epc:id:usdod:NPPAY.810347",
+      "filter": 5,
+      "inputHex": "2F5204E505041590000C5D6B",
+      "expect": {
+        "tagUri": "urn:epc:tag:usdod-96:5. NPPAY.810347",
+        "pureIdentityUri": "urn:epc:id:usdod: NPPAY.810347"
+      }
+    },
+    {
+      "scheme": "usdod-96",
+      "pureIdentityUri": "urn:epc:id:usdod:866528.390839928",
+      "filter": 9,
+      "inputHex": "2F93836363532380174BBE78",
+      "expect": {
+        "tagUri": "urn:epc:tag:usdod-96:9.866528.390839928",
+        "pureIdentityUri": "urn:epc:id:usdod:866528.390839928"
+      }
+    },
+    {
+      "scheme": "usdod-96",
+      "pureIdentityUri": "urn:epc:id:usdod:EKU53.49",
+      "filter": 5,
+      "inputHex": "2F520454B553533000000031",
+      "expect": {
+        "tagUri": "urn:epc:tag:usdod-96:5. EKU53.49",
+        "pureIdentityUri": "urn:epc:id:usdod: EKU53.49"
+      }
+    },
+    {
+      "scheme": "usdod-96",
+      "pureIdentityUri": "urn:epc:id:usdod:ASKYH.90",
+      "filter": 3,
+      "inputHex": "2F32041534B594800000005A",
+      "expect": {
+        "tagUri": "urn:epc:tag:usdod-96:3. ASKYH.90",
+        "pureIdentityUri": "urn:epc:id:usdod: ASKYH.90"
+      }
+    },
+    {
+      "scheme": "usdod-96",
+      "pureIdentityUri": "urn:epc:id:usdod:DX2KQQ.95141",
+      "filter": 5,
+      "inputHex": "2F54458324B51510000173A5",
+      "expect": {
+        "tagUri": "urn:epc:tag:usdod-96:5.DX2KQQ.95141",
+        "pureIdentityUri": "urn:epc:id:usdod:DX2KQQ.95141"
+      }
+    },
+    {
+      "scheme": "adi-var",
+      "pureIdentityUri": "urn:epc:id:adi:KB01HM.KST8%2F7XIMJQQGKQ2%2F.T4KU72PPDJ56Q5OR6F%2FW--0KMWE5",
+      "filter": 49,
+      "expect": {
+        "hex": "3BC4B0B0C4834B4D4E2FDD824D2914472D1CAF014D0B577C904042B5D91D4F4B61AF5EDB702CD5C5D40",
+        "tagUri": "urn:epc:tag:adi-var:49.KB01HM.KST8%2F7XIMJQQGKQ2%2F.T4KU72PPDJ56Q5OR6F%2FW--0KMWE5"
+      }
+    },
+    {
+      "scheme": "adi-var",
+      "pureIdentityUri": "urn:epc:id:adi:L98AX.8%2FZAF4EF%2F10V.M%2FS0W--%2FW2K46J0J%2F5F49-IMOS",
+      "filter": 36,
+      "expect": {
+        "hex": "3B920339E01638BDA046D051AFC7058036F4F05EDB6F5F22F4D8AC0ABF51B4E6D24D3D300",
+        "tagUri": "urn:epc:tag:adi-var:36.L98AX.8%2FZAF4EF%2F10V.M%2FS0W--%2FW2K46J0J%2F5F49-IMOS"
+      }
+    },
+    {
+      "scheme": "adi-var",
+      "pureIdentityUri": "urn:epc:id:adi:0PPZ4Q.WQCZL-B-YA4%2FS--AEB-R%2F8ZH.%23-7%2F5TUZ%2F5NFS0W%2F-VV6T%2FA",
+      "filter": 15,
+      "expect": {
+        "hex": "3B3F04106B445744368CB42B59074BD3B6D0450AD4AFE1A2008EDDEFD5455ABF53864F05EFB565B652F040",
+        "tagUri": "urn:epc:tag:adi-var:15.0PPZ4Q.WQCZL-B-YA4%2FS--AEB-R%2F8ZH.%23-7%2F5TUZ%2F5NFS0W%2F-VV6T%2FA"
+      }
+    },
+    {
+      "scheme": "adi-var",
+      "pureIdentityUri": "urn:epc:id:adi:LRT08.A96-PK07J1XF4.G2XJC",
+      "filter": 38,
+      "expect": {
+        "hex": "3B9A0312530E01E76B502F0DCAC581B4007C9828300",
+        "tagUri": "urn:epc:tag:adi-var:38.LRT08.A96-PK07J1XF4.G2XJC"
+      }
+    },
+    {
+      "scheme": "adi-var",
+      "pureIdentityUri": "urn:epc:id:adi:7D0FF.Z6.E%2F-Q2G%2FQTB82CLK-J",
+      "filter": 17,
+      "expect": {
+        "hex": "3B460DC4C0619AD8016FB51C87BD1502E320CC2ED280",
+        "tagUri": "urn:epc:tag:adi-var:17.7D0FF.Z6.E%2F-Q2G%2FQTB82CLK-J"
+      }
+    },
+    {
+      "scheme": "adi-var",
+      "pureIdentityUri": "urn:epc:id:adi:9S3ZC.0%2F%2FMBYYQPKHK%2FB30UWREJ-1CO3.4G%2F4MJW2%2F",
+      "filter": 54,
+      "expect": {
+        "hex": "3BDA0E53CDA0F0BEF3426594502C82EF0B3C155D214AB710CFCC0D07BF434A5F2BC0",
+        "tagUri": "urn:epc:tag:adi-var:54.9S3ZC.0%2F%2FMBYYQPKHK%2FB30UWREJ-1CO3.4G%2F4MJW2%2F"
+      }
+    },
+    {
+      "scheme": "adi-var",
+      "pureIdentityUri": "urn:epc:id:adi:ZMNTX.1BVQ06%2FMFQHUM7WJOPTOI3C.HR%2F%2FDQDZY%2FJQ7BH31IPLAV%2F-KJ%2FING",
+      "filter": 26,
+      "expect": {
+        "hex": "3B6A068D394631096470DAF34644854DDD728F4143C9CC30084AFBC4444699BCA477088CF12503015AFB4B2AF24E1C0",
+        "tagUri": "urn:epc:tag:adi-var:26.ZMNTX.1BVQ06%2FMFQHUM7WJOPTOI3C.HR%2F%2FDQDZY%2FJQ7BH31IPLAV%2F-KJ%2FING"
+      }
+    },
+    {
+      "scheme": "adi-var",
+      "pureIdentityUri": "urn:epc:id:adi:WGLKF.N-40--ULFXHEY.E",
+      "filter": 30,
+      "expect": {
+        "hex": "3B7A05C730B18EB74C2DB5530660815900500",
+        "tagUri": "urn:epc:tag:adi-var:30.WGLKF.N-40--ULFXHEY.E"
+      }
+    },
+    {
+      "scheme": "adi-var",
+      "pureIdentityUri": "urn:epc:id:adi:ZFBFX.14AW-6VZW-%2F1IJZI9BV-BJXS--L0YBQ.GG0CY1Y%2FSD7DQJH8244%2F5EV56HJ",
+      "filter": 39,
+      "expect": {
+        "hex": "3B9E0686086631D015EDD96697B6FC4929A279096B422984EDB4CC190910071F00D9C59BD3137111288E32D34BF5156D7620A00",
+        "tagUri": "urn:epc:tag:adi-var:39.ZFBFX.14AW-6VZW-%2F1IJZI9BV-BJXS--L0YBQ.GG0CY1Y%2FSD7DQJH8244%2F5EV56HJ"
+      }
+    },
+    {
+      "scheme": "adi-var",
+      "pureIdentityUri": "urn:epc:id:adi:CQP9LX.EF5-QHFADP2I3N31E2K1WMBT9V%2FBZ%2F4A.NAKC-0UY3P%2F4SSXVRGNEKZ4O",
+      "filter": 11,
+      "expect": {
+        "hex": "3B2C3450E4C6051B5B512060444322733B3C45C8BC573425395AF09ABF40403812C3B70559CD0BF44D36164873852DAD0F00",
+        "tagUri": "urn:epc:tag:adi-var:11.CQP9LX.EF5-QHFADP2I3N31E2K1WMBT9V%2FBZ%2F4A.NAKC-0UY3P%2F4SSXVRGNEKZ4O"
+      }
+    },
+    {
+      "scheme": "adi-var",
+      "pureIdentityUri": "urn:epc:id:adi:SLEQA.5%2F9I1.%23HL%2F3Q46R1HK1X6RB3C4%2F8M50",
+      "filter": 2,
+      "expect": {
+        "hex": "3B0A04CC151075BF927102320CBF3474D92C482F1636482CC3D2FE0DD7000",
+        "tagUri": "urn:epc:tag:adi-var:2.SLEQA.5%2F9I1.%23HL%2F3Q46R1HK1X6RB3C4%2F8M50"
+      }
+    },
+    {
+      "scheme": "adi-var",
+      "pureIdentityUri": "urn:epc:id:adi:DUG5U.E4UGSS-ME-I-BAJWKGO5-E03%2FG%2FC.U-VT-34A6",
+      "filter": 31,
+      "expect": {
+        "hex": "3B7E01151F5545D151D34ED345B49B4204A5CB1CFD6D170CEF1EF0C056D594B73D01D80",
+        "tagUri": "urn:epc:tag:adi-var:31.DUG5U.E4UGSS-ME-I-BAJWKGO5-E03%2FG%2FC.U-VT-34A6"
+      }
+    },
+    {
+      "scheme": "adi-var",
+      "pureIdentityUri": "urn:epc:id:adi:W1W00.-%2FGQ9L1B2-1%2FWYQVEKT4-L8-FFZ.OQI-N---E15GY7-39E%2F0MZ",
+      "filter": 21,
+      "expect": {
+        "hex": "3B5605F15F0C2DBC74793310B2B71BD76515852D4D2D338B4619A00F449B4EB6DB45C751D9DEDCF916FC0D680",
+        "tagUri": "urn:epc:tag:adi-var:21.W1W00.-%2FGQ9L1B2-1%2FWYQVEKT4-L8-FFZ.OQI-N---E15GY7-39E%2F0MZ"
+      }
+    },
+    {
+      "scheme": "adi-var",
+      "pureIdentityUri": "urn:epc:id:adi:D3LPK.H2%2F8%2F%2F%2FH.%232%2F4I8PLWOUXY4VJDRG",
+      "filter": 7,
+      "expect": {
+        "hex": "3B1E01333102C8CAFE2FBEF2008F2BF427840C5CF55867458A1121C0",
+        "tagUri": "urn:epc:tag:adi-var:7.D3LPK.H2%2F8%2F%2F%2FH.%232%2F4I8PLWOUXY4VJDRG"
+      }
+    },
+    {
+      "scheme": "adi-var",
+      "pureIdentityUri": "urn:epc:id:adi:F54AP6.JJ-IU-YL.%23HUP8X77L8I%2FZHRUP2LRQDCMOPT8VX",
+      "filter": 55,
+      "expect": {
+        "hex": "3BDC6D74050D8A2AD255B593008C8550E18DF733826F6884954323124440CD3D053859800",
+        "tagUri": "urn:epc:tag:adi-var:55.F54AP6.JJ-IU-YL.%23HUP8X77L8I%2FZHRUP2LRQDCMOPT8VX"
+      }
+    },
+    {
+      "scheme": "adi-var",
+      "pureIdentityUri": "urn:epc:id:adi:DPLKE9.WJGB.S-UKXMPQ3KI91XH5%2FX%2FU",
+      "filter": 50,
+      "expect": {
+        "hex": "3BC8440C2C5E572870804ED54B60D411CCB279C58235BD8BD500",
+        "tagUri": "urn:epc:tag:adi-var:50.DPLKE9.WJGB.S-UKXMPQ3KI91XH5%2FX%2FU"
+      }
+    },
+    {
+      "scheme": "adi-var",
+      "pureIdentityUri": "urn:epc:id:adi:V3Z3Q8.35XO5.D%2FL6QS%2F%2FCMTG%2FIZPLE-6GR61OWFY",
+      "filter": 50,
+      "expect": {
+        "hex": "3BC96CDACD1E33D583F5004BCCD914EFBC33541EF25A40C16DD874B6C4F5C6640",
+        "tagUri": "urn:epc:tag:adi-var:50.V3Z3Q8.35XO5.D%2FL6QS%2F%2FCMTG%2FIZPLE-6GR61OWFY"
+      }
+    },
+    {
+      "scheme": "adi-var",
+      "pureIdentityUri": "urn:epc:id:adi:RFCP7.BTRI45ITDT17%2FY7D5NP.%2FTRU3HS-W%2F",
+      "filter": 32,
+      "expect": {
+        "hex": "3B8204860D0DC2512274D49504531DEF67713539002F512573213B57BC0",
+        "tagUri": "urn:epc:tag:adi-var:32.RFCP7.BTRI45ITDT17%2FY7D5NP.%2FTRU3HS-W%2F"
+      }
+    },
+    {
+      "scheme": "adi-var",
+      "pureIdentityUri": "urn:epc:id:adi:UMUXU4.O18QF-X7A0S%2F%2FR-U-U-TH1C90-63EXV.7",
+      "filter": 30,
+      "expect": {
+        "hex": "3B795355615D0FC78446B58DC1C13BEF4AD56D56D508C43E70B76CC561603700",
+        "tagUri": "urn:epc:tag:adi-var:30.UMUXU4.O18QF-X7A0S%2F%2FR-U-U-TH1C90-63EXV.7"
+      }
+    },
+    {
+      "scheme": "adi-var",
+      "pureIdentityUri": "urn:epc:id:adi:0X7465.UMYIJYAZJ1GVE.1IWXI0TAHVV3S6-4J7CT--N8FHAD",
+      "filter": 31,
+      "expect": {
+        "hex": "3B7F0637D36D5535924A64168AC47585031257609C14048596CD3DADD0ADC352DB4EE06201100",
+        "tagUri": "urn:epc:tag:adi-var:31.0X7465.UMYIJYAZJ1GVE.1IWXI0TAHVV3S6-4J7CT--N8FHAD"
+      }
+    },
+    {
+      "scheme": "adi-var",
+      "pureIdentityUri": "urn:epc:id:adi:G8TZ5.GLPL6.S%2F%2F-O2661VEMRCMAAF9H%2FAV6VR-RW-",
+      "filter": 17,
+      "expect": {
+        "hex": "3B4601F851AD47310336013BEFB4FCB6DB15853520CD0411B922F056D964AD497B40",
+        "tagUri": "urn:epc:tag:adi-var:17.G8TZ5.GLPL6.S%2F%2F-O2661VEMRCMAAF9H%2FAV6VR-RW-"
+      }
+    },
+    {
+      "scheme": "adi-var",
+      "pureIdentityUri": "urn:epc:id:adi:SP9313.R%2FL%2FG9%2FHNQ-S-RMHZ-UVF.Q-KN3TP3NCU-",
+      "filter": 51,
+      "expect": {
+        "hex": "3BCD3439CF1CD2BCCBC7E6F20E46D4ED48D21AB55586011B4B3B3510CCE0D5B40",
+        "tagUri": "urn:epc:tag:adi-var:51.SP9313.R%2FL%2FG9%2FHNQ-S-RMHZ-UVF.Q-KN3TP3NCU-"
+      }
+    },
+    {
+      "scheme": "adi-var",
+      "pureIdentityUri": "urn:epc:id:adi:9APAHH.KBB29HMX%2FG7EF4XCY-A-CBB-H6FQ.KDHERN%2F%2F1BD-M-L%2F-%2FBAJ%2FI5AAAS",
+      "filter": 9,
+      "expect": {
+        "hex": "3B27905004820B082CB920D62F1F7146D180D9B41B43082B48D864402C420548EBEFC4212D36D32FB6F0812AF27504105300",
+        "tagUri": "urn:epc:tag:adi-var:9.9APAHH.KBB29HMX%2FG7EF4XCY-A-CBB-H6FQ.KDHERN%2F%2F1BD-M-L%2F-%2FBAJ%2FI5AAAS"
+      }
+    },
+    {
+      "scheme": "adi-var",
+      "pureIdentityUri": "urn:epc:id:adi:87X69L.%2FGA%2F-P796KLP.QF2GGKP%2FE-AJX3SU56KC8---GD",
+      "filter": 24,
+      "expect": {
+        "hex": "3B638DD8DB932F1C1BED437E762CC400446C871CB42F16D04A6334D5D762C3E2DB6D1C400",
+        "tagUri": "urn:epc:tag:adi-var:24.87X69L.%2FGA%2F-P796KLP.QF2GGKP%2FE-AJX3SU56KC8---GD"
+      }
+    },
+    {
+      "scheme": "adi-var",
+      "pureIdentityUri": "urn:epc:id:adi:MWSQH.R7PSFW%2F5QC%2F26ERC4N4-EMX3C35C2R.1209%2FGDUO-2ZNJ3%2FI",
+      "filter": 38,
+      "expect": {
+        "hex": "3B9A03574D1212DD04C65EFD510EFCB61520F43B4B45358CC3CF50F2480C72C39BC71153EDC9A38ACEF240",
+        "tagUri": "urn:epc:tag:adi-var:38.MWSQH.R7PSFW%2F5QC%2F26ERC4N4-EMX3C35C2R.1209%2FGDUO-2ZNJ3%2FI"
+      }
+    }
+  ]
+}

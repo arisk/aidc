@@ -1,0 +1,573 @@
+{
+ "provenance": {
+  "description": "EPC URI and GCP vectors: TDS 2.3 examples for pure identity, tag, raw URIs and element string translation, plus TDT 2.3 draft harness outputs.",
+  "sources": [
+   "docs/specifications/epc-tag-data-standard-v2.3.pdf",
+   "gs1/TDT a655cc3 TDT_2_3_demo (draft, Apache-2.0)"
+  ],
+  "notes": "Research notes: docs/superpowers/research/2026-10-09-m3-epc-gcp-uri-oracle.md",
+  "extracted": "2026-10-09"
+ },
+ "vectors": [
+  {
+   "source": "TDS 2.3 E.1",
+   "input": "(01)09506000134352(21)6789",
+   "expect": {
+    "gcpLength": 11,
+    "pureIdentityUri": "urn:epc:id:sgtin:95060001343.05.6789",
+    "tagUri": "urn:epc:tag:sgtin-96:3.95060001343.05.6789",
+    "hex": "3066C4409047E14000001A85"
+   }
+  },
+  {
+   "source": "TDS 2.3 E.3 SGTIN-96 (EPC URI erratum corrected)",
+   "input": "3066C4409047E140075BCD15",
+   "expect": {
+    "tagUri": "urn:epc:tag:sgtin-96:3.95060001343.05.123456789",
+    "pureIdentityUri": "urn:epc:id:sgtin:95060001343.05.123456789",
+    "elementString": "(01)09506000134352(21)123456789"
+   }
+  },
+  {
+   "source": "TDS 2.3 E.3 SGTIN-198",
+   "input": "3666C4409047E159B2C2BF100000000000000000000000000000",
+   "expect": {
+    "tagUri": "urn:epc:tag:sgtin-198:3.95060001343.05.32a%2Fb",
+    "pureIdentityUri": "urn:epc:id:sgtin:95060001343.05.32a%2Fb",
+    "elementString": "(01)09506000134352(21)32a/b"
+   }
+  },
+  {
+   "source": "TDS 2.3 E.3 SSCC-96",
+   "input": "311BA1B300CE0A6A83000000",
+   "expect": {
+    "tagUri": "urn:epc:tag:sscc-96:0.952012.03456789123",
+    "pureIdentityUri": "urn:epc:id:sscc:952012.03456789123",
+    "elementString": "(00)095201234567891235",
+    "gcpLength": 6
+   }
+  },
+  {
+   "source": "TDS 2.3 E.3 SGLN-96",
+   "input": "3276451FD46072000000162E",
+   "expect": {
+    "tagUri": "urn:epc:tag:sgln-96:3.9521141.12345.5678",
+    "pureIdentityUri": "urn:epc:id:sgln:9521141.12345.5678",
+    "elementString": "(414)9521141123454(254)5678"
+   }
+  },
+  {
+   "source": "TDS 2.3 E.3 SGLN-195",
+   "input": "3976451FD46072CD9615F8800000000000000000000000000000",
+   "expect": {
+    "tagUri": "urn:epc:tag:sgln-195:3.9521141.12345.32a%2Fb",
+    "pureIdentityUri": "urn:epc:id:sgln:9521141.12345.32a%2Fb",
+    "elementString": "(414)9521141123454(254)32a/b"
+   }
+  },
+  {
+   "source": "TDS 2.3 E.3 GRAI-96",
+   "input": "3376451FD40C0E400000162E",
+   "expect": {
+    "tagUri": "urn:epc:tag:grai-96:3.9521141.12345.5678",
+    "pureIdentityUri": "urn:epc:id:grai:9521141.12345.5678",
+    "elementString": "(8003)095211411234545678"
+   }
+  },
+  {
+   "source": "TDS 2.3 E.3 GRAI-170",
+   "input": "3776451FD40C0E59B2C2BF1000000000000000000000",
+   "expect": {
+    "tagUri": "urn:epc:tag:grai-170:3.9521141.12345.32a%2Fb",
+    "pureIdentityUri": "urn:epc:id:grai:9521141.12345.32a%2Fb",
+    "elementString": "(8003)0952114112345432a/b"
+   }
+  },
+  {
+   "source": "TDS 2.3 E.3 GIAI-96",
+   "input": "3476451FD40000000000162E",
+   "expect": {
+    "tagUri": "urn:epc:tag:giai-96:3.9521141.5678",
+    "pureIdentityUri": "urn:epc:id:giai:9521141.5678",
+    "elementString": "(8004)95211415678"
+   }
+  },
+  {
+   "source": "TDS 2.3 E.3 GIAI-202",
+   "input": "3876451FD59B2C2BF10000000000000000000000000000000000",
+   "expect": {
+    "tagUri": "urn:epc:tag:giai-202:3.9521141.32a%2Fb",
+    "pureIdentityUri": "urn:epc:id:giai:9521141.32a%2Fb",
+    "elementString": "(8004)952114132a/b"
+   }
+  },
+  {
+   "source": "TDS 2.3 E.3 GSRN-96",
+   "input": "2D76451FD4499602D2000000",
+   "expect": {
+    "tagUri": "urn:epc:tag:gsrn-96:3.9521141.1234567890",
+    "pureIdentityUri": "urn:epc:id:gsrn:9521141.1234567890",
+    "elementString": "(8018)952114112345678906"
+   }
+  },
+  {
+   "source": "TDS 2.3 E.3 GSRNP-96",
+   "input": "2E76451FD4499602D2000000",
+   "expect": {
+    "tagUri": "urn:epc:tag:gsrnp-96:3.9521141.1234567890",
+    "pureIdentityUri": "urn:epc:id:gsrnp:9521141.1234567890",
+    "elementString": "(8017)952114112345678906"
+   }
+  },
+  {
+   "source": "TDS 2.3 E.3 GDTI-96",
+   "input": "2C76451FD46072000000162E",
+   "expect": {
+    "tagUri": "urn:epc:tag:gdti-96:3.9521141.12345.5678",
+    "pureIdentityUri": "urn:epc:id:gdti:9521141.12345.5678",
+    "elementString": "(253)95211411234545678"
+   }
+  },
+  {
+   "source": "TDS 2.3 E.3 GDTI-174",
+   "input": "3E76451FD7039B061438997367D0C18B266D1AB66EE0",
+   "expect": {
+    "tagUri": "urn:epc:tag:gdti-174:3.9521141.98765.ABCDefgh012345678",
+    "pureIdentityUri": "urn:epc:id:gdti:9521141.98765.ABCDefgh012345678",
+    "elementString": "(253)9521141987650ABCDefgh012345678"
+   }
+  },
+  {
+   "source": "TDS 2.3 E.3 CPI-96",
+   "input": "3C76451FD400C0E680003039",
+   "expect": {
+    "tagUri": "urn:epc:tag:cpi-96:3.9521141.98765.12345",
+    "pureIdentityUri": "urn:epc:id:cpi:9521141.98765.12345",
+    "elementString": "(8010)952114198765(8011)12345"
+   }
+  },
+  {
+   "source": "TDS 2.3 E.3 CPI-var",
+   "input": "3D76451FD75411DEF6B4CC00000003039000",
+   "expect": {
+    "tagUri": "urn:epc:tag:cpi-var:3.9521141.5PQ7%2FZ43.12345",
+    "pureIdentityUri": "urn:epc:id:cpi:9521141.5PQ7%2FZ43.12345",
+    "elementString": "(8010)95211415PQ7/Z43(8011)12345"
+   }
+  },
+  {
+   "source": "TDS 2.3 E.3 SGCN-96",
+   "input": "3F76451FD612640000019907",
+   "expect": {
+    "tagUri": "urn:epc:tag:sgcn-96:3.9521141.67890.04711",
+    "pureIdentityUri": "urn:epc:id:sgcn:9521141.67890.04711",
+    "elementString": "(255)952114167890904711"
+   }
+  },
+  {
+   "source": "TDS 2.3 E.3 GID-96",
+   "input": "3500E86F8000A9E000000586",
+   "expect": {
+    "tagUri": "urn:epc:tag:gid-96:952056.2718.1414",
+    "pureIdentityUri": "urn:epc:id:gid:952056.2718.1414"
+   }
+  },
+  {
+   "source": "TDS 2.3 E.3 USDOD-96",
+   "input": "2F320434147455900000162E",
+   "expect": {
+    "tagUri": "urn:epc:tag:usdod-96:3.CAGEY.5678",
+    "pureIdentityUri": "urn:epc:id:usdod:CAGEY.5678"
+   }
+  },
+  {
+   "source": "TDS 2.3 E.3 ADI-var",
+   "input": "3B0E0CF5E76C9047759AD00373DC7602E7200",
+   "expect": {
+    "tagUri": "urn:epc:tag:adi-var:3.35962.PQ7VZ4.M37GXB92",
+    "pureIdentityUri": "urn:epc:id:adi:35962.PQ7VZ4.M37GXB92"
+   }
+  },
+  {
+   "source": "TDS 2.3 E.3 ITIP-110",
+   "input": "4076451FD40C0E40820000000F54",
+   "expect": {
+    "tagUri": "urn:epc:tag:itip-110:3.9521141.012345.01.02.981",
+    "pureIdentityUri": "urn:epc:id:itip:9521141.012345.01.02.981",
+    "elementString": "(8006)095211411234540102(21)981"
+   }
+  },
+  {
+   "source": "TDS 2.3 E.3 ITIP-212",
+   "input": "4176451FD40C0E4082DBDD8B36600000000000000000000000000000",
+   "expect": {
+    "tagUri": "urn:epc:tag:itip-212:3.9521141.012345.01.02.mw133",
+    "pureIdentityUri": "urn:epc:id:itip:9521141.012345.01.02.mw133",
+    "elementString": "(8006)095211411234540102(21)mw133"
+   }
+  },
+  {
+   "source": "TDS 2.3 7.2.1 individually assigned GTIN",
+   "input": "(01)09526567890126(21)4711",
+   "expect": {
+    "gcpLength": 12,
+    "pureIdentityUri": "urn:epc:id:sgtin:952656789012.0.4711"
+   }
+  },
+  {
+   "source": "TDS 2.3 7.2.2 individually assigned GLN",
+   "input": "(414)9526567890126",
+   "expect": {
+    "gcpLength": 12,
+    "pureIdentityUri": "urn:epc:id:sgln:952656789012..0"
+   }
+  },
+  {
+   "source": "TDS 2.3 7.2.2 individually assigned GLN + ext",
+   "input": "(414)9526567890126(254)4711",
+   "expect": {
+    "gcpLength": 12,
+    "pureIdentityUri": "urn:epc:id:sgln:952656789012..4711"
+   }
+  },
+  {
+   "source": "TDS 2.3 7.2.3 individually assigned SSCC",
+   "input": "(00)095265678901234568",
+   "expect": {
+    "gcpLength": 12,
+    "pureIdentityUri": "urn:epc:id:sscc:952656789012.03456"
+   }
+  },
+  {
+   "source": "TDS 2.3 7.2.3 individually assigned GIAI",
+   "input": "(8004)952656789012345678901234567890",
+   "expect": {
+    "gcpLength": 12,
+    "pureIdentityUri": "urn:epc:id:giai:952656789012.345678901234567890"
+   }
+  },
+  {
+   "source": "TDS 2.3 7.3",
+   "input": "(01)09521141123454(21)32a/b",
+   "expect": {
+    "gcpLength": 7,
+    "pureIdentityUri": "urn:epc:id:sgtin:9521141.012345.32a%2Fb"
+   }
+  },
+  {
+   "source": "TDS 2.3 7.3.1 GTIN-12",
+   "input": "(01)00614141123452(21)1",
+   "expect": {
+    "gcpLength": 7,
+    "pureIdentityUri": "urn:epc:id:sgtin:0614141.012345.1"
+   }
+  },
+  {
+   "source": "TDS 2.3 7.3.1 GTIN-13",
+   "input": "(01)09521141890127(21)1",
+   "expect": {
+    "gcpLength": 7,
+    "pureIdentityUri": "urn:epc:id:sgtin:9521141.089012.1"
+   }
+  },
+  {
+   "source": "TDS 2.3 7.3.2 GTIN-8 (table says 12; rule says 8)",
+   "input": "(01)00000095010939(21)1",
+   "expect": {
+    "gcpLength": 8,
+    "pureIdentityUri": "urn:epc:id:sgtin:00000950.01093.1"
+   }
+  },
+  {
+   "source": "TDS 2.3 7.3.8.1 ISBN (table says 0; caller supplies 9)",
+   "input": "(01)09788175257665(21)1",
+   "expect": {
+    "gcpLength": 9,
+    "pureIdentityUri": "urn:epc:id:sgtin:978817525.0766.1"
+   }
+  },
+  {
+   "source": "TDS 2.3 7.4",
+   "input": "urn:epc:id:sscc:9521141.1234567890",
+   "expect": {
+    "elementString": "(00)195211412345678900"
+   }
+  },
+  {
+   "source": "TDS 2.3 7.5 no extension",
+   "input": "urn:epc:id:sgln:9521141.12345.0",
+   "expect": {
+    "elementString": "(414)9521141123454"
+   }
+  },
+  {
+   "source": "TDS 2.3 7.5 extension",
+   "input": "urn:epc:id:sgln:9521141.12345.32a%2Fb",
+   "expect": {
+    "elementString": "(414)9521141123454(254)32a/b"
+   }
+  },
+  {
+   "source": "TDS 2.3 7.6",
+   "input": "urn:epc:id:grai:9521141.12345.32a%2Fb",
+   "expect": {
+    "elementString": "(8003)0952114112345432a/b"
+   }
+  },
+  {
+   "source": "TDS 2.3 7.7",
+   "input": "urn:epc:id:giai:9521141.32a%2Fb",
+   "expect": {
+    "elementString": "(8004)952114132a/b"
+   }
+  },
+  {
+   "source": "TDS 2.3 7.8",
+   "input": "urn:epc:id:gsrn:9521141.1234567890",
+   "expect": {
+    "elementString": "(8018)952114112345678906"
+   }
+  },
+  {
+   "source": "TDS 2.3 7.9",
+   "input": "urn:epc:id:gsrnp:9521141.1234567890",
+   "expect": {
+    "elementString": "(8017)952114112345678906"
+   }
+  },
+  {
+   "source": "TDS 2.3 7.10",
+   "input": "urn:epc:id:gdti:9521141.12345.006847",
+   "expect": {
+    "elementString": "(253)9521141123454006847"
+   }
+  },
+  {
+   "source": "TDS 2.3 7.11",
+   "input": "urn:epc:id:cpi:9521141.5PQ7%2FZ43.12345",
+   "expect": {
+    "elementString": "(8010)95211415PQ7/Z43(8011)12345"
+   }
+  },
+  {
+   "source": "TDS 2.3 7.12",
+   "input": "urn:epc:id:sgcn:9521141.67890.04711",
+   "expect": {
+    "elementString": "(255)952114167890904711"
+   }
+  },
+  {
+   "source": "TDS 2.3 7.13",
+   "input": "urn:epc:id:ginc:9521141.xyz47%2F11",
+   "expect": {
+    "elementString": "(401)9521141xyz47/11"
+   }
+  },
+  {
+   "source": "TDS 2.3 7.14",
+   "input": "urn:epc:id:gsin:9521141.123456789",
+   "expect": {
+    "elementString": "(402)95211411234567892"
+   }
+  },
+  {
+   "source": "TDS 2.3 7.15",
+   "input": "urn:epc:id:itip:9521141.012345.04.04.32a%2Fb",
+   "expect": {
+    "elementString": "(8006)095211411234540404(21)32a/b"
+   }
+  },
+  {
+   "source": "TDS 2.3 7.16 / 6.3.14",
+   "input": "urn:epc:id:upui:9521141.089456.51qIgY)%3C%26Jp3*j7'SDB",
+   "expect": {
+    "elementString": "(01)09521141894569(235)51qIgY)<&Jp3*j7'SDB"
+   }
+  },
+  {
+   "source": "TDS 2.3 7.17",
+   "input": "urn:epc:id:pgln:9521141.89012",
+   "expect": {
+    "elementString": "(417)9521141890127"
+   }
+  },
+  {
+   "source": "TDS 2.3 7.18 (stray space removed)",
+   "input": "urn:epc:class:lgtin:9521141.712345.32a%2Fb",
+   "expect": {
+    "elementString": "(01)79521141123453(10)32a/b"
+   }
+  },
+  {
+   "source": "TDS 2.3 6.4.1",
+   "input": "urn:epc:class:lgtin:4012345.012345.998877",
+   "expect": {
+    "elementString": "(01)04012345123456(10)998877"
+   }
+  },
+  {
+   "source": "TDS 2.3 6.3.19",
+   "input": "urn:epc:id:bic:CSQU3054383",
+   "expect": {
+    "valid": true
+   }
+  },
+  {
+   "source": "TDS 2.3 6.3.20",
+   "input": "urn:epc:id:imovn:9176187",
+   "expect": {
+    "valid": true
+   }
+  },
+  {
+   "source": "TDS 2.3 6.3.17",
+   "input": "urn:epc:id:usdod:2S194.12345678901",
+   "expect": {
+    "valid": true
+   }
+  },
+  {
+   "source": "TDS 2.3 6.3.18 empty part number",
+   "input": "urn:epc:id:adi:2S194..12345678901",
+   "expect": {
+    "valid": true
+   }
+  },
+  {
+   "source": "TDS 2.3 6.3.18",
+   "input": "urn:epc:id:adi:W81X9C.3KL984PX1.2WMA52",
+   "expect": {
+    "valid": true
+   }
+  },
+  {
+   "source": "TDS 2.3 6.3.9",
+   "input": "urn:epc:id:cpi:9521141.123ABC.123456789",
+   "expect": {
+    "valid": true
+   }
+  },
+  {
+   "source": "TDS 2.3 6.3.1 example",
+   "input": "urn:epc:id:sgtin:9521141.012345.4711",
+   "expect": {
+    "elementString": "(01)09521141123454(21)4711"
+   }
+  },
+  {
+   "source": "TDS 2.3 12.2.1 pure -> tag (sgtin-96, filter 3)",
+   "input": "urn:epc:id:sgtin:9521141.012345.4711",
+   "expect": {
+    "tagUri": "urn:epc:tag:sgtin-96:3.9521141.012345.4711"
+   }
+  },
+  {
+   "source": "TDS 2.3 Figure 12-1 tag URI with control fields",
+   "input": "urn:epc:tag:[att=x01][xpc=x0004]:sgtin-96:3.9521141.012345.4711",
+   "expect": {
+    "pureIdentityUri": "urn:epc:id:sgtin:9521141.012345.4711",
+    "valid": true
+   }
+  },
+  {
+   "source": "TDS 2.3 12.2.2",
+   "input": "urn:epc:tag:[att=x01][xpc=x0004]:sgtin-96:3.9521141.112345.400",
+   "expect": {
+    "pureIdentityUri": "urn:epc:id:sgtin:9521141.112345.400",
+    "valid": true
+   }
+  },
+  {
+   "source": "TDS 2.3 Figure 12-1 raw toggle 0",
+   "input": "urn:epc:raw:[att=x01][xpc=x0004]:96.x0123456890ABCDEF01234567",
+   "expect": {
+    "valid": true
+   }
+  },
+  {
+   "source": "TDS 2.3 Figure 12-1 raw toggle 1 (AFI 0x31)",
+   "input": "urn:epc:raw:[umi=1][xpc=x0004]:64.x31.x0123456890ABCDEF",
+   "expect": {
+    "valid": true
+   }
+  },
+  {
+   "source": "TDS 2.3 12.2.2 raw toggle 0",
+   "input": "urn:epc:raw:[att=x01][umi=1][xpc=x0004]:96.x1234567890ABCDEF01234567",
+   "expect": {
+    "valid": true
+   }
+  },
+  {
+   "source": "TDS 2.3 12.2.2 raw toggle 1 (AFI 0xC1)",
+   "input": "urn:epc:raw:[xpc=x0001]:96.xC1.x1234567890ABCDEF01234567",
+   "expect": {
+    "valid": true
+   }
+  },
+  {
+   "source": "TDS 2.3 12.2 control fields out of order",
+   "input": "urn:epc:tag:[xpc=x0004][att=x01]:sgtin-96:3.9521141.012345.4711",
+   "expect": {
+    "valid": false
+   }
+  },
+  {
+   "source": "TDS 2.3 12.3.2 filter must be 0..7",
+   "input": "urn:epc:tag:sgtin-96:8.9521141.012345.4711",
+   "expect": {
+    "valid": false
+   }
+  },
+  {
+   "source": "TDS 2.3 12.3.1 96-bit serial leading zero",
+   "input": "urn:epc:tag:sgtin-96:3.9521141.012345.04711",
+   "expect": {
+    "valid": false
+   }
+  },
+  {
+   "source": "TDS 2.3 6.3.1 digits must total 13",
+   "input": "urn:epc:id:sgtin:9521141.12345.4711",
+   "expect": {
+    "valid": false
+   }
+  },
+  {
+   "source": "TDS 2.3 8",
+   "input": "urn:epc:idpat:sgtin:0652642.*.*",
+   "expect": {
+    "valid": true
+   }
+  },
+  {
+   "source": "TDS 2.3 8 stars must be rightmost",
+   "input": "urn:epc:idpat:sgtin:*.012345.*",
+   "expect": {
+    "valid": false
+   }
+  },
+  {
+   "source": "TDS 2.3 13",
+   "input": "urn:epc:pat:sgtin-96:3.0652642.[102400-204700].*",
+   "expect": {
+    "valid": true
+   }
+  },
+  {
+   "source": "epc-tds README (classic TDS 1.x vector, cross-checked with epc-tds)",
+   "input": "3074257BF7194E4000001A85",
+   "expect": {
+    "tagUri": "urn:epc:tag:sgtin-96:3.0614141.812345.6789",
+    "elementString": "(01)80614141123458(21)6789"
+   }
+  },
+  {
+   "source": "TDT 2.3 harness (draft): individually assigned SGLN",
+   "input": "urn:epc:tag:sgln-96:0.952656789012..0",
+   "expect": {
+    "hex": "3203773B13F8500000000000"
+   }
+  }
+ ]
+}

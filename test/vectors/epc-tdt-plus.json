@@ -1,0 +1,2795 @@
+{
+  "provenance": {
+    "generator": "scripts/gen-epc-tdt-vectors.ts",
+    "source": "docs/specifications/data/repos/gs1-tdt-main-a655cc3-2026-09-19.tar.gz (gs1/TDT main @ a655cc3)",
+    "sourceSha256": "4776e0e37a4a2ce005c117094c5f6b6425c3b9cb12335d31e05a1b28a9cd8734",
+    "translator": "TDT-main/TDT_2_3_demo/TDTtranslator.js",
+    "translatorSha256": "8182a137989512f39140d4b990f2e253dd88f047a48791db0ceafe22e57c1767",
+    "license": "Apache-2.0 (GS1 TDT); the vectors are test data only and are not shipped",
+    "normative": "No: TDT 2.3 is a draft, and its \"+\"/\"++\" support is new. TDS 2.3 wins on conflict, with the errata resolutions of research plus section 3 (plan decisions E3, E19).",
+    "seed": 2654435769,
+    "perScheme": 20,
+    "notes": [
+      "Inputs come from a seeded xorshift32 PRNG (restarted from the seed for this pass); each is a valid element string: the body AIs, the DSGTIN prioritised date, then 0 to 3 +AIDC AIs from (17), (10), (3103), (7003), (8008), (4330), (7007), (422), (91).",
+      "Encode direction only: TDT input is GS1_AI_JSON (body AIs, then the date, then the +AIDC AIs), output is HEX, with options filter and, for \"++\", hostname. TDT HEX is nibble padded; ours is padded to a 16-bit word.",
+      "+AIDC AIs are those the AI validator accepts with the body (requirements such as (4330) needing (00)), in ascending AI order: TDT parses the JSON with JSON.parse, which orders integer-like keys first.",
+      "DSGTIN: the date AI is drawn from (11), (13), (15), (16), (17), (7006), (7007); no +AIDC AI is a prioritised date AI at or before it, so the default dateAi (plan decision F6) picks it. DD is 00 one time in ten where the AI linter allows it (research plus 3, row 11).",
+      "SGLN: (254) is never \"0\", which means no extension (plan decision F7). GRAI, GDTI and SGCN serials are empty one time in ten, as the AIs allow.",
+      "skipped sgtin+ (01)56242574340338(21);f(10)vlhtg8wouA88j5(17)440700(7003)4002111737: TDT threw \"inputCharacterString '440700' does not match required \"",
+      "skipped dsgtin+ (01)56077360345958(21)FMm4yZvq=UYu\\(mrUJDRD(15)670313(17)920100(422)250: TDT threw \"inputCharacterString '920100' does not match required \"",
+      "skipped sscc+ (00)979315534892945470(4330)065795-: TDT threw \"Input - does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sscc+ (00)991138433422689523(91)-vO626+MuY/P*NRsUKAs(4330)386109: TDT threw \"Input  does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sscc+ (00)933694183523830072(91)-2Z8JAM(4330)152140: TDT threw \"Input  does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sscc+ (00)804454682196274352(91)540iPJi(4330)296312: TDT threw \"Input  does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sscc+ (00)881459409153125146(91)Tit\"B2(4330)384308: TDT threw \"Expected ',' or '}' after property value in JSON at position 37 (line 1 column 38)\"",
+      "skipped sscc+ (00)080904708638563742(91)<*xVaUoXW.QFYuSlx5X(4330)554894-: TDT threw \"Input - does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sscc+ (00)749157008923743764(91)I43bW(4330)949598-: TDT threw \"Input - does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sscc+ (00)876962155920394813(91)PapDXg1fpLTGPC7(4330)571601-: TDT threw \"Input - does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sscc+ (00)780618621604357563(91)t8dM7jzvm.c(4330)114559: TDT threw \"Input  does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sscc+ (00)161684915524780663(4330)436800: TDT threw \"Input  does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sscc+ (00)133522741061240562(91)FxoGe0CPRZ7WwEpC(4330)129667: TDT threw \"Input  does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sscc+ (00)531683281758042740(91)CUma(4330)966181-: TDT threw \"Input - does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sscc+ (00)725929667036337852(91)hbjROZlPga1iAG0X9(4330)615454: TDT threw \"Input  does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sscc+ (00)674263426237727631(91)NrCDRx6y(4330)279072-: TDT threw \"Input - does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sgln+ (414)8655671368007(254)J2ZhjFIuSQhej\"5M: TDT threw \"Expected ',' or '}' after property value in JSON at position 44 (line 1 column 45)\"",
+      "skipped grai+ (8003)05283053904210z\"Pv67Ww3DCA: TDT threw \"Expected ',' or '}' after property value in JSON at position 25 (line 1 column 26)\"",
+      "skipped grai+ (8003)082957697238460qVeKYsXx(91)G0z\"-CkT66Cb: TDT threw \"Expected ',' or '}' after property value in JSON at position 44 (line 1 column 45)\"",
+      "skipped grai+ (8003)04026539903465EaGUL5l2J\"VdsRE: TDT threw \"Expected ',' or '}' after property value in JSON at position 33 (line 1 column 34)\"",
+      "skipped grai+ (8003)09683493464590J(91)lrUjav\"fu5: TDT threw \"Expected ',' or '}' after property value in JSON at position 39 (line 1 column 40)\"",
+      "skipped grai+ (8003)07542187986065: TDT threw \"Operational Fault: Input payload pattern validation mismatch structure failure.\"",
+      "skipped gsrn+ (8018)315296707875511852(91)KzIp\"LCsr>: TDT threw \"Expected ',' or '}' after property value in JSON at position 40 (line 1 column 41)\"",
+      "skipped gdti+ (253)8430907797574hoag\"N7RS3E0O: TDT threw \"Expected ',' or '}' after property value in JSON at position 26 (line 1 column 27)\"",
+      "skipped gdti+ (253)6150832888155(91)y1jma6g+: TDT threw \"Operational Fault: Input payload pattern validation mismatch structure failure.\"",
+      "skipped sgcn+ (255)74948430265950728(17)100625(91)WZ-ahPx0Z4w\"8riuGVQ: TDT threw \"Expected ',' or '}' after property value in JSON at position 59 (line 1 column 60)\"",
+      "skipped sgcn+ (255)2516940666896(17)920905(91)b3wOf6: TDT threw \"Operational Fault: Input payload pattern validation mismatch structure failure.\"",
+      "skipped itip+ (8006)387008215999900553(21)0Zc\\(JblgQX2UNelMsG(17)410600(91)dAArAOHVv=pNeD9: TDT threw \"inputCharacterString '410600' does not match required \"",
+      "skipped itip+ (8006)862238461344127399(21)ZX\"s: TDT threw \"Expected ',' or '}' after property value in JSON at position 38 (line 1 column 39)\"",
+      "skipped itip+ (8006)481555447746792223(21)IMq9I2tWFXFR)\"(10)m6Amm5CYvn(91)kU(422)250: TDT threw \"Expected ',' or '}' after property value in JSON at position 49 (line 1 column 50)\"",
+      "skipped itip+ (8006)595616587549370667(21)Iak\"FUv2(10)P(422)250: TDT threw \"Expected ',' or '}' after property value in JSON at position 39 (line 1 column 40)\"",
+      "skipped sgtin++ (01)71173441354648(21)waJKi6kSMFNM50>MdwfG(17)481200(7007)660423 @www.host.co.uk: TDT threw \"inputCharacterString '481200' does not match required \"",
+      "skipped sgtin++ (01)46993337566429(21)\"VzJYS2UC3(10)V(17)370119(7007)081011310720 @data.example.org: TDT threw \"Operational Fault: Input payload pattern validation mismatch structure failure.\"",
+      "skipped sgtin++ (01)99163476834679(21)dD\"TaZ(7007)451115430722 @www.host.co.uk: TDT threw \"Expected ',' or '}' after property value in JSON at position 32 (line 1 column 33)\"",
+      "skipped dsgtin++ (01)18975613497082(21).u(17)011100(3103)476076(7003)9512011400 @www.host.co.uk: TDT threw \"Input 011100 does not match regex for date YYMMDD\"",
+      "skipped dsgtin++ (01)52199649213186(21)tqWgYzx3KwL!(17)090907(91)\"5!9cNgj @id.example.com: TDT threw \"Expected ',' or '}' after property value in JSON at position 64 (line 1 column 65)\"",
+      "skipped sscc++ (00)453070378699763838(91)0H3K1xIFnCB1(4330)673875 @www.host.co.uk: TDT threw \"Input  does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sscc++ (00)705423409091653323(91)CEqr2QOkom9(4330)993752- @qr.acme.tech: TDT threw \"Input - does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sscc++ (00)050216171935497440(91)'0Db6jHEfj1q(4330)048986 @qr.acme.tech: TDT threw \"Input  does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sscc++ (00)173144680893789417(91)\\((4330)863410 @data.example.org: TDT threw \"Input  does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sscc++ (00)316056015330732393(91)efvTbhcHV(4330)940430 @data.example.org: TDT threw \"Input  does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sscc++ (00)156172003796874855(91)qh1sq9(4330)329749 @qr.acme.tech: TDT threw \"Input  does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sscc++ (00)469929203018379415(4330)170984 @data.example.org: TDT threw \"Input  does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sscc++ (00)592632506408401836(91)jcqaX2(4330)198336- @www.host.co.uk: TDT threw \"Input - does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sscc++ (00)851088168040404236(91)t<.ABizx5W(4330)659263 @ID.EXAMPLE.COM: TDT threw \"Input  does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sscc++ (00)017803818898810567(91)l5%j(4330)482446- @ID.EXAMPLE.COM: TDT threw \"Input - does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sscc++ (00)348015266056525552(91)QCqqs38vD5)0Z7i(4330)895911- @www.host.co.uk: TDT threw \"Input - does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sscc++ (00)382237088482548530(4330)426696- @ID.EXAMPLE.COM: TDT threw \"Input - does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sscc++ (00)841284956416543510(91)rHAWW(4330)447084- @www.host.co.uk: TDT threw \"Input - does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sscc++ (00)548899834141543897(91)R8Xo6xaBYQ.aT9i%(4330)645441 @id.example.com: TDT threw \"Input  does not match regex for optional minus ('-' or empty string)\"",
+      "skipped sgln++ (414)3098566312306(254)ecCB5oSuOH+nzCZ(91)in\"2rd=dn @id.example.com: TDT threw \"Expected ',' or '}' after property value in JSON at position 56 (line 1 column 57)\"",
+      "skipped sgln++ (414)4941949257314(254)7aAo6fvu6d(91)\"Nm!6xSz;s42 @qr.acme.tech: TDT threw \"Expected ',' or '}' after property value in JSON at position 49 (line 1 column 50)\"",
+      "skipped grai++ (8003)07623612176722 @id.example.com: TDT threw \"Operational Fault: Input payload pattern validation mismatch structure failure.\"",
+      "skipped grai++ (8003)05593993063992\"AuVIGEnH4jf>KH(91)VhE0p4oqR @data.example.org: TDT threw \"Operational Fault: Input payload pattern validation mismatch structure failure.\"",
+      "skipped grai++ (8003)06418424554087(91)G)x0apK @www.host.co.uk: TDT threw \"Operational Fault: Input payload pattern validation mismatch structure failure.\"",
+      "skipped grai++ (8003)05855378870084Zm(91)L7\"K29kPi2FNEXL @www.host.co.uk: TDT threw \"Expected ',' or '}' after property value in JSON at position 36 (line 1 column 37)\"",
+      "skipped giai++ (8004)8989378vKo4\"X(91)1eBLuOzes3yowO @qr.acme.tech: TDT threw \"Expected ',' or '}' after property value in JSON at position 21 (line 1 column 22)\"",
+      "skipped gsrn++ (8018)211568058876135851(91)RIuMgK7Unrhugns9f\"e @ID.EXAMPLE.COM: TDT threw \"Expected ',' or '}' after property value in JSON at position 53 (line 1 column 54)\"",
+      "skipped gsrn++ (8018)245630960486427145(91)\")+FDo @data.example.org: TDT threw \"Expected ',' or '}' after property value in JSON at position 36 (line 1 column 37)\"",
+      "skipped gdti++ (253)5562978384889Dy02U(91)alJtLtv831\"IYiAv0 @ID.EXAMPLE.COM: TDT threw \"Expected ',' or '}' after property value in JSON at position 45 (line 1 column 46)\"",
+      "skipped gdti++ (253)9724851600752(91)J @data.example.org: TDT threw \"Operational Fault: Input payload pattern validation mismatch structure failure.\"",
+      "skipped sgcn++ (255)507136752771968(91)B\"Z1h4JTai @id.example.com: TDT threw \"Expected ',' or '}' after property value in JSON at position 33 (line 1 column 34)\"",
+      "skipped itip++ (8006)352383384218154083(21)xjL5mc2Ok\",>bBldceu(17)091115(91)wMqsg4mnFdHHv(422)840 @id.example.com: TDT threw \"Expected double-quoted property name in JSON at position 46 (line 1 column 47)\""
+    ]
+  },
+  "vectors": [
+    {
+      "scheme": "sgtin+",
+      "elementString": "(01)32411121584635(21)0k7y9",
+      "filter": 1,
+      "expectHex": "F713241112158463565D24EF2F4"
+    },
+    {
+      "scheme": "sgtin+",
+      "elementString": "(01)80926855322424(21)fgbGIxQa(91)QLKbpS4NVL1>CIN.fShH(7003)7201260854(7007)070203",
+      "filter": 0,
+      "expectHex": "F7880926855322424687E06C623141A918528CC978B853693AB4C62FA1C99CBB353D121C00E40E91B38038390C"
+    },
+    {
+      "scheme": "sgtin+",
+      "elementString": "(01)93790795965058(21)Lv\\(y;G(8008)6810172028",
+      "filter": 1,
+      "expectHex": "F79937907959650588699D9479771E00218951A38"
+    },
+    {
+      "scheme": "sgtin+",
+      "elementString": "(01)28147479442057(21)cPy2FJQVJhMnhqu(7003)4201112127",
+      "filter": 6,
+      "expectHex": "F7E281474794420576F70FCB614941526132786AB9C00D50AEAD8"
+    },
+    {
+      "scheme": "sgtin+",
+      "elementString": "(01)60464358848202(21)7reob015IE/elys&6(17)010725(91)wc!4MkIjK0(3103)174405",
+      "filter": 7,
+      "expectHex": "F7F60464358848202916FCB2EFC4C18B593157E5D9E79A66C2E05F3230577C685A4DD72754B6062065528A"
+    },
+    {
+      "scheme": "sgtin+",
+      "elementString": "(01)35084817928968(21)zhQOnu'a9cT7*h7Q0PT0(422)826(7003)2708101437",
+      "filter": 3,
+      "expectHex": "F7B3508481792896894F5A28CFDDD53E1738EA3755A1BD16142A30422CE9C00CDC29D28"
+    },
+    {
+      "scheme": "sgtin+",
+      "elementString": "(01)26356597445112(21)Jo7CmZ7w(17)050723(3103)572638(7007)120319590627",
+      "filter": 6,
+      "expectHex": "F7E2635659744511268268EC2999EF0170AF731038BCDE70078C39BB6D8"
+    },
+    {
+      "scheme": "sgtin+",
+      "elementString": "(01)49400400448966(21)z845yNnwZ8qPvwe8(7007)611220290928",
+      "filter": 1,
+      "expectHex": "F794940040044896670CFCE39C8D9F067CA8FBF07BC7007BDCA1D9E0"
+    },
+    {
+      "scheme": "sgtin+",
+      "elementString": "(01)24628484007942(21)R2Ip1OOiAu2T)X(91)_bg4n8ulQ3rllKkNC(3103)312695",
+      "filter": 6,
+      "expectHex": "F7E246284840079428EA4CA4F0633E7E983D595453624591FDB8389FCBA5437AE594A90D08C40D315DC"
+    },
+    {
+      "scheme": "sgtin+",
+      "elementString": "(01)31858052735353(21)zKEXY\\(XhiUc5(91)FGg85b7sSg2E",
+      "filter": 7,
+      "expectHex": "F7F318580527353538CF52E2D8B2A2C68D3571B59163051A0F396FBB1283610"
+    },
+    {
+      "scheme": "sgtin+",
+      "elementString": "(01)69775084901064(21)I",
+      "filter": 2,
+      "expectHex": "F72697750849010646120"
+    },
+    {
+      "scheme": "sgtin+",
+      "elementString": "(01)25922488074245(21)iJu>JjOJLbxoPi8svUF(422)250(3103)254494(8008)0009070748",
+      "filter": 4,
+      "expectHex": "F7C2592248807424593D32BABE95AA7CA998BC6FA1A5C73ED5632111F462067C43D001080939F0"
+    },
+    {
+      "scheme": "sgtin+",
+      "elementString": "(01)20813111833023(21)9nSoA%25nuzKgekR=*(7007)461015",
+      "filter": 6,
+      "expectHex": "F7E208131118330239273BA9EF8295935DDD7D4BCF975D27AA9C01CBA9E"
+    },
+    {
+      "scheme": "sgtin+",
+      "elementString": "(01)88535128775663(21)jl4(91)6Z6r9=wd(8008)2310200848",
+      "filter": 6,
+      "expectHex": "F7E88535128775663638E5E246086D69B7272F7BE480084BD51180"
+    },
+    {
+      "scheme": "sgtin+",
+      "elementString": "(01)16491979933986(21)7afKYLHk0bjK4HN(10)VRgtJC",
+      "filter": 1,
+      "expectHex": "F79164919799339866FEDA7CA60B1E4D1B8CAE073441995460B4908"
+    },
+    {
+      "scheme": "sgtin+",
+      "elementString": "(01)84763270766398(21)gRa4pbZUH8ilsV95",
+      "filter": 5,
+      "expectHex": "F7584763270766398708116B8A5B6541FC8A5B15F79"
+    },
+    {
+      "scheme": "sgtin+",
+      "elementString": "(01)26812585937064(21)hWyUrqvIZ(8008)0607251348",
+      "filter": 1,
+      "expectHex": "F792681258593706469856C94AEABC86600210CF96E0"
+    },
+    {
+      "scheme": "sgtin+",
+      "elementString": "(01)55143069051672(21)Gi(10)MdJeSL7iz2CeZU1K1jOO(91)sCLkcFN0uKxnf",
+      "filter": 4,
+      "expectHex": "F7C55143069051672621A2107431D25E48BEE2CF609E654D4AD6338E91636C08B91C14DD2E2B19DF"
+    },
+    {
+      "scheme": "sgtin+",
+      "elementString": "(01)93426558322393(21)kaXGaNRyh,<P<a(17)351218",
+      "filter": 5,
+      "expectHex": "F7D934265583223938ED786C47C33A979D0B1E5079845D1E48"
+    },
+    {
+      "scheme": "dsgtin+",
+      "elementString": "(01)32997162479654(21)+xOg2EU(11)231102",
+      "filter": 3,
+      "expectHex": "FB302F62329971624796548757E27E76516A8"
+    },
+    {
+      "scheme": "dsgtin+",
+      "elementString": "(01)28702546792291(21)XEGRlKC0ZK9N(7007)870311",
+      "filter": 4,
+      "expectHex": "FB46AE6B287025467922916C5C419194A0B464AF4D"
+    },
+    {
+      "scheme": "dsgtin+",
+      "elementString": "(01)95533683206806(21)kgFP9k(16)620201(8008)1009271510",
+      "filter": 5,
+      "expectHex": "FBD37C41955336832068066692014FF648008454EDE50"
+    },
+    {
+      "scheme": "dsgtin+",
+      "elementString": "(01)06270239945784(21)UOIP-F6urSzU(13)421124(7007)121104",
+      "filter": 2,
+      "expectHex": "FBA15578062702399457846C50E20FF85EAEAD2CD470070CB20"
+    },
+    {
+      "scheme": "dsgtin+",
+      "elementString": "(01)39006806476744(21)4?UwroJLmuTKK_b(7007)730124",
+      "filter": 1,
+      "expectHex": "FB169238390068064767448F68FEAF7E5BE54CDBD6A4B977F10"
+    },
+    {
+      "scheme": "dsgtin+",
+      "elementString": "(01)97610590004393(21)r0(16)990925",
+      "filter": 1,
+      "expectHex": "FB13C7399761059000439362AF4"
+    },
+    {
+      "scheme": "dsgtin+",
+      "elementString": "(01)47635149821622(21)J:KxmwrdoeSQXvF7loS(17)860107(91)ti-rx45PKYQn/z3(3103)240954",
+      "filter": 4,
+      "expectHex": "FBC4AC27476351498216229394EA5F8DBDF964DF969D1B1DA337D9BE9C8C1FD34ADE5E1A35A12ECD1DCBFD3331033AD3A"
+    },
+    {
+      "scheme": "dsgtin+",
+      "elementString": "(01)33356964791576(21)>WtXjegWT5xEld(11)561210(8008)7306181545",
+      "filter": 2,
+      "expectHex": "FBA0718A333569647915768E7D5FA58D5973D7A8D7C45D992002192D27DA"
+    },
+    {
+      "scheme": "dsgtin+",
+      "elementString": "(01)26237679708885(21)u4cxM25V(13)860724(422)276(7007)421214510322(8008)0403201548",
+      "filter": 6,
+      "expectHex": "FBE1ACF82623767970888568BB8731336E55422451C01EAB1CCCED0010843A3F0"
+    },
+    {
+      "scheme": "dsgtin+",
+      "elementString": "(01)70306109212658(21)NShy0(7007)550212(10)T0Fw1Iz1Jl(91)6(422)276",
+      "filter": 3,
+      "expectHex": "FBB66E4C7030610921265865352872D041A93D05C35233D499644016422450"
+    },
+    {
+      "scheme": "dsgtin+",
+      "elementString": "(01)70437928338240(21)ScqF(7007)450926(91)7Hr7%T\\(y(422)036(7003)6510022014",
+      "filter": 0,
+      "expectHex": "FB865B3A704379283382406449CA8591821BC8E4DD2D451E50882470038342A1C"
+    },
+    {
+      "scheme": "dsgtin+",
+      "elementString": "(01)00756790935748(21)EFGRuMH)Tysk(17)060216(422)826(3103)161498",
+      "filter": 2,
+      "expectHex": "FBA40C50007567909357488C8B1A3D2EB36429A9E79EB422CE8C40C9DB68"
+    },
+    {
+      "scheme": "dsgtin+",
+      "elementString": "(01)75199918744152(21)oPnNZ(11)740914(17)610126(91)IGr7iMC6lx=NAtVe3Ks0",
+      "filter": 1,
+      "expectHex": "FB90952E7519991874415265A0F9CD645DE8EA4614931F937D3361B6D9E1ECE83D2B65672F9B0"
+    },
+    {
+      "scheme": "dsgtin+",
+      "elementString": "(01)55302109319107(21)1NW2(7007)970422(8008)620314042443",
+      "filter": 0,
+      "expectHex": "FB86C2965530210931910764D4D5B680089F1B88C56"
+    },
+    {
+      "scheme": "dsgtin+",
+      "elementString": "(01)99395809945367(21)OjPr6LKh;WQG(7007)140305(10)Rb8a(8008)79022817",
+      "filter": 0,
+      "expectHex": "FB861C65993958099453678C9FAA8726D325E8775E8C7106445BF1A8008279722"
+    },
+    {
+      "scheme": "dsgtin+",
+      "elementString": "(01)72796523726561(21)5rx8JR(13)941007",
+      "filter": 5,
+      "expectHex": "FB51BD477279652372656166E6BC7C251"
+    },
+    {
+      "scheme": "dsgtin+",
+      "elementString": "(01)50843416417957(21)sW(17)560905(91)C0zLZU(422)826(8008)83010200",
+      "filter": 7,
+      "expectHex": "FBF471255084341641795762B16916182D332D95108B3A8008298880"
+    },
+    {
+      "scheme": "dsgtin+",
+      "elementString": "(01)83038452895519(21)G/ZKAUp2XZhAm(7007)170219(10)bF\\(ZuAFBbhd!JmbKMW",
+      "filter": 1,
+      "expectHex": "FB962253830384528955198D8EBED4B8357832B16B441DA21258A328B5D60C6858B464432B6E29736B8"
+    },
+    {
+      "scheme": "dsgtin+",
+      "elementString": "(01)01095382366430(21)6yOKu2IiwLM3ev\\(etN*(7007)830617(10)tz(91)fDKw:uWl",
+      "filter": 0,
+      "expectHex": "FB86A6D101095382366430936DE67CBEACA4E9EF326B3CBD9465E939508315B9C8C119A24BEEEBAD7D8"
+    },
+    {
+      "scheme": "sscc+",
+      "elementString": "(00)297994140962533926",
+      "filter": 5,
+      "expectHex": "F95297994140962533926"
+    },
+    {
+      "scheme": "sscc+",
+      "elementString": "(00)424511512179278715(91)FHEM2KGs1UzpHKou:mtm",
+      "filter": 1,
+      "expectHex": "F99424511512179278715918523488B3594B8FCD8D5F5C244BDFD5D6DE9B4"
+    },
+    {
+      "scheme": "sscc+",
+      "elementString": "(00)790772618123740767(91)KvF5qwUDraxxk97QYyd",
+      "filter": 2,
+      "expectHex": "F9A7907726181237407679164CABC5E6AC140EB6B1C64F7B418C9D"
+    },
+    {
+      "scheme": "sscc+",
+      "elementString": "(00)077664055013487656(91)U4YuPBG/zuOXrh",
+      "filter": 2,
+      "expectHex": "F9A0776640550134876569183AAB4B3D68428EBFD759F63968"
+    },
+    {
+      "scheme": "sscc+",
+      "elementString": "(00)089164767175068991",
+      "filter": 1,
+      "expectHex": "F91089164767175068991"
+    },
+    {
+      "scheme": "sscc+",
+      "elementString": "(00)493227942850396900(91)L4S\\(5k",
+      "filter": 7,
+      "expectHex": "F9F4932279428503969009181A634A6A1AEB"
+    },
+    {
+      "scheme": "sgln+",
+      "elementString": "(414)4458835405716(254)yBn7fDzW4cff(91)MNrNGE)<Ecyrbrc",
+      "filter": 0,
+      "expectHex": "F2844588354057166CC819FB7C3CD6E1C7DF9183E6CEE53A3C552F22E3F3CB172C6"
+    },
+    {
+      "scheme": "sgln+",
+      "elementString": "(414)9848530298051(254)3uDhR9mxA4(91)/O6EQI2qArzQ<7XsFN",
+      "filter": 0,
+      "expectHex": "F2898485302980516ADEE0E147D9B1038918497CF6D168C965C60F2F545E37B1CE34E"
+    },
+    {
+      "scheme": "sgln+",
+      "elementString": "(414)9070498659678(254)r9(91)h&A80rN;1jqmibzc5Tyv",
+      "filter": 3,
+      "expectHex": "F2B907049865967862AFD9185342682E18729CED8EAE3B74E2F58DAD4F3D8"
+    },
+    {
+      "scheme": "sgln+",
+      "elementString": "(414)1561792549812(254)eTVqUdTiIsooTXGzSN(91)QiYcQIIRe)trvzFfB",
+      "filter": 5,
+      "expectHex": "F2D15617925498127279356A51D4E222CA284D71B348D918468E9B38E8C9934B2A9E9CBB7A8D9A10"
+    },
+    {
+      "scheme": "sgln+",
+      "elementString": "(414)5138734699285(254)t(91)FrvuZujI2h",
+      "filter": 6,
+      "expectHex": "F2E513873469928561B6458A16BBEE66E8C8DA1"
+    },
+    {
+      "scheme": "sgln+",
+      "elementString": "(414)3356946474212(254)zfJHRYusld6(91)5aSKY4!",
+      "filter": 1,
+      "expectHex": "F2933569464742126BCDF247458BAC95DEA46076B869CBB2D108"
+    },
+    {
+      "scheme": "sgln+",
+      "elementString": "(414)7843489543933(254)AYTzi0ayHnT\\(r*Au(91)tDhPVckUxqbSCG",
+      "filter": 2,
+      "expectHex": "F2A7843489543933908366A7AD2C30F991BAA28E4AA0F59163AD0E13D5724531A9B48218"
+    },
+    {
+      "scheme": "sgln+",
+      "elementString": "(414)0012275871285(254)8(91)KpxKfVw5mMWKSG",
+      "filter": 5,
+      "expectHex": "F2D001227587128501891638AA7129F570E6631629218"
+    },
+    {
+      "scheme": "sgln+",
+      "elementString": "(414)6968038398015(254)GWSYdvb(91)CQl/YBTw3w4KKY%",
+      "filter": 4,
+      "expectHex": "F2C69680383980156719649876F6E460F874762FB30AA7767DDA4B976528"
+    },
+    {
+      "scheme": "sgln+",
+      "elementString": "(414)0692206575002(254)/a,kx(91)YA",
+      "filter": 6,
+      "expectHex": "F2E0692206575002855F8566BF122C13000"
+    },
+    {
+      "scheme": "sgln+",
+      "elementString": "(414)6062712560993(254)dGR0hQH3YQ-cM",
+      "filter": 1,
+      "expectHex": "F2160627125609936D7464748501F7610F9C30"
+    },
+    {
+      "scheme": "sgln+",
+      "elementString": "(414)7714804985175(254)EO;ySV?(91)DINAnufLhpvRDUyL",
+      "filter": 6,
+      "expectHex": "F2E7714804985175878B3DDF9A759FC8B201906813DCF970D37A21A9916"
+    },
+    {
+      "scheme": "sgln+",
+      "elementString": "(414)8299373826689(254)oG3GN9g,uq",
+      "filter": 1,
+      "expectHex": "F2182993738266898ADF1D9C79CE73ACEBC4"
+    },
+    {
+      "scheme": "sgln+",
+      "elementString": "(414)6135609837383(254)Wt&Lp0qRKyXtMXB(91)5FU3",
+      "filter": 2,
+      "expectHex": "F2A61356098373838FAFD134CE0C38D297E6C749B62148B09C8AA6E"
+    },
+    {
+      "scheme": "sgln+",
+      "elementString": "(414)3224900745954(254)Q\\(ebuAK4Id(91)OIDceBd",
+      "filter": 4,
+      "expectHex": "F2C32249007459548AA2A32E2EB065B4939245873880DC78174"
+    },
+    {
+      "scheme": "sgln+",
+      "elementString": "(414)2528632650236(254)kTrf0Pbl(91)OsEm9UC<O5c",
+      "filter": 6,
+      "expectHex": "F2E252863265023668913ADFD0F6E59182E7F38BB5CD586F27B5C6"
+    },
+    {
+      "scheme": "sgln+",
+      "elementString": "(414)9398471786655(254)dk7rhbQMBhQm!X141(91)O&vvIvTo",
+      "filter": 3,
+      "expectHex": "F2B939847178665591C9ADBF2D18A8CD85A28ED43618B46323044F4DDBB49ED5378"
+    },
+    {
+      "scheme": "sgln+",
+      "elementString": "(414)8111250987538(254)5W7kYerZ",
+      "filter": 6,
+      "expectHex": "F26811125098753868E56EE461EAD9"
+    },
+    {
+      "scheme": "sgln+",
+      "elementString": "(414)0550456513284(254)DxrAmWHB(91)vnoZ1RA82y'UnSc!aDQ2",
+      "filter": 4,
+      "expectHex": "F2C0550456513284680F1AC09961C191853B6EDF698D282E19794F57753C6870C4A2C8"
+    },
+    {
+      "scheme": "grai+",
+      "elementString": "(8003)04675951735149k3cdNJqdcLe7(91)lIcUzZBVxAVz4XzCT",
+      "filter": 2,
+      "expectHex": "F1A046759517351496C93771D349A9D70B7BB91646521C533641571015CF85F3093"
+    },
+    {
+      "scheme": "grai+",
+      "elementString": "(8003)06486629758234HqERjQvJNR",
+      "filter": 0,
+      "expectHex": "F10064866297582346A1EA1118D0BC9351"
+    },
+    {
+      "scheme": "grai+",
+      "elementString": "(8003)044010287958730<FL7tz(91)pnNyfF,eJd9GNx4X9l",
+      "filter": 5,
+      "expectHex": "F1D044010287958738760F234C6FD3D48C25C374EF39A32CCB2B2398F3BC34B0E760"
+    },
+    {
+      "scheme": "grai+",
+      "elementString": "(8003)07703733322311xbMN9bayuMI(91)oq>acrLL",
+      "filter": 5,
+      "expectHex": "F1D077037333223116BC5B30DF5B6B2B8C224608DFC5F61C7CA64C"
+    },
+    {
+      "scheme": "grai+",
+      "elementString": "(8003)03813342682127RMsDDcz2",
+      "filter": 4,
+      "expectHex": "F14038133426821276844CB030DCCF6"
+    },
+    {
+      "scheme": "grai+",
+      "elementString": "(8003)05789318295425fkzz(91)Ai0iBSFMwKZrS6B",
+      "filter": 0,
+      "expectHex": "F1805789318295425647E4CF39163C08B4881485330299AD2E81"
+    },
+    {
+      "scheme": "grai+",
+      "elementString": "(8003)06749012994856Mkp(91)+wj3hQT",
+      "filter": 5,
+      "expectHex": "F1D0674901299485663324A6460757DF533D146A0"
+    },
+    {
+      "scheme": "grai+",
+      "elementString": "(8003)033026016818154dCOmbPbE(91)f7sN3mlhWsRpyvd",
+      "filter": 0,
+      "expectHex": "F180330260168181569E1D08E99B3DB12458F7FBB0DDE69615AC469CAF74"
+    },
+    {
+      "scheme": "grai+",
+      "elementString": "(8003)03941111597911Ggda>XOWMeWCul(91)qXS",
+      "filter": 5,
+      "expectHex": "F1D039411115979118E8F9F2617D627D79B96BC3EBB24583A9748"
+    },
+    {
+      "scheme": "grai+",
+      "elementString": "(8003)03249014770968-ezHTn6(91)LB3zCdOXCxUZ3",
+      "filter": 2,
+      "expectHex": "F1A0324901477096867F9ECC74E7EA458D2C1DF309D3970B1519DC"
+    },
+    {
+      "scheme": "grai+",
+      "elementString": "(8003)00418699001312cGX3cZe1+FjrDVb(91)YQB>PWRTQyIqa:rlAzjQ",
+      "filter": 6,
+      "expectHex": "F1E004186990013128FC71EC33C76B2B1571B572895B148C29668C27D42BD2A947CC9E385D72D907D6AA2"
+    },
+    {
+      "scheme": "grai+",
+      "elementString": "(8003)021361949475819nZM?Pct(91)Qi1sEO478DiWdh5",
+      "filter": 1,
+      "expectHex": "F19021361949475818873BAD4D7F431F49163D08B5B043B8EFC0E259D879"
+    },
+    {
+      "scheme": "grai+",
+      "elementString": "(8003)08462720798049snIRyHZg>=o)7nW.",
+      "filter": 3,
+      "expectHex": "F130846272079804990E7BA4D2F322D677CF77A96FBABAE"
+    },
+    {
+      "scheme": "grai+",
+      "elementString": "(8003)03984305465269Z4bob3*QK7(91)8XXbmHfOwQPDzukM",
+      "filter": 0,
+      "expectHex": "F18039843054652698AB4D316FC4CD55196DE4590F175DB9877CEC103C3CEE90C"
+    },
+    {
+      "scheme": "grai+",
+      "elementString": "(8003)01229191002603Hy9o7.ONZSt2Td(91)n9f6'Uto",
+      "filter": 1,
+      "expectHex": "F19012291910026038E91E5CEF6EBA7CEB54FA32A9924608DCE73364F57A6F"
+    },
+    {
+      "scheme": "giai+",
+      "elementString": "(8004)938541(91)c4j6R19dg",
+      "filter": 5,
+      "expectHex": "FAD938541F91625CE23E91D7D760"
+    },
+    {
+      "scheme": "giai+",
+      "elementString": "(8004)3036880",
+      "filter": 0,
+      "expectHex": "FA03036880F"
+    },
+    {
+      "scheme": "giai+",
+      "elementString": "(8004)59565577019(91)CeoBa3uJydxKH",
+      "filter": 5,
+      "expectHex": "FAD59565577019F9163427A805ADEE272771287"
+    },
+    {
+      "scheme": "giai+",
+      "elementString": "(8004)87522ijVBhl9uB6P\\(p6xX5(91)v%",
+      "filter": 2,
+      "expectHex": "FAA87522E91D3AAB42D1B1CF584DA828E0DBC586B2301764A"
+    },
+    {
+      "scheme": "giai+",
+      "elementString": "(8004)3991469m3vl-Pk)",
+      "filter": 7,
+      "expectHex": "FA73991469E88DACFB6C5B435A9"
+    },
+    {
+      "scheme": "giai+",
+      "elementString": "(8004)443333129466VScDY)WkudkHfU(91)70NNQMHMcPe",
+      "filter": 1,
+      "expectHex": "FA9443333129466E8EAD4F1C4B2A6BEBEB935C8CD56458BEF434D40C1CC70F78"
+    },
+    {
+      "scheme": "giai+",
+      "elementString": "(8004)73545IS13izqMu-NM8CAMfh4liP8u\\((91)_V:6B7suply",
+      "filter": 7,
+      "expectHex": "FAF73545E99934D8B3D3EB8CDEAB674D710E0CDCDA1A6CD341C75512305DFACE9B426FCFAF0D9E4"
+    },
+    {
+      "scheme": "giai+",
+      "elementString": "(8004)67011(91)5jA",
+      "filter": 6,
+      "expectHex": "FAE67011F9160F98C0"
+    },
+    {
+      "scheme": "giai+",
+      "elementString": "(8004)00815491864(91)Q6G",
+      "filter": 3,
+      "expectHex": "FAB00815491864F91A0DBFA0"
+    },
+    {
+      "scheme": "giai+",
+      "elementString": "(8004)402500979349(91)>lkf3FRKLYnCM_h",
+      "filter": 4,
+      "expectHex": "FAC402500979349F9183DF6CD7999C6A52E659DD0E6DFD0"
+    },
+    {
+      "scheme": "giai+",
+      "elementString": "(8004)783804YYvy4oLvW&FT4MJ6C(91)+l1UNZiTo",
+      "filter": 2,
+      "expectHex": "FAA783804E91B367B7969BE676AE9A3546936536872304ABD8C6ACEB5A6A6F"
+    },
+    {
+      "scheme": "giai+",
+      "elementString": "(8004)84749woo(91)nQKTs",
+      "filter": 6,
+      "expectHex": "FAE84749E63C28A245859D0293B0"
+    },
+    {
+      "scheme": "giai+",
+      "elementString": "(8004)5933074578sXX3UyJ(91)mrD8jVd7XB72kJ",
+      "filter": 7,
+      "expectHex": "FAF5933074578E67B175F753226458E9AB0FC8D577B5C1EF6909"
+    },
+    {
+      "scheme": "giai+",
+      "elementString": "(8004)251568165856(91)L4qjW6EHaC",
+      "filter": 6,
+      "expectHex": "FAE251568165856F91628BE2A8D6E841DA08"
+    },
+    {
+      "scheme": "giai+",
+      "elementString": "(8004)7652285J>Kev*0kOkceKCoDMwcvi0(91)Mzrakk96Eo3Z",
+      "filter": 7,
+      "expectHex": "FAF7652285E9694FA5E5ECA986B9FAF1E5970F7C49BDF1F6D2C2458C333ADA924F7A128DD9"
+    },
+    {
+      "scheme": "giai+",
+      "elementString": "(8004)1116824(91)mR>hT2LNkwMOuNv0dW<",
+      "filter": 6,
+      "expectHex": "FAE1116824F9184F6D27DA2A32993B5F79B3FACEECC325778"
+    },
+    {
+      "scheme": "giai+",
+      "elementString": "(8004)07389010,%.b4XaIhSVQ8R7nB%i5(91).7CqV\\(",
+      "filter": 4,
+      "expectHex": "FAC07389010E94589576269630C9D14EB517149BEE84974B59181973787C6B28"
+    },
+    {
+      "scheme": "giai+",
+      "elementString": "(8004)91295675(91)zbs3ACUO\\(",
+      "filter": 5,
+      "expectHex": "FAD91295675F91827D62E6CE0C3AB3D40"
+    },
+    {
+      "scheme": "giai+",
+      "elementString": "(8004)044298qQA2Bn2(91)d4bep1TL",
+      "filter": 6,
+      "expectHex": "FAE044298E67A90036067DA45887786DEA754CB"
+    },
+    {
+      "scheme": "giai+",
+      "elementString": "(8004)475258057218kQsPlPTRmzqlnjr",
+      "filter": 2,
+      "expectHex": "FA2475258057218E6F910B0F94F4D19B3AA59E3AC"
+    },
+    {
+      "scheme": "gsrn+",
+      "elementString": "(8018)967685672436038684",
+      "filter": 0,
+      "expectHex": "F40967685672436038684"
+    },
+    {
+      "scheme": "gsrn+",
+      "elementString": "(8018)549532563057355953(91)rIV7Rqr",
+      "filter": 5,
+      "expectHex": "F4D5495325630573559539161EB215ED1AAB"
+    },
+    {
+      "scheme": "gsrn+",
+      "elementString": "(8018)506372091343543614",
+      "filter": 3,
+      "expectHex": "F43506372091343543614"
+    },
+    {
+      "scheme": "gsrn+",
+      "elementString": "(8018)552990206377546938(91)OmNXbNxUzHWo+QKl7mqh",
+      "filter": 6,
+      "expectHex": "F4E552990206377546938918527ED9D6314EF157D48AFBD5D197B1BEDE3A0"
+    },
+    {
+      "scheme": "gsrn+",
+      "elementString": "(8018)713232565430448502(91)Whu",
+      "filter": 7,
+      "expectHex": "F4F7132325654304485029160D686E"
+    },
+    {
+      "scheme": "gsrn+",
+      "elementString": "(8018)358689505160658519",
+      "filter": 4,
+      "expectHex": "F44358689505160658519"
+    },
+    {
+      "scheme": "gsrn+",
+      "elementString": "(8018)301126765970806513(91)aiFyyncY9qFzX6lopG",
+      "filter": 5,
+      "expectHex": "F4D30112676597080651391649A885CB29DC63DA85CD7EA5A2918"
+    },
+    {
+      "scheme": "gsrn+",
+      "elementString": "(8018)975944129773730801(91)f",
+      "filter": 5,
+      "expectHex": "F4D97594412977373080191407C"
+    },
+    {
+      "scheme": "gsrn+",
+      "elementString": "(8018)830745924995306901(91)pICQusBSteR3Ku!gR",
+      "filter": 3,
+      "expectHex": "F4B830745924995306901918478498747AF3854FA65A4CE5F5439E90"
+    },
+    {
+      "scheme": "gsrn+",
+      "elementString": "(8018)089548515895974560(91)se8arS",
+      "filter": 5,
+      "expectHex": "F4D0895485158959745609161AC7BC6AB48"
+    },
+    {
+      "scheme": "gsrn+",
+      "elementString": "(8018)818773804564449325(91)eom\\(aw",
+      "filter": 4,
+      "expectHex": "F4C8187738045644493259181B2EFDAA30F7"
+    },
+    {
+      "scheme": "gsrn+",
+      "elementString": "(8018)131648390490753353(91)F6gMZ",
+      "filter": 2,
+      "expectHex": "F4A131648390490753353916145EA0319"
+    },
+    {
+      "scheme": "gsrn+",
+      "elementString": "(8018)759216989305663164(91)aCE2SDzs",
+      "filter": 3,
+      "expectHex": "F4B75921698930566316491621A084D920F3B0"
+    },
+    {
+      "scheme": "gsrn+",
+      "elementString": "(8018)543099086897513782",
+      "filter": 7,
+      "expectHex": "F47543099086897513782"
+    },
+    {
+      "scheme": "gsrn+",
+      "elementString": "(8018)726398258682693503(91)OKp:nUDAW4qVTXKGNVm",
+      "filter": 4,
+      "expectHex": "F4C7263982586826935039184E7CBE0EB7558906BB4E35AA58971E756DA"
+    },
+    {
+      "scheme": "gsrn+",
+      "elementString": "(8018)450976840173034368",
+      "filter": 4,
+      "expectHex": "F44450976840173034368"
+    },
+    {
+      "scheme": "gsrn+",
+      "elementString": "(8018)865153960959139489",
+      "filter": 7,
+      "expectHex": "F47865153960959139489"
+    },
+    {
+      "scheme": "gsrn+",
+      "elementString": "(8018)769779070305969080(91)08h",
+      "filter": 5,
+      "expectHex": "F4D7697790703059690809160F4F21"
+    },
+    {
+      "scheme": "gsrn+",
+      "elementString": "(8018)331089755310282173(91)nf<2bJ8nDW",
+      "filter": 3,
+      "expectHex": "F4B3310897553102821739182B76678CB14A71BA257"
+    },
+    {
+      "scheme": "gsrnp+",
+      "elementString": "(8017)597394755823485534(91)hjg1tguocBJK_VzC",
+      "filter": 2,
+      "expectHex": "F5A5973947558234855349164218E0D6D82EA1C0492BF57308"
+    },
+    {
+      "scheme": "gsrnp+",
+      "elementString": "(8017)534690978870475242",
+      "filter": 2,
+      "expectHex": "F52534690978870475242"
+    },
+    {
+      "scheme": "gsrnp+",
+      "elementString": "(8017)352486821694235235",
+      "filter": 7,
+      "expectHex": "F57352486821694235235"
+    },
+    {
+      "scheme": "gsrnp+",
+      "elementString": "(8017)337083692696569949",
+      "filter": 5,
+      "expectHex": "F55337083692696569949"
+    },
+    {
+      "scheme": "gsrnp+",
+      "elementString": "(8017)292446234538312657",
+      "filter": 0,
+      "expectHex": "F50292446234538312657"
+    },
+    {
+      "scheme": "gsrnp+",
+      "elementString": "(8017)814544411248466985(91)vnr0\\(UwcvUooIlTid",
+      "filter": 1,
+      "expectHex": "F5981454441124846698591847B6EE4C1455EF8FB55DFBE4ECA9A720"
+    },
+    {
+      "scheme": "gsrnp+",
+      "elementString": "(8017)867845981084698618",
+      "filter": 4,
+      "expectHex": "F54867845981084698618"
+    },
+    {
+      "scheme": "gsrnp+",
+      "elementString": "(8017)538046843298911791",
+      "filter": 1,
+      "expectHex": "F51538046843298911791"
+    },
+    {
+      "scheme": "gsrnp+",
+      "elementString": "(8017)993438359380314417(91)zPBfXIxOdVHNd",
+      "filter": 6,
+      "expectHex": "F5E9934383593803144179163733C17D723139D54735D"
+    },
+    {
+      "scheme": "gsrnp+",
+      "elementString": "(8017)948098221468453041(91)Z/aYxG1Ab08VOVSr",
+      "filter": 6,
+      "expectHex": "F5E94809822146845304191842D2FC367C476307130715A7D6A7C8"
+    },
+    {
+      "scheme": "gsrnp+",
+      "elementString": "(8017)162810447092082226(91)LQPo",
+      "filter": 6,
+      "expectHex": "F5E16281044709208222691610B40FA0"
+    },
+    {
+      "scheme": "gsrnp+",
+      "elementString": "(8017)455419014450006194",
+      "filter": 7,
+      "expectHex": "F57455419014450006194"
+    },
+    {
+      "scheme": "gsrnp+",
+      "elementString": "(8017)588992973910474559(91)LTpw",
+      "filter": 6,
+      "expectHex": "F5E58899297391047455991610B4E9C0"
+    },
+    {
+      "scheme": "gsrnp+",
+      "elementString": "(8017)633028474777319119(91)Y",
+      "filter": 4,
+      "expectHex": "F5C633028474777319119916058"
+    },
+    {
+      "scheme": "gsrnp+",
+      "elementString": "(8017)166959318450067840(91)fCEKmtYiC5HyPP5wUSs",
+      "filter": 5,
+      "expectHex": "F5D1669593184500678409164DF0842A6B58882E47C8F3F9C144AC"
+    },
+    {
+      "scheme": "gsrnp+",
+      "elementString": "(8017)929517944107539751",
+      "filter": 0,
+      "expectHex": "F50929517944107539751"
+    },
+    {
+      "scheme": "gsrnp+",
+      "elementString": "(8017)143299101318290087(91)Ozv7MLU",
+      "filter": 6,
+      "expectHex": "F5E1432991013182900879161CECEFECC2D4"
+    },
+    {
+      "scheme": "gsrnp+",
+      "elementString": "(8017)329547264599866821(91)YwVO7F8YPXej3C",
+      "filter": 1,
+      "expectHex": "F59329547264599866821916398C153BB17C60F5DE8F708"
+    },
+    {
+      "scheme": "gsrnp+",
+      "elementString": "(8017)081002643786707618(91)Su0g=",
+      "filter": 4,
+      "expectHex": "F5C081002643786707618918169F5619DE8"
+    },
+    {
+      "scheme": "gsrnp+",
+      "elementString": "(8017)918852718582880349(91)gh<xcFJmGeLJYrpyI",
+      "filter": 1,
+      "expectHex": "F59918852718582880349918473E879E31C695B63E5992ACF2E1E648"
+    },
+    {
+      "scheme": "gdti+",
+      "elementString": "(253)3688971948117Xx6yQhda(91)G3TJz+j3I",
+      "filter": 1,
+      "expectHex": "F693688971948117685F1EB242175A918263B3A92BD2BD4CE48"
+    },
+    {
+      "scheme": "gdti+",
+      "elementString": "(253)8375931760067s",
+      "filter": 5,
+      "expectHex": "F65837593176006761B0"
+    },
+    {
+      "scheme": "gdti+",
+      "elementString": "(253)02850438020449a(91)HQkgvGAq5bEri5",
+      "filter": 7,
+      "expectHex": "F6F0285043802044429A91638742482F180AB96C4AE2E4"
+    },
+    {
+      "scheme": "gdti+",
+      "elementString": "(253)6555322014869a)07bMYkC23(91)VrrCpXuEj",
+      "filter": 3,
+      "expectHex": "F6B65553220148698BC2A5837C536CEB86C99C8B12AD75854AF70918"
+    },
+    {
+      "scheme": "gdti+",
+      "elementString": "(253)5724948102934DPm3sYXSQ(91)J1KG9DAvl\\(V",
+      "filter": 1,
+      "expectHex": "F695724948102934690CF9B7B185D242460B94C65C773120F6D8A2B0"
+    },
+    {
+      "scheme": "gdti+",
+      "elementString": "(253)1019427672560%mgnhrRq(91)G6svNdaBom",
+      "filter": 5,
+      "expectHex": "F6D1019427672560884BB73EED1CA971916286EACBCD75A06898"
+    },
+    {
+      "scheme": "gdti+",
+      "elementString": "(253)7908340026984*dX/O(91)w,1v552B3",
+      "filter": 4,
+      "expectHex": "F6C7908340026984855592C2F9F2304F758C7B356ACA133"
+    },
+    {
+      "scheme": "gdti+",
+      "elementString": "(253)9231601411952JHDq",
+      "filter": 7,
+      "expectHex": "F679231601411952642470EA"
+    },
+    {
+      "scheme": "gdti+",
+      "elementString": "(253)9587014603713cBimsp",
+      "filter": 4,
+      "expectHex": "F649587014603713667018A6B29"
+    },
+    {
+      "scheme": "gdti+",
+      "elementString": "(253)6613412408513i1ZFL3ChS*UL9iG(91)!8cF",
+      "filter": 7,
+      "expectHex": "F6F66134124085138FD2C6D4698CE1E8A6AAACC73A63C8C0885C638C"
+    },
+    {
+      "scheme": "gdti+",
+      "elementString": "(253)6145511719097uzX2!",
+      "filter": 6,
+      "expectHex": "F66614551171909785EBEAC3242"
+    },
+    {
+      "scheme": "gdti+",
+      "elementString": "(253)5434371625787tUFMTpBYnq2fpIZ6(91)RxjTxUwHtQgnUaJWEm0",
+      "filter": 5,
+      "expectHex": "F6D543437162578770B5414C4E90589EAD9FA4867A9164D1C634F15301ED4209D46895849B4"
+    },
+    {
+      "scheme": "gdti+",
+      "elementString": "(253)0241340102942inLZrIWsc>pWKZYmi",
+      "filter": 7,
+      "expectHex": "F67024134010294291D3BA65AE526BF3C6FB857976ACEDD2"
+    },
+    {
+      "scheme": "gdti+",
+      "elementString": "(253)76190287699486zZqF(91)h",
+      "filter": 0,
+      "expectHex": "F68761902876994865EB366A16458184"
+    },
+    {
+      "scheme": "gdti+",
+      "elementString": "(253)5952390316245jvAvRVW3CI=RCSV",
+      "filter": 2,
+      "expectHex": "F6259523903162458FD5DA0F6A55ABB38725ED2874EB0"
+    },
+    {
+      "scheme": "gdti+",
+      "elementString": "(253)4375930590966Adf&ZSHam4(91)C4x62sHS->8UyA7Jo",
+      "filter": 2,
+      "expectHex": "F6A43759305909668A8393326B54E461DAD2461186D3C3665CE4535AF9C55F305BCADE"
+    },
+    {
+      "scheme": "gdti+",
+      "elementString": "(253)8991691538786<aXypmnILU(91)D?qyWq9",
+      "filter": 6,
+      "expectHex": "F6E89916915387868A7986C79E1B77499956460788FF8F9AFC5C8"
+    },
+    {
+      "scheme": "gdti+",
+      "elementString": "(253)494965503574597JomghxfBeN%1N",
+      "filter": 5,
+      "expectHex": "F6549496550357458F72DE56FDB9F478CD0B2CE4AC670"
+    },
+    {
+      "scheme": "sgcn+",
+      "elementString": "(255)876675912253172(91)3r%",
+      "filter": 6,
+      "expectHex": "F8E87667591225312912301B3E494"
+    },
+    {
+      "scheme": "sgcn+",
+      "elementString": "(255)0384795344151669467935(91)J3/ankUT6f6A",
+      "filter": 0,
+      "expectHex": "F88038479534415199F9D147E460C94CD7E1DDAEAD46D99B41"
+    },
+    {
+      "scheme": "sgcn+",
+      "elementString": "(255)19214604915750979727763",
+      "filter": 7,
+      "expectHex": "F871921460491575A0E995D64C"
+    },
+    {
+      "scheme": "sgcn+",
+      "elementString": "(255)444536715862354153105943",
+      "filter": 2,
+      "expectHex": "F824445367158623B64DE3690B8"
+    },
+    {
+      "scheme": "sgcn+",
+      "elementString": "(255)45971474464032042917254(91)racMNfiCZo0cwa8",
+      "filter": 4,
+      "expectHex": "F8C4597147446403A1E711C61A458FADA70C35F882668D1CC1AF0"
+    },
+    {
+      "scheme": "sgcn+",
+      "elementString": "(255)750656700473216202004(91)0%1JNdXgpMOUZg41M2",
+      "filter": 4,
+      "expectHex": "F8C750656700473281EE72292309304AC654EC9633F09B3EADACED18CD64"
+    },
+    {
+      "scheme": "sgcn+",
+      "elementString": "(255)498683955717499729255(17)941012(91)Fmk7yeS3xXr2ra'j",
+      "filter": 2,
+      "expectHex": "F8A49868395571748BE37ECE2F7A99230846DBADBF9CB4D9F8B1C9972C29F50"
+    },
+    {
+      "scheme": "sgcn+",
+      "elementString": "(255)562147933579798483",
+      "filter": 1,
+      "expectHex": "F8156214793357975C0598"
+    },
+    {
+      "scheme": "sgcn+",
+      "elementString": "(255)204758361952476(17)970922(91)a0QxQwu3Ir\\(Cd",
+      "filter": 6,
+      "expectHex": "F8E20475836195242982F866D2306E16147C51EFD59C9E4A21E4"
+    },
+    {
+      "scheme": "sgcn+",
+      "elementString": "(255)5943707273399242961059686(17)130705(91)atWBARbG9qFo",
+      "filter": 6,
+      "expectHex": "F8E5943707273399C38919B8F66171AE591631AB5604045B1BDA85A0"
+    },
+    {
+      "scheme": "sgcn+",
+      "elementString": "(255)7887373435454809480",
+      "filter": 5,
+      "expectHex": "F8578873734354546C5A08"
+    },
+    {
+      "scheme": "sgcn+",
+      "elementString": "(255)3625577708219752877(91)I!xF6Wkz65vvu/Ygg",
+      "filter": 6,
+      "expectHex": "F8E36255777082196B7CED918464A1F119B57D7E9B35EDDBAAFB39F38"
+    },
+    {
+      "scheme": "sgcn+",
+      "elementString": "(255)2823839947517386(91)EIhVnN,pBWF?sCgE9bu",
+      "filter": 6,
+      "expectHex": "F8E2823839947517360A46138B27456DD39670855E33FE70F3C5738BA8"
+    },
+    {
+      "scheme": "sgcn+",
+      "elementString": "(255)1123441014708857",
+      "filter": 0,
+      "expectHex": "F8011234410147083D64"
+    },
+    {
+      "scheme": "sgcn+",
+      "elementString": "(255)05732906284955160968253",
+      "filter": 0,
+      "expectHex": "F800573290628495A4CE7880F4"
+    },
+    {
+      "scheme": "sgcn+",
+      "elementString": "(255)631982704581666941184549",
+      "filter": 5,
+      "expectHex": "F856319827045816B7CB00B5128"
+    },
+    {
+      "scheme": "sgcn+",
+      "elementString": "(255)386354915012702(17)811123(91)gZp3zmEz",
+      "filter": 0,
+      "expectHex": "F8838635491501272042F46EF22C440CD3BE730998"
+    },
+    {
+      "scheme": "sgcn+",
+      "elementString": "(255)475645747660307341116(91)x3D5",
+      "filter": 7,
+      "expectHex": "F8F475645747660380E0087922C263B87C8"
+    },
+    {
+      "scheme": "itip+",
+      "elementString": "(8006)990536600506125580(21)A6A5uWzwCJR(91)AfVgXFDj8vHIc1V(422)392",
+      "filter": 0,
+      "expectHex": "F389905366005061255806B03A039B96CF008946458F01F5605C50E3F2F1C87355508988"
+    },
+    {
+      "scheme": "itip+",
+      "elementString": "(8006)507202540749277082(21)luOm6dHhyzoa6FWq",
+      "filter": 5,
+      "expectHex": "F355072025407492770827096E3A6E9D1E1CB3A1AE855AA"
+    },
+    {
+      "scheme": "itip+",
+      "elementString": "(8006)382570640990723475(21)f2s6<5C(10)rDngx2_49eqQCc(422)840",
+      "filter": 1,
+      "expectHex": "F3938257064099072347587CCCB9B678D618837561CF063B7FC7AF54804E211690"
+    },
+    {
+      "scheme": "itip+",
+      "elementString": "(8006)509593437884250720(21)e!J2N-NG55vr(10)7Q4HYTOm(17)370725(91)Z7,RUyrdhOo6ojpfgad",
+      "filter": 0,
+      "expectHex": "F385095934378842507208CCA865329CB67476AD7B721068ED0E076133A6174AF99184ED37594AAF9E59344FDEDB7EAE19B3E1C8"
+    },
+    {
+      "scheme": "itip+",
+      "elementString": "(8006)683727942994912544(21)ZZSl(10)wet4ZnwMf8zTbj40(17)361013(91)c244rik%bwDeTj3<9h",
+      "filter": 2,
+      "expectHex": "F3A683727942994912544646594A51070C1EB78667C0C7FCCD36E3E3417494D9184B1B268D3969D6971778996A6A66F1CE8"
+    },
+    {
+      "scheme": "itip+",
+      "elementString": "(8006)806500591154446271(21)4K1E(10)FrSkYlcczxt.yaqX(17)410210(422)250",
+      "filter": 6,
+      "expectHex": "F3E80650059115444627164E0AD4410908DCA9EBB3B31E3F5E3A2EF3878D817524A4223E8"
+    },
+    {
+      "scheme": "itip+",
+      "elementString": "(8006)283328669384150206(21)V",
+      "filter": 0,
+      "expectHex": "F302833286693841502066154"
+    },
+    {
+      "scheme": "itip+",
+      "elementString": "(8006)961991698918062642(21)j(17)140628(91)TJfsFmIyuwqtk6P(422)840",
+      "filter": 0,
+      "expectHex": "F38961991698918062642618C5C7372458F4C97EC166232BB0AAD93A3D08B48"
+    },
+    {
+      "scheme": "itip+",
+      "elementString": "(8006)133230465638536798(21)kwFLP0b9F(10)9DEAL5Vl87SHlQ!SmSg!(422)380",
+      "filter": 3,
+      "expectHex": "F3B1332304656385367986993014B3F46FD144251CC48B06635ADB1C37A723651434F6D3CE850897C"
+    },
+    {
+      "scheme": "itip+",
+      "elementString": "(8006)082486256681400335(21)Qwp",
+      "filter": 6,
+      "expectHex": "F3608248625668140033563430A4"
+    },
+    {
+      "scheme": "itip+",
+      "elementString": "(8006)644982063088285561(21)eOmrqKS+.HG;kuD",
+      "filter": 1,
+      "expectHex": "F316449820630882855618FCB3F6F2E32E9AB5D223BBD7D620"
+    },
+    {
+      "scheme": "itip+",
+      "elementString": "(8006)408667070145396078(21)6bBKZ%k(91)NR%RrYmnbJI",
+      "filter": 1,
+      "expectHex": "F39408667070145396078876D8A14BB4975C8C173A925A5CACEDDD8A549"
+    },
+    {
+      "scheme": "itip+",
+      "elementString": "(8006)694432292448635168(21)dyl*h5VfV4.JobTr3.(91)mej",
+      "filter": 7,
+      "expectHex": "F3F69443229244863516892C9E762AD0D6B66ACD174ADF8AA7266BA458399E8C"
+    },
+    {
+      "scheme": "itip+",
+      "elementString": "(8006)686349537819721017(21)q/piFwib6WZf(10)xxa.(17)820719(422)826",
+      "filter": 2,
+      "expectHex": "F3A6863495378197210178CE2BF8698DDF4E26D5ED661084F1E30AE17A4F3422CE8"
+    },
+    {
+      "scheme": "itip+",
+      "elementString": "(8006)207731333585940374(21)qIwnjdmKjn0K4",
+      "filter": 6,
+      "expectHex": "F362077313335859403746DA88C278DD98A8E7D0AE0"
+    },
+    {
+      "scheme": "itip+",
+      "elementString": "(8006)401837585412043748(21)Ot,ZC9xAXm(91)Fsh",
+      "filter": 3,
+      "expectHex": "F3B4018375854120437488A9FD165A86E7C41B1B6458316C84"
+    },
+    {
+      "scheme": "cpi+",
+      "elementString": "(8010)72663/TNWJDN72S8-PR1/FX5I-P2A8(8011)91",
+      "filter": 4,
+      "expectHex": "F0472663E995F527579512737654DC2DA1498AF8D61AC95B419417056C"
+    },
+    {
+      "scheme": "cpi+",
+      "elementString": "(8010)1089/LF1N(8011)747560(91)b7p2y2u'0",
+      "filter": 5,
+      "expectHex": "F0D1089E855F323319CD6D0512304E26FC197965D53B0"
+    },
+    {
+      "scheme": "cpi+",
+      "elementString": "(8010)78785909418899H#-#5R(8011)450548872688(91)F0E?OEQuiFaOY7?'",
+      "filter": 2,
+      "expectHex": "F0A78785909418899E86908D6A36B4B1A39B38D7C246108CC22BF9F168F5D31B0CFB2DDFA7"
+    },
+    {
+      "scheme": "cpi+",
+      "elementString": "(8010)7703084194/7TC2#5#9(8011)1749256(91)s648Mlgrjje",
+      "filter": 1,
+      "expectHex": "F097703084194E895EDEA43648DAA372E35621122C5D9D71E192C15C71BC"
+    },
+    {
+      "scheme": "cpi+",
+      "elementString": "(8010)58040781BHAQ73Z/WJ/1#UA/(8011)108528(91)wpCrNsgt",
+      "filter": 0,
+      "expectHex": "F0858040781E9085220D16ECED2FAF297B147560AF61A7F0916230A42ACDB20B4"
+    },
+    {
+      "scheme": "cpi+",
+      "elementString": "(8010)48306622UZ#K48N/8M417MSK-3KQ1G(8011)252354562207(91)Vv+4s_0",
+      "filter": 2,
+      "expectHex": "F0A48306622E96AB691CB68E272F7135A316F369CB5ACE5D1631F0EB0604227E4607ADD95B4E77D80"
+    },
+    {
+      "scheme": "cpi+",
+      "elementString": "(8010)611686ZLZ(8011)323(91)YbL27c>yxO5",
+      "filter": 0,
+      "expectHex": "F08611686EA3A47B350E460BB38A6326F8DF79F13DA8"
+    },
+    {
+      "scheme": "cpi+",
+      "elementString": "(8010)70184961X3U8VK9N#(8011)421887983160(91)lfEWSRoRE4nW*vw",
+      "filter": 3,
+      "expectHex": "F0B70184961E89B0CEAB8AD2DCCE478C474F77C712307ECCD16BD3A5BE94569BABAAEDDC"
+    },
+    {
+      "scheme": "cpi+",
+      "elementString": "(8010)50955K6#7EKORY--E4J9ZL/(8011)8273(91)8",
+      "filter": 6,
+      "expectHex": "F0E50955E9296D91B78B2E7D2B2B56C56929CDA98BD2051910060"
+    },
+    {
+      "scheme": "cpi+",
+      "elementString": "(8010)740785960R0-4QG11A-18MO(8011)8285(91)iGpw4",
+      "filter": 5,
+      "expectHex": "F0D740785960EAE754CD730C69AADBF5399481764585886A70E0"
+    },
+    {
+      "scheme": "cpi+",
+      "elementString": "(8010)02884575623EM9F(8011)5418517(91)j-M;hh458\\(rmfrl74k",
+      "filter": 3,
+      "expectHex": "F0B02884575623E6410CF45752AE159184B52D9AEF46868D5C28E5B7372D8DDA6B"
+    },
+    {
+      "scheme": "cpi+",
+      "elementString": "(8010)13899734800RV(8011)4231(91)rE?olY",
+      "filter": 6,
+      "expectHex": "F0E13899734800E624554421E4606E515FEFD964"
+    },
+    {
+      "scheme": "cpi+",
+      "elementString": "(8010)99705MGYB-D-W#Y4OE--UQ(8011)2428(91)lG7WF-v!fV",
+      "filter": 7,
+      "expectHex": "F0F99705E919B1ECC25B116D74765A4F8AB56D5A284BE48C15B23B7AF196F6439AB0"
+    },
+    {
+      "scheme": "cpi+",
+      "elementString": "(8010)34668206U6UFOEECQ/LI(8011)2629771135(91)vTWpKdV46aBLScsXw",
+      "filter": 0,
+      "expectHex": "F0834668206E8CAADAAC69F162C3A2BE649A272FC7DFE4591BD35A929D578E9A04B49CB17C0"
+    },
+    {
+      "scheme": "cpi+",
+      "elementString": "(8010)5902103084561VN-9ISC21U8R#(8011)45875(91)Jz4LLzCOZVZcZH6Hy",
+      "filter": 4,
+      "expectHex": "F0C5902103084561E8DAD396B9934E1B26355C5246AB333916449CF82CBCC23995597191FA1F2"
+    },
+    {
+      "scheme": "cpi+",
+      "elementString": "(8010)08337403749U55ZLSPN2HTZXC0(8011)927142941796(91)FubxbQQOQ",
+      "filter": 5,
+      "expectHex": "F0D08337403749EAF88DCA4746651353B9697CD7DE069464916245B9BC5B410390"
+    },
+    {
+      "scheme": "cpi+",
+      "elementString": "(8010)08540HEN6PD7/AXRY27/#L03(8011)37106869(91)7",
+      "filter": 2,
+      "expectHex": "F0A08540E939116736A111BAF836295964DD7A398C19C23634B591005C"
+    },
+    {
+      "scheme": "cpi+",
+      "elementString": "(8010)342812071P(8011)2(91)9c7v9t0TEQXe4Iyy",
+      "filter": 6,
+      "expectHex": "F0E342812071E613C4A4590F5CEEFF6DD131105DEE08CB2"
+    },
+    {
+      "scheme": "cpi+",
+      "elementString": "(8010)992052479DIPKU#QPZL8E(8011)72(91)pQP_lga8Famo9HPUVv",
+      "filter": 4,
+      "expectHex": "F0C992052479E8C892684BAA8E8D0B531C4529122C95281FFCB035E0AD4D47A39EA2B78"
+    },
+    {
+      "scheme": "cpi+",
+      "elementString": "(8010)3822262---#2#8DV330AQ0GFXS(8011)1707(91)JZz?",
+      "filter": 2,
+      "expectHex": "F0A3822262E935AB56A3648DC44ACCD9B083458478D629A0D5723024AB5E9F8"
+    },
+    {
+      "scheme": "sgtin++",
+      "elementString": "(01)13717016727039(21))5dZgR*Fj1(91)Pp?yuJaU5Dq>v0(3103)061115(7007)250120130301",
+      "filter": 3,
+      "hostname": "data.example.org",
+      "expectHex": "FDB137170167270398A52D725ACF49546D4C66E4C3D30AECBE30EDE1B32DC9183A8707FE7ACAC355AC4E2FBB3031030EEBB7007991A0D308"
+    },
+    {
+      "scheme": "sgtin++",
+      "elementString": "(01)33802389415868(21)tZhP39MIS2:+-E\\(b9(8008)6111102258",
+      "filter": 5,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "FDD3380238941586891E96B45066E66C9A6C9D2B5B154627238E3F48C094F348E917F2600217B6AB74"
+    },
+    {
+      "scheme": "sgtin++",
+      "elementString": "(01)53852978598001(21)qtGqMhlq(7007)400502",
+      "filter": 7,
+      "hostname": "qr.acme.tech",
+      "expectHex": "FDF5385297859800168AAD1AA32196A8E7B0E3DB94180700728510"
+    },
+    {
+      "scheme": "sgtin++",
+      "elementString": "(01)48548146483030(21)tvBIKXoGOt(10)/Emy+(3103)365406(7003)8812150835",
+      "filter": 2,
+      "hostname": "qr.acme.tech",
+      "expectHex": "FDA485481464830306AB6F048297A063AD8E7B0E3DB9418010855F176F9566206B26BCE007631E88C"
+    },
+    {
+      "scheme": "sgtin++",
+      "elementString": "(01)00550079365154(21)oe/e+XQ:rU(17)170511(7007)870511",
+      "filter": 6,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "FDE005500793651548ADF957E557628BAE55471C7E918129E691D22FE48B9155B803ABAAC"
+    },
+    {
+      "scheme": "sgtin++",
+      "elementString": "(01)03768186512607(21)yUjcz(422)036(7003)3003170205(7007)731107",
+      "filter": 5,
+      "hostname": "id.example.com",
+      "expectHex": "FDD0376818651260765C948DCCE4A0CBE30EDE1B32DB422091C00CF1C442B803A4D9C"
+    },
+    {
+      "scheme": "sgtin++",
+      "elementString": "(01)13932900956450(21)e5",
+      "filter": 5,
+      "hostname": "id.example.com",
+      "expectHex": "FD51393290095645042E592832F8C3B786CCB6C"
+    },
+    {
+      "scheme": "sgtin++",
+      "elementString": "(01)79252427502241(21)IJI=5V(17)310113(7003)7405260204(8008)950118141903",
+      "filter": 4,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "FDC7925242750224186932A4BD6B5871C7E918129E691D22FE48B9F16B801CA5D0848008AF8C9C986"
+    },
+    {
+      "scheme": "sgtin++",
+      "elementString": "(01)48480652238332(21)bruc8R2cH*Wj(91)Qapxe-9Xw8gyWh.V",
+      "filter": 2,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "FDA484806522383328CC5CBAE3714996390AABEA1C71FA4604A79A4748BF93230851C3C3C655AE6C77719FCD7D0BAB0"
+    },
+    {
+      "scheme": "sgtin++",
+      "elementString": "(01)76805414319839(21)bg(3103)118080(7003)6211170115",
+      "filter": 4,
+      "hostname": "data.example.org",
+      "expectHex": "FDC76805414319839626E09B930F4C2BB2F8C3B786CCB70C40C73501C00DF5C4278"
+    },
+    {
+      "scheme": "sgtin++",
+      "elementString": "(01)60368226603187(21)95aAvk",
+      "filter": 5,
+      "hostname": "data.example.org",
+      "expectHex": "FD56036822660318766F79680BE49B930F4C2BB2F8C3B786CCB70"
+    },
+    {
+      "scheme": "sgtin++",
+      "elementString": "(01)41490339582990(21)qU98gcJZB'L9XxD%1(10)ST7ftu7LoOjCLRYUYW(17)060310",
+      "filter": 5,
+      "hostname": "qr.acme.tech",
+      "expectHex": "FDD4149033958299091E355CB8CF8E55A849E639B1E2225631CF61C7B72830020E4927DBF6DDD9741D1845A2C28C2C2E18D4"
+    },
+    {
+      "scheme": "sgtin++",
+      "elementString": "(01)21621623148981(21)qME(7003)3107142225",
+      "filter": 3,
+      "hostname": "id.example.com",
+      "expectHex": "FDB2162162314898163A8C124A0CBE30EDE1B32DB70033EEEB32"
+    },
+    {
+      "scheme": "sgtin++",
+      "elementString": "(01)47385131813103(21)2WyRtd1fM4weyMkHwSB)(10)/VFy(7003)6602241647",
+      "filter": 7,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "FDF4738513181310394655FCD2E9918E69AD3BE5F3375C8EF4E1291C71FA4604A79A4748BF922108BEB46F2E00708B10BC"
+    },
+    {
+      "scheme": "sgtin++",
+      "elementString": "(01)83678774848581(21)DcPqRwg7>4sqvpN?v(17)850402(422)392(8008)8009211714",
+      "filter": 0,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "FD88367877484858191898E871A5DF3B77CD39F1EDC273FEC38E3F48C094F348E917F245EAA09089888008684D6270"
+    },
+    {
+      "scheme": "sgtin++",
+      "elementString": "(01)87525846903333(21)Zf7dNU4j1ARg?%0jloT(17)660927(91)obCqimtZVZfsQlZ",
+      "filter": 4,
+      "hostname": "www.host.co.uk",
+      "expectHex": "FDC8752584690333393B599BE49D55A6A63069677E9586AD9BEA473FA37F3E808C8BC29DC8B1F43615514D6B2AB2FD884AC8"
+    },
+    {
+      "scheme": "sgtin++",
+      "elementString": "(01)56272158472148(21)67(10)hbM9bklbXeJ",
+      "filter": 7,
+      "hostname": "data.example.org",
+      "expectHex": "FDF56272158472148028737261E985765F1876F0D996E0835C2D99EB724ADAEF12"
+    },
+    {
+      "scheme": "dsgtin++",
+      "elementString": "(01)45653847035105(21)J3B:2xPgMloK(16)820408(91)04FNHg/DXoSostzlqC4(8008)190312004539",
+      "filter": 0,
+      "hostname": "data.example.org",
+      "expectHex": "FC83A488456538470351058C94CE13A65E28679BB37CB9B930F4C2BB2F8C3B786CCB72461360D234E919D7C4B1BE9EFE7D3D6CE30DA400444CD80B67"
+    },
+    {
+      "scheme": "dsgtin++",
+      "elementString": "(01)14759081344208(21)llJMSQZlBrZDK5jX(15)330617(17)771213(422)276(3103)390001",
+      "filter": 6,
+      "hostname": "id.example.com",
+      "expectHex": "FCE242D1147590813442087096524C49066506B6432B98D792832F8C3B786CCB6C5E6E350891431035F371"
+    },
+    {
+      "scheme": "dsgtin++",
+      "elementString": "(01)23720360083031(21)LSbIl1hasgKET>(7006)030618(91)erf13mA9NAE1D2LmbYyk",
+      "filter": 0,
+      "hostname": "www.host.co.uk",
+      "expectHex": "FC8506D2237203600830318E994F149D8C7461E79E5C5A8FA39FD1BF9F4046645947AB7F5DE603D3401350F62E66D8CA4"
+    },
+    {
+      "scheme": "dsgtin++",
+      "elementString": "(01)39933715154367(21)8Ta9;ZRa.WR(13)740117(7003)7212071121(7007)890915571214(8008)8705280427",
+      "filter": 7,
+      "hostname": "id.example.com",
+      "expectHex": "FCF19431399337151543678B71530B9776A9615D5E9494197C61DBC3665B6E007230EB55C01F665EE71D0010D75E11B"
+    },
+    {
+      "scheme": "dsgtin++",
+      "elementString": "(01)76432383774972(21)6(13)100512(10)n2DyJ.IU71sXATLunj(91)tfJFMX'seK(422)840",
+      "filter": 6,
+      "hostname": "id.example.com",
+      "expectHex": "FCE114AC7643238377497201692832F8C3B786CCB6C424B73289E652E9355BB1E7620D499D776A9182BA66951A6D84FCF2CB422D20"
+    },
+    {
+      "scheme": "dsgtin++",
+      "elementString": "(01)81689359472529(21)sHTiowgYSdXqK6rF?U(11)181104(17)641205(7007)280410(8008)14062306",
+      "filter": 6,
+      "hostname": "id.example.com",
+      "expectHex": "FCE025648168935947252992E722A69DFDF3D9A792C7196DB9467F564A0CBE30EDE1B32DB17818570071C454004039AE6"
+    },
+    {
+      "scheme": "dsgtin++",
+      "elementString": "(01)04161619275855(21)SQq_7S(7007)780716(3103)553948",
+      "filter": 6,
+      "hostname": "data.example.org",
+      "expectHex": "FCE69CF00416161927585566490ABFED29B930F4C2BB2F8C3B786CCB70C40E1CF70"
+    },
+    {
+      "scheme": "dsgtin++",
+      "elementString": "(01)20865046568693(21)DVyCzKcFE(13)190814(422)840",
+      "filter": 6,
+      "hostname": "www.host.co.uk",
+      "expectHex": "FCE1270E20865046568693690D5C82CCA7051239FD1BF9F4046508B48"
+    },
+    {
+      "scheme": "dsgtin++",
+      "elementString": "(01)84142890937676(21)0r4zl0+kLQW2E,(7006)480606",
+      "filter": 0,
+      "hostname": "data.example.org",
+      "expectHex": "FC0560C6841428909376768E61C9A7AD8C15EB9946BB28AB26E4C3D30AECBE30EDE1B32DC"
+    },
+    {
+      "scheme": "dsgtin++",
+      "elementString": "(01)89722683890712(21)RICiJX5&eW(15)271205",
+      "filter": 2,
+      "hostname": "data.example.org",
+      "expectHex": "FC223785897226838907128AA5261E99561AA6CB5E6E4C3D30AECBE30EDE1B32DC"
+    },
+    {
+      "scheme": "dsgtin++",
+      "elementString": "(01)40044377784307(21)9mwGXy(7006)600401(7007)781107000602",
+      "filter": 2,
+      "hostname": "www.host.co.uk",
+      "expectHex": "FCA578814004437778430766F66C065F28E7F46FE7D01197007CEB380610"
+    },
+    {
+      "scheme": "dsgtin++",
+      "elementString": "(01)53846966349904(21)dsd?Cty9YggGrL3mu1n(17)011011(422)840(7003)1603251723(8008)0602122109",
+      "filter": 4,
+      "hostname": "data.example.org",
+      "expectHex": "FCC4034B5384696634990493C9CF23F87D3CB9B39F3C7E5319EDEAC774DC987A615D97C61DBC3665B8845A43801903CC57800843132A48"
+    },
+    {
+      "scheme": "dsgtin++",
+      "elementString": "(01)36262628607879(21)SNRam(7007)440918",
+      "filter": 6,
+      "hostname": "data.example.org",
+      "expectHex": "FC665932362626286078796548D45A9A6E4C3D30AECBE30EDE1B32DC"
+    },
+    {
+      "scheme": "dsgtin++",
+      "elementString": "(01)01522506108589(21)lDfle2mqkSeW<3XL85pQ(13)790406(10)EZW1Y'IvH6r>rnr(91)Eo>qEyKatq5(3103)083360",
+      "filter": 0,
+      "hostname": "id.example.com",
+      "expectHex": "FC819E860152250610858994D91336CCACB6F1D74F2D778CEC4C70D785192832F8C3B786CCB6C423E2DAAEC6CA793DA436E4FB96EE52305C5DEFB8C5F32F0F4E2D4C40C51680"
+    },
+    {
+      "scheme": "dsgtin++",
+      "elementString": "(01)58379150809632(21)2B9E0fwpTI329mqJ8z(17)701128(8008)34051510",
+      "filter": 0,
+      "hostname": "qr.acme.tech",
+      "expectHex": "FC848D7C5837915080963272D81F44D1FC294C8DF6F66A89F338E7B0E3DB941808008112BD4"
+    },
+    {
+      "scheme": "dsgtin++",
+      "elementString": "(01)80886138409771(21)LNJk(15)630317(17)340116",
+      "filter": 6,
+      "hostname": "qr.acme.tech",
+      "expectHex": "FCE27E7180886138409771642CD2648E7B0E3DB94180174430"
+    },
+    {
+      "scheme": "dsgtin++",
+      "elementString": "(01)83323108996673(21)*EQ(7007)760519(91)DYqjTE(8008)101109191925",
+      "filter": 6,
+      "hostname": "data.example.org",
+      "expectHex": "FCE698B3833231089966738355168CDC987A615D97C61DBC3665B922C306C551A62400442AD334D9"
+    },
+    {
+      "scheme": "dsgtin++",
+      "elementString": "(01)34556186832937(21)zkqQXgn(7007)840401(422)276(3103)981562(8008)37010407",
+      "filter": 6,
+      "hostname": "id.example.com",
+      "expectHex": "FCE6A8813455618683293767CE4A905E09E4A0CBE30EDE1B32DB422450C40FBE8EA00204A2438"
+    },
+    {
+      "scheme": "sscc++",
+      "elementString": "(00)770402198725229540(91)R>IWEDAlhQzmeWK",
+      "filter": 4,
+      "hostname": "qr.acme.tech",
+      "expectHex": "EFC7704021987252295408E7B0E3DB941809183E93E935E2C483B3451F5B72D796"
+    },
+    {
+      "scheme": "sscc++",
+      "elementString": "(00)916071920623744377",
+      "filter": 6,
+      "hostname": "data.example.org",
+      "expectHex": "EF69160719206237443779B930F4C2BB2F8C3B786CCB70"
+    },
+    {
+      "scheme": "sscc++",
+      "elementString": "(00)597497539934586580",
+      "filter": 5,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "EF55974975399345865801C71FA4604A79A4748BF92"
+    },
+    {
+      "scheme": "sscc++",
+      "elementString": "(00)586655238622227021(91)tGoLyicR9hcjuAaDuU",
+      "filter": 2,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "EFA5866552386222270211C71FA4604A79A4748BF9322C95A3505E51388FB0B91DC0341DCA0"
+    },
+    {
+      "scheme": "sscc++",
+      "elementString": "(00)912445187827946911",
+      "filter": 3,
+      "hostname": "qr.acme.tech",
+      "expectHex": "EF39124451878279469118E7B0E3DB94180"
+    },
+    {
+      "scheme": "sscc++",
+      "elementString": "(00)939293702472283370(91)Jv4Bdydod3tvhvyn",
+      "filter": 4,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "EFC9392937024722833701C71FA4604A79A4748BF9322C8137F00BB93B43BBDB7C37E538"
+    },
+    {
+      "scheme": "sgln++",
+      "elementString": "(414)8535463109943(254)J!zT",
+      "filter": 1,
+      "hostname": "www.host.co.uk",
+      "expectHex": "E918535463109943849487D548E7F46FE7D0119"
+    },
+    {
+      "scheme": "sgln++",
+      "elementString": "(414)6497236931002(254)9c9RYv4EChZFBjYOU(91)mwkY6P)hZB5VAVA",
+      "filter": 0,
+      "hostname": "id.example.com",
+      "expectHex": "E98649723693100271F5CF5162FE040A164506360E524A0CBE30EDE1B32DB9183F6F7D765B5053A2D426B5A0D682"
+    },
+    {
+      "scheme": "sgln++",
+      "elementString": "(414)1333987723785(254)gDuU92VlGVNialzroBLd(91)RtwaLZKIvT15Kf",
+      "filter": 6,
+      "hostname": "data.example.org",
+      "expectHex": "E9E133398772378574803B94F765651953626A5CEBA012DD9B930F4C2BB2F8C3B786CCB72458E46DC1A2D9288BD3D7929F"
+    },
+    {
+      "scheme": "sgln++",
+      "elementString": "(414)6107432270620(254)E=qWkaH?j7Tos(91)mx1mZDHINpMRKBbaXm9",
+      "filter": 4,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "E9C61074322706208D8AF78D7D78643FD4DEA6FE638E3F48C094F348E917F2645939B1D666431C83693112816DA5E6F4"
+    },
+    {
+      "scheme": "sgln++",
+      "elementString": "(414)4791281891987(254)q1sZH99im46(91)SIzAxN",
+      "filter": 0,
+      "hostname": "qr.acme.tech",
+      "expectHex": "E9847912818919876BAB5B191FDF629B8EA39EC38F6E506024586488CC0C4D"
+    },
+    {
+      "scheme": "sgln++",
+      "elementString": "(414)6815703111724(254))Y8<MJi(91)8mXgCrCH",
+      "filter": 1,
+      "hostname": "qr.acme.tech",
+      "expectHex": "E996815703111724875365C3C9B2B4C73D871EDCA0C048B11E4CBC015610E"
+    },
+    {
+      "scheme": "sgln++",
+      "elementString": "(414)8730394653996(254)e2Fym82EJZ1cJ44WQBnj(91)TBjjDR7",
+      "filter": 2,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "E9A8730394653996747B61729BCD84259D5C278E164019E31C71FA4604A79A4748BF9322C3A60C71868F6"
+    },
+    {
+      "scheme": "sgln++",
+      "elementString": "(414)6686317713662(254)3zz6V9d5OHQ4LuZb(91)R*rnFF90I",
+      "filter": 3,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "E9B668631771366270DF3CFA57D7793874382EE65B1C71FA4604A79A4748BF932304D255CB7468CE5849"
+    },
+    {
+      "scheme": "sgln++",
+      "elementString": "(414)4138588930733(254)GCH8(91)T4",
+      "filter": 4,
+      "hostname": "qr.acme.tech",
+      "expectHex": "E9C4138588930733641821FC8E7B0E3DB94180916093E0"
+    },
+    {
+      "scheme": "sgln++",
+      "elementString": "(414)8580672516587(254)bjCPyK",
+      "filter": 2,
+      "hostname": "data.example.org",
+      "expectHex": "E928580672516587666E308FC8A9B930F4C2BB2F8C3B786CCB70"
+    },
+    {
+      "scheme": "sgln++",
+      "elementString": "(414)3149102539616(254)Xgpk(91)F42Agla2=nXHOioPL8",
+      "filter": 6,
+      "hostname": "qr.acme.tech",
+      "expectHex": "E9E3149102539616645E0A648E7B0E3DB941809184A33465073ECC2C9EEEB1227E9DF42638"
+    },
+    {
+      "scheme": "sgln++",
+      "elementString": "(414)1233072663180(254)H(91)Wmg8P",
+      "filter": 2,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "E9A1233072663180611C71C7E918129E691D22FE4C8B0AB4D07878"
+    },
+    {
+      "scheme": "sgln++",
+      "elementString": "(414)0406996206448(254)LZuwVO0r9sMW3GrW2",
+      "filter": 0,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "E900406996206448712D9BB054ED2BF6C316DC6AD6D871C7E918129E691D22FE48"
+    },
+    {
+      "scheme": "sgln++",
+      "elementString": "(414)3154644518586(254)Il4s0AyqYlPmzgI",
+      "filter": 2,
+      "hostname": "data.example.org",
+      "expectHex": "E9231546445185866F225E2CD00CAA6253E6CE0226E4C3D30AECBE30EDE1B32DC"
+    },
+    {
+      "scheme": "sgln++",
+      "elementString": "(414)8656176192449(254)ew9NGu2bVWB9",
+      "filter": 6,
+      "hostname": "www.host.co.uk",
+      "expectHex": "E9686561761924496C7B0F4D1AED9B55607D8E7F46FE7D0119"
+    },
+    {
+      "scheme": "sgln++",
+      "elementString": "(414)2608098890350(254)v4r(91)4MUTasiQ8k3OXuoGxH;S",
+      "filter": 7,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "E9F260809889035063BF8AC71C7E918129E691D22FE4C8C28D26D5A9879E9A2E35B39F63AEF8FE243BA6"
+    },
+    {
+      "scheme": "sgln++",
+      "elementString": "(414)0555748976457(254)kaIOl9L-J>sTOX(91)FJ\\(hl9Q\\(+1n5HACNtv",
+      "filter": 5,
+      "hostname": "www.host.co.uk",
+      "expectHex": "E9D05557489764578ED7864CFD8E662D94FB9D49F6239FD1BF9F4046646128D29468D8E68A856C773591061CEE9D8"
+    },
+    {
+      "scheme": "sgln++",
+      "elementString": "(414)1298989101026(254)jNm(91)rlu",
+      "filter": 7,
+      "hostname": "id.example.com",
+      "expectHex": "E9F1298989101026638CD9A4A0CBE30EDE1B32DB9160EB96E"
+    },
+    {
+      "scheme": "grai++",
+      "elementString": "(8003)01625010406575l5SoU(91)xdQ38FGtPJuhRv",
+      "filter": 0,
+      "hostname": "www.host.co.uk",
+      "expectHex": "EB801625010406575659794A85239FD1BF9F40466458EC5D437F051AD3C9BA146F"
+    },
+    {
+      "scheme": "grai++",
+      "elementString": "(8003)04048314578460LSXi9A_cX7ZKcxS(91)8",
+      "filter": 3,
+      "hostname": "data.example.org",
+      "expectHex": "EBB040483145784606F2D25E2F40FDC5FB64A7314A6E4C3D30AECBE30EDE1B32DC910060"
+    },
+    {
+      "scheme": "grai++",
+      "elementString": "(8003)00100377941446jT7j0ef(91)D35nLTx7G&9n",
+      "filter": 2,
+      "hostname": "qr.acme.tech",
+      "expectHex": "EBA00100377941446678D3EE3D1E7E39EC38F6E50602460C88CDAEE9953C378E99CEE"
+    },
+    {
+      "scheme": "grai++",
+      "elementString": "(8003)03997460908465Mx(91)PxJQWL6Bh6bpAaUyCU4",
+      "filter": 6,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "EBE03997460908465623311C71FA4604A79A4748BF9322C99F89282C5F40C3D37480D29904A70"
+    },
+    {
+      "scheme": "grai++",
+      "elementString": "(8003)048866242536730K(91)ppHCyfHlUO1U1G",
+      "filter": 5,
+      "hostname": "qr.acme.tech",
+      "expectHex": "EBD0488662425367362D0A8E7B0E3DB941809163A9A470B27C79543B553518"
+    },
+    {
+      "scheme": "grai++",
+      "elementString": "(8003)04734726771437JC%shlxzajM4dz(91)lNVIPm",
+      "filter": 0,
+      "hostname": "data.example.org",
+      "expectHex": "EB8047347267714378E950D2F3D1B3C7AC3AA6B4C9EA6E4C3D30AECBE30EDE1B32DC9161A535520F98"
+    },
+    {
+      "scheme": "grai++",
+      "elementString": "(8003)07441688699224KUA3pe",
+      "filter": 1,
+      "hostname": "id.example.com",
+      "expectHex": "EB10744168869922466294037A5E92832F8C3B786CCB6C"
+    },
+    {
+      "scheme": "grai++",
+      "elementString": "(8003)057987133866697(91)i",
+      "filter": 1,
+      "hostname": "qr.acme.tech",
+      "expectHex": "EB9057987133866690178E7B0E3DB94180916062"
+    },
+    {
+      "scheme": "grai++",
+      "elementString": "(8003)07446467896351ig7U73(91)IOt4gW2hwC2sof",
+      "filter": 1,
+      "hostname": "www.host.co.uk",
+      "expectHex": "EB907446467896351668A0ED4EF78E7F46FE7D01199163883ADE205B68700B6B287C"
+    },
+    {
+      "scheme": "grai++",
+      "elementString": "(8003)05522976558491U",
+      "filter": 2,
+      "hostname": "data.example.org",
+      "expectHex": "EB20552297655849161526E4C3D30AECBE30EDE1B32DC"
+    },
+    {
+      "scheme": "grai++",
+      "elementString": "(8003)02186868802937.uAn4a\\(",
+      "filter": 1,
+      "hostname": "www.host.co.uk",
+      "expectHex": "EB102186868802937875DD60EE69854473FA37F3E808C8"
+    },
+    {
+      "scheme": "grai++",
+      "elementString": "(8003)04513408519617fqpj3DaDkTpaH(91)lAwOqQyHM:zYdFh8",
+      "filter": 2,
+      "hostname": "data.example.org",
+      "expectHex": "EBA045134085196176D7EAA63DC3683913A5A1E6E4C3D30AECBE30EDE1B32DC91843641EF3F8D1F3226BAF567246D0E0"
+    },
+    {
+      "scheme": "grai++",
+      "elementString": "(8003)073408527953215SUd(91)vbVsCEa:bA.9oO",
+      "filter": 1,
+      "hostname": "www.host.co.uk",
+      "expectHex": "EB90734085279532164E5251D8E7F46FE7D01199183BB62ADCE1C5C2EB1415CE77CF"
+    },
+    {
+      "scheme": "grai++",
+      "elementString": "(8003)0103419709854942YK5CDXPZU2BY(91)IH7Robmr",
+      "filter": 0,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "EB801034197098549AED99A4A3C1CD1A5E910691C71FA4604A79A4748BF9322C4103F68D0DCD58"
+    },
+    {
+      "scheme": "grai++",
+      "elementString": "(8003)03916483696333O=SPzGytZogoTe",
+      "filter": 2,
+      "hostname": "www.host.co.uk",
+      "expectHex": "EB2039164836963338E9EF69D0F51FCF4B5BF3EFA99639FD1BF9F40464"
+    },
+    {
+      "scheme": "grai++",
+      "elementString": "(8003)02694981965366fQmybYczia(91)JG64SXtGJH7IB!Fjs'S",
+      "filter": 7,
+      "hostname": "data.example.org",
+      "expectHex": "EBF026949819653666A7D09B26D873389A9B930F4C2BB2F8C3B786CCB724613951DB34A763A479521BC9848636AE69E98"
+    },
+    {
+      "scheme": "giai++",
+      "elementString": "(8004)30257(91)nyy4dhOWfV8JDqd",
+      "filter": 7,
+      "hostname": "id.example.com",
+      "expectHex": "EEF30257F92832F8C3B786CCB6E458F9F2CB87613967D5F090EA74"
+    },
+    {
+      "scheme": "giai++",
+      "elementString": "(8004)01690220423",
+      "filter": 0,
+      "hostname": "qr.acme.tech",
+      "expectHex": "EE001690220423F8E7B0E3DB94180"
+    },
+    {
+      "scheme": "giai++",
+      "elementString": "(8004)21730600039HtCa",
+      "filter": 4,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "EE421730600039E641ED09A1C71FA4604A79A4748BF92"
+    },
+    {
+      "scheme": "giai++",
+      "elementString": "(8004)4917363911aqT(91)1WUM27nY28un_837k7yo",
+      "filter": 0,
+      "hostname": "data.example.org",
+      "expectHex": "EE84917363911E636AA4E6E4C3D30AECBE30EDE1B32DC916535594336EE7636F2E9FFF37EE4EF2A0"
+    },
+    {
+      "scheme": "giai++",
+      "elementString": "(8004)3936504224(91)cbqiZyUhlMomxyc",
+      "filter": 0,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "EE83936504224F1C71FA4604A79A4748BF9322C7B8DD51339290CA651363938"
+    },
+    {
+      "scheme": "giai++",
+      "elementString": "(8004)2514MI6ZeAP8M0ioK-MAVi(91)u5/vT",
+      "filter": 0,
+      "hostname": "id.example.com",
+      "expectHex": "EE82514E72308E997803FC3348A82BE30056292832F8C3B786CCB6E4605EAD57F6A8"
+    },
+    {
+      "scheme": "giai++",
+      "elementString": "(8004)086094172267vFE1wGgvbVi6UXrCq(91)bRgLNHFrrmqlAat",
+      "filter": 7,
+      "hostname": "qr.acme.tech",
+      "expectHex": "EEF086094172267E71BC5135C0682F6D58BA517AC2AA39EC38F6E50602458F6D180B34716BAE6AA501AB4"
+    },
+    {
+      "scheme": "giai++",
+      "elementString": "(8004)11611092418XPX(91)5todBvOqN7v",
+      "filter": 2,
+      "hostname": "data.example.org",
+      "expectHex": "EEA11611092418EA398999B930F4C2BB2F8C3B786CCB72458BE6DA1D06F3AA37BBC"
+    },
+    {
+      "scheme": "giai++",
+      "elementString": "(8004)1425433OM",
+      "filter": 0,
+      "hostname": "id.example.com",
+      "expectHex": "EE01425433E6238C92832F8C3B786CCB6C"
+    },
+    {
+      "scheme": "giai++",
+      "elementString": "(8004)68303607(91)HefFssAhXE<GFNU2J",
+      "filter": 1,
+      "hostname": "data.example.org",
+      "expectHex": "EE968303607F9B930F4C2BB2F8C3B786CCB7246119197346E7CE0E8B115E478D3AAB294"
+    },
+    {
+      "scheme": "giai++",
+      "elementString": "(8004)453042370O&pU5b(91)z79a",
+      "filter": 0,
+      "hostname": "www.host.co.uk",
+      "expectHex": "EE8453042370E869E9B8556B8A39FD1BF9F404664584CFBF5A"
+    },
+    {
+      "scheme": "giai++",
+      "elementString": "(8004)2529730VkN3KJmb;eJ2eA)pj(91)ylb4KZhjjhd3",
+      "filter": 2,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "EEA2529730E91ADAE733972B6E27796532CB054F0D438E3F48C094F348E917F26458CCA56F82998638E1777"
+    },
+    {
+      "scheme": "giai++",
+      "elementString": "(8004)098844945856iykZSM(91)co",
+      "filter": 7,
+      "hostname": "data.example.org",
+      "expectHex": "EEF098844945856E668B291948C9B930F4C2BB2F8C3B786CCB724582728"
+    },
+    {
+      "scheme": "giai++",
+      "elementString": "(8004)5413213",
+      "filter": 7,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "EE75413213F1C71FA4604A79A4748BF92"
+    },
+    {
+      "scheme": "giai++",
+      "elementString": "(8004)367740PKcKH0cKgl(91)h:",
+      "filter": 2,
+      "hostname": "id.example.com",
+      "expectHex": "EEA367740E6A3CA70A1F470A82592832F8C3B786CCB6E4602D0E8"
+    },
+    {
+      "scheme": "giai++",
+      "elementString": "(8004)8214339076hEWDnI5BYD<iik2L(91)1P",
+      "filter": 3,
+      "hostname": "www.host.co.uk",
+      "expectHex": "EEB8214339076E90D116BC4DD25AC2B311E69D3AD94C8E7F46FE7D01199160B53C"
+    },
+    {
+      "scheme": "giai++",
+      "elementString": "(8004)55839911088301PXF0Y2ASb(91)q7BxZYZAC",
+      "filter": 7,
+      "hostname": "data.example.org",
+      "expectHex": "EEF55839911088301E693D71746360126E6E4C3D30AECBE30EDE1B32DC91626AEC1C59619002"
+    },
+    {
+      "scheme": "giai++",
+      "elementString": "(8004)7903crLaVSl(91)rYDSznguy1qIRcUWCA",
+      "filter": 2,
+      "hostname": "qr.acme.tech",
+      "expectHex": "EEA7903E6772B2DA5529639EC38F6E506024592AD80D2CE782ECB5A8845C516080"
+    },
+    {
+      "scheme": "giai++",
+      "elementString": "(8004)480123996(91)7HyQKxfH",
+      "filter": 0,
+      "hostname": "www.host.co.uk",
+      "expectHex": "EE8480123996F8E7F46FE7D011991623B1F240AC5F1C"
+    },
+    {
+      "scheme": "gsrn++",
+      "elementString": "(8018)577954277380313443(91)Yx+trBsO",
+      "filter": 2,
+      "hostname": "qr.acme.tech",
+      "expectHex": "E7A5779542773803134438E7B0E3DB9418091822CF857D3942E73C"
+    },
+    {
+      "scheme": "gsrn++",
+      "elementString": "(8018)683193052559350604",
+      "filter": 2,
+      "hostname": "data.example.org",
+      "expectHex": "E726831930525593506049B930F4C2BB2F8C3B786CCB70"
+    },
+    {
+      "scheme": "gsrn++",
+      "elementString": "(8018)383805537196531984(91)se7CEEQcX\\(nByl",
+      "filter": 2,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "E7A3838055371965319841C71FA4604A79A4748BF93230773CADE1C58B471D851BA179D8"
+    },
+    {
+      "scheme": "gsrn++",
+      "elementString": "(8018)524302100017696893(91)K41AHp'M1<I2wqt",
+      "filter": 4,
+      "hostname": "www.host.co.uk",
+      "expectHex": "E7C5243021000176968938E7F46FE7D01199183E5B463064704F358BC92CBBF1E8"
+    },
+    {
+      "scheme": "gsrn++",
+      "elementString": "(8018)533138693375939591",
+      "filter": 2,
+      "hostname": "www.host.co.uk",
+      "expectHex": "E725331386933759395918E7F46FE7D0119"
+    },
+    {
+      "scheme": "gsrn++",
+      "elementString": "(8018)165723431988131200",
+      "filter": 0,
+      "hostname": "www.host.co.uk",
+      "expectHex": "E701657234319881312008E7F46FE7D0119"
+    },
+    {
+      "scheme": "gsrn++",
+      "elementString": "(8018)806873655105087201(91)pww",
+      "filter": 5,
+      "hostname": "qr.acme.tech",
+      "expectHex": "E7D8068736551050872018E7B0E3DB941809160E9C30"
+    },
+    {
+      "scheme": "gsrn++",
+      "elementString": "(8018)497921581919392254",
+      "filter": 5,
+      "hostname": "data.example.org",
+      "expectHex": "E754979215819193922549B930F4C2BB2F8C3B786CCB70"
+    },
+    {
+      "scheme": "gsrn++",
+      "elementString": "(8018)514148780491347792(91)LybUWu0",
+      "filter": 3,
+      "hostname": "id.example.com",
+      "expectHex": "E7B51414878049134779292832F8C3B786CCB6E45872F26D45AED0"
+    },
+    {
+      "scheme": "gsrn++",
+      "elementString": "(8018)391229283286157138(91)LNy7,MxFT",
+      "filter": 7,
+      "hostname": "id.example.com",
+      "expectHex": "E7F39122928328615713892832F8C3B786CCB6E4609993BCB75937C46A8"
+    },
+    {
+      "scheme": "gsrn++",
+      "elementString": "(8018)435886248212702615(91)G:",
+      "filter": 0,
+      "hostname": "www.host.co.uk",
+      "expectHex": "E784358862482127026158E7F46FE7D01199180A3BA"
+    },
+    {
+      "scheme": "gsrn++",
+      "elementString": "(8018)877815338064967840(91)bNPuvPPIK2sgqJXETKY0",
+      "filter": 0,
+      "hostname": "www.host.co.uk",
+      "expectHex": "E788778153380649678408E7F46FE7D011991651B34FBAF3CF20ADAC82A257113298D0"
+    },
+    {
+      "scheme": "gsrn++",
+      "elementString": "(8018)010563369414465908(91)cH>0hZ",
+      "filter": 5,
+      "hostname": "id.example.com",
+      "expectHex": "E7D01056336941446590892832F8C3B786CCB6E4606C721F30D168"
+    },
+    {
+      "scheme": "gsrn++",
+      "elementString": "(8018)577613311799723038(91)*e8iP",
+      "filter": 0,
+      "hostname": "data.example.org",
+      "expectHex": "E785776133117997230389B930F4C2BB2F8C3B786CCB7246055595C69A0"
+    },
+    {
+      "scheme": "gsrn++",
+      "elementString": "(8018)254539011048553834",
+      "filter": 2,
+      "hostname": "id.example.com",
+      "expectHex": "E7225453901104855383492832F8C3B786CCB6C"
+    },
+    {
+      "scheme": "gsrn++",
+      "elementString": "(8018)037102585287859396(91)nDKjVqYWB9j6",
+      "filter": 5,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "E7D0371025852878593961C71FA4604A79A4748BF9322C64E1951AB530B03EC7D0"
+    },
+    {
+      "scheme": "gsrn++",
+      "elementString": "(8018)681071369370644849(91)5XEa=LbiVjKfRhTQR",
+      "filter": 3,
+      "hostname": "www.host.co.uk",
+      "expectHex": "E7B6810713693706448498E7F46FE7D011991845AD88B85ECCC5A6B6A979A968A94690"
+    },
+    {
+      "scheme": "gsrn++",
+      "elementString": "(8018)405518163294693475(91)iW6FAbhxlw-F-i5o+V",
+      "filter": 0,
+      "hostname": "www.host.co.uk",
+      "expectHex": "E784055181632946934758E7F46FE7D01199184B4D76D1A0E2D1E36775B196E96BBD5D6"
+    },
+    {
+      "scheme": "gsrnp++",
+      "elementString": "(8017)995168102363225822",
+      "filter": 1,
+      "hostname": "data.example.org",
+      "expectHex": "E819951681023632258229B930F4C2BB2F8C3B786CCB70"
+    },
+    {
+      "scheme": "gsrnp++",
+      "elementString": "(8017)153435532419759194(91)y1jYiru6Abs.j",
+      "filter": 3,
+      "hostname": "data.example.org",
+      "expectHex": "E8B1534355324197591949B930F4C2BB2F8C3B786CCB72460DF2C7559D3CBAB6838B9AED4"
+    },
+    {
+      "scheme": "gsrnp++",
+      "elementString": "(8017)309943779271160330(91)9bfL2CtNlTeUN0iq",
+      "filter": 6,
+      "hostname": "id.example.com",
+      "expectHex": "E8E30994377927116033092832F8C3B786CCB6E4590F5B7CBD82B4D9537943748AA"
+    },
+    {
+      "scheme": "gsrnp++",
+      "elementString": "(8017)418181511336354301(91)j<K8Kl7u0Q",
+      "filter": 6,
+      "hostname": "data.example.org",
+      "expectHex": "E8E4181815113363543019B930F4C2BB2F8C3B786CCB72460AD4F25B897B1BF56144"
+    },
+    {
+      "scheme": "gsrnp++",
+      "elementString": "(8017)094122292036516642(91)G",
+      "filter": 7,
+      "hostname": "qr.acme.tech",
+      "expectHex": "E8F0941222920365166428E7B0E3DB94180916046"
+    },
+    {
+      "scheme": "gsrnp++",
+      "elementString": "(8017)154835013067593611(91)vDY;O",
+      "filter": 7,
+      "hostname": "id.example.com",
+      "expectHex": "E8F15483501306759361192832F8C3B786CCB6E4605ED12CBB9E"
+    },
+    {
+      "scheme": "gsrnp++",
+      "elementString": "(8017)659948401965994051(91)viWxl;oLeZ5",
+      "filter": 1,
+      "hostname": "www.host.co.uk",
+      "expectHex": "E896599484019659940518E7F46FE7D01199182FB69AFE363BDF332DA6A"
+    },
+    {
+      "scheme": "gsrnp++",
+      "elementString": "(8017)754204775032060709",
+      "filter": 4,
+      "hostname": "data.example.org",
+      "expectHex": "E847542047750320607099B930F4C2BB2F8C3B786CCB70"
+    },
+    {
+      "scheme": "gsrnp++",
+      "elementString": "(8017)918299139783098918(91)o5d.bdIiIdjaZhGWOf",
+      "filter": 1,
+      "hostname": "qr.acme.tech",
+      "expectHex": "E899182991397830989188E7B0E3DB941809184B7B5C8BB16493A64E4D586D688F5E7E6"
+    },
+    {
+      "scheme": "gsrnp++",
+      "elementString": "(8017)953196172287794226(91)8MvT",
+      "filter": 3,
+      "hostname": "data.example.org",
+      "expectHex": "E8B9531961722877942269B930F4C2BB2F8C3B786CCB724584F0CBD3"
+    },
+    {
+      "scheme": "gsrnp++",
+      "elementString": "(8017)992725611276586046(91)2Ts5lMvQEKTYpT",
+      "filter": 0,
+      "hostname": "qr.acme.tech",
+      "expectHex": "E889927256112765860468E7B0E3DB941809163B64ECE6532F4042936294C"
+    },
+    {
+      "scheme": "gsrnp++",
+      "elementString": "(8017)782141014197027444(91)xv%a*qSkyhG'",
+      "filter": 0,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "E887821410141970274441C71FA4604A79A4748BF93230678EC970AAE34F5F9D11D38"
+    },
+    {
+      "scheme": "gsrnp++",
+      "elementString": "(8017)072799176374496078(91)9Ogo4MjXow85sbP9",
+      "filter": 3,
+      "hostname": "www.host.co.uk",
+      "expectHex": "E8B0727991763744960788E7F46FE7D011991643D3A0A383235E8C3CE6C6CFF4"
+    },
+    {
+      "scheme": "gsrnp++",
+      "elementString": "(8017)616387403362244270(91)OSM2ENKp",
+      "filter": 2,
+      "hostname": "www.host.co.uk",
+      "expectHex": "E8A6163874033622442708E7F46FE7D011991620E48CD8434AA4"
+    },
+    {
+      "scheme": "gsrnp++",
+      "elementString": "(8017)828918271656773307(91)JCk72yO",
+      "filter": 4,
+      "hostname": "data.example.org",
+      "expectHex": "E8C8289182716567733079B930F4C2BB2F8C3B786CCB72458724293BDB238"
+    },
+    {
+      "scheme": "gsrnp++",
+      "elementString": "(8017)889690326697099232(91)LB9>X3UTf857",
+      "filter": 1,
+      "hostname": "www.host.co.uk",
+      "expectHex": "E898896903266970992328E7F46FE7D01199183264272FAC33AB533386ADC"
+    },
+    {
+      "scheme": "gsrnp++",
+      "elementString": "(8017)649096578023675454(91)YyPP5H52Gzhp/iUngQ",
+      "filter": 4,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "E8C6490965780236754541C71FA4604A79A4748BF93230959F34283590D5947F5A382FD357767A2"
+    },
+    {
+      "scheme": "gsrnp++",
+      "elementString": "(8017)146185536508451136",
+      "filter": 3,
+      "hostname": "www.host.co.uk",
+      "expectHex": "E831461855365084511368E7F46FE7D0119"
+    },
+    {
+      "scheme": "gsrnp++",
+      "elementString": "(8017)904781559697931108(91)atYs",
+      "filter": 5,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "E8D9047815596979311081C71FA4604A79A4748BF9322C2356B160"
+    },
+    {
+      "scheme": "gsrnp++",
+      "elementString": "(8017)706325052182630589(91)Svuhg",
+      "filter": 6,
+      "hostname": "www.host.co.uk",
+      "expectHex": "E8E7063250521826305898E7F46FE7D0119916152BEE860"
+    },
+    {
+      "scheme": "gdti++",
+      "elementString": "(253)4637290150212-BLTNxE<JWqKsm(91)3QZv3gp4JbHz\\(PN9BPRy",
+      "filter": 4,
+      "hostname": "www.host.co.uk",
+      "expectHex": "EAC46372901502128E5B0A6549DE22BC955F8CBE7B639FD1BF9F4046646146746D76679F834958A47A51427398542979"
+    },
+    {
+      "scheme": "gdti++",
+      "elementString": "(253)4644628307309wwqnrmcbnEAe(91)pNcU8rq3KgqG",
+      "filter": 3,
+      "hostname": "qr.acme.tech",
+      "expectHex": "EAB46446283073096CC30AA7AE671B9C401E8E7B0E3DB9418091632935C53CAEADCA82A18"
+    },
+    {
+      "scheme": "gdti++",
+      "elementString": "(253)3006844939039uYLlk(91)CS)0rbAEfvn9T+A",
+      "filter": 7,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "EAF300684493903965B982E59071C7E918129E691D22FE4C8C1F0E9A961CB1418B9BB6E73515C1"
+    },
+    {
+      "scheme": "gdti++",
+      "elementString": "(253)9941749996487H3(91)5",
+      "filter": 0,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "EA89941749996487621F71C71FA4604A79A4748BF932200A8"
+    },
+    {
+      "scheme": "gdti++",
+      "elementString": "(253)19569836468129I87F3",
+      "filter": 7,
+      "hostname": "data.example.org",
+      "expectHex": "EA71956983646812A6F54FE8529B930F4C2BB2F8C3B786CCB70"
+    },
+    {
+      "scheme": "gdti++",
+      "elementString": "(253)1829624016759p2NIc8za9(91)7EAdu1",
+      "filter": 0,
+      "hostname": "qr.acme.tech",
+      "expectHex": "EA8182962401675969A7634873CCDAF639EC38F6E506024586EC401DBB5"
+    },
+    {
+      "scheme": "gdti++",
+      "elementString": "(253)59176957038487kNCleG2",
+      "filter": 6,
+      "hostname": "qr.acme.tech",
+      "expectHex": "EA6591769570384868EE434295E1B68E7B0E3DB94180"
+    },
+    {
+      "scheme": "gdti++",
+      "elementString": "(253)6779632774958X>RSgqA8c7)Ilk%I",
+      "filter": 6,
+      "hostname": "id.example.com",
+      "expectHex": "EA6677963277495890B0FA953CFC60B8C6DD4C9D9AD2C992832F8C3B786CCB6C"
+    },
+    {
+      "scheme": "gdti++",
+      "elementString": "(253)9930876277484ih52yxh2(91)On4!kwT",
+      "filter": 3,
+      "hostname": "id.example.com",
+      "expectHex": "EAB9930876277484688A1E76CB187692832F8C3B786CCB6E46079FB9A21D7DEA0"
+    },
+    {
+      "scheme": "gdti++",
+      "elementString": "(253)6841641581404KWd7oX_txSR(91)pZEy5W7B'R5klFwa&",
+      "filter": 6,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "EAE68416415814046B29677BA17FEDC524471C7E918129E691D22FE4C8C23C2D45F2D6BB7849E935D7B2377C298"
+    },
+    {
+      "scheme": "gdti++",
+      "elementString": "(253)3217604233674Fkmk5dG8ZJ_983s.e(91)U5P",
+      "filter": 1,
+      "hostname": "id.example.com",
+      "expectHex": "EA93217604233674918DAF6EB6B923B8B52AFB970CF9AECB25065F1876F0D996DC8D071192"
+    },
+    {
+      "scheme": "gdti++",
+      "elementString": "(253)6460060672380dha2A1L'B",
+      "filter": 0,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "EA0646006067238089C9A30B282C66278438E3F48C094F348E917F24"
+    },
+    {
+      "scheme": "gdti++",
+      "elementString": "(253)9821736476621iiI(91)p.wSVNLLs8SdG",
+      "filter": 1,
+      "hostname": "qr.acme.tech",
+      "expectHex": "EA99821736476621638A22239EC38F6E50602460DE0BBBD3AD3A64CE6E29E48E"
+    },
+    {
+      "scheme": "gdti++",
+      "elementString": "(253)6684807505179hl4(91)unK79lr0WL",
+      "filter": 7,
+      "hostname": "www.host.co.uk",
+      "expectHex": "EAF668480750517963865E239FD1BF9F40466458ABA72BBF65AF458B"
+    },
+    {
+      "scheme": "gdti++",
+      "elementString": "(253)6972629023392lYGiE",
+      "filter": 4,
+      "hostname": "qr.acme.tech",
+      "expectHex": "EA46972629023392659581A21239EC38F6E50600"
+    },
+    {
+      "scheme": "gdti++",
+      "elementString": "(253)3522448367066;mnv(91)qG0dM",
+      "filter": 4,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "EAC35224483670668477B77761C71FA4604A79A4748BF9322C2D4368E98"
+    },
+    {
+      "scheme": "gdti++",
+      "elementString": "(253)8444901242107lS*",
+      "filter": 0,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "EA0844490124210783D94D50E38FD230253CD23A45FC9"
+    },
+    {
+      "scheme": "gdti++",
+      "elementString": "(253)3262970790238ev(91)vCmkCPSWPG",
+      "filter": 1,
+      "hostname": "id.example.com",
+      "expectHex": "EA93262970790238627AF92832F8C3B786CCB6E458ABC29A408F4963C6"
+    },
+    {
+      "scheme": "sgcn++",
+      "elementString": "(255)544556960630311879025(17)920321(91)3m3LnzNDXDa",
+      "filter": 2,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "ECA5445569606303816A84E238E3F48C094F348E917F245EE1D6458BDE6DCB9F33435C368"
+    },
+    {
+      "scheme": "sgcn++",
+      "elementString": "(255)307584649942104",
+      "filter": 5,
+      "hostname": "www.host.co.uk",
+      "expectHex": "EC530758464994212091CFE8DFCFA0232"
+    },
+    {
+      "scheme": "sgcn++",
+      "elementString": "(255)428898608957878111(17)060817",
+      "filter": 7,
+      "hostname": "id.example.com",
+      "expectHex": "ECF42889860895785988FC94197C61DBC3665B62E1A22"
+    },
+    {
+      "scheme": "sgcn++",
+      "elementString": "(255)2961003125054072234821582",
+      "filter": 2,
+      "hostname": "www.host.co.uk",
+      "expectHex": "EC22961003125054C10D187E7CE8E7F46FE7D0119"
+    },
+    {
+      "scheme": "sgcn++",
+      "elementString": "(255)21303770512328816(91)KhXB3XhP7fCu57or/QY",
+      "filter": 3,
+      "hostname": "id.example.com",
+      "expectHex": "ECB2130377051232489C24A0CBE30EDE1B32DB9184E5E8B1099D8D141BE687D5AB7DFC97D1B2"
+    },
+    {
+      "scheme": "sgcn++",
+      "elementString": "(255)81214479052836985099312(17)601214",
+      "filter": 5,
+      "hostname": "data.example.org",
+      "expectHex": "ECD8121447905283A68160A0C26E4C3D30AECBE30EDE1B32DC17798E"
+    },
+    {
+      "scheme": "sgcn++",
+      "elementString": "(255)5954316799279839359274361(17)140102(91)6f",
+      "filter": 3,
+      "hostname": "id.example.com",
+      "expectHex": "ECB5954316799279CC36DB61D7992832F8C3B786CCB6C5C708A45026F"
+    },
+    {
+      "scheme": "sgcn++",
+      "elementString": "(255)4672437212019424",
+      "filter": 7,
+      "hostname": "data.example.org",
+      "expectHex": "EC7467243721201936A26E4C3D30AECBE30EDE1B32DC"
+    },
+    {
+      "scheme": "sgcn++",
+      "elementString": "(255)6022331343971311568(17)700621",
+      "filter": 7,
+      "hostname": "www.host.co.uk",
+      "expectHex": "ECF602233134397164C1108E7F46FE7D0119178CD5"
+    },
+    {
+      "scheme": "sgcn++",
+      "elementString": "(255)205229094604736868817(17)380712(91)\\(osjPlHa4J,f",
+      "filter": 1,
+      "hostname": "data.example.org",
+      "expectHex": "EC92052290946047846525A337261E985765F1876F0D996E0BA67648C18A37F3D543648C2D252CCC"
+    },
+    {
+      "scheme": "sgcn++",
+      "elementString": "(255)204411860398066246561(17)610301(91)P3DfXiUbJf",
+      "filter": 2,
+      "hostname": "data.example.org",
+      "expectHex": "ECA204411860398087E5AF4337261E985765F1876F0D996E0BBD30C8B147EE1BEBC4A364BE"
+    },
+    {
+      "scheme": "sgcn++",
+      "elementString": "(255)782160935586469299",
+      "filter": 7,
+      "hostname": "qr.acme.tech",
+      "expectHex": "EC7782160935586458759C73D871EDCA0C00"
+    },
+    {
+      "scheme": "sgcn++",
+      "elementString": "(255)62995958396128(17)591114(91)C446CtvGRZ95lY",
+      "filter": 6,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "ECE6299595839612181C71FA4604A79A4748BF922EEEDD22C705C71D056DE322CFBCCAC0"
+    },
+    {
+      "scheme": "sgcn++",
+      "elementString": "(255)5142444150301229832769047(91)45kRgf5oH6d",
+      "filter": 5,
+      "hostname": "www.host.co.uk",
+      "expectHex": "ECD5142444150301C358319BE178E7F46FE7D01199162F8E644607F9A07E9D"
+    },
+    {
+      "scheme": "sgcn++",
+      "elementString": "(255)527913196817512128034(91)oSmeasW>9tKVSM",
+      "filter": 2,
+      "hostname": "data.example.org",
+      "expectHex": "ECA527913196817581721E4537261E985765F1876F0D996E48C1DBE9EDCB879D77CE7A4BAD4E68"
+    },
+    {
+      "scheme": "sgcn++",
+      "elementString": "(255)70426952330901955",
+      "filter": 7,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "EC7704269523309041E8C71C7E918129E691D22FE48"
+    },
+    {
+      "scheme": "sgcn++",
+      "elementString": "(255)68100108784213738565399(17)070304",
+      "filter": 7,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "ECF6810010878421A37B57EC5C71C7E918129E691D22FE48B87320"
+    },
+    {
+      "scheme": "sgcn++",
+      "elementString": "(255)94946356321554230274627(17)861226(91)lm",
+      "filter": 1,
+      "hostname": "id.example.com",
+      "expectHex": "EC99494635632155A3F093790E4A0CBE30EDE1B32DB17AD9A9160A598"
+    },
+    {
+      "scheme": "sgcn++",
+      "elementString": "(255)416633163948022689130157(17)521018",
+      "filter": 5,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "ECD4166331639480B2A43053568E38FD230253CD23A45FC9176952"
+    },
+    {
+      "scheme": "itip++",
+      "elementString": "(8006)753339419453261218(21)uZC7(10)p(91)3iCMMrvu(422)826",
+      "filter": 7,
+      "hostname": "www.host.co.uk",
+      "expectHex": "EDF75333941945326121864B990BB8E7F46FE7D01191061A64588DE208C32BBEE422CE8"
+    },
+    {
+      "scheme": "itip++",
+      "elementString": "(8006)316080908160602863(21)ZSuA,TnImP2Paxsy7i(10)7oCAUCGh1Wn3\\(r(91)v<Jj8Pa'Ll(422)840",
+      "filter": 7,
+      "hostname": "www.host.co.uk",
+      "expectHex": "EDF31608090816060286392B54FAC15953749DB41950C3E39F96FA639FD1BF9F404644239BEF8706AC38FA18D7DCCD4729182BB3C95A9C50C29E66C422D20"
+    },
+    {
+      "scheme": "itip++",
+      "elementString": "(8006)352447465155890242(21)aiiTos6d4(10)2ElrNtu3(91)37u9n3ZCpqkWbPTCjyH",
+      "filter": 1,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "ED9352447465155890242696A2893A2CE9DE071C7E918129E691D22FE488346C24B59B6DDBC8B27BF777B3EEC854D522CD9E9851E438"
+    },
+    {
+      "scheme": "itip++",
+      "elementString": "(8006)649918996990490306(21)A=xrO7v>S7ySBjS;HVz",
+      "filter": 3,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "ED36499189969904903069382F7C729EDFB3EA6DFCD385AA9BB915BD0E38FD230253CD23A45FC9"
+    },
+    {
+      "scheme": "itip++",
+      "elementString": "(8006)464950926480631428(21)KW5?p(10)VMUrFKtZKvMK(17)530828(91)OmsiGRc3Pp",
+      "filter": 0,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "ED846495092648063142885975DABFE038E3F48C094F348E917F2441B15314AC52AD64ABCC285DAC72458A3A6B221917373E9"
+    },
+    {
+      "scheme": "itip++",
+      "elementString": "(8006)456845143847071435(21)PjspUt6rI5yPr5gLB(91)%VUYGAq8XuQ",
+      "filter": 7,
+      "hostname": "id.example.com",
+      "expectHex": "EDF456845143847071435713E3B2952DEAB239C8FAF980B064A0CBE30EDE1B32DB9182D2D6AB663C1E2E2C75A2"
+    },
+    {
+      "scheme": "itip++",
+      "elementString": "(8006)882925270382550304(21)cQlIWvjfQEz(91)twrR",
+      "filter": 2,
+      "hostname": "data.example.org",
+      "expectHex": "EDA8829252703825503046B7109485AF8DF404CE6E4C3D30AECBE30EDE1B32DC91612DC2B44"
+    },
+    {
+      "scheme": "itip++",
+      "elementString": "(8006)639615756903880758(21)Z",
+      "filter": 4,
+      "hostname": "www.host.co.uk",
+      "expectHex": "ED4639615756903880758616639FD1BF9F40464"
+    },
+    {
+      "scheme": "itip++",
+      "elementString": "(8006)066508065658584791(21)s7G91(10)AMm0-ECmJbHwr-I(17)540821(422)036",
+      "filter": 7,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "EDF06650806565858479165B3B1BDD471C7E918129E691D22FE488378064DA7C205312D8F857F102EDA2A844120"
+    },
+    {
+      "scheme": "itip++",
+      "elementString": "(8006)568771409641151719(21)Sb84,b0vS(10)GVpqmdJ!qa\\(sYE8UH3(17)480511",
+      "filter": 4,
+      "hostname": "data.example.org",
+      "expectHex": "EDC56877140964115171989A789C345989876A737261E985765F1876F0D996E084947ADC38EDC9290F1C2A39D98AE2AC8662EC156"
+    },
+    {
+      "scheme": "itip++",
+      "elementString": "(8006)733722355124028698(21)RxqGZl3XkrjG+BSapBk(10)or:FtaRBBPV71PuBSb(91)Ylx7lEtx;xkZ(422)826",
+      "filter": 3,
+      "hostname": "qr.acme.tech",
+      "expectHex": "EDB73372235512402869893A5E38C7B5B19D8D7CB547570A9E1E10B5C73D871EDCA0C008496FE4EA374C34A142A159BB1A1D6153C5230659D9E1BEC8BD3C3BF1AED211674"
+    },
+    {
+      "scheme": "itip++",
+      "elementString": "(8006)956332950409872284(21)wnbPjCxgs1IsSYJc(422)250",
+      "filter": 3,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "EDB95633295040987228470C276CF8C2C60B3522C49825C1C71FA4604A79A4748BF928447D0"
+    },
+    {
+      "scheme": "itip++",
+      "elementString": "(8006)093955214822910244(21)ZZPj",
+      "filter": 7,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "ED7093955214822910244646593E31C71FA4604A79A4748BF92"
+    },
+    {
+      "scheme": "itip++",
+      "elementString": "(8006)536235229687680203(21)MnHDcIRlSJ(17)910807(422)826",
+      "filter": 3,
+      "hostname": "qr.acme.tech",
+      "expectHex": "EDB5362352296876802036A3271C37084654898E7B0E3DB9418017B707422CE8"
+    },
+    {
+      "scheme": "itip++",
+      "elementString": "(8006)805484396962040102(21)xfvNmqIYWVCHTeaO(10)usRUCzl0QvLkFzad2y(17)920417(91)hzu75KN7hn0vZb",
+      "filter": 5,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "EDD80548439696204010270C5FBCD9AA2185950874DE68E1C71FA4604A79A4748BF9220E57588A81672E885E5C82E6D3BB642F712322C7439DDDF251BDC33E97B2D8"
+    },
+    {
+      "scheme": "itip++",
+      "elementString": "(8006)162961358748331883(21)SGL(10)X<Wgh",
+      "filter": 1,
+      "hostname": "id.example.com",
+      "expectHex": "ED9162961358748331883A377E592832F8C3B786CCB6C4216C3CAF9F40"
+    },
+    {
+      "scheme": "itip++",
+      "elementString": "(8006)164683016631872292(21)LcUAPAw4(10)wUAy\\(dI9z(91)c(422)380",
+      "filter": 2,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "EDA164683016631872292682DC5003C0C381C71FA4604A79A4748BF922113DEAC1F2A324973EA4501C4225F0"
+    },
+    {
+      "scheme": "itip++",
+      "elementString": "(8006)408343822317254390(21)MtwZHj03q)m'?NdM(10)rw3JKY8dkkrfDpu(422)124",
+      "filter": 2,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "EDA408343822317254390909BD3BDA91A9833E2A76A77F3B24D1C71FA4604A79A4748BF9220DF5E1B92531E3B2495BE1D372110F8"
+    },
+    {
+      "scheme": "itip++",
+      "elementString": "(8006)018792055502880918(21)2ja(422)380",
+      "filter": 4,
+      "hostname": "qr.acme.tech",
+      "expectHex": "EDC01879205550288091863DA36A39EC38F6E506010897C"
+    },
+    {
+      "scheme": "cpi++",
+      "elementString": "(8010)1916465137-LJBSRDU6B5U02KHO(8011)450546240",
+      "filter": 2,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "E621916465137EB1AAAB0F8B1C6D120EC08C345996B6B290071C7E918129E691D22FE48"
+    },
+    {
+      "scheme": "cpi++",
+      "elementString": "(8010)71976/X/YJMHK-5-1-(8011)41195",
+      "filter": 6,
+      "hostname": "data.example.org",
+      "expectHex": "E6671976E8D5F617D9953644B5AD56B15AAA0EB9B930F4C2BB2F8C3B786CCB70"
+    },
+    {
+      "scheme": "cpi++",
+      "elementString": "(8010)8802715328C-80MPFYGZBH8KN(8011)2(91)Y6j3Ue1BLuQLJJ",
+      "filter": 1,
+      "hostname": "qr.acme.tech",
+      "expectHex": "E698802715328EAF171FBD992970A2D9EF47128E7B0E3DB94180916398EA3DD47B504BB902C924"
+    },
+    {
+      "scheme": "cpi++",
+      "elementString": "(8010)14943698177YICX-Q(8011)621797803086(91)OzAI7wX0blvzOKHJLVbq",
+      "filter": 0,
+      "hostname": "data.example.org",
+      "expectHex": "E6814943698177EA69DAC9A4AC90C609844E9B930F4C2BB2F8C3B786CCB7245943B3008EF05F46E5BF338A1C92D56EA"
+    },
+    {
+      "scheme": "cpi++",
+      "elementString": "(8010)734135010#N(8011)6387674",
+      "filter": 5,
+      "hostname": "id.example.com",
+      "expectHex": "E65734135010E824739D85DF6A4A0CBE30EDE1B32DB"
+    },
+    {
+      "scheme": "cpi++",
+      "elementString": "(8010)9200404313-G-N/7B/LX#Z(8011)251652575335(91)8",
+      "filter": 2,
+      "hostname": "id.example.com",
+      "expectHex": "E6A9200404313E8C5B1D6CE5EDE12F99611DAC3A97A9906792832F8C3B786CCB6E44018"
+    },
+    {
+      "scheme": "cpi++",
+      "elementString": "(8010)4334169N7M35-IU3GM6G-MX7#K39AQ(8011)62927357988",
+      "filter": 7,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "E674334169E979CDE6B36AB64D5671E6B68EB66D86E8E5B373068DBA9B0D209071C7E918129E691D22FE48"
+    },
+    {
+      "scheme": "cpi++",
+      "elementString": "(8010)50981692H#N0Q(8011)4735(91)FBC/9y0c,/qPJFDY1Zxv",
+      "filter": 3,
+      "hostname": "data.example.org",
+      "expectHex": "E6B50981692E85908E730A2893FCDC987A615D97C61DBC3665B9230A46850D7B9F2C31AC5FC684A8D12CB1B5E3B0"
+    },
+    {
+      "scheme": "cpi++",
+      "elementString": "(8010)347317F6/J-ECL8#XR8/KLJV(8011)4666120(91)r3AuHOKT",
+      "filter": 4,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "E6C347317E928CD97CA5B161CC708EC5270BE5CC9559D1CCC2071C7E918129E691D22FE4C8B115EE05C39C526"
+    },
+    {
+      "scheme": "cpi++",
+      "elementString": "(8010)488786277H9ELQW61(8011)302177011157(91)KX0GnWD3DJA9iHP09",
+      "filter": 5,
+      "hostname": "id.example.com",
+      "expectHex": "E6D488786277E681FD10B416EB5C465B2745D592832F8C3B786CCB6E4591297D069D60F70C903D8873F4F4"
+    },
+    {
+      "scheme": "cpi++",
+      "elementString": "(8010)66299471532UIH#(8011)3",
+      "filter": 4,
+      "hostname": "ID.EXAMPLE.COM",
+      "expectHex": "E6466299471532E84AB26423131C71FA4604A79A4748BF92"
+    },
+    {
+      "scheme": "cpi++",
+      "elementString": "(8010)69574191JI/L/W#N(8011)82(91)YBusJQx",
+      "filter": 0,
+      "hostname": "qr.acme.tech",
+      "expectHex": "E6869574191E8895257CC5F5D1CE2A51CF61C7B72830122C3B00DD612862"
+    },
+    {
+      "scheme": "cpi++",
+      "elementString": "(8010)01658700743(8011)105267(91)pdYyglYJ9V9gt",
+      "filter": 6,
+      "hostname": "qr.acme.tech",
+      "expectHex": "E6E01658700743F619B338E7B0E3DB94180916369758CA095827D57D82D"
+    },
+    {
+      "scheme": "cpi++",
+      "elementString": "(8010)02779D5N#C/A//3QD#SL(8011)5941212310(91)8xQDn9oxQ?HIDZ",
+      "filter": 1,
+      "hostname": "qr.acme.tech",
+      "expectHex": "E6902779E8F88D672386BE0AF5ECE8C4474E652C43F692D1CF61C7B728301230738F14626E73BFC517F224C4B4"
+    },
+    {
+      "scheme": "cpi++",
+      "elementString": "(8010)6441138294S#/TXVPOR-CC#5RW-(8011)500209(91)f1TRXwVCs,7M0W",
+      "filter": 2,
+      "hostname": "data.example.org",
+      "expectHex": "E6A6441138294E91A68D7D4B15A84FA4B61C346D69575ACF43E337261E985765F1876F0D996E48C1D998D4A563BD687CD6379AC2B8"
+    },
+    {
+      "scheme": "cpi++",
+      "elementString": "(8010)3121289973304/C(8011)89308(91)PcoLbGnfLC",
+      "filter": 3,
+      "hostname": "qr.acme.tech",
+      "expectHex": "E6B3121289973304E825F0D6B9B91CF61C7B72830122C51EE505B634EF9610"
+    },
+    {
+      "scheme": "cpi++",
+      "elementString": "(8010)8239986078UYA5-OKZ2LF15BBW4RVL(8011)7565731479(91)WvGBT8355",
+      "filter": 7,
+      "hostname": "data.example.org",
+      "expectHex": "E6F8239986078EB4872ADF0848F14C10DB1395238B61A70BCF9A5E6E4C3D30AECBE30EDE1B32DC916256BC6053F37E79"
+    },
+    {
+      "scheme": "cpi++",
+      "elementString": "(8010)282759411HQC1JTMY-(8011)7(91)vo0YBRJTfYG",
+      "filter": 5,
+      "hostname": "id.example.com",
+      "expectHex": "E6D282759411EA934ACC36555441792832F8C3B786CCB6E458BBE8D180512537D818"
+    },
+    {
+      "scheme": "cpi++",
+      "elementString": "(8010)5745/SQT10IRX-P(8011)903325(91)6SHGiC8wq4WUH",
+      "filter": 5,
+      "hostname": "qr.acme.tech",
+      "expectHex": "E6D5745E8B5F4E8D462C24D2B0B6836E44EC73D871EDCA0C048B1BD2438D105E61570B2838"
+    },
+    {
+      "scheme": "cpi++",
+      "elementString": "(8010)587430993327FM#-HHFM(8011)9791(91)Ayz0",
+      "filter": 3,
+      "hostname": "www.host.co.uk",
+      "expectHex": "E6B587430993327E888D351AD912234D498FE39FD1BF9F404664584032CF4"
+    }
+  ]
+}
